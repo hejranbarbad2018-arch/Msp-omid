@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="ps" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>د صرافۍ سیستم - Login</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -14,136 +17,261 @@
 }
 
 body{
+
     min-height:100vh;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     padding:20px;
 
     background:
-    radial-gradient(circle at top left,#20a46455,transparent 35%),
-    radial-gradient(circle at bottom right,#0b3d2b99,transparent 40%),
-    linear-gradient(135deg,#041a11,#0b3927,#126b43);
+    radial-gradient(
+        circle at top left,
+        #20a46466,
+        transparent 35%
+    ),
+    radial-gradient(
+        circle at bottom right,
+        #0b3d2b88,
+        transparent 40%
+    ),
+    linear-gradient(
+        135deg,
+        #041a11,
+        #0b3927,
+        #126b43
+    );
 }
 
+
 .login-box{
+
     width:400px;
+
     max-width:100%;
+
     padding:35px 28px;
-    background:#ffffffee;
-    border-radius:24px;
-    box-shadow:0 20px 70px #0008;
+
+    background:
+    rgba(255,255,255,.96);
+
+    border-radius:25px;
+
+    box-shadow:
+    0 20px 70px rgba(0,0,0,.5);
+
     text-align:center;
 }
 
+
 .logo{
-    font-size:60px;
+
+    font-size:65px;
+
+    margin-bottom:10px;
+}
+
+
+.title{
+
+    color:#126b43;
+
+    font-size:25px;
+
+    font-weight:bold;
+
     margin-bottom:8px;
 }
 
-.title{
-    font-size:25px;
-    color:#126b43;
-    font-weight:bold;
+
+.subtitle{
+
+    color:#777;
+
+    margin-bottom:25px;
 }
 
-.sub{
-    color:#777;
-    margin:8px 0 25px;
-}
 
 label{
+
     display:block;
+
     text-align:right;
+
     font-weight:bold;
-    margin-top:12px;
+
+    margin-top:14px;
 }
+
 
 input{
+
     width:100%;
-    padding:13px;
+
+    padding:14px;
+
     margin-top:6px;
+
     border:1px solid #ccc;
+
     border-radius:9px;
+
+    font-size:16px;
+
     outline:none;
+
+    direction:ltr;
+
+    text-align:left;
 }
+
 
 input:focus{
+
     border-color:#126b43;
+
+    box-shadow:
+    0 0 0 2px #126b4322;
 }
 
-.btn{
+
+.login-btn{
+
     width:100%;
-    padding:13px;
-    margin-top:20px;
+
+    margin-top:22px;
+
+    padding:14px;
+
     border:0;
-    border-radius:9px;
-    background:#126b43;
+
+    border-radius:10px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #126b43,
+        #20a464
+    );
+
     color:white;
-    font-size:17px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
     cursor:pointer;
 }
 
-.btn:hover{
-    background:#20a464;
+
+.login-btn:active{
+
+    transform:scale(.98);
+
 }
 
+
 .error{
+
     display:none;
+
     color:#c0392b;
-    margin-top:12px;
+
+    background:#fdeaea;
+
+    padding:10px;
+
+    border-radius:8px;
+
+    margin-top:15px;
+
     font-weight:bold;
 }
 
+
 .footer{
-    margin-top:20px;
+
+    margin-top:25px;
+
     color:#999;
+
     font-size:12px;
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="login-box">
 
-    <div class="logo">💱</div>
+    <div class="logo">
+        💱
+    </div>
+
 
     <div class="title">
         د صرافۍ مدیریت سیستم
     </div>
 
-    <div class="sub">
+
+    <div class="subtitle">
         Login
     </div>
 
-    <form onsubmit="login(event)">
 
-        <label>Username</label>
+    <form id="loginForm">
+
+        <label>
+            Username
+        </label>
+
         <input
             id="username"
             type="text"
+            placeholder="Username"
             autocomplete="username"
             required
         >
 
-        <label>Password</label>
+
+        <label>
+            Password
+        </label>
+
         <input
             id="password"
             type="password"
+            placeholder="Password"
             autocomplete="current-password"
             required
         >
 
-        <button class="btn" type="submit">
+
+        <button
+            class="login-btn"
+            type="submit"
+        >
             🔐 Login
         </button>
 
-        <div class="error" id="error">
+
+        <div
+            class="error"
+            id="error"
+        >
             ❌ Username یا Password غلط دی
         </div>
 
     </form>
+
 
     <div class="footer">
         Exchange Management System
@@ -151,86 +279,106 @@ input:focus{
 
 </div>
 
+
+
 <script>
 
-/* ================================
-   LOGIN PASSWORD
-================================ */
-
-const DEFAULT_LOGIN_PASSWORD = "102030";
-
-const PASSWORD_KEY = "loginPassword";
-
-const PASSWORD_VERSION = "4";
-
-const VERSION_KEY = "passwordVersion";
-
-
-/*
-   لومړی ځل Login Password = 102030
-*/
-if(
-    localStorage.getItem(VERSION_KEY) !== PASSWORD_VERSION
-){
-
-    localStorage.setItem(
-        PASSWORD_KEY,
-        DEFAULT_LOGIN_PASSWORD
-    );
-
-    localStorage.setItem(
-        VERSION_KEY,
-        PASSWORD_VERSION
-    );
-}
-
-
-/* ================================
+/* =========================================
    LOGIN
-================================ */
+========================================= */
 
-function login(event){
+document
+.getElementById("loginForm")
+.addEventListener(
+    "submit",
+    function(event){
 
-    event.preventDefault();
+        event.preventDefault();
 
-    const username =
+
+        const username =
         document
         .getElementById("username")
         .value
         .trim();
 
-    const password =
+
+        const password =
         document
         .getElementById("password")
         .value;
 
-    const savedPassword =
-        localStorage.getItem(PASSWORD_KEY)
-        || DEFAULT_LOGIN_PASSWORD;
+
+        /*
+          که مخکې Password د Settings
+          له لارې بدل شوی وي، هماغه استعمالوي.
+
+          که نه وي، 102030 استعمالوي.
+        */
+
+        let savedPassword =
+        localStorage.getItem("loginPassword");
 
 
-    if(
-        username === "admin" &&
-        password === savedPassword
-    ){
+        if(!savedPassword){
 
-        sessionStorage.setItem(
-            "loggedIn",
-            "yes"
-        );
+            savedPassword = "102030";
 
-        window.location.href =
+            localStorage.setItem(
+                "loginPassword",
+                savedPassword
+            );
+
+        }
+
+
+        if(
+            username === "admin" &&
+            password === savedPassword
+        ){
+
+            /*
+              Login کامیاب
+            */
+
+            sessionStorage.setItem(
+                "loggedIn",
+                "yes"
+            );
+
+
+            window.location.href =
             "dashboard.html";
 
-    }else{
 
-        document
-        .getElementById("error")
-        .style.display="block";
+        }else{
+
+            /*
+              Login غلط
+            */
+
+            const error =
+            document
+            .getElementById("error");
+
+
+            error.style.display =
+            "block";
+
+
+            document
+            .getElementById("password")
+            .value = "";
+
+
+            document
+            .getElementById("password")
+            .focus();
+
+        }
 
     }
-
-}
+);
 
 </script>
 
