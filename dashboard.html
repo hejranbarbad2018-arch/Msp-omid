@@ -2,202 +2,632 @@
 <html lang="ps" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>د صرافۍ سیستم</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Exchange Dashboard</title>
 
 <style>
-*{box-sizing:border-box;font-family:Arial;margin:0;padding:0}
-body{background:#f3f6f5;color:#222}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Tahoma,sans-serif;
+}
+
+body{
+    background:#f3f6f5;
+    color:#222;
+}
+
+/* HEADER */
+
 .header{
- background:#146c43;color:white;padding:15px 25px;
- display:flex;justify-content:space-between;align-items:center
+    background:#126b43;
+    color:white;
+    padding:15px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:50;
 }
-.logo{font-size:20px;font-weight:bold}
-.logout{background:#c0392b;color:white;border:0;padding:10px 18px;border-radius:8px}
-.container{max-width:1200px;margin:auto;padding:25px}
-h1,h2{color:#146c43;margin-bottom:10px}
 
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin:25px 0}
+.logo{
+    font-size:21px;
+    font-weight:bold;
+}
+
+.logout{
+    border:0;
+    background:#c0392b;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* CONTAINER */
+
+.container{
+    max-width:1250px;
+    margin:auto;
+    padding:25px;
+}
+
+.title{
+    margin-bottom:20px;
+}
+
+.title h1{
+    color:#126b43;
+    margin-bottom:7px;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
 .card{
- background:white;padding:20px;border-radius:14px;
- box-shadow:0 4px 15px #0001
+    background:white;
+    padding:22px;
+    border-radius:15px;
+    box-shadow:0 4px 18px #0001;
 }
-.card small{color:#777}.card h2{margin-top:8px}
 
-.menu{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.menu button{
- background:white;border:0;border-radius:14px;padding:25px;
- font-size:17px;cursor:pointer;box-shadow:0 4px 15px #0001
+.card small{
+    color:#777;
 }
-.menu button:hover{transform:translateY(-3px)}
-.icon{font-size:35px;display:block;margin-bottom:10px}
+
+.card h2{
+    color:#126b43;
+    margin-top:10px;
+    font-size:23px;
+}
+
+/* MENU */
+
+.menu{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.menu button{
+    background:white;
+    border:0;
+    border-radius:15px;
+    padding:25px 15px;
+    font-size:17px;
+    cursor:pointer;
+    box-shadow:0 4px 18px #0001;
+    transition:.2s;
+}
+
+.menu button:hover{
+    transform:translateY(-3px);
+}
+
+.icon{
+    display:block;
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+/* SECTION */
 
 .section{
- background:white;padding:20px;border-radius:14px;
- margin-top:25px;box-shadow:0 4px 15px #0001
+    background:white;
+    margin-top:25px;
+    padding:22px;
+    border-radius:15px;
+    box-shadow:0 4px 18px #0001;
 }
 
-table{width:100%;border-collapse:collapse;margin-top:15px}
-th,td{padding:11px;border-bottom:1px solid #ddd;text-align:center}
-th{background:#146c43;color:white}
+.section h2{
+    color:#126b43;
+    margin-bottom:15px;
+}
+
+/* SEARCH */
+
+.search{
+    display:flex;
+    gap:10px;
+    margin-bottom:15px;
+}
+
+.search input{
+    flex:1;
+}
+
+/* TABLE */
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:750px;
+}
+
+th,td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    text-align:center;
+}
+
+th{
+    background:#126b43;
+    color:white;
+}
+
+tr:hover{
+    background:#f7faf8;
+}
+
+/* BUTTONS */
+
+.green{
+    background:#20a464!important;
+    color:white;
+}
+
+.red{
+    background:#c0392b!important;
+    color:white;
+}
+
+.blue{
+    background:#2980b9!important;
+    color:white;
+}
+
+.dark{
+    background:#34495e!important;
+    color:white;
+}
+
+/* MODAL */
 
 .modal{
- display:none;position:fixed;inset:0;background:#0008;
- justify-content:center;align-items:center;padding:15px;z-index:10
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#0009;
+    justify-content:center;
+    align-items:center;
+    padding:15px;
+    z-index:100;
 }
+
 .box{
- background:white;width:500px;max-width:100%;
- max-height:90vh;overflow:auto;padding:25px;border-radius:15px
+    background:white;
+    width:520px;
+    max-width:100%;
+    max-height:92vh;
+    overflow-y:auto;
+    border-radius:18px;
+    padding:25px;
 }
-.box h2{margin-bottom:18px}
 
-label{display:block;margin-top:8px;font-weight:bold}
-input,select,textarea{
- width:100%;padding:11px;margin-top:5px;
- border:1px solid #ccc;border-radius:8px
+.box h2{
+    color:#126b43;
+    margin-bottom:20px;
 }
-textarea{height:70px;resize:none}
 
-.save{
- width:100%;padding:12px;margin-top:15px;
- background:#20a464;color:white;border:0;border-radius:8px;
- font-size:16px
+label{
+    display:block;
+    margin-top:10px;
+    font-weight:bold;
 }
-.close{
- width:100%;padding:11px;margin-top:8px;
- background:#777;color:white;border:0;border-radius:8px
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:12px;
+    margin-top:5px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    outline:none;
 }
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#126b43;
+}
+
+textarea{
+    height:80px;
+    resize:none;
+}
+
+.btn{
+    width:100%;
+    padding:13px;
+    border:0;
+    border-radius:8px;
+    margin-top:15px;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.btn-green{
+    background:#20a464;
+}
+
+.btn-gray{
+    background:#777;
+}
+
+/* CUSTOMER INFO */
 
 .customer-info{
- background:#f5faf7;padding:12px;border-radius:8px;
- margin-top:10px;display:none
+    display:none;
+    background:#f1faf5;
+    border:1px solid #cde8d9;
+    padding:13px;
+    margin-top:12px;
+    border-radius:9px;
+    line-height:1.9;
 }
 
-.success{color:#16834b;font-weight:bold}
-.danger{color:#c0392b;font-weight:bold}
+/* PASSWORD */
 
-@media(max-width:750px){
- .cards{grid-template-columns:1fr 1fr}
- .menu{grid-template-columns:1fr 1fr}
+.password-box{
+    width:390px;
+    max-width:100%;
+    background:white;
+    border-radius:18px;
+    padding:30px;
+    text-align:center;
 }
-@media(max-width:450px){
- .cards{grid-template-columns:1fr}
- .menu{grid-template-columns:1fr}
+
+.lock{
+    font-size:50px;
+    margin-bottom:10px;
 }
+
+.password-box h2{
+    color:#126b43;
+    margin-bottom:8px;
+}
+
+.password-box p{
+    color:#777;
+    margin-bottom:20px;
+}
+
+.pass-container{
+    position:relative;
+}
+
+.pass-container input{
+    direction:ltr;
+    text-align:left;
+    padding-left:45px;
+}
+
+.eye{
+    position:absolute;
+    left:10px;
+    top:10px;
+    border:0;
+    background:none;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.pass-error{
+    display:none;
+    color:#c0392b;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+/* EMPTY */
+
+.empty{
+    text-align:center;
+    padding:25px;
+    color:#777;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .menu{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:550px){
+
+    .header{
+        padding:12px 15px;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
+    .container{
+        padding:15px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .menu{
+        grid-template-columns:1fr;
+    }
+
+    .search{
+        display:block;
+    }
+
+    .search button{
+        margin-top:8px;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
+
+<!-- HEADER -->
+
 <header class="header">
-<div class="logo">💱 د صرافۍ سیستم</div>
-<button class="logout" onclick="logout()">Logout</button>
+
+<div class="logo">
+💱 د صرافۍ مدیریت سیستم
+</div>
+
+<button class="logout" onclick="logout()">
+🚪 Logout
+</button>
+
 </header>
+
 
 <div class="container">
 
-<h1>د صرافۍ عمومی صفحه</h1>
-<p>د مشتریانو، حسابونو او معاملات مدیریت</p>
+
+<!-- TITLE -->
+
+<div class="title">
+
+<h1>
+د صرافۍ Dashboard
+</h1>
+
+<p>
+د مشتریانو او مالي معاملاتو مدیریت
+</p>
+
+</div>
+
+
+<!-- BALANCE CARDS -->
 
 <div class="cards">
 
 <div class="card">
-<small>ټول AFN</small>
-<h2 id="afn">0 AFN</h2>
+<small>ټول افغاني</small>
+<h2 id="totalAFN">0 AFN</h2>
 </div>
 
 <div class="card">
-<small>ټول USD</small>
-<h2 id="usd">0 USD</h2>
+<small>ټول ډالر</small>
+<h2 id="totalUSD">0 USD</h2>
 </div>
 
 <div class="card">
-<small>ټول IRR</small>
-<h2 id="irr">0 IRR</h2>
+<small>ټول تومان</small>
+<h2 id="totalIRR">0 IRR</h2>
 </div>
 
 <div class="card">
-<small>Customers</small>
-<h2 id="customersCount">0</h2>
+<small>ټول مشتریان</small>
+<h2 id="totalCustomers">0</h2>
 </div>
 
 </div>
+
+
+<!-- MAIN MENU -->
 
 <div class="menu">
 
+
 <button onclick="openCustomer()">
-<span class="icon">👤</span>
+
+<span class="icon">
+👤
+</span>
+
 Customer Registration
+
 </button>
+
 
 <button onclick="openMoney('deposit')">
-<span class="icon">💰</span>
+
+<span class="icon">
+💰
+</span>
+
 Deposit
+
 </button>
+
 
 <button onclick="openMoney('withdraw')">
-<span class="icon">💸</span>
+
+<span class="icon">
+💸
+</span>
+
 Withdraw
+
 </button>
 
-<button onclick="showCustomers()">
-<span class="icon">👥</span>
-Customers
-</button>
-
-<button onclick="showTransactions()">
-<span class="icon">🧾</span>
-Transactions
-</button>
 
 <button onclick="openExchange()">
-<span class="icon">💱</span>
+
+<span class="icon">
+💱
+</span>
+
 Currency Exchange
+
 </button>
 
+
+<button onclick="scrollToCustomers()">
+
+<span class="icon">
+👥
+</span>
+
+Customers
+
+</button>
+
+
+<button onclick="scrollToTransactions()">
+
+<span class="icon">
+🧾
+</span>
+
+Transactions
+
+</button>
+
+
 </div>
 
 
-<!-- Customers -->
+<!-- CUSTOMERS -->
 
-<div class="section">
-<h2>د مشتریانو لیست</h2>
+<div class="section" id="customersSection">
+
+<h2>
+👥 د مشتریانو لیست
+</h2>
+
+
+<div class="search">
+
+<input
+id="customerSearch"
+type="text"
+placeholder="د نوم یا موبایل نمبر له لارې لټون..."
+oninput="showCustomers()"
+>
+
+</div>
+
+
+<div class="table-wrap">
 
 <table>
+
 <thead>
+
 <tr>
+
 <th>Account Number</th>
-<th>نوم</th>
-<th>موبایل</th>
+
+<th>Customer Name</th>
+
+<th>Mobile</th>
+
 <th>AFN</th>
+
 <th>USD</th>
+
 <th>IRR</th>
+
+<th>Action</th>
+
 </tr>
+
 </thead>
 
-<tbody id="customerTable"></tbody>
+
+<tbody id="customerTable">
+
+</tbody>
+
 </table>
 
 </div>
 
+</div>
 
-<!-- Transactions -->
 
-<div class="section">
-<h2>وروستي معاملات</h2>
+<!-- TRANSACTIONS -->
+
+<div class="section" id="transactionsSection">
+
+<h2>
+🧾 د معاملو تاریخچه
+</h2>
+
+
+<div class="table-wrap">
 
 <table>
+
 <thead>
+
 <tr>
+
 <th>Type</th>
+
 <th>Account</th>
+
+<th>Customer</th>
+
 <th>Amount</th>
+
 <th>Currency</th>
+
 <th>Date</th>
+
 </tr>
+
 </thead>
 
-<tbody id="transactionTable"></tbody>
+
+<tbody id="transactionTable">
+
+</tbody>
+
 </table>
 
 </div>
@@ -205,205 +635,442 @@ Currency Exchange
 </div>
 
 
-<!-- CUSTOMER REGISTRATION -->
+</div>
+
+
+
+<!-- CUSTOMER REGISTRATION MODAL -->
 
 <div class="modal" id="customerModal">
 
 <div class="box">
 
-<h2>د مشتری ثبتول</h2>
+<h2>
+👤 د مشتری ثبتول
+</h2>
 
-<label>د مشتری بشپړ نوم</label>
-<input id="cName" type="text">
 
-<label>د موبایل نمبر</label>
-<input id="cPhone" type="tel" placeholder="0700000000">
+<label>
+د مشتری بشپړ نوم
+</label>
 
-<p style="margin-top:5px;color:#146c43">
-⚠️ د موبایل نمبر به د مشتری Account Number وي
-</p>
+<input
+id="cName"
+type="text"
+placeholder="مثلاً: احمد خان"
+>
 
-<label>د تذکرې نمبر</label>
-<input id="cId" type="text">
 
-<label>د پلار نوم</label>
-<input id="cFather" type="text">
+<label>
+د موبایل نمبر
+</label>
 
-<label>د زېږېدو نېټه</label>
-<input id="cBirth" type="date">
+<input
+id="cPhone"
+type="tel"
+placeholder="0700000000"
+>
 
-<label>جنسیت</label>
+
+<div style="color:#126b43;margin-top:5px">
+
+⚠️ د موبایل نمبر به د Account Number وي
+
+</div>
+
+
+<label>
+د تذکرې نمبر
+</label>
+
+<input
+id="cId"
+type="text"
+>
+
+
+<label>
+د پلار نوم
+</label>
+
+<input
+id="cFather"
+type="text"
+>
+
+
+<label>
+د زېږېدو نېټه
+</label>
+
+<input
+id="cBirth"
+type="date"
+>
+
+
+<label>
+جنسیت
+</label>
+
 <select id="cGender">
-<option value="">انتخاب کړئ</option>
-<option>نارینه</option>
-<option>ښځینه</option>
+
+<option value="">
+انتخاب کړئ
+</option>
+
+<option value="نارینه">
+نارینه
+</option>
+
+<option value="ښځینه">
+ښځینه
+</option>
+
 </select>
 
-<label>دنده / وظیفه</label>
-<input id="cJob" type="text">
 
-<label>پته</label>
-<textarea id="cAddress"></textarea>
+<label>
+دنده / وظیفه
+</label>
 
-<label>یادښت</label>
-<textarea id="cNote"></textarea>
+<input
+id="cJob"
+type="text"
+>
 
-<button class="save" onclick="registerCustomer()">
-Register Customer
+
+<label>
+پته
+</label>
+
+<textarea
+id="cAddress"
+placeholder="د مشتری پته"
+></textarea>
+
+
+<label>
+یادښت
+</label>
+
+<textarea
+id="cNote"
+placeholder="اضافي معلومات"
+></textarea>
+
+
+<button
+class="btn btn-green"
+onclick="registerCustomer()"
+>
+🔐 Register Customer
 </button>
 
-<button class="close" onclick="closeAll()">
+
+<button
+class="btn btn-gray"
+onclick="closeAll()"
+>
 Close
 </button>
 
+
 </div>
+
 </div>
 
 
-<!-- DEPOSIT / WITHDRAW -->
+
+<!-- DEPOSIT / WITHDRAW MODAL -->
 
 <div class="modal" id="moneyModal">
 
 <div class="box">
 
-<h2 id="moneyTitle"></h2>
+<h2 id="moneyTitle">
+</h2>
 
-<label>Account Number / Mobile</label>
-<input id="accountInput"
+
+<label>
+Account Number / Mobile
+</label>
+
+<input
+id="accountInput"
 type="tel"
-placeholder="د مشتری موبایل نمبر">
+placeholder="د مشتری موبایل نمبر"
+>
 
-<button class="save"
-style="background:#555"
-onclick="findCustomer()">
-Find Customer
+
+<button
+class="btn dark"
+onclick="findCustomer()"
+>
+🔍 د مشتری لټون
 </button>
 
-<div class="customer-info" id="customerInfo"></div>
 
-<label>Currency</label>
+<div
+class="customer-info"
+id="customerInfo"
+>
+</div>
+
+
+<label>
+Currency
+</label>
 
 <select id="moneyCurrency">
 
-<option value="AFN">AFN - افغاني</option>
-<option value="USD">USD - ډالر</option>
-<option value="IRR">IRR - تومان</option>
+<option value="AFN">
+AFN - افغاني
+</option>
+
+<option value="USD">
+USD - ډالر
+</option>
+
+<option value="IRR">
+IRR - تومان
+</option>
 
 </select>
 
-<label>Amount</label>
-<input id="moneyAmount" type="number" min="0">
 
-<button class="save" onclick="saveMoney()">
-Confirm
+<label>
+Amount
+</label>
+
+<input
+id="moneyAmount"
+type="number"
+min="0"
+placeholder="Amount"
+>
+
+
+<button
+class="btn btn-green"
+onclick="saveMoney()"
+>
+🔐 Confirm & Save
 </button>
 
-<button class="close" onclick="closeAll()">
+
+<button
+class="btn btn-gray"
+onclick="closeAll()"
+>
 Close
 </button>
 
+
 </div>
+
 </div>
 
 
-<!-- EXCHANGE -->
+
+<!-- EXCHANGE MODAL -->
 
 <div class="modal" id="exchangeModal">
 
 <div class="box">
 
-<h2>Currency Exchange</h2>
+<h2>
+💱 Currency Exchange
+</h2>
 
-<label>Account Number</label>
-<input id="exchangeAccount">
 
-<label>له کوم Currency څخه</label>
+<label>
+Customer Account Number
+</label>
+
+<input
+id="exchangeAccount"
+type="tel"
+placeholder="0700000000"
+>
+
+
+<label>
+From Currency
+</label>
 
 <select id="fromCurrency">
-<option value="USD">USD</option>
-<option value="AFN">AFN</option>
-<option value="IRR">IRR</option>
+
+<option value="USD">
+USD
+</option>
+
+<option value="AFN">
+AFN
+</option>
+
+<option value="IRR">
+IRR
+</option>
+
 </select>
 
-<label>کوم Currency ته</label>
+
+<label>
+To Currency
+</label>
 
 <select id="toCurrency">
-<option value="AFN">AFN</option>
-<option value="USD">USD</option>
-<option value="IRR">IRR</option>
+
+<option value="AFN">
+AFN
+</option>
+
+<option value="USD">
+USD
+</option>
+
+<option value="IRR">
+IRR
+</option>
+
 </select>
 
-<label>Amount</label>
-<input id="exchangeAmount" type="number">
 
-<button class="save" onclick="exchangeMoney()">
-Exchange
+<label>
+Amount
+</label>
+
+<input
+id="exchangeAmount"
+type="number"
+min="0"
+>
+
+
+<button
+class="btn btn-green"
+onclick="exchangeMoney()"
+>
+🔐 Exchange
 </button>
 
-<button class="close" onclick="closeAll()">
+
+<button
+class="btn btn-gray"
+onclick="closeAll()"
+>
 Close
 </button>
 
+
 </div>
+
 </div>
+
+
+
+<!-- SUPERVISOR PASSWORD MODAL -->
+
+<div class="modal" id="passwordModal">
+
+<div class="password-box">
+
+<div class="lock">
+🔐
+</div>
+
+<h2>
+Supervisor Authorization
+</h2>
+
+<p>
+د عملیات د ثبت لپاره Supervisor Password داخل کړئ
+</p>
+
+
+<div class="pass-container">
+
+<input
+id="supervisorPassword"
+type="password"
+placeholder="Supervisor Password"
+onkeydown="passwordEnter(event)"
+>
+
+<button
+class="eye"
+onclick="togglePassword()"
+>
+👁
+</button>
+
+</div>
+
+
+<div
+id="passError"
+class="pass-error"
+>
+❌ Supervisor Password غلط دی
+</div>
+
+
+<button
+class="btn btn-green"
+onclick="verifySupervisor()"
+>
+🔓 تایید
+</button>
+
+
+<button
+class="btn btn-gray"
+onclick="cancelPassword()"
+>
+لغوه
+</button>
+
+
+</div>
+
+</div>
+
 
 
 <script>
 
-/* =========================
+
+/* =========================================
+   SUPERVISOR PASSWORD
+========================================= */
+
+const SUPERVISOR_PASSWORD = "2580";
+
+let pendingAction = null;
+
+let operation = "";
+
+
+/* =========================================
    DATABASE
-========================= */
+========================================= */
 
 let customers =
-JSON.parse(localStorage.getItem("customers")) || [];
+JSON.parse(
+localStorage.getItem("customers")
+) || [];
+
 
 let transactions =
-JSON.parse(localStorage.getItem("transactions")) || [];
-
-let operation="";
-
-
-/* =========================
-   SCREEN
-========================= */
-
-function updateScreen(){
-
-document.getElementById("customersCount").innerText =
-customers.length;
-
-let total={
- AFN:0,
- USD:0,
- IRR:0
-};
-
-customers.forEach(c=>{
- total.AFN += c.balance.AFN;
- total.USD += c.balance.USD;
- total.IRR += c.balance.IRR;
-});
-
-document.getElementById("afn").innerText =
-total.AFN.toFixed(2)+" AFN";
-
-document.getElementById("usd").innerText =
-total.USD.toFixed(2)+" USD";
-
-document.getElementById("irr").innerText =
-total.IRR.toFixed(2)+" IRR";
-
-showCustomers();
-showTransactions();
-
-saveData();
-
-}
+JSON.parse(
+localStorage.getItem("transactions")
+) || [];
 
 
-/* =========================
-   SAVE DATA
-========================= */
+/* =========================================
+   SAVE DATABASE
+========================================= */
 
 function saveData(){
 
@@ -420,78 +1087,249 @@ JSON.stringify(transactions)
 }
 
 
-/* =========================
+/* =========================================
+   SUPERVISOR AUTHORIZATION
+========================================= */
+
+function requestSupervisor(action){
+
+pendingAction = action;
+
+document.getElementById(
+"supervisorPassword"
+).value = "";
+
+document.getElementById(
+"passError"
+).style.display = "none";
+
+document.getElementById(
+"passwordModal"
+).style.display = "flex";
+
+
+setTimeout(function(){
+
+document.getElementById(
+"supervisorPassword"
+).focus();
+
+},100);
+
+}
+
+
+function verifySupervisor(){
+
+let password =
+document.getElementById(
+"supervisorPassword"
+).value;
+
+
+if(password !== SUPERVISOR_PASSWORD){
+
+document.getElementById(
+"passError"
+).style.display = "block";
+
+document.getElementById(
+"supervisorPassword"
+).value = "";
+
+return;
+
+}
+
+
+document.getElementById(
+"passwordModal"
+).style.display = "none";
+
+
+if(pendingAction){
+
+let action = pendingAction;
+
+pendingAction = null;
+
+action();
+
+}
+
+}
+
+
+function cancelPassword(){
+
+pendingAction = null;
+
+document.getElementById(
+"passwordModal"
+).style.display = "none";
+
+}
+
+
+function togglePassword(){
+
+let input =
+document.getElementById(
+"supervisorPassword"
+);
+
+if(input.type === "password"){
+
+input.type = "text";
+
+}else{
+
+input.type = "password";
+
+}
+
+}
+
+
+function passwordEnter(event){
+
+if(event.key === "Enter"){
+
+verifySupervisor();
+
+}
+
+}
+
+
+/* =========================================
    CUSTOMER REGISTRATION
-========================= */
+========================================= */
 
 function openCustomer(){
 
-document.getElementById("customerModal").style.display="flex";
+document.getElementById(
+"customerModal"
+).style.display = "flex";
 
 }
 
 
 function registerCustomer(){
 
-let name=document.getElementById("cName").value.trim();
-let phone=document.getElementById("cPhone").value.trim();
-let id=document.getElementById("cId").value.trim();
-let father=document.getElementById("cFather").value.trim();
-let birth=document.getElementById("cBirth").value;
-let gender=document.getElementById("cGender").value;
-let job=document.getElementById("cJob").value.trim();
-let address=document.getElementById("cAddress").value.trim();
-let note=document.getElementById("cNote").value.trim();
+requestSupervisor(function(){
+
+let name =
+document.getElementById("cName")
+.value.trim();
+
+
+let phone =
+document.getElementById("cPhone")
+.value.trim();
+
+
+let id =
+document.getElementById("cId")
+.value.trim();
+
+
+let father =
+document.getElementById("cFather")
+.value.trim();
+
+
+let birth =
+document.getElementById("cBirth")
+.value;
+
+
+let gender =
+document.getElementById("cGender")
+.value;
+
+
+let job =
+document.getElementById("cJob")
+.value.trim();
+
+
+let address =
+document.getElementById("cAddress")
+.value.trim();
+
+
+let note =
+document.getElementById("cNote")
+.value.trim();
+
 
 if(!name || !phone){
 
-alert("د مشتری نوم او موبایل نمبر ضروري دي");
+alert(
+"❌ د مشتری نوم او موبایل نمبر ضروري دي"
+);
+
 return;
 
 }
 
 
-/* موبایل = Account Number */
+/* CHECK DUPLICATE ACCOUNT */
 
-let exists=customers.find(c=>c.account===phone);
+let exists =
+customers.find(
+c => c.account === phone
+);
+
 
 if(exists){
 
-alert("دا موبایل نمبر مخکې ثبت شوی دی");
+alert(
+"❌ دا موبایل نمبر مخکې ثبت شوی دی"
+);
+
 return;
 
 }
 
 
-let customer={
+/* CREATE CUSTOMER */
 
-account:phone,
+let customer = {
 
-name:name,
+account: phone,
 
-phone:phone,
+name: name,
 
-id:id,
+phone: phone,
 
-father:father,
+id: id,
 
-birth:birth,
+father: father,
 
-gender:gender,
+birth: birth,
 
-job:job,
+gender: gender,
 
-address:address,
+job: job,
 
-note:note,
+address: address,
 
-balance:{
- AFN:0,
- USD:0,
- IRR:0
+note: note,
+
+balance: {
+
+AFN: 0,
+
+USD: 0,
+
+IRR: 0
+
 },
 
-created:new Date().toLocaleString()
+created:
+new Date().toLocaleString()
 
 };
 
@@ -500,102 +1338,178 @@ customers.push(customer);
 
 saveData();
 
+
 alert(
-"مشتری په بریالیتوب ثبت شو\n\n"+
+"✅ مشتری په بریالیتوب ثبت شو\n\n"+
 "Account Number: "+phone
 );
 
-document.getElementById("cName").value="";
-document.getElementById("cPhone").value="";
-document.getElementById("cId").value="";
-document.getElementById("cFather").value="";
-document.getElementById("cBirth").value="";
-document.getElementById("cGender").value="";
-document.getElementById("cJob").value="";
-document.getElementById("cAddress").value="";
-document.getElementById("cNote").value="";
+
+/* CLEAR */
+
+document.getElementById("cName").value = "";
+
+document.getElementById("cPhone").value = "";
+
+document.getElementById("cId").value = "";
+
+document.getElementById("cFather").value = "";
+
+document.getElementById("cBirth").value = "";
+
+document.getElementById("cGender").value = "";
+
+document.getElementById("cJob").value = "";
+
+document.getElementById("cAddress").value = "";
+
+document.getElementById("cNote").value = "";
+
 
 closeAll();
 
-updateScreen();
+updateDashboard();
+
+});
 
 }
 
 
-/* =========================
+/* =========================================
    DEPOSIT / WITHDRAW
-========================= */
+========================================= */
 
 function openMoney(type){
 
-operation=type;
+operation = type;
 
-document.getElementById("moneyTitle").innerText =
-type==="deposit" ? "💰 Deposit" : "💸 Withdraw";
 
-document.getElementById("moneyModal").style.display="flex";
+if(type === "deposit"){
+
+document.getElementById(
+"moneyTitle"
+).innerText =
+"💰 Deposit";
+
+}else{
+
+document.getElementById(
+"moneyTitle"
+).innerText =
+"💸 Withdraw";
+
+}
+
+
+document.getElementById(
+"moneyModal"
+).style.display = "flex";
 
 }
 
 
 function findCustomer(){
 
-let account=
-document.getElementById("accountInput").value.trim();
+let account =
+document.getElementById(
+"accountInput"
+).value.trim();
 
-let customer=
-customers.find(c=>c.account===account);
 
-let info=
-document.getElementById("customerInfo");
+let customer =
+customers.find(
+c => c.account === account
+);
+
+
+let info =
+document.getElementById(
+"customerInfo"
+);
+
 
 if(!customer){
 
-info.style.display="block";
+info.style.display = "block";
 
-info.innerHTML=
-"<span class='danger'>مشتری پیدا نشو</span>";
+info.innerHTML =
+"<b style='color:#c0392b'>❌ مشتری پیدا نشو</b>";
 
 return;
 
 }
 
-info.style.display="block";
 
-info.innerHTML=
-"<b>Customer:</b> "+customer.name+
-"<br><b>Account:</b> "+customer.account+
-"<br><b>AFN:</b> "+customer.balance.AFN.toFixed(2)+
-"<br><b>USD:</b> "+customer.balance.USD.toFixed(2)+
-"<br><b>IRR:</b> "+customer.balance.IRR.toFixed(2);
+info.style.display = "block";
+
+
+info.innerHTML =
+
+"<b>Customer:</b> "+
+customer.name+
+
+"<br><b>Account:</b> "+
+customer.account+
+
+"<br><b>AFN:</b> "+
+customer.balance.AFN.toFixed(2)+
+
+"<br><b>USD:</b> "+
+customer.balance.USD.toFixed(2)+
+
+"<br><b>IRR:</b> "+
+customer.balance.IRR.toFixed(2);
 
 }
 
 
 function saveMoney(){
 
-let account=
-document.getElementById("accountInput").value.trim();
+requestSupervisor(function(){
 
-let currency=
-document.getElementById("moneyCurrency").value;
+let account =
+document.getElementById(
+"accountInput"
+).value.trim();
 
-let amount=
-parseFloat(document.getElementById("moneyAmount").value);
 
-let customer=
-customers.find(c=>c.account===account);
+let currency =
+document.getElementById(
+"moneyCurrency"
+).value;
+
+
+let amount =
+parseFloat(
+document.getElementById(
+"moneyAmount"
+).value
+);
+
+
+let customer =
+customers.find(
+c => c.account === account
+);
+
 
 if(!customer){
 
-alert("لومړی د مشتری Account Number پیدا کړئ");
+alert(
+"❌ Customer پیدا نشو"
+);
+
 return;
 
 }
 
-if(!amount || amount<=0){
 
-alert("صحیح Amount ولیکئ");
+if(!amount || amount <= 0){
+
+alert(
+"❌ صحیح Amount ولیکئ"
+);
+
 return;
 
 }
@@ -603,21 +1517,26 @@ return;
 
 /* WITHDRAW */
 
-if(operation==="withdraw"){
+if(operation === "withdraw"){
 
-if(customer.balance[currency]<amount){
+if(
+customer.balance[currency] < amount
+){
 
 alert(
-"د مشتری په حساب کې کافي بیلانس نشته\n\n"+
+"❌ د مشتری په حساب کې کافي بیلانس نشته\n\n"+
 "موجود بیلانس: "+
-customer.balance[currency]+" "+currency
+customer.balance[currency]+
+" "+currency
 );
 
 return;
 
 }
 
-customer.balance[currency]-=amount;
+
+customer.balance[currency]
+-= amount;
 
 }
 
@@ -626,7 +1545,8 @@ customer.balance[currency]-=amount;
 
 else{
 
-customer.balance[currency]+=amount;
+customer.balance[currency]
++= amount;
 
 }
 
@@ -636,69 +1556,168 @@ customer.balance[currency]+=amount;
 transactions.push({
 
 type:
-operation==="deposit"
-?"Deposit"
-:"Withdraw",
+operation === "deposit"
+? "Deposit"
+: "Withdraw",
 
-account:customer.account,
+account:
+customer.account,
 
-customer:customer.name,
+customer:
+customer.name,
 
-amount:amount,
+amount:
+amount,
 
-currency:currency,
+currency:
+currency,
 
-date:new Date().toLocaleString()
+date:
+new Date().toLocaleString()
 
 });
 
+
 saveData();
 
+
 alert(
-(operation==="deposit"?"Deposit":"Withdraw")+
-" په بریالیتوب سره ثبت شو"
+"✅ عملیات په بریالیتوب ثبت شو"
 );
 
-document.getElementById("accountInput").value="";
-document.getElementById("moneyAmount").value="";
+
+document.getElementById(
+"accountInput"
+).value = "";
+
+
+document.getElementById(
+"moneyAmount"
+).value = "";
+
+
+document.getElementById(
+"customerInfo"
+).style.display = "none";
+
 
 closeAll();
 
-updateScreen();
+updateDashboard();
+
+});
 
 }
 
 
-/* =========================
-   CUSTOMERS TABLE
-========================= */
+/* =========================================
+   CUSTOMER TABLE
+========================================= */
 
 function showCustomers(){
 
-let table=
-document.getElementById("customerTable");
+let table =
+document.getElementById(
+"customerTable"
+);
 
-table.innerHTML="";
 
-customers.forEach(c=>{
+let search =
+document.getElementById(
+"customerSearch"
+).value
+.toLowerCase()
+.trim();
 
-let row=document.createElement("tr");
 
-row.innerHTML=`
+table.innerHTML = "";
 
-<td>${c.account}</td>
 
-<td>${c.name}</td>
+let filtered =
+customers.filter(function(c){
 
-<td>${c.phone}</td>
+return (
 
-<td>${c.balance.AFN.toFixed(2)}</td>
+c.name.toLowerCase()
+.includes(search)
 
-<td>${c.balance.USD.toFixed(2)}</td>
+||
 
-<td>${c.balance.IRR.toFixed(2)}</td>
+c.account.toLowerCase()
+.includes(search)
+
+||
+
+c.phone.toLowerCase()
+.includes(search)
+
+);
+
+});
+
+
+if(filtered.length === 0){
+
+table.innerHTML =
+`
+<tr>
+<td colspan="7" class="empty">
+هیڅ مشتری پیدا نشو
+</td>
+</tr>
+`;
+
+return;
+
+}
+
+
+filtered.forEach(function(c){
+
+let row =
+document.createElement("tr");
+
+
+row.innerHTML = `
+
+<td>
+${c.account}
+</td>
+
+<td>
+${c.name}
+</td>
+
+<td>
+${c.phone}
+</td>
+
+<td>
+${c.balance.AFN.toFixed(2)}
+</td>
+
+<td>
+${c.balance.USD.toFixed(2)}
+</td>
+
+<td>
+${c.balance.IRR.toFixed(2)}
+</td>
+
+<td>
+
+<button
+class="blue"
+style="border:0;padding:7px 10px;border-radius:6px;color:white;cursor:pointer"
+onclick="viewCustomer('${c.account}')"
+>
+View
+</button>
+
+</td>
 
 `;
+
 
 table.appendChild(row);
 
@@ -707,38 +1726,123 @@ table.appendChild(row);
 }
 
 
-/* =========================
-   TRANSACTIONS
-========================= */
+/* =========================================
+   VIEW CUSTOMER
+========================================= */
+
+function viewCustomer(account){
+
+let c =
+customers.find(
+x => x.account === account
+);
+
+
+if(!c)return;
+
+
+alert(
+
+"Customer Information\n\n"+
+
+"Name: "+c.name+"\n"+
+
+"Account: "+c.account+"\n"+
+
+"Mobile: "+c.phone+"\n"+
+
+"Tazkira: "+(c.id || "-")+"\n"+
+
+"Father: "+(c.father || "-")+"\n"+
+
+"Birth: "+(c.birth || "-")+"\n"+
+
+"Gender: "+(c.gender || "-")+"\n"+
+
+"Job: "+(c.job || "-")+"\n"+
+
+"Address: "+(c.address || "-")+"\n\n"+
+
+"AFN: "+c.balance.AFN.toFixed(2)+"\n"+
+
+"USD: "+c.balance.USD.toFixed(2)+"\n"+
+
+"IRR: "+c.balance.IRR.toFixed(2)
+
+);
+
+}
+
+
+/* =========================================
+   TRANSACTION TABLE
+========================================= */
 
 function showTransactions(){
 
-let table=
-document.getElementById("transactionTable");
+let table =
+document.getElementById(
+"transactionTable"
+);
 
-table.innerHTML="";
+
+table.innerHTML = "";
+
+
+if(transactions.length === 0){
+
+table.innerHTML =
+`
+<tr>
+<td colspan="6" class="empty">
+تر اوسه معامله نشته
+</td>
+</tr>
+`;
+
+return;
+
+}
+
 
 transactions
 .slice()
 .reverse()
-.slice(0,30)
-.forEach(t=>{
+.slice(0,50)
+.forEach(function(t){
 
-let row=document.createElement("tr");
+let row =
+document.createElement("tr");
 
-row.innerHTML=`
 
-<td>${t.type}</td>
+row.innerHTML = `
 
-<td>${t.account}</td>
+<td>
+${t.type}
+</td>
 
-<td>${t.amount}</td>
+<td>
+${t.account}
+</td>
 
-<td>${t.currency}</td>
+<td>
+${t.customer || "-"}
+</td>
 
-<td>${t.date}</td>
+<td>
+${t.amount}
+</td>
+
+<td>
+${t.currency}
+</td>
+
+<td>
+${t.date}
+</td>
 
 `;
+
 
 table.appendChild(row);
 
@@ -747,162 +1851,307 @@ table.appendChild(row);
 }
 
 
-/* =========================
-   EXCHANGE
-========================= */
+/* =========================================
+   CURRENCY EXCHANGE
+========================================= */
 
 function openExchange(){
 
-document.getElementById("exchangeModal").style.display="flex";
+document.getElementById(
+"exchangeModal"
+).style.display = "flex";
 
 }
 
 
 function exchangeMoney(){
 
-let account=
-document.getElementById("exchangeAccount").value.trim();
+requestSupervisor(function(){
 
-let from=
-document.getElementById("fromCurrency").value;
+let account =
+document.getElementById(
+"exchangeAccount"
+).value.trim();
 
-let to=
-document.getElementById("toCurrency").value;
 
-let amount=
-parseFloat(document.getElementById("exchangeAmount").value);
+let from =
+document.getElementById(
+"fromCurrency"
+).value;
 
-let customer=
-customers.find(c=>c.account===account);
+
+let to =
+document.getElementById(
+"toCurrency"
+).value;
+
+
+let amount =
+parseFloat(
+document.getElementById(
+"exchangeAmount"
+).value
+);
+
+
+let customer =
+customers.find(
+c => c.account === account
+);
+
 
 if(!customer){
 
-alert("Customer پیدا نشو");
-return;
+alert(
+"❌ Customer پیدا نشو"
+);
 
-}
-
-if(from===to){
-
-alert("Currency باید مختلف وي");
-return;
-
-}
-
-if(!amount || amount<=0){
-
-alert("صحیح Amount ولیکئ");
-return;
-
-}
-
-if(customer.balance[from]<amount){
-
-alert("د مشتری بیلانس کافي نه دی");
 return;
 
 }
 
 
-/*
-Demo Rates
+if(from === to){
 
-وروسته به د Buy/Sell Rates
-جلا سیستم جوړوو.
-*/
+alert(
+"❌ دواړه Currency باید مختلف وي"
+);
 
-let rates={
+return;
+
+}
+
+
+if(!amount || amount <= 0){
+
+alert(
+"❌ صحیح Amount ولیکئ"
+);
+
+return;
+
+}
+
+
+if(
+customer.balance[from] < amount
+){
+
+alert(
+"❌ د مشتری بیلانس کافي نه دی"
+);
+
+return;
+
+}
+
+
+/* DEMO RATES */
+
+let rates = {
 
 USD:{
- AFN:70,
- IRR:42000
+AFN:70,
+IRR:42000
 },
 
 AFN:{
- USD:1/70,
- IRR:42000/70
+USD:1/70,
+IRR:42000/70
 },
 
 IRR:{
- USD:1/42000,
- AFN:1/42000
+USD:1/42000,
+AFN:1/42000
 }
 
 };
 
-let received=
-amount*rates[from][to];
 
-customer.balance[from]-=amount;
+let received =
+amount * rates[from][to];
 
-customer.balance[to]+=received;
 
+customer.balance[from]
+-= amount;
+
+
+customer.balance[to]
++= received;
+
+
+/* TRANSACTION */
 
 transactions.push({
 
 type:"Exchange",
 
-account:customer.account,
+account:
+customer.account,
 
-customer:customer.name,
+customer:
+customer.name,
 
 amount:
 amount+" "+from+
 " → "+
 received.toFixed(2)+" "+to,
 
-currency:to,
+currency:
+to,
 
-date:new Date().toLocaleString()
+date:
+new Date().toLocaleString()
 
 });
 
 
 saveData();
 
+
 alert(
-"Exchange کامیاب شو\n\n"+
+
+"✅ Exchange کامیاب شو\n\n"+
+
 amount+" "+from+
+
 " = "+
+
 received.toFixed(2)+" "+to
+
 );
+
 
 closeAll();
 
-updateScreen();
+updateDashboard();
 
-}
-
-
-/* =========================
-   CLOSE
-========================= */
-
-function closeAll(){
-
-document
-.querySelectorAll(".modal")
-.forEach(m=>{
-m.style.display="none";
 });
 
 }
 
 
-/* =========================
-   LOGOUT
-========================= */
+/* =========================================
+   DASHBOARD TOTALS
+========================================= */
 
-function logout(){
+function updateDashboard(){
 
-window.location.href="index.html";
+let total = {
+
+AFN:0,
+
+USD:0,
+
+IRR:0
+
+};
+
+
+customers.forEach(function(c){
+
+total.AFN += c.balance.AFN;
+
+total.USD += c.balance.USD;
+
+total.IRR += c.balance.IRR;
+
+});
+
+
+document.getElementById(
+"totalAFN"
+).innerText =
+total.AFN.toFixed(2)+" AFN";
+
+
+document.getElementById(
+"totalUSD"
+).innerText =
+total.USD.toFixed(2)+" USD";
+
+
+document.getElementById(
+"totalIRR"
+).innerText =
+total.IRR.toFixed(2)+" IRR";
+
+
+document.getElementById(
+"totalCustomers"
+).innerText =
+customers.length;
+
+
+showCustomers();
+
+showTransactions();
+
+saveData();
 
 }
 
 
-/* START */
+/* =========================================
+   CLOSE MODALS
+========================================= */
 
-updateScreen();
+function closeAll(){
+
+document
+.querySelectorAll(".modal")
+.forEach(function(m){
+
+m.style.display = "none";
+
+});
+
+}
+
+
+/* =========================================
+   SCROLL
+========================================= */
+
+function scrollToCustomers(){
+
+document.getElementById(
+"customersSection"
+).scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+function scrollToTransactions(){
+
+document.getElementById(
+"transactionsSection"
+).scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+function logout(){
+
+window.location.href =
+"index.html";
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+updateDashboard();
 
 </script>
 
