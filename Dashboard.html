@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ps" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exchange System</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}
+body{background:#f3f6f5;color:#222}
+.header{
+    background:#146c43;color:white;padding:15px 25px;
+    display:flex;justify-content:space-between;align-items:center
+}
+.logo{font-size:20px;font-weight:bold}
+.logout{
+    background:#c0392b;color:white;border:0;padding:10px 18px;
+    border-radius:8px
+}
+.container{max-width:1200px;margin:auto;padding:25px}
+h1{color:#146c43;margin-bottom:8px}
+.cards{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:15px;margin:25px 0
+}
+.card{
+    background:white;padding:22px;border-radius:14px;
+    box-shadow:0 4px 15px #0001
+}
+.card small{color:#777}
+.card h2{color:#146c43;margin-top:10px}
+.menu{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:15px
+}
+.menu button{
+    background:white;border:0;border-radius:14px;padding:25px;
+    font-size:17px;cursor:pointer;
+    box-shadow:0 4px 15px #0001
+}
+.menu button:hover{transform:translateY(-3px)}
+.icon{font-size:35px;display:block;margin-bottom:10px}
+.section{
+    background:white;padding:20px;border-radius:14px;
+    margin-top:25px;box-shadow:0 4px 15px #0001
+}
+table{width:100%;border-collapse:collapse;margin-top:15px}
+th,td{padding:12px;border-bottom:1px solid #ddd;text-align:center}
+th{background:#146c43;color:white}
+.modal{
+    display:none;position:fixed;inset:0;background:#0008;
+    justify-content:center;align-items:center;padding:15px
+}
+.modal-box{
+    background:white;width:420px;max-width:100%;
+    padding:25px;border-radius:15px
+}
+.modal-box h2{color:#146c43;margin-bottom:18px}
+input,select{
+    width:100%;padding:12px;margin:7px 0 12px;
+    border:1px solid #ccc;border-radius:8px
+}
+.save{
+    width:100%;padding:12px;border:0;border-radius:8px;
+    background:#20a464;color:white;font-size:16px
+}
+.close{
+    background:#777;color:white;border:0;padding:10px 15px;
+    border-radius:8px;margin-top:8px;width:100%
+}
+@media(max-width:700px){
+.cards{grid-template-columns:repeat(2,1fr)}
+.menu{grid-template-columns:1fr 1fr}
+}
+@media(max-width:450px){
+.cards{grid-template-columns:1fr}
+.menu{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">💱 Exchange System</div>
+    <button class="logout" onclick="logout()">Logout</button>
+</header>
+
+<div class="container">
+
+<h1>د صرافۍ عمومی صفحه</h1>
+<p>د صرافۍ آنلاین مدیریت سیستم</p>
+
+<div class="cards">
+
+<div class="card">
+<small>افغاني بیلانس</small>
+<h2 id="afnBalance">0 AFN</h2>
+</div>
+
+<div class="card">
+<small>ډالر بیلانس</small>
+<h2 id="usdBalance">0 USD</h2>
+</div>
+
+<div class="card">
+<small>تومان بیلانس</small>
+<h2 id="irrBalance">0 IRR</h2>
+</div>
+
+<div class="card">
+<small>Customers</small>
+<h2 id="customerCount">0</h2>
+</div>
+
+</div>
+
+<div class="menu">
+
+<button onclick="openModal('deposit')">
+<span class="icon">💰</span>
+Deposit
+</button>
+
+<button onclick="openModal('withdraw')">
+<span class="icon">💸</span>
+Withdraw
+</button>
+
+<button onclick="openModal('customer')">
+<span class="icon">👤</span>
+Customer Registration
+</button>
+
+<button onclick="openModal('exchange')">
+<span class="icon">💱</span>
+Currency Exchange
+</button>
+
+<button onclick="showTransactions()">
+<span class="icon">🧾</span>
+Transactions
+</button>
+
+<button onclick="clearData()">
+<span class="icon">🗑️</span>
+Clear Demo Data
+</button>
+
+</div>
+
+<div class="section">
+<h2>وروستي Transactions</h2>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Amount</th>
+<th>Currency</th>
+<th>Date</th>
+</tr>
+</thead>
+
+<tbody id="transactions"></tbody>
+</table>
+
+</div>
+
+</div>
+
+
+<!-- Deposit / Withdraw -->
+<div class="modal" id="moneyModal">
+<div class="modal-box">
+
+<h2 id="moneyTitle"></h2>
+
+<label>Amount</label>
+<input type="number" id="moneyAmount" min="0">
+
+<label>Currency</label>
+<select id="moneyCurrency">
+<option value="AFN">AFN - افغاني</option>
+<option value="USD">USD - ډالر</option>
+<option value="IRR">IRR - تومان</option>
+</select>
+
+<button class="save" onclick="saveMoney()">Save</button>
+<button class="close" onclick="closeModals()">Close</button>
+
+</div>
+</div>
+
+
+<!-- Customer -->
+<div class="modal" id="customerModal">
+<div class="modal-box">
+
+<h2>Customer Registration</h2>
+
+<label>Customer Name</label>
+<input type="text" id="customerName">
+
+<label>Phone</label>
+<input type="text" id="customerPhone">
+
+<label>ID / Tazkira No</label>
+<input type="text" id="customerId">
+
+<button class="save" onclick="saveCustomer()">Register Customer</button>
+<button class="close" onclick="closeModals()">Close</button>
+
+</div>
+</div>
+
+
+<!-- Exchange -->
+<div class="modal" id="exchangeModal">
+<div class="modal-box">
+
+<h2>Currency Exchange</h2>
+
+<label>From</label>
+<select id="fromCurrency">
+<option value="USD">USD</option>
+<option value="AFN">AFN</option>
+<option value="IRR">IRR</option>
+</select>
+
+<label>To</label>
+<select id="toCurrency">
+<option value="AFN">AFN</option>
+<option value="USD">USD</option>
+<option value="IRR">IRR</option>
+</select>
+
+<label>Amount</label>
+<input type="number" id="exchangeAmount">
+
+<button class="save" onclick="exchange()">Exchange</button>
+<button class="close" onclick="closeModals()">Close</button>
+
+</div>
+</div>
+
+
+<script>
+
+let balances = JSON.parse(localStorage.getItem("balances")) || {
+    AFN:0,
+    USD:0,
+    IRR:0
+};
+
+let customers =
+JSON.parse(localStorage.getItem("customers")) || [];
+
+let transactions =
+JSON.parse(localStorage.getItem("transactions")) || [];
+
+let currentOperation = "";
+
+function updateScreen(){
+
+document.getElementById("afnBalance").innerText =
+balances.AFN.toFixed(2)+" AFN";
+
+document.getElementById("usdBalance").innerText =
+balances.USD.toFixed(2)+" USD";
+
+document.getElementById("irrBalance").innerText =
+balances.IRR.toFixed(2)+" IRR";
+
+document.getElementById("customerCount").innerText =
+customers.length;
+
+let table=document.getElementById("transactions");
+
+table.innerHTML="";
+
+transactions.slice(-10).reverse().forEach(t=>{
+
+let row=document.createElement("tr");
+
+row.innerHTML=`
+<td>${t.type}</td>
+<td>${t.amount}</td>
+<td>${t.currency}</td>
+<td>${t.date}</td>
+`;
+
+table.appendChild(row);
+
+});
+
+localStorage.setItem("balances",JSON.stringify(balances));
+localStorage.setItem("customers",JSON.stringify(customers));
+localStorage.setItem("transactions",JSON.stringify(transactions));
+
+}
+
+
+function openModal(type){
+
+currentOperation=type;
+
+if(type==="deposit"){
+document.getElementById("moneyTitle").innerText="Deposit";
+document.getElementById("moneyModal").style.display="flex";
+}
+
+if(type==="withdraw"){
+document.getElementById("moneyTitle").innerText="Withdraw";
+document.getElementById("moneyModal").style.display="flex";
+}
+
+if(type==="customer"){
+document.getElementById("customerModal").style.display="flex";
+}
+
+if(type==="exchange"){
+document.getElementById("exchangeModal").style.display="flex";
+}
+
+}
+
+
+function saveMoney(){
+
+let amount=parseFloat(
+document.getElementById("moneyAmount").value
+);
+
+let currency=
+document.getElementById("moneyCurrency").value;
+
+if(!amount || amount<=0){
+alert("Amount داخل کړئ");
+return;
+}
+
+if(currentOperation==="deposit"){
+
+balances[currency]+=amount;
+
+}else{
+
+if(balances[currency]<amount){
+alert("بیلانس کافي نه دی");
+return;
+}
+
+balances[currency]-=amount;
+
+}
+
+transactions.push({
+type:currentOperation,
+amount:amount,
+currency:currency,
+date:new Date().toLocaleString()
+});
+
+document.getElementById("moneyAmount").value="";
+
+closeModals();
+updateScreen();
+
+}
+
+
+function saveCustomer(){
+
+let name=document.getElementById("customerName").value;
+let phone=document.getElementById("customerPhone").value;
+let id=document.getElementById("customerId").value;
+
+if(!name || !phone){
+alert("Customer Name او Phone ولیکئ");
+return;
+}
+
+customers.push({
+name:name,
+phone:phone,
+id:id,
+date:new Date().toLocaleString()
+});
+
+document.getElementById("customerName").value="";
+document.getElementById("customerPhone").value="";
+document.getElementById("customerId").value="";
+
+closeModals();
+updateScreen();
+
+}
+
+
+function exchange(){
+
+let from=document.getElementById("fromCurrency").value;
+let to=document.getElementById("toCurrency").value;
+
+let amount=parseFloat(
+document.getElementById("exchangeAmount").value
+);
+
+if(!amount || amount<=0){
+alert("Amount داخل کړئ");
+return;
+}
+
+if(from===to){
+alert("دواړه اسعار باید مختلف وي");
+return;
+}
+
+if(balances[from]<amount){
+alert("د اصلي اسعارو بیلانس کافي نه دی");
+return;
+}
+
+/*
+Demo exchange rates.
+وروسته یې د صرافۍ د حقیقي Buy/Sell
+Rates سیستم سره وصل کولی شو.
+*/
+
+let rates={
+USD:{AFN:70,IRR:42000},
+AFN:{USD:1/70,IRR:42000/70},
+IRR:{USD:1/42000,AFN:1/42000}
+};
+
+let received=amount*rates[from][to];
+
+balances[from]-=amount;
+balances[to]+=received;
+
+transactions.push({
+type:"Exchange",
+amount:amount+" "+from+" → "+received.toFixed(2)+" "+to,
+currency:to,
+date:new Date().toLocaleString()
+});
+
+document.getElementById("exchangeAmount").value="";
+
+closeModals();
+updateScreen();
+
+}
+
+
+function showTransactions(){
+window.scrollTo({
+top:document.body.scrollHeight,
+behavior:"smooth"
+});
+}
+
+
+function closeModals(){
+
+document.querySelectorAll(".modal").forEach(
+m=>m.style.display="none"
+);
+
+}
+
+
+function logout(){
+window.location.href="index.html";
+}
+
+
+function clearData(){
+
+if(confirm("ایا ټول Demo Data پاکول غواړئ؟")){
+
+localStorage.clear();
+
+location.reload();
+
+}
+
+}
+
+
+updateScreen();
+
+</script>
+
+</body>
+</html>
