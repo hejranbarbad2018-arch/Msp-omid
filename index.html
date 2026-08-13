@@ -1,384 +1,2284 @@
 <!DOCTYPE html>
 <html lang="ps" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>د صرافۍ سیستم - Login</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>د صرافۍ مدیریت سیستم</title>
 
 <style>
-
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,Tahoma,sans-serif;
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,Tahoma,sans-serif
 }
 
 body{
-
-    min-height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:20px;
-
-    background:
-    radial-gradient(
-        circle at top left,
-        #20a46466,
-        transparent 35%
-    ),
-    radial-gradient(
-        circle at bottom right,
-        #0b3d2b88,
-        transparent 40%
-    ),
-    linear-gradient(
-        135deg,
-        #041a11,
-        #0b3927,
-        #126b43
-    );
+min-height:100vh;
+background:
+radial-gradient(circle at top left,#20a46455,transparent 35%),
+radial-gradient(circle at bottom right,#00462d99,transparent 40%),
+linear-gradient(135deg,#061b13,#0b3927,#126b43);
+background-attachment:fixed;
+color:#222
 }
 
+/* LOGIN */
+
+#loginPage{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px
+}
 
 .login-box{
-
-    width:400px;
-
-    max-width:100%;
-
-    padding:35px 28px;
-
-    background:
-    rgba(255,255,255,.96);
-
-    border-radius:25px;
-
-    box-shadow:
-    0 20px 70px rgba(0,0,0,.5);
-
-    text-align:center;
+width:400px;
+max-width:100%;
+padding:35px 28px;
+background:#fffffff2;
+border-radius:25px;
+box-shadow:0 20px 70px #0008;
+text-align:center
 }
 
-
-.logo{
-
-    font-size:65px;
-
-    margin-bottom:10px;
+.login-logo{
+font-size:65px;
+margin-bottom:8px
 }
 
-
-.title{
-
-    color:#126b43;
-
-    font-size:25px;
-
-    font-weight:bold;
-
-    margin-bottom:8px;
+.login-title{
+font-size:25px;
+font-weight:bold;
+color:#126b43
 }
 
-
-.subtitle{
-
-    color:#777;
-
-    margin-bottom:25px;
+.login-sub{
+color:#777;
+margin:8px 0 25px
 }
-
 
 label{
-
-    display:block;
-
-    text-align:right;
-
-    font-weight:bold;
-
-    margin-top:14px;
+display:block;
+text-align:right;
+font-weight:bold;
+margin-top:12px
 }
 
-
-input{
-
-    width:100%;
-
-    padding:14px;
-
-    margin-top:6px;
-
-    border:1px solid #ccc;
-
-    border-radius:9px;
-
-    font-size:16px;
-
-    outline:none;
-
-    direction:ltr;
-
-    text-align:left;
+input,select,textarea{
+width:100%;
+padding:12px;
+margin-top:6px;
+border:1px solid #ccc;
+border-radius:9px;
+outline:none;
+font-size:15px
 }
 
-
-input:focus{
-
-    border-color:#126b43;
-
-    box-shadow:
-    0 0 0 2px #126b4322;
+input:focus,select:focus,textarea:focus{
+border-color:#126b43
 }
 
+.login-btn,
+.btn{
+width:100%;
+padding:13px;
+margin-top:15px;
+border:0;
+border-radius:9px;
+cursor:pointer;
+font-size:16px;
+font-weight:bold
+}
 
 .login-btn{
-
-    width:100%;
-
-    margin-top:22px;
-
-    padding:14px;
-
-    border:0;
-
-    border-radius:10px;
-
-    background:
-    linear-gradient(
-        135deg,
-        #126b43,
-        #20a464
-    );
-
-    color:white;
-
-    font-size:18px;
-
-    font-weight:bold;
-
-    cursor:pointer;
+background:linear-gradient(135deg,#126b43,#20a464);
+color:white
 }
-
-
-.login-btn:active{
-
-    transform:scale(.98);
-
-}
-
 
 .error{
-
-    display:none;
-
-    color:#c0392b;
-
-    background:#fdeaea;
-
-    padding:10px;
-
-    border-radius:8px;
-
-    margin-top:15px;
-
-    font-weight:bold;
+display:none;
+margin-top:12px;
+padding:10px;
+border-radius:8px;
+background:#fdeaea;
+color:#c0392b;
+font-weight:bold
 }
 
+/* DASHBOARD */
 
-.footer{
-
-    margin-top:25px;
-
-    color:#999;
-
-    font-size:12px;
+#dashboardPage{
+display:none
 }
 
+.header{
+background:#002317ee;
+color:white;
+padding:15px 22px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:50;
+box-shadow:0 5px 25px #0005
+}
+
+.logo{
+font-size:20px;
+font-weight:bold
+}
+
+.header-buttons{
+display:flex;
+gap:8px
+}
+
+.header-btn{
+border:0;
+color:white;
+padding:10px 14px;
+border-radius:8px;
+cursor:pointer
+}
+
+.settings{
+background:#2980b9
+}
+
+.logout{
+background:#c0392b
+}
+
+.container{
+max-width:1200px;
+margin:25px auto;
+padding:25px;
+background:#ffffff12;
+border:1px solid #ffffff22;
+border-radius:22px;
+backdrop-filter:blur(10px);
+box-shadow:0 15px 50px #0004
+}
+
+.title{
+text-align:center;
+color:white;
+margin-bottom:30px
+}
+
+.title h1{
+font-size:30px;
+margin-bottom:8px
+}
+
+.title p{
+color:#d8eee4
+}
+
+.menu{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px
+}
+
+.menu button{
+border:1px solid #ffffff22;
+border-radius:18px;
+padding:28px 15px;
+font-size:17px;
+cursor:pointer;
+background:#fffffff5;
+color:#123;
+box-shadow:0 8px 25px #0003;
+transition:.2s
+}
+
+.menu button:hover{
+transform:translateY(-5px)
+}
+
+.icon{
+display:block;
+font-size:42px;
+margin-bottom:12px
+}
+
+.report{
+background:linear-gradient(135deg,#126b43,#20a464)!important;
+color:white!important
+}
+
+.rates{
+background:linear-gradient(135deg,#34495e,#2980b9)!important;
+color:white!important
+}
+
+/* MODALS */
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:#000b;
+justify-content:center;
+align-items:center;
+padding:15px;
+z-index:100
+}
+
+.box{
+width:600px;
+max-width:100%;
+max-height:92vh;
+overflow:auto;
+padding:25px;
+border-radius:20px;
+background:white;
+box-shadow:0 20px 70px #0008
+}
+
+.box h2{
+color:#126b43;
+margin-bottom:18px
+}
+
+.btn{
+color:white
+}
+
+.green{background:#20a464}
+.blue{background:#2980b9}
+.dark{background:#34495e}
+.gray{background:#777}
+.red{background:#c0392b}
+
+.info{
+background:#f1faf5;
+border:1px solid #c8e8d6;
+border-radius:12px;
+padding:18px;
+margin-top:15px;
+line-height:2
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:15px
+}
+
+.balance{
+background:white;
+border:1px solid #ddd;
+border-radius:10px;
+padding:14px;
+text-align:center
+}
+
+.balance strong{
+display:block;
+color:#126b43;
+font-size:20px;
+margin-top:5px
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:650px;
+margin-top:15px
+}
+
+th,td{
+padding:10px;
+border-bottom:1px solid #ddd;
+text-align:center
+}
+
+th{
+background:#126b43;
+color:white
+}
+
+.table-wrap{
+overflow-x:auto
+}
+
+.currency-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px
+}
+
+.currency-btn{
+border:0;
+border-radius:12px;
+padding:18px;
+background:#126b43;
+color:white;
+font-size:17px;
+cursor:pointer
+}
+
+.report-result{
+margin-top:20px;
+background:#effaf4;
+border:1px solid #bde2cd;
+border-radius:14px;
+padding:20px;
+text-align:center
+}
+
+.amount{
+color:#126b43;
+font-size:30px;
+font-weight:bold;
+margin-top:10px
+}
+
+.rate-card{
+background:#f4f8f6;
+border:1px solid #ddd;
+border-radius:12px;
+padding:15px;
+margin-top:12px
+}
+
+.rate-card h3{
+color:#126b43;
+margin-bottom:10px
+}
+
+.note{
+background:#fff8df;
+padding:12px;
+border-radius:8px;
+color:#765b00;
+margin-bottom:12px
+}
+
+.passbox{
+width:390px;
+max-width:100%;
+padding:30px;
+border-radius:20px;
+background:white;
+text-align:center
+}
+
+.lock{
+font-size:52px
+}
+
+.passbox p{
+color:#777;
+margin:10px 0 20px
+}
+
+.pass-error{
+display:none;
+color:#c0392b;
+margin-top:10px;
+font-weight:bold
+}
+
+.empty{
+text-align:center;
+padding:20px;
+color:#777
+}
+
+@media(max-width:800px){
+.menu{
+grid-template-columns:repeat(2,1fr)
+}
+}
+
+@media(max-width:550px){
+.container{
+margin:15px;
+padding:15px
+}
+
+.menu,
+.currency-grid,
+.grid{
+grid-template-columns:1fr
+}
+
+.logo{
+font-size:15px
+}
+
+.header-btn{
+padding:8px;
+font-size:12px
+}
+}
 </style>
-
 </head>
-
 
 <body>
 
+<!-- =====================================================
+LOGIN
+===================================================== -->
+
+<div id="loginPage">
 
 <div class="login-box">
 
-    <div class="logo">
-        💱
-    </div>
+<div class="login-logo">💱</div>
+
+<div class="login-title">
+د صرافۍ مدیریت سیستم
+</div>
+
+<div class="login-sub">
+Login
+</div>
+
+<form id="loginForm">
+
+<label>Username</label>
+
+<input
+id="username"
+type="text"
+placeholder="admin"
+required
+>
+
+<label>Password</label>
+
+<input
+id="password"
+type="password"
+placeholder="Password"
+required
+>
+
+<button
+class="login-btn"
+type="submit"
+>
+🔐 Login
+</button>
+
+<div
+id="loginError"
+class="error"
+>
+❌ Username یا Password غلط دی
+</div>
+
+</form>
+
+</div>
+</div>
 
 
-    <div class="title">
-        د صرافۍ مدیریت سیستم
-    </div>
+<!-- =====================================================
+DASHBOARD
+===================================================== -->
+
+<div id="dashboardPage">
+
+<header class="header">
+
+<div class="logo">
+💱 د صرافۍ مدیریت سیستم
+</div>
+
+<div class="header-buttons">
+
+<button
+class="header-btn settings"
+onclick="openSettings()"
+>
+⚙️ Settings
+</button>
+
+<button
+class="header-btn logout"
+onclick="logout()"
+>
+🚪 Logout
+</button>
+
+</div>
+
+</header>
 
 
-    <div class="subtitle">
-        Login
-    </div>
+<div class="container">
 
+<div class="title">
 
-    <form id="loginForm">
+<h1>
+د صرافۍ عمومي صفحه
+</h1>
 
-        <label>
-            Username
-        </label>
-
-        <input
-            id="username"
-            type="text"
-            placeholder="Username"
-            autocomplete="username"
-            required
-        >
-
-
-        <label>
-            Password
-        </label>
-
-        <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            autocomplete="current-password"
-            required
-        >
-
-
-        <button
-            class="login-btn"
-            type="submit"
-        >
-            🔐 Login
-        </button>
-
-
-        <div
-            class="error"
-            id="error"
-        >
-            ❌ Username یا Password غلط دی
-        </div>
-
-    </form>
-
-
-    <div class="footer">
-        Exchange Management System
-    </div>
+<p>
+د مشتریانو او مالي معاملاتو مدیریت
+</p>
 
 </div>
 
 
+<div class="menu">
+
+<button onclick="openCustomer()">
+<span class="icon">👤</span>
+Customer Registration
+</button>
+
+<button onclick="openMoney('deposit')">
+<span class="icon">💰</span>
+Deposit
+</button>
+
+<button onclick="openMoney('withdraw')">
+<span class="icon">💸</span>
+Withdraw
+</button>
+
+<button onclick="openExchange()">
+<span class="icon">💱</span>
+Currency Exchange
+</button>
+
+<button onclick="openCustomerHistory()">
+<span class="icon">👥</span>
+Customers
+</button>
+
+<button
+class="report"
+onclick="openReports()"
+>
+<span class="icon">📊</span>
+عمومي راپور
+</button>
+
+<button
+class="rates"
+onclick="openRates()"
+>
+<span class="icon">💹</span>
+Exchange Rates
+</button>
+
+</div>
+</div>
+
+
+<!-- CUSTOMER -->
+
+<div class="modal" id="customerModal">
+
+<div class="box">
+
+<h2>👤 د مشتری ثبتول</h2>
+
+<label>د مشتری بشپړ نوم</label>
+<input id="cName">
+
+<label>د موبایل نمبر</label>
+<input id="cPhone" type="tel">
+
+<p style="color:#126b43;margin-top:5px">
+⚠️ موبایل نمبر = Account Number
+</p>
+
+<label>د تذکرې نمبر</label>
+<input id="cId">
+
+<label>د پلار نوم</label>
+<input id="cFather">
+
+<label>د زېږېدو نېټه</label>
+<input id="cBirth" type="date">
+
+<label>جنسیت</label>
+
+<select id="cGender">
+<option value="">انتخاب کړئ</option>
+<option>نارینه</option>
+<option>ښځینه</option>
+</select>
+
+<label>دنده / وظیفه</label>
+<input id="cJob">
+
+<label>پته</label>
+<textarea id="cAddress"></textarea>
+
+<label>یادښت</label>
+<textarea id="cNote"></textarea>
+
+<button
+class="btn green"
+onclick="registerCustomer()"
+>
+🔐 Register Customer
+</button>
+
+<button
+class="btn gray"
+onclick="closeAll()"
+>
+Close
+</button>
+
+</div>
+</div>
+
+
+<!-- DEPOSIT / WITHDRAW -->
+
+<div class="modal" id="moneyModal">
+
+<div class="box">
+
+<h2 id="moneyTitle"></h2>
+
+<label>Account Number / Mobile</label>
+
+<input
+id="accountInput"
+type="tel"
+>
+
+<button
+class="btn dark"
+onclick="findCustomer()"
+>
+🔍 د مشتری لټون
+</button>
+
+<div
+class="info"
+id="customerInfo"
+style="display:none"
+></div>
+
+<label>Currency</label>
+
+<select id="moneyCurrency">
+
+<option value="AFN">AFN - افغاني</option>
+<option value="USD">USD - ډالر</option>
+<option value="IRR">IRR - تومان</option>
+<option value="PKR">PKR - کلدار</option>
+
+</select>
+
+<label>Amount</label>
+
+<input
+id="moneyAmount"
+type="number"
+min="0"
+>
+
+<button
+class="btn green"
+onclick="saveMoney()"
+>
+🔐 Confirm & Save
+</button>
+
+<button
+class="btn gray"
+onclick="closeAll()"
+>
+Close
+</button>
+
+</div>
+</div>
+
+
+<!-- CUSTOMER HISTORY -->
+
+<div
+class="modal"
+id="historyModal"
+>
+
+<div class="box">
+
+<h2>
+👥 د مشتری معلومات
+</h2>
+
+<label>
+Account Number
+</label>
+
+<input
+id="historyAccount"
+type="tel"
+>
+
+<button
+class="btn blue"
+onclick="showCustomerHistory()"
+>
+🔍 معلومات راوړه
+</button>
+
+<div id="historyResult"></div>
+
+<button
+class="btn gray"
+onclick="closeAll()"
+>
+Close
+</button>
+
+</div>
+</div>
+
+
+<!-- EXCHANGE -->
+
+<div
+class="modal"
+id="exchangeModal"
+>
+
+<div class="box">
+
+<h2>💱 Currency Exchange</h2>
+
+<div class="note">
+⚠️ Exchange د Exchange Rates مطابق کېږي.
+</div>
+
+<label>
+Customer Account Number
+</label>
+
+<input
+id="exchangeAccount"
+type="tel"
+>
+
+<label>From Currency</label>
+
+<select id="fromCurrency">
+
+<option value="USD">USD - ډالر</option>
+<option value="AFN">AFN - افغاني</option>
+<option value="IRR">IRR - تومان</option>
+<option value="PKR">PKR - کلدار</option>
+
+</select>
+
+<label>To Currency</label>
+
+<select id="toCurrency">
+
+<option value="AFN">AFN - افغاني</option>
+<option value="USD">USD - ډالر</option>
+<option value="IRR">IRR - تومان</option>
+<option value="PKR">PKR - کلدار</option>
+
+</select>
+
+<label>Amount</label>
+
+<input
+id="exchangeAmount"
+type="number"
+min="0"
+>
+
+<button
+class="btn green"
+onclick="exchangeMoney()"
+>
+🔐 Exchange
+</button>
+
+<button
+class="btn gray"
+onclick="closeAll()"
+>
+Close
+</button>
+
+</div>
+</div>
+
+
+<!-- REPORT -->
+
+<div
+class="modal"
+id="reportModal"
+>
+
+<div class="box">
+
+<h2 style="text-align:center">
+📊 عمومي راپور
+</h2>
+
+<p style="text-align:center;color:#777">
+د اسعارو انتخاب وکړئ
+</p>
+
+<div class="currency-grid">
+
+<button
+class="currency-btn"
+onclick="currencyReport('AFN')"
+>
+🇦🇫
+<br>
+افغاني
+</button>
+
+<button
+class="currency-btn"
+onclick="currencyReport('USD')"
+>
+🇺🇸
+<br>
+ډالر
+</button>
+
+<button
+class="currency-btn"
+onclick="currencyReport('IRR')"
+>
+🇮🇷
+<br>
+تومان
+</button>
+
+<button
+class="currency-btn"
+onclick="currencyReport('PKR')"
+>
+🇵🇰
+<br>
+کلدار
+</button>
+
+</div>
+
+<div id="reportResult"></div>
+
+<button
+class="btn gray"
+onclick="closeAll()"
+>
+Close
+</button>
+
+</div>
+</div>
+
+
+<!-- RATES -->
+
+<div
+class="modal"
+id="ratesModal"
+>
+
+<div class="box">
+
+<h2>
+💹 Exchange Rates
+</h2>
+
+<div class="note">
+دا نرخونه د ټولو Exchange معاملاتو لپاره استعمالېږي.
+</div>
+
+<div class="rate-card">
+
+<h3>🇺🇸 USD</h3>
+
+<label>1 USD = AFN</label>
+<input id="usdAfn" type="number" step="0.000001">
+
+<label>1 USD = IRR</label>
+<input id="usdIrr" type="number" step="0.000001">
+
+<label>1 USD = PKR</label>
+<input id="usdPkr" type="number" step="0.000001">
+
+</div>
+
+<div class="rate-card">
+
+<h3>🇦🇫 AFN</h3>
+
+<label>1 AFN = USD</label>
+<input id="afnUsd" type="number" step="0.000001">
+
+<label>1 AFN = IRR</label>
+<input id="afnIrr" type="number" step="0.000001">
+
+<label>1 AFN = PKR</label>
+<input id="afnPkr" type="number" step="0.000001">
+
+</div>
+
+<div class="rate-card">
+
+<h3>🇮🇷 IRR - تومان</h3>
+
+<label>1 IRR = USD</label>
+<input id="irrUsd" type="number" step="0.000001">
+
+<label>1 IRR = AFN</label>
+<input id="irrAfn" type="number" step="0.000001">
+
+<label>1 IRR = PKR</label>
+<input id="irrPkr" type="number" step="0.000001">
+
+</div>
+
+<div class="rate-card">
+
+<h3>🇵🇰 PKR - کلدار</h3>
+
+<label>1 PKR = USD</label>
+<input id="pkrUsd" type="number" step="0.000001">
+
+<label>1 PKR = AFN</label>
+<input id="pkrAfn" type="number" step="0.000001">
+
+<label>1 PKR = IRR</label>
+<input id="pkrIrr" type="number" step="0.000001">
+
+</div>
+
+<button
+class="btn green"
+onclick="saveRates()"
+>
+🔐 Save Rates
+</button>
+
+<button
+class="btn gray"
+onclick="closeAll()"
+>
+Close
+</button>
+
+</div>
+</div>
+
+
+<!-- SETTINGS -->
+
+<div
+class="modal"
+id="settingsModal"
+>
+
+<div class="box">
+
+<h2>⚙️ Settings</h2>
+
+<div class="rate-card">
+
+<h3>
+🔑 Login Password
+</h3>
+
+<label>
+نوی Login Password
+</label>
+
+<input
+id="newLoginPassword"
+type="password"
+>
+
+<button
+class="btn blue"
+onclick="changeLoginPassword()"
+>
+🔐 Change Login Password
+</button>
+
+</div>
+
+
+<div class="rate-card">
+
+<h3>
+🛡️ Supervisor Password
+</h3>
+
+<label>
+نوی Supervisor Password
+</label>
+
+<input
+id="newSupervisorPassword"
+type="password"
+>
+
+<button
+class="btn green"
+onclick="changeSupervisorPassword()"
+>
+🔐 Change Supervisor Password
+</button>
+
+</div>
+
+<button
+class="btn gray"
+onclick="closeAll()"
+>
+Close
+</button>
+
+</div>
+</div>
+
+
+<!-- PASSWORD AUTH -->
+
+<div
+class="modal"
+id="passwordModal"
+>
+
+<div class="passbox">
+
+<div class="lock">
+🔐
+</div>
+
+<h2>
+Authorization
+</h2>
+
+<p id="passwordMessage">
+Supervisor Password داخل کړئ
+</p>
+
+<input
+id="authPassword"
+type="password"
+placeholder="Password"
+>
+
+<div
+id="passError"
+class="pass-error"
+>
+❌ Password غلط دی
+</div>
+
+<button
+class="btn green"
+onclick="verifyPassword()"
+>
+🔓 تایید
+</button>
+
+<button
+class="btn gray"
+onclick="cancelPassword()"
+>
+لغوه
+</button>
+
+</div>
+</div>
+
 
 <script>
 
-/* =========================================
-   LOGIN
-========================================= */
+/* =====================================================
+PASSWORD SYSTEM
+===================================================== */
+
+const LOGIN_KEY="sarafi_login_password";
+
+const SUPERVISOR_KEY="sarafi_supervisor_password";
+
+const SYSTEM_VERSION_KEY="sarafi_system_version";
+
+const SYSTEM_VERSION="1";
+
+
+/*
+لومړی ځل:
+
+Login = 102030
+Supervisor = 2580
+
+که Password وروسته بدل شي،
+بیا نه Reset کېږي.
+*/
+
+if(
+localStorage.getItem(SYSTEM_VERSION_KEY)
+!== SYSTEM_VERSION
+){
+
+localStorage.setItem(
+LOGIN_KEY,
+"102030"
+);
+
+localStorage.setItem(
+SUPERVISOR_KEY,
+"2580"
+);
+
+localStorage.setItem(
+SYSTEM_VERSION_KEY,
+SYSTEM_VERSION
+);
+
+}
+
+
+let loginPassword =
+localStorage.getItem(LOGIN_KEY)
+||"102030";
+
+
+let supervisorPassword =
+localStorage.getItem(SUPERVISOR_KEY)
+||"2580";
+
+
+/* DATA */
+
+let customers =
+JSON.parse(
+localStorage.getItem("sarafi_customers")
+||"[]"
+);
+
+let transactions =
+JSON.parse(
+localStorage.getItem("sarafi_transactions")
+||"[]"
+);
+
+
+/* RATES */
+
+let rates =
+JSON.parse(
+localStorage.getItem("sarafi_rates")
+||
+JSON.stringify({
+
+USD:{
+AFN:70,
+IRR:42000,
+PKR:280
+},
+
+AFN:{
+USD:1/70,
+IRR:42000/70,
+PKR:280/70
+},
+
+IRR:{
+USD:1/42000,
+AFN:1/42000,
+PKR:280/42000
+},
+
+PKR:{
+USD:1/280,
+AFN:70/280,
+IRR:42000/280
+}
+
+})
+);
+
+
+/* AUTH VARIABLES */
+
+let pendingAction=null;
+
+let authMode="supervisor";
+
+let operation="";
+
+
+/* =====================================================
+SAVE
+===================================================== */
+
+function saveData(){
+
+localStorage.setItem(
+"sarafi_customers",
+JSON.stringify(customers)
+);
+
+localStorage.setItem(
+"sarafi_transactions",
+JSON.stringify(transactions)
+);
+
+}
+
+
+/* =====================================================
+LOGIN
+===================================================== */
 
 document
 .getElementById("loginForm")
 .addEventListener(
-    "submit",
-    function(event){
+"submit",
+function(e){
 
-        event.preventDefault();
+e.preventDefault();
 
+const username =
+document
+.getElementById("username")
+.value
+.trim();
 
-        const username =
-        document
-        .getElementById("username")
-        .value
-        .trim();
-
-
-        const password =
-        document
-        .getElementById("password")
-        .value;
+const password =
+document
+.getElementById("password")
+.value;
 
 
-        /*
-          که مخکې Password د Settings
-          له لارې بدل شوی وي، هماغه استعمالوي.
-
-          که نه وي، 102030 استعمالوي.
-        */
-
-        let savedPassword =
-        localStorage.getItem("loginPassword");
+loginPassword =
+localStorage.getItem(LOGIN_KEY)
+||"102030";
 
 
-        if(!savedPassword){
+if(
+username==="admin"
+&&
+password===loginPassword
+){
 
-            savedPassword = "102030";
+document
+.getElementById("loginPage")
+.style.display="none";
 
-            localStorage.setItem(
-                "loginPassword",
-                savedPassword
-            );
+document
+.getElementById("dashboardPage")
+.style.display="block";
 
-        }
+}else{
 
+document
+.getElementById("loginError")
+.style.display="block";
 
-        if(
-            username === "admin" &&
-            password === savedPassword
-        ){
+}
 
-            /*
-              Login کامیاب
-            */
-
-            sessionStorage.setItem(
-                "loggedIn",
-                "yes"
-            );
-
-
-            window.location.href =
-            "dashboard.html";
-
-
-        }else{
-
-            /*
-              Login غلط
-            */
-
-            const error =
-            document
-            .getElementById("error");
-
-
-            error.style.display =
-            "block";
-
-
-            document
-            .getElementById("password")
-            .value = "";
-
-
-            document
-            .getElementById("password")
-            .focus();
-
-        }
-
-    }
+}
 );
+
+
+/* =====================================================
+AUTH
+===================================================== */
+
+function askPassword(
+action,
+mode="supervisor"
+){
+
+pendingAction=action;
+
+authMode=mode;
+
+document
+.getElementById("authPassword")
+.value="";
+
+document
+.getElementById("passError")
+.style.display="none";
+
+
+document
+.getElementById("passwordMessage")
+.innerText=
+mode==="login"
+?
+"د اوسني Login Password داخل کړئ"
+:
+"د Supervisor Password داخل کړئ";
+
+
+document
+.getElementById("passwordModal")
+.style.display="flex";
+
+}
+
+
+function verifyPassword(){
+
+const entered =
+document
+.getElementById("authPassword")
+.value;
+
+
+const correct =
+authMode==="login"
+?
+loginPassword
+:
+supervisorPassword;
+
+
+if(entered!==correct){
+
+document
+.getElementById("passError")
+.style.display="block";
+
+return;
+
+}
+
+
+document
+.getElementById("passwordModal")
+.style.display="none";
+
+
+if(pendingAction){
+
+const action=pendingAction;
+
+pendingAction=null;
+
+action();
+
+}
+
+}
+
+
+function cancelPassword(){
+
+pendingAction=null;
+
+document
+.getElementById("passwordModal")
+.style.display="none";
+
+}
+
+
+/* =====================================================
+CUSTOMER
+===================================================== */
+
+function openCustomer(){
+
+document
+.getElementById("customerModal")
+.style.display="flex";
+
+}
+
+
+function registerCustomer(){
+
+askPassword(function(){
+
+const name =
+document.getElementById("cName")
+.value.trim();
+
+const phone =
+document.getElementById("cPhone")
+.value.trim();
+
+
+if(!name||!phone){
+
+alert("❌ نوم او موبایل ضروري دي");
+
+return;
+
+}
+
+
+if(
+customers.some(
+c=>c.account===phone
+)
+){
+
+alert(
+"❌ دا موبایل/Account مخکې ثبت شوی"
+);
+
+return;
+
+}
+
+
+customers.push({
+
+account:phone,
+
+name:name,
+
+phone:phone,
+
+id:
+document.getElementById("cId")
+.value.trim(),
+
+father:
+document.getElementById("cFather")
+.value.trim(),
+
+birth:
+document.getElementById("cBirth")
+.value,
+
+gender:
+document.getElementById("cGender")
+.value,
+
+job:
+document.getElementById("cJob")
+.value.trim(),
+
+address:
+document.getElementById("cAddress")
+.value.trim(),
+
+note:
+document.getElementById("cNote")
+.value.trim(),
+
+balance:{
+AFN:0,
+USD:0,
+IRR:0,
+PKR:0
+},
+
+created:
+new Date().toLocaleString()
+
+});
+
+
+saveData();
+
+alert("✅ مشتری ثبت شو");
+
+closeAll();
+
+});
+
+}
+
+
+/* =====================================================
+DEPOSIT WITHDRAW
+===================================================== */
+
+function openMoney(type){
+
+operation=type;
+
+document
+.getElementById("moneyTitle")
+.innerText=
+type==="deposit"
+?
+"💰 Deposit"
+:
+"💸 Withdraw";
+
+document
+.getElementById("moneyModal")
+.style.display="flex";
+
+}
+
+
+function findCustomer(){
+
+const account =
+document.getElementById("accountInput")
+.value.trim();
+
+const c =
+customers.find(
+x=>x.account===account
+);
+
+const info =
+document.getElementById("customerInfo");
+
+info.style.display="block";
+
+
+if(!c){
+
+info.innerHTML=
+"<b style='color:red'>❌ مشتری پیدا نشو</b>";
+
+return;
+
+}
+
+
+info.innerHTML=`
+
+<b>نوم:</b> ${c.name}<br>
+<b>Account:</b> ${c.account}<br>
+<b>AFN:</b> ${c.balance.AFN.toLocaleString()}<br>
+<b>USD:</b> ${c.balance.USD.toLocaleString()}<br>
+<b>IRR:</b> ${c.balance.IRR.toLocaleString()}<br>
+<b>PKR:</b> ${c.balance.PKR.toLocaleString()}
+
+`;
+
+}
+
+
+function saveMoney(){
+
+askPassword(function(){
+
+const account =
+document.getElementById("accountInput")
+.value.trim();
+
+const currency =
+document.getElementById("moneyCurrency")
+.value;
+
+const amount =
+Number(
+document.getElementById("moneyAmount")
+.value
+);
+
+const c =
+customers.find(
+x=>x.account===account
+);
+
+
+if(!c){
+
+alert("❌ Customer پیدا نشو");
+
+return;
+
+}
+
+
+if(amount<=0){
+
+alert("❌ Amount صحیح ولیکئ");
+
+return;
+
+}
+
+
+if(
+operation==="withdraw"
+&&
+c.balance[currency]<amount
+){
+
+alert("❌ بیلانس کافي نه دی");
+
+return;
+
+}
+
+
+if(operation==="deposit"){
+
+c.balance[currency]+=amount;
+
+}else{
+
+c.balance[currency]-=amount;
+
+}
+
+
+transactions.push({
+
+type:
+operation==="deposit"
+?
+"Deposit"
+:
+"Withdraw",
+
+account:c.account,
+
+customer:c.name,
+
+amount:amount,
+
+currency:currency,
+
+date:new Date().toLocaleString()
+
+});
+
+
+saveData();
+
+alert("✅ عملیات ثبت شو");
+
+closeAll();
+
+});
+
+}
+
+
+/* =====================================================
+CUSTOMER HISTORY
+===================================================== */
+
+function openCustomerHistory(){
+
+document
+.getElementById("historyModal")
+.style.display="flex";
+
+document
+.getElementById("historyResult")
+.innerHTML="";
+
+}
+
+
+function showCustomerHistory(){
+
+const account =
+document
+.getElementById("historyAccount")
+.value
+.trim();
+
+const c =
+customers.find(
+x=>x.account===account
+);
+
+const result =
+document
+.getElementById("historyResult");
+
+
+if(!c){
+
+result.innerHTML=`
+
+<div class="info">
+<b style="color:red">
+❌ مشتری پیدا نشو
+</b>
+</div>
+
+`;
+
+return;
+
+}
+
+
+const history =
+transactions
+.filter(
+t=>t.account===account
+)
+.reverse();
+
+
+let rows="";
+
+
+if(history.length){
+
+rows=history.map(t=>`
+
+<tr>
+<td>${t.type}</td>
+<td>${t.amount}</td>
+<td>${t.currency}</td>
+<td>${t.date}</td>
+</tr>
+
+`).join("");
+
+}else{
+
+rows=`
+
+<tr>
+<td colspan="4" class="empty">
+تر اوسه معامله نشته
+</td>
+</tr>
+
+`;
+
+}
+
+
+result.innerHTML=`
+
+<div class="info">
+
+<h3>
+👤 ${c.name}
+</h3>
+
+<b>Account:</b>
+${c.account}
+
+<br>
+
+<b>Mobile:</b>
+${c.phone}
+
+<div class="grid">
+
+<div class="balance">
+AFN
+<strong>
+${c.balance.AFN.toLocaleString()}
+</strong>
+</div>
+
+<div class="balance">
+USD
+<strong>
+${c.balance.USD.toLocaleString()}
+</strong>
+</div>
+
+<div class="balance">
+IRR / تومان
+<strong>
+${c.balance.IRR.toLocaleString()}
+</strong>
+</div>
+
+<div class="balance">
+PKR / کلدار
+<strong>
+${c.balance.PKR.toLocaleString()}
+</strong>
+</div>
+
+</div>
+
+</div>
+
+
+<h3 style="margin-top:20px;color:#126b43">
+🧾 معاملاتي تاریخچه
+</h3>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Type</th>
+<th>Amount</th>
+<th>Currency</th>
+<th>Date</th>
+</tr>
+
+</thead>
+
+<tbody>
+${rows}
+</tbody>
+
+</table>
+
+</div>
+
+`;
+
+}
+
+
+/* =====================================================
+EXCHANGE
+===================================================== */
+
+function openExchange(){
+
+document
+.getElementById("exchangeModal")
+.style.display="flex";
+
+}
+
+
+function exchangeMoney(){
+
+askPassword(function(){
+
+const account =
+document.getElementById("exchangeAccount")
+.value.trim();
+
+const from =
+document.getElementById("fromCurrency")
+.value;
+
+const to =
+document.getElementById("toCurrency")
+.value;
+
+const amount =
+Number(
+document.getElementById("exchangeAmount")
+.value
+);
+
+const c =
+customers.find(
+x=>x.account===account
+);
+
+
+if(!c){
+
+alert("❌ Customer پیدا نشو");
+
+return;
+
+}
+
+
+if(from===to){
+
+alert("❌ From او To مختلف وټاکئ");
+
+return;
+
+}
+
+
+if(amount<=0){
+
+alert("❌ Amount صحیح ولیکئ");
+
+return;
+
+}
+
+
+if(c.balance[from]<amount){
+
+alert("❌ د مشتری بیلانس کافي نه دی");
+
+return;
+
+}
+
+
+const received =
+amount*rates[from][to];
+
+
+c.balance[from]-=amount;
+
+c.balance[to]+=received;
+
+
+transactions.push({
+
+type:"Exchange",
+
+account:c.account,
+
+customer:c.name,
+
+amount:
+`${amount} ${from} → ${received.toFixed(4)} ${to}`,
+
+currency:to,
+
+date:new Date().toLocaleString()
+
+});
+
+
+saveData();
+
+
+alert(
+`✅ Exchange کامیاب شو
+
+${amount} ${from}
+=
+${received.toFixed(4)} ${to}`
+);
+
+
+closeAll();
+
+});
+
+}
+
+
+/* =====================================================
+REPORT
+===================================================== */
+
+function openReports(){
+
+document
+.getElementById("reportModal")
+.style.display="flex";
+
+}
+
+
+function currencyReport(currency){
+
+askPassword(function(){
+
+let total=0;
+
+customers.forEach(
+c=>{
+total+=Number(
+c.balance[currency]||0
+);
+}
+);
+
+
+const names={
+AFN:"افغاني",
+USD:"ډالر",
+IRR:"تومان",
+PKR:"کلدار"
+};
+
+
+document
+.getElementById("reportResult")
+.innerHTML=`
+
+<div class="report-result">
+
+د ${names[currency]}
+عمومي بیلانس
+
+<div class="amount">
+
+${total.toLocaleString()}
+${currency}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+/* =====================================================
+RATES
+===================================================== */
+
+function openRates(){
+
+loadRates();
+
+document
+.getElementById("ratesModal")
+.style.display="flex";
+
+}
+
+
+function loadRates(){
+
+document.getElementById("usdAfn").value=rates.USD.AFN;
+document.getElementById("usdIrr").value=rates.USD.IRR;
+document.getElementById("usdPkr").value=rates.USD.PKR;
+
+document.getElementById("afnUsd").value=rates.AFN.USD;
+document.getElementById("afnIrr").value=rates.AFN.IRR;
+document.getElementById("afnPkr").value=rates.AFN.PKR;
+
+document.getElementById("irrUsd").value=rates.IRR.USD;
+document.getElementById("irrAfn").value=rates.IRR.AFN;
+document.getElementById("irrPkr").value=rates.IRR.PKR;
+
+document.getElementById("pkrUsd").value=rates.PKR.USD;
+document.getElementById("pkrAfn").value=rates.PKR.AFN;
+document.getElementById("pkrIrr").value=rates.PKR.IRR;
+
+}
+
+
+function saveRates(){
+
+askPassword(function(){
+
+rates={
+
+USD:{
+AFN:Number(document.getElementById("usdAfn").value),
+IRR:Number(document.getElementById("usdIrr").value),
+PKR:Number(document.getElementById("usdPkr").value)
+},
+
+AFN:{
+USD:Number(document.getElementById("afnUsd").value),
+IRR:Number(document.getElementById("afnIrr").value),
+PKR:Number(document.getElementById("afnPkr").value)
+},
+
+IRR:{
+USD:Number(document.getElementById("irrUsd").value),
+AFN:Number(document.getElementById("irrAfn").value),
+PKR:Number(document.getElementById("irrPkr").value)
+},
+
+PKR:{
+USD:Number(document.getElementById("pkrUsd").value),
+AFN:Number(document.getElementById("pkrAfn").value),
+IRR:Number(document.getElementById("pkrIrr").value)
+}
+
+};
+
+
+localStorage.setItem(
+"sarafi_rates",
+JSON.stringify(rates)
+);
+
+
+alert("✅ Exchange Rates Save شول");
+
+closeAll();
+
+});
+
+}
+
+
+/* =====================================================
+SETTINGS
+===================================================== */
+
+function openSettings(){
+
+document
+.getElementById("settingsModal")
+.style.display="flex";
+
+}
+
+
+/* LOGIN PASSWORD */
+
+function changeLoginPassword(){
+
+const newPassword =
+document
+.getElementById("newLoginPassword")
+.value
+.trim();
+
+
+if(newPassword.length<4){
+
+alert(
+"❌ Password لږ تر لږه 4 حروف/شمېرې ولري"
+);
+
+return;
+
+}
+
+
+/*
+Supervisor Password غواړي
+*/
+
+askPassword(function(){
+
+loginPassword=newPassword;
+
+localStorage.setItem(
+LOGIN_KEY,
+newPassword
+);
+
+
+alert(
+"✅ Login Password بدل شو"
+);
+
+
+document
+.getElementById("newLoginPassword")
+.value="";
+
+},"supervisor");
+
+}
+
+
+/* SUPERVISOR PASSWORD */
+
+function changeSupervisorPassword(){
+
+const newPassword =
+document
+.getElementById("newSupervisorPassword")
+.value
+.trim();
+
+
+if(newPassword.length<4){
+
+alert(
+"❌ Password لږ تر لږه 4 حروف/شمېرې ولري"
+);
+
+return;
+
+}
+
+
+/*
+Login Password غواړي
+*/
+
+askPassword(function(){
+
+supervisorPassword=newPassword;
+
+localStorage.setItem(
+SUPERVISOR_KEY,
+newPassword
+);
+
+
+alert(
+"✅ Supervisor Password بدل شو"
+);
+
+
+document
+.getElementById("newSupervisorPassword")
+.value="";
+
+},"login");
+
+}
+
+
+/* =====================================================
+CLOSE
+===================================================== */
+
+function closeAll(){
+
+document
+.querySelectorAll(".modal")
+.forEach(
+m=>m.style.display="none"
+);
+
+}
+
+
+/* =====================================================
+LOGOUT
+===================================================== */
+
+function logout(){
+
+document
+.getElementById("dashboardPage")
+.style.display="none";
+
+document
+.getElementById("loginPage")
+.style.display="flex";
+
+document
+.getElementById("username")
+.value="";
+
+document
+.getElementById("password")
+.value="";
+
+}
+
+
+/* =====================================================
+AUTO LOGIN STATE
+===================================================== */
+
+if(
+sessionStorage.getItem("loggedIn")==="yes"
+){
+
+document
+.getElementById("loginPage")
+.style.display="none";
+
+document
+.getElementById("dashboardPage")
+.style.display="block";
+
+}
 
 </script>
 
