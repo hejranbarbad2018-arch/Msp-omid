@@ -129,6 +129,16 @@ button:disabled{
     cursor:not-allowed;
 }
 
+#forgotBtn{
+    margin-top:10px;
+    background:white;
+    color:#126b43;
+    border:1px solid #126b43;
+    box-shadow:none;
+    font-size:14px;
+    height:42px;
+}
+
 #error{
     display:none;
     margin-top:15px;
@@ -136,6 +146,17 @@ button:disabled{
     border-radius:8px;
     background:#fdeaea;
     color:#c0392b;
+    font-weight:bold;
+    font-size:14px;
+}
+
+#success{
+    display:none;
+    margin-top:15px;
+    padding:10px;
+    border-radius:8px;
+    background:#eaf8f0;
+    color:#126b43;
     font-weight:bold;
     font-size:14px;
 }
@@ -174,7 +195,7 @@ button:disabled{
         <input
             id="username"
             type="email"
-            placeholder="Email"
+            placeholder="Username"
             autocomplete="email"
             required
         >
@@ -191,12 +212,25 @@ button:disabled{
             required
         >
 
-        <button id="loginBtn" type="submit">
+        <button
+            id="loginBtn"
+            type="submit">
             🔐 Login
+        </button>
+
+        <button
+            id="forgotBtn"
+            type="button"
+            onclick="resetPassword()">
+            🔑 Forgot Password
         </button>
 
         <div id="error">
             ❌ Email یا Password غلط دی
+        </div>
+
+        <div id="success">
+            ✅ د Password بدلولو لینک ستا Email ته واستول شو
         </div>
 
     </form>
@@ -208,7 +242,6 @@ button:disabled{
 </div>
 
 
-<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
@@ -225,7 +258,10 @@ const db = window.supabase.createClient(
 );
 
 
-// Login
+/* =========================
+   LOGIN
+========================= */
+
 async function login(event){
 
     event.preventDefault();
@@ -242,15 +278,15 @@ async function login(event){
     const errorBox =
         document.getElementById("error");
 
+    const successBox =
+        document.getElementById("success");
+
     const loginBtn =
         document.getElementById("loginBtn");
 
-
-    // Hide old error
     errorBox.style.display = "none";
+    successBox.style.display = "none";
 
-
-    // Loading
     loginBtn.disabled = true;
     loginBtn.textContent = "⏳ Login...";
 
@@ -269,10 +305,7 @@ async function login(event){
 
         if(error){
 
-            console.error(
-                "LOGIN ERROR:",
-                error
-            );
+            console.error(error);
 
             errorBox.textContent =
                 "❌ " + error.message;
@@ -308,17 +341,13 @@ async function login(event){
 
     }catch(err){
 
-        console.error(
-            "LOGIN ERROR:",
-            err
-        );
+        console.error(err);
 
         errorBox.textContent =
             "❌ د Login پر وخت ستونزه رامنځته شوه";
 
         errorBox.style.display =
             "block";
-
     }
 
 
@@ -327,6 +356,90 @@ async function login(event){
 
     loginBtn.textContent =
         "🔐 Login";
+}
+
+
+/* =========================
+   FORGOT PASSWORD
+========================= */
+
+async function resetPassword(){
+
+    const email =
+        document.getElementById("username")
+        .value
+        .trim();
+
+    const errorBox =
+        document.getElementById("error");
+
+    const successBox =
+        document.getElementById("success");
+
+
+    errorBox.style.display =
+        "none";
+
+    successBox.style.display =
+        "none";
+
+
+    if(!email){
+
+        errorBox.textContent =
+            "❌ لومړی خپل Email ولیکه";
+
+        errorBox.style.display =
+            "block";
+
+        return;
+    }
+
+
+    try{
+
+        const { error } =
+            await db.auth.resetPasswordForEmail(
+                email,
+                {
+                    redirectTo:
+                    window.location.origin +
+                    "/reset.html"
+                }
+            );
+
+
+        if(error){
+
+            console.error(error);
+
+            errorBox.textContent =
+                "❌ " + error.message;
+
+            errorBox.style.display =
+                "block";
+
+            return;
+        }
+
+
+        successBox.textContent =
+            "✅ د Password بدلولو لینک ستا Email ته واستول شو";
+
+        successBox.style.display =
+            "block";
+
+
+    }catch(err){
+
+        console.error(err);
+
+        errorBox.textContent =
+            "❌ ستونزه رامنځته شوه";
+
+        errorBox.style.display =
+            "block";
+    }
 
 }
 
