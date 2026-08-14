@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ps" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Password Reset</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Tahoma,sans-serif;
+}
+
+body{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+    background:
+    radial-gradient(
+        circle at top left,
+        rgba(32,164,100,.35),
+        transparent 35%
+    ),
+    radial-gradient(
+        circle at bottom right,
+        rgba(0,80,50,.55),
+        transparent 40%
+    ),
+    linear-gradient(
+        135deg,
+        #041a11,
+        #0b3927,
+        #126b43
+    );
+}
+
+.login-box{
+    width:400px;
+    max-width:100%;
+    background:rgba(255,255,255,.97);
+    padding:35px 30px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 20px 70px rgba(0,0,0,.5);
+}
+
+.logo{
+    width:85px;
+    height:85px;
+    margin:0 auto 15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        135deg,
+        #126b43,
+        #20a464
+    );
+
+    color:white;
+    font-size:45px;
+
+    box-shadow:
+    0 10px 30px rgba(18,107,67,.35);
+}
+
+.title{
+    color:#126b43;
+    font-size:25px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#777;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+label{
+    display:block;
+    text-align:right;
+    font-weight:bold;
+    margin-bottom:6px;
+    color:#333;
+}
+
+input{
+    width:100%;
+    height:50px;
+
+    padding:0 14px;
+    margin-bottom:18px;
+
+    border:1px solid #ccc;
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:16px;
+
+    direction:ltr;
+    text-align:left;
+}
+
+input:focus{
+    border-color:#126b43;
+
+    box-shadow:
+    0 0 0 3px
+    rgba(18,107,67,.12);
+}
+
+button{
+    width:100%;
+    height:50px;
+
+    border:0;
+    border-radius:10px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #126b43,
+        #20a464
+    );
+
+    color:white;
+
+    font-size:18px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 8px 20px
+    rgba(18,107,67,.3);
+}
+
+button:disabled{
+    opacity:.7;
+    cursor:not-allowed;
+}
+
+#error{
+    display:none;
+
+    margin-top:15px;
+    padding:10px;
+
+    border-radius:8px;
+
+    background:#fdeaea;
+    color:#c0392b;
+
+    font-weight:bold;
+    font-size:14px;
+}
+
+#success{
+    display:none;
+
+    margin-top:15px;
+    padding:10px;
+
+    border-radius:8px;
+
+    background:#eaf8f0;
+    color:#126b43;
+
+    font-weight:bold;
+    font-size:14px;
+}
+
+.footer{
+    margin-top:25px;
+    color:#999;
+    font-size:12px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <div class="logo">
+        🔐
+    </div>
+
+    <div class="title">
+        د صرافۍ مدیریت سیستم
+    </div>
+
+    <div class="subtitle">
+        د Password بدلول
+    </div>
+
+
+    <form onsubmit="changePassword(event)">
+
+        <label>
+            نوی Password
+        </label>
+
+        <input
+            id="newPassword"
+            type="password"
+            placeholder="New Password"
+            autocomplete="new-password"
+            required
+        >
+
+
+        <label>
+            Password بیا ولیکه
+        </label>
+
+        <input
+            id="confirmPassword"
+            type="password"
+            placeholder="Confirm Password"
+            autocomplete="new-password"
+            required
+        >
+
+
+        <button
+            id="saveBtn"
+            type="submit">
+            🔐 Password بدل کړه
+        </button>
+
+
+        <div id="error"></div>
+
+        <div id="success">
+            ✅ Password په بریالیتوب بدل شو
+        </div>
+
+    </form>
+
+
+    <div class="footer">
+        Exchange Management System
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+"https://ggblghhfngmshmmkwnsl.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_7u9V---1ywtKp9EK9yZhIA_F8vIzCJK";
+
+const db =
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+
+/* =========================
+   CHANGE PASSWORD
+========================= */
+
+async function changePassword(event){
+
+    event.preventDefault();
+
+
+    const newPassword =
+        document.getElementById(
+            "newPassword"
+        ).value;
+
+    const confirmPassword =
+        document.getElementById(
+            "confirmPassword"
+        ).value;
+
+    const errorBox =
+        document.getElementById(
+            "error"
+        );
+
+    const successBox =
+        document.getElementById(
+            "success"
+        );
+
+    const saveBtn =
+        document.getElementById(
+            "saveBtn"
+        );
+
+
+    errorBox.style.display =
+        "none";
+
+    successBox.style.display =
+        "none";
+
+
+    /* Password length */
+
+    if(newPassword.length < 6){
+
+        errorBox.textContent =
+            "❌ Password باید لږ تر لږه 6 حروف ولري";
+
+        errorBox.style.display =
+            "block";
+
+        return;
+    }
+
+
+    /* Password match */
+
+    if(newPassword !== confirmPassword){
+
+        errorBox.textContent =
+            "❌ دواړه Passwordونه یو شان نه دي";
+
+        errorBox.style.display =
+            "block";
+
+        return;
+    }
+
+
+    saveBtn.disabled =
+        true;
+
+    saveBtn.textContent =
+        "⏳ Saving...";
+
+
+    try{
+
+        /* Check recovery session */
+
+        const {
+            data: sessionData
+        } =
+        await db.auth.getSession();
+
+
+        if(!sessionData.session){
+
+            errorBox.textContent =
+                "❌ د Password Reset لینک ناسم یا ختم شوی دی";
+
+            errorBox.style.display =
+                "block";
+
+            saveBtn.disabled =
+                false;
+
+            saveBtn.textContent =
+                "🔐 Password بدل کړه";
+
+            return;
+        }
+
+
+        /* Update password */
+
+        const {
+            error
+        } =
+        await db.auth.updateUser({
+
+            password:
+                newPassword
+
+        });
+
+
+        if(error){
+
+            console.error(error);
+
+            errorBox.textContent =
+                "❌ " + error.message;
+
+            errorBox.style.display =
+                "block";
+
+            saveBtn.disabled =
+                false;
+
+            saveBtn.textContent =
+                "🔐 Password بدل کړه";
+
+            return;
+        }
+
+
+        /* Success */
+
+        successBox.textContent =
+            "✅ Password په بریالیتوب بدل شو";
+
+        successBox.style.display =
+            "block";
+
+
+        document.getElementById(
+            "newPassword"
+        ).value = "";
+
+        document.getElementById(
+            "confirmPassword"
+        ).value = "";
+
+
+        saveBtn.textContent =
+            "✅ Password بدل شو";
+
+
+        /* Go Login */
+
+        setTimeout(function(){
+
+            window.location.href =
+                "index.html";
+
+        },2000);
+
+
+    }catch(err){
+
+        console.error(err);
+
+        errorBox.textContent =
+            "❌ د Password بدلولو پر وخت ستونزه رامنځته شوه";
+
+        errorBox.style.display =
+            "block";
+
+        saveBtn.disabled =
+            false;
+
+        saveBtn.textContent =
+            "🔐 Password بدل کړه";
+    }
+
+}
+
+</script>
+
+</body>
+</html>
