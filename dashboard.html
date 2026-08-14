@@ -7,96 +7,141 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
     margin:0;
     font-family:Tahoma,Arial,sans-serif;
-    background:#f1f5f9;
     color:#172033;
+    min-height:100vh;
+    background:
+      linear-gradient(135deg,rgba(2,44,34,.92),rgba(6,95,70,.88)),
+      radial-gradient(circle at 15% 20%,#10b981 0,transparent 30%),
+      radial-gradient(circle at 85% 80%,#0ea5e9 0,transparent 30%);
+    background-attachment:fixed;
 }
+
+/* HEADER */
 .header{
-    background:linear-gradient(135deg,#064e3b,#10b981);
+    background:rgba(2,44,34,.94);
     color:white;
-    padding:18px 25px;
+    padding:16px 25px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    box-shadow:0 3px 12px #0002;
+    box-shadow:0 4px 20px #0005;
+    position:sticky;
+    top:0;
+    z-index:500;
+    backdrop-filter:blur(10px);
 }
-.header h1{margin:0;font-size:23px}
+
+.header h1{
+    margin:0;
+    font-size:23px;
+}
+
+.header-actions{
+    display:flex;
+    gap:8px;
+}
+
 .header button{
     border:0;
     background:white;
     color:#065f46;
-    padding:10px 16px;
-    border-radius:8px;
+    padding:10px 15px;
+    border-radius:9px;
     cursor:pointer;
     font-weight:bold;
-    margin-right:6px;
 }
-.container{padding:25px;max-width:1400px;margin:auto}
 
+.header button:hover{
+    background:#d1fae5;
+}
+
+/* CONTAINER */
+.container{
+    padding:28px;
+    max-width:1450px;
+    margin:auto;
+}
+
+/* MENU */
 .menu{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    grid-template-columns:repeat(4,1fr);
     gap:15px;
     margin-bottom:25px;
 }
+
 .menu button{
-    border:0;
-    background:white;
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,255,255,.95);
     padding:20px 10px;
-    border-radius:14px;
-    box-shadow:0 3px 12px #0001;
+    border-radius:15px;
+    box-shadow:0 8px 25px #0003;
     cursor:pointer;
-    font-size:16px;
+    font-size:15px;
     font-weight:bold;
     color:#064e3b;
     transition:.2s;
 }
+
 .menu button:hover{
-    transform:translateY(-3px);
-    box-shadow:0 7px 18px #0002;
+    transform:translateY(-4px);
+    box-shadow:0 12px 30px #0005;
+    background:#ecfdf5;
 }
 
-.card{
-    background:white;
-    border-radius:15px;
-    padding:22px;
-    box-shadow:0 3px 15px #0001;
-    margin-bottom:20px;
-}
-.card h2{margin-top:0;color:#065f46}
-
+/* STATS */
 .stats{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    grid-template-columns:repeat(4,1fr);
     gap:15px;
 }
-.stat{
-    background:white;
-    padding:20px;
-    border-radius:14px;
-    box-shadow:0 3px 12px #0001;
-}
-.stat b{font-size:25px;color:#047857}
 
+.stat{
+    background:rgba(255,255,255,.96);
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 8px 25px #0003;
+    text-align:center;
+}
+
+.stat div{
+    color:#475569;
+    font-weight:bold;
+}
+
+.stat b{
+    display:block;
+    margin-top:8px;
+    font-size:27px;
+    color:#047857;
+}
+
+/* MODAL */
 .modal{
     display:none;
     position:fixed;
     z-index:1000;
     inset:0;
-    background:#0008;
+    background:#0009;
     overflow:auto;
     padding:30px 15px;
+    backdrop-filter:blur(3px);
 }
+
 .modal-box{
     background:white;
     max-width:850px;
     margin:auto;
-    border-radius:15px;
+    border-radius:17px;
     padding:25px;
     position:relative;
+    box-shadow:0 15px 50px #0005;
 }
+
 .close{
     position:absolute;
     left:15px;
@@ -108,90 +153,210 @@ body{
     height:35px;
     border-radius:50%;
     cursor:pointer;
-    font-size:18px;
+    font-size:20px;
 }
 
+/* FORMS */
 .form-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:14px;
 }
-.field{display:flex;flex-direction:column;gap:6px}
-.field.full{grid-column:1/-1}
-label{font-weight:bold;font-size:14px}
+
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.field.full{
+    grid-column:1/-1;
+}
+
+label{
+    font-weight:bold;
+    font-size:14px;
+}
+
 input,select,textarea{
     width:100%;
     padding:11px;
     border:1px solid #cbd5e1;
-    border-radius:8px;
+    border-radius:9px;
     outline:none;
     font-size:14px;
 }
+
 input:focus,select:focus,textarea:focus{
     border-color:#10b981;
+    box-shadow:0 0 0 3px #10b98122;
 }
-textarea{min-height:80px;resize:vertical}
 
+textarea{
+    min-height:80px;
+    resize:vertical;
+}
+
+/* BUTTONS */
 .btn{
     border:0;
-    padding:11px 18px;
+    padding:10px 16px;
     border-radius:8px;
     cursor:pointer;
     font-weight:bold;
 }
+
 .btn-primary{background:#059669;color:white}
 .btn-danger{background:#dc2626;color:white}
 .btn-warning{background:#d97706;color:white}
 .btn-gray{background:#64748b;color:white}
 .btn-info{background:#2563eb;color:white}
 
+.btn:hover{
+    opacity:.88;
+    transform:translateY(-1px);
+}
+
 .actions{
     display:flex;
-    gap:7px;
+    gap:6px;
+    justify-content:center;
     flex-wrap:wrap;
 }
 
+/* TABLE */
 table{
     width:100%;
     border-collapse:collapse;
     margin-top:15px;
-    min-width:750px;
+    min-width:700px;
 }
-.table-wrap{overflow-x:auto}
+
+.table-wrap{
+    overflow-x:auto;
+}
+
 th,td{
     border:1px solid #e2e8f0;
     padding:10px;
     text-align:center;
 }
+
 th{
     background:#065f46;
     color:white;
 }
-tr:nth-child(even){background:#f8fafc}
 
-.positive{color:#047857;font-weight:bold}
-.negative{color:#dc2626;font-weight:bold}
+tr:nth-child(even){
+    background:#f8fafc;
+}
 
+.positive{
+    color:#047857;
+    font-weight:bold;
+}
+
+.negative{
+    color:#dc2626;
+    font-weight:bold;
+}
+
+/* SEARCH */
 .search-box{
     display:flex;
     gap:10px;
     margin-bottom:15px;
 }
-.search-box input{flex:1}
 
+.search-box input{
+    flex:1;
+}
+
+/* MESSAGE */
 .message{
     padding:10px;
     border-radius:8px;
     margin-top:10px;
     display:none;
 }
-.success{background:#dcfce7;color:#166534}
-.error{background:#fee2e2;color:#991b1b}
 
-@media(max-width:650px){
-    .form-grid{grid-template-columns:1fr}
-    .header h1{font-size:17px}
-    .container{padding:12px}
+.success{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.error{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+    .menu{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .header{
+        padding:12px;
+    }
+
+    .header h1{
+        font-size:15px;
+    }
+
+    .header-actions{
+        gap:4px;
+    }
+
+    .header button{
+        padding:8px 9px;
+        font-size:12px;
+    }
+
+    .container{
+        padding:12px;
+    }
+
+    .menu{
+        grid-template-columns:1fr 1fr;
+        gap:9px;
+    }
+
+    .menu button{
+        padding:15px 5px;
+        font-size:13px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+        gap:9px;
+    }
+
+    .stat{
+        padding:15px 8px;
+    }
+
+    .stat b{
+        font-size:21px;
+    }
+
+    .modal{
+        padding:15px 8px;
+    }
+
+    .modal-box{
+        padding:20px 12px;
+    }
 }
 </style>
 </head>
@@ -199,61 +364,94 @@ tr:nth-child(even){background:#f8fafc}
 <body>
 
 <header class="header">
-    <h1>💱 د صرافۍ مدیریت سیستم</h1>
-    <div>
-        <button onclick="openSettings()">⚙️ Settings</button>
-        <button onclick="logout()">Logout</button>
-    </div>
+
+<h1>💱 د صرافۍ مدیریت سیستم</h1>
+
+<div class="header-actions">
+<button onclick="openSettings()">⚙️ Settings</button>
+<button onclick="logout()">🚪 Logout</button>
+</div>
+
 </header>
+
 
 <div class="container">
 
+<!-- MENU -->
 <div class="menu">
-    <button onclick="openCustomer()">👤 Customer Registration</button>
-    <button onclick="openMoney('deposit')">💵 Deposit</button>
-    <button onclick="openMoney('withdraw')">💸 Withdraw</button>
-    <button onclick="openExchange()">🔄 Exchange</button>
-    <button onclick="openCustomers()">📋 Customers</button>
-    <button onclick="openCustomerHistory()">📜 Customer History</button>
-    <button onclick="openReports()">📊 General Report</button>
-    <button onclick="openRates()">💱 Exchange Rates</button>
+
+<button onclick="openCustomer()">
+👤<br>Customer Registration
+</button>
+
+<button onclick="openMoney('deposit')">
+💵<br>Deposit
+</button>
+
+<button onclick="openMoney('withdraw')">
+💸<br>Withdraw
+</button>
+
+<button onclick="openExchange()">
+🔄<br>Currency Exchange
+</button>
+
+<button onclick="openCustomers()">
+📋<br>Customers
+</button>
+
+<button onclick="openCustomerHistory()">
+📜<br>Customer History
+</button>
+
+<button onclick="openReports()">
+📊<br>General Report
+</button>
+
+<button onclick="openRates()">
+💱<br>Exchange Rates
+</button>
+
 </div>
 
+
+<!-- STATS -->
 <div class="stats">
-    <div class="stat">
-        <div>ټول Customers</div>
-        <b id="totalCustomers">0</b>
-    </div>
-    <div class="stat">
-        <div>ټولې Transactions</div>
-        <b id="totalTransactions">0</b>
-    </div>
-    <div class="stat">
-        <div>Deposit</div>
-        <b id="totalDeposits">0</b>
-    </div>
-    <div class="stat">
-        <div>Withdraw</div>
-        <b id="totalWithdraws">0</b>
-    </div>
+
+<div class="stat">
+<div>ټول Customers</div>
+<b id="totalCustomers">0</b>
 </div>
 
-<div class="card" style="margin-top:20px">
-    <h2>د سیستم معلومات</h2>
-    <p>
-        د Customer ثبت، Deposit، Withdraw، Exchange او Transaction History
-        له همدې Dashboard څخه اداره کولی شئ.
-    </p>
+<div class="stat">
+<div>ټولې Transactions</div>
+<b id="totalTransactions">0</b>
+</div>
+
+<div class="stat">
+<div>ټول Deposit</div>
+<b id="totalDeposits">0</b>
+</div>
+
+<div class="stat">
+<div>ټول Withdraw</div>
+<b id="totalWithdraws">0</b>
+</div>
+
 </div>
 
 </div>
 
 
-<!-- CUSTOMER REGISTRATION -->
+<!-- CUSTOMER MODAL -->
 <div class="modal" id="customerModal">
+
 <div class="modal-box">
-<button class="close" onclick="closeModal('customerModal')">×</button>
-<h2>👤 Customer Registration</h2>
+
+<button class="close"
+onclick="closeModal('customerModal')">×</button>
+
+<h2 id="customerFormTitle">👤 Customer Registration</h2>
 
 <input type="hidden" id="editCustomerId">
 
@@ -291,11 +489,13 @@ tr:nth-child(even){background:#f8fafc}
 
 <div class="field">
 <label>Gender</label>
+
 <select id="cGender">
 <option value="">انتخاب</option>
 <option>Male</option>
 <option>Female</option>
 </select>
+
 </div>
 
 <div class="field">
@@ -318,20 +518,30 @@ tr:nth-child(even){background:#f8fafc}
 <br>
 
 <div class="actions">
-<button class="btn btn-primary" onclick="saveCustomer()">💾 Save Customer</button>
-<button class="btn btn-gray" onclick="closeModal('customerModal')">Cancel</button>
+
+<button class="btn btn-primary"
+onclick="saveCustomer()">
+💾 Save Customer
+</button>
+
+<button class="btn btn-gray"
+onclick="closeModal('customerModal')">
+Cancel
+</button>
+
 </div>
 
-<div id="customerMessage" class="message"></div>
-
 </div>
 </div>
 
 
-<!-- DEPOSIT / WITHDRAW -->
+<!-- DEPOSIT WITHDRAW -->
 <div class="modal" id="moneyModal">
+
 <div class="modal-box">
-<button class="close" onclick="closeModal('moneyModal')">×</button>
+
+<button class="close"
+onclick="closeModal('moneyModal')">×</button>
 
 <h2 id="moneyTitle">Transaction</h2>
 
@@ -340,41 +550,71 @@ tr:nth-child(even){background:#f8fafc}
 <div class="form-grid">
 
 <div class="field full">
+
 <label>Account Number *</label>
+
 <div class="search-box">
-<input id="accountInput" placeholder="Account Number">
-<button class="btn btn-info" onclick="findCustomer()">Search</button>
+
+<input id="accountInput"
+placeholder="Account Number">
+
+<button class="btn btn-info"
+onclick="findCustomer()">
+Search
+</button>
+
 </div>
+
 <div id="customerFound"></div>
+
 </div>
 
 <div class="field">
+
 <label>Currency *</label>
+
 <select id="moneyCurrency">
 <option value="AFN">AFN</option>
 <option value="USD">USD</option>
 <option value="PKR">PKR</option>
 <option value="IRR">Toman</option>
 </select>
+
 </div>
 
 <div class="field">
+
 <label>Amount *</label>
-<input type="number" step="any" id="moneyAmount">
+
+<input type="number"
+step="any"
+id="moneyAmount">
+
 </div>
 
 <div class="field full">
+
 <label>Narration / Description *</label>
+
 <textarea id="moneyDescription"
-placeholder="مثلاً: د احمد له طرفه جمع"></textarea>
+placeholder="مثلاً: د احمد له طرفه جمع">
+</textarea>
+
 </div>
 
 </div>
 
 <br>
 
-<button class="btn btn-primary" onclick="saveMoney()">💾 Save</button>
-<button class="btn btn-gray" onclick="closeModal('moneyModal')">Cancel</button>
+<button class="btn btn-primary"
+onclick="saveMoney()">
+💾 Save
+</button>
+
+<button class="btn btn-gray"
+onclick="closeModal('moneyModal')">
+Cancel
+</button>
 
 </div>
 </div>
@@ -382,66 +622,102 @@ placeholder="مثلاً: د احمد له طرفه جمع"></textarea>
 
 <!-- EXCHANGE -->
 <div class="modal" id="exchangeModal">
+
 <div class="modal-box">
-<button class="close" onclick="closeModal('exchangeModal')">×</button>
+
+<button class="close"
+onclick="closeModal('exchangeModal')">×</button>
 
 <h2>🔄 Currency Exchange</h2>
 
 <div class="form-grid">
 
 <div class="field full">
+
 <label>Account Number *</label>
 <input id="exchangeAccount">
+
 </div>
 
 <div class="field">
+
 <label>From Currency</label>
+
 <select id="fromCurrency">
 <option value="AFN">AFN</option>
 <option value="USD">USD</option>
 <option value="PKR">PKR</option>
 <option value="IRR">Toman</option>
 </select>
+
 </div>
 
 <div class="field">
+
 <label>To Currency</label>
+
 <select id="toCurrency">
 <option value="USD">USD</option>
 <option value="AFN">AFN</option>
 <option value="PKR">PKR</option>
 <option value="IRR">Toman</option>
 </select>
+
 </div>
 
 <div class="field">
+
 <label>Amount *</label>
-<input type="number" step="any" id="exchangeAmount">
+<input type="number"
+step="any"
+id="exchangeAmount">
+
 </div>
 
 <div class="field">
-<label>Rate</label>
-<input type="number" step="any" id="exchangeRate">
+
+<label>Rate *</label>
+<input type="number"
+step="any"
+id="exchangeRate">
+
 </div>
 
 <div class="field full">
+
 <label>Received Amount</label>
 <input id="receivedAmount" readonly>
+
 </div>
 
 <div class="field full">
+
 <label>Narration / Description *</label>
+
 <textarea id="exchangeDescription"
-placeholder="مثلاً: USD څخه AFN ته تبدیل"></textarea>
+placeholder="مثلاً: USD څخه AFN ته تبدیل">
+</textarea>
+
 </div>
 
 </div>
 
 <br>
 
-<button class="btn btn-primary" onclick="calculateExchange()">Calculate</button>
-<button class="btn btn-primary" onclick="exchangeMoney()">💾 Save Exchange</button>
-<button class="btn btn-gray" onclick="closeModal('exchangeModal')">Cancel</button>
+<button class="btn btn-primary"
+onclick="calculateExchange()">
+Calculate
+</button>
+
+<button class="btn btn-primary"
+onclick="exchangeMoney()">
+💾 Save Exchange
+</button>
+
+<button class="btn btn-gray"
+onclick="closeModal('exchangeModal')">
+Cancel
+</button>
 
 </div>
 </div>
@@ -449,18 +725,28 @@ placeholder="مثلاً: USD څخه AFN ته تبدیل"></textarea>
 
 <!-- CUSTOMERS -->
 <div class="modal" id="customersModal">
-<div class="modal-box" style="max-width:1100px">
-<button class="close" onclick="closeModal('customersModal')">×</button>
+
+<div class="modal-box" style="max-width:1150px">
+
+<button class="close"
+onclick="closeModal('customersModal')">×</button>
 
 <h2>📋 Customers</h2>
 
 <div class="search-box">
-<input id="customerSearch" placeholder="Account یا Name..." oninput="renderCustomers()">
+
+<input id="customerSearch"
+placeholder="Account یا Name..."
+oninput="renderCustomers()">
+
 </div>
 
 <div class="table-wrap">
+
 <table>
+
 <thead>
+
 <tr>
 <th>Account</th>
 <th>Name</th>
@@ -471,9 +757,13 @@ placeholder="مثلاً: USD څخه AFN ته تبدیل"></textarea>
 <th>Toman</th>
 <th>Actions</th>
 </tr>
+
 </thead>
+
 <tbody id="customersTable"></tbody>
+
 </table>
+
 </div>
 
 </div>
@@ -482,34 +772,145 @@ placeholder="مثلاً: USD څخه AFN ته تبدیل"></textarea>
 
 <!-- HISTORY -->
 <div class="modal" id="historyModal">
+
 <div class="modal-box" style="max-width:1200px">
-<button class="close" onclick="closeModal('historyModal')">×</button>
+
+<button class="close"
+onclick="closeModal('historyModal')">×</button>
 
 <h2>📜 Customer Transaction History</h2>
 
 <div class="search-box">
-<input id="historyAccount" placeholder="Account Number">
-<button class="btn btn-info" onclick="showCustomerHistory()">Search</button>
+
+<input id="historyAccount"
+placeholder="Account Number">
+
+<button class="btn btn-info"
+onclick="showCustomerHistory()">
+Search
+</button>
+
 </div>
 
 <div id="historyCustomer"></div>
 
 <div class="table-wrap">
+
 <table>
+
 <thead>
+
 <tr>
 <th>ساعت</th>
 <th>تاریخ</th>
 <th>مبلغ</th>
 <th>Balance</th>
-<th>اسعار</th>
 <th>Description</th>
 <th>Actions</th>
 </tr>
+
 </thead>
+
 <tbody id="historyTable"></tbody>
+
 </table>
+
 </div>
+
+</div>
+</div>
+
+
+<!-- TRANSACTION EDIT -->
+<div class="modal" id="transactionEditModal">
+
+<div class="modal-box">
+
+<button class="close"
+onclick="closeModal('transactionEditModal')">
+×
+</button>
+
+<h2>✏️ Edit Transaction</h2>
+
+<input type="hidden" id="editTransactionId">
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>Type</label>
+
+<select id="editTransactionType">
+<option value="deposit">Deposit</option>
+<option value="withdraw">Withdraw</option>
+<option value="exchange">Exchange</option>
+</select>
+
+</div>
+
+<div class="field">
+
+<label>Currency</label>
+
+<select id="editTransactionCurrency">
+<option value="AFN">AFN</option>
+<option value="USD">USD</option>
+<option value="PKR">PKR</option>
+<option value="IRR">Toman</option>
+</select>
+
+</div>
+
+<div class="field">
+
+<label>Amount *</label>
+
+<input type="number"
+step="any"
+id="editTransactionAmount">
+
+</div>
+
+<div class="field">
+
+<label>Date</label>
+
+<input type="date"
+id="editTransactionDate">
+
+</div>
+
+<div class="field">
+
+<label>Time</label>
+
+<input type="time"
+id="editTransactionTime">
+
+</div>
+
+<div class="field full">
+
+<label>Description *</label>
+
+<textarea id="editTransactionDescription"></textarea>
+
+</div>
+
+</div>
+
+<br>
+
+<button class="btn btn-primary"
+onclick="saveTransactionEdit()">
+💾 Update Transaction
+</button>
+
+<button class="btn btn-gray"
+onclick="closeModal('transactionEditModal')">
+Cancel
+</button>
 
 </div>
 </div>
@@ -517,20 +918,39 @@ placeholder="مثلاً: USD څخه AFN ته تبدیل"></textarea>
 
 <!-- REPORT -->
 <div class="modal" id="reportsModal">
-<div class="modal-box" style="max-width:1100px">
-<button class="close" onclick="closeModal('reportsModal')">×</button>
+
+<div class="modal-box" style="max-width:1150px">
+
+<button class="close"
+onclick="closeModal('reportsModal')">×</button>
 
 <h2>📊 General Report</h2>
 
 <div class="stats">
-<div class="stat">Deposit<br><b id="reportDeposit">0</b></div>
-<div class="stat">Withdraw<br><b id="reportWithdraw">0</b></div>
-<div class="stat">Transactions<br><b id="reportTransactions">0</b></div>
+
+<div class="stat">
+Deposit
+<b id="reportDeposit">0</b>
+</div>
+
+<div class="stat">
+Withdraw
+<b id="reportWithdraw">0</b>
+</div>
+
+<div class="stat">
+Transactions
+<b id="reportTransactions">0</b>
+</div>
+
 </div>
 
 <div class="table-wrap">
+
 <table>
+
 <thead>
+
 <tr>
 <th>Account</th>
 <th>Customer</th>
@@ -540,9 +960,13 @@ placeholder="مثلاً: USD څخه AFN ته تبدیل"></textarea>
 <th>Description</th>
 <th>Date</th>
 </tr>
+
 </thead>
+
 <tbody id="reportTable"></tbody>
+
 </table>
+
 </div>
 
 </div>
@@ -551,33 +975,45 @@ placeholder="مثلاً: USD څخه AFN ته تبدیل"></textarea>
 
 <!-- RATES -->
 <div class="modal" id="ratesModal">
+
 <div class="modal-box">
-<button class="close" onclick="closeModal('ratesModal')">×</button>
+
+<button class="close"
+onclick="closeModal('ratesModal')">×</button>
 
 <h2>💱 Exchange Rates</h2>
 
 <div class="form-grid">
 
 <div class="field">
+
 <label>USD → AFN</label>
 <input id="rateUSD_AFN" type="number">
+
 </div>
 
 <div class="field">
+
 <label>USD → Toman</label>
 <input id="rateUSD_IRR" type="number">
+
 </div>
 
 <div class="field">
+
 <label>USD → PKR</label>
 <input id="rateUSD_PKR" type="number">
+
 </div>
 
 </div>
 
 <br>
 
-<button class="btn btn-primary" onclick="saveRates()">💾 Save Rates</button>
+<button class="btn btn-primary"
+onclick="saveRates()">
+💾 Save Rates
+</button>
 
 </div>
 </div>
@@ -585,28 +1021,40 @@ placeholder="مثلاً: USD څخه AFN ته تبدیل"></textarea>
 
 <!-- SETTINGS -->
 <div class="modal" id="settingsModal">
+
 <div class="modal-box">
-<button class="close" onclick="closeModal('settingsModal')">×</button>
+
+<button class="close"
+onclick="closeModal('settingsModal')">×</button>
 
 <h2>⚙️ Settings</h2>
 
 <div class="form-grid">
 
 <div class="field">
+
 <label>New Login Password</label>
-<input type="password" id="newLoginPassword">
+<input type="password"
+id="newLoginPassword">
+
 </div>
 
 <div class="field">
+
 <label>New Supervisor Password</label>
-<input type="password" id="newSupervisorPassword">
+<input type="password"
+id="newSupervisorPassword">
+
 </div>
 
 </div>
 
 <br>
 
-<button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+<button class="btn btn-primary"
+onclick="saveSettings()">
+💾 Save Settings
+</button>
 
 </div>
 </div>
@@ -614,22 +1062,35 @@ placeholder="مثلاً: USD څخه AFN ته تبدیل"></textarea>
 
 <!-- PASSWORD -->
 <div class="modal" id="passwordModal">
-<div class="modal-box" style="max-width:400px">
+
+<div class="modal-box"
+style="max-width:400px">
 
 <h2>🔐 Supervisor Authorization</h2>
 
-<p>د عملیات لپاره Supervisor Password داخل کړئ.</p>
+<p>
+د دې عملیاتو لپاره Supervisor Password داخل کړئ.
+</p>
 
-<input type="password" id="supervisorPassword"
+<input type="password"
+id="supervisorPassword"
 placeholder="Supervisor Password"
 onkeydown="passwordEnter(event)">
 
-<p id="passError" style="color:red"></p>
+<p id="passError"
+style="color:red"></p>
 
 <br>
 
-<button class="btn btn-primary" onclick="verifyPassword()">Confirm</button>
-<button class="btn btn-gray" onclick="cancelPassword()">Cancel</button>
+<button class="btn btn-primary"
+onclick="verifyPassword()">
+Confirm
+</button>
+
+<button class="btn btn-gray"
+onclick="cancelPassword()">
+Cancel
+</button>
 
 </div>
 </div>
@@ -649,11 +1110,33 @@ JSON.parse(localStorage.getItem("transactions") || "[]");
 
 let exchangeRates =
 JSON.parse(localStorage.getItem("exchangeRates") || "null") || {
-    USD:{AFN:70,IRR:42000,PKR:280},
-    AFN:{USD:1/70,IRR:42000/70,PKR:280/70},
-    IRR:{USD:1/42000,AFN:1/42000,PKR:280/42000},
-    PKR:{USD:1/280,AFN:70/280,IRR:42000/280}
+
+    USD:{
+        AFN:70,
+        IRR:42000,
+        PKR:280
+    },
+
+    AFN:{
+        USD:1/70,
+        IRR:42000/70,
+        PKR:280/70
+    },
+
+    IRR:{
+        USD:1/42000,
+        AFN:70/42000,
+        PKR:280/42000
+    },
+
+    PKR:{
+        USD:1/280,
+        AFN:70/280,
+        IRR:42000/280
+    }
+
 };
+
 
 if(!localStorage.getItem("loginPassword")){
     localStorage.setItem("loginPassword","5766");
@@ -663,6 +1146,7 @@ if(!localStorage.getItem("supervisorPassword")){
     localStorage.setItem("supervisorPassword","2580");
 }
 
+
 let pendingAction=null;
 
 
@@ -671,29 +1155,52 @@ let pendingAction=null;
 ========================= */
 
 function saveData(){
-    localStorage.setItem("customers",JSON.stringify(customers));
-    localStorage.setItem("transactions",JSON.stringify(transactions));
+
+    localStorage.setItem(
+        "customers",
+        JSON.stringify(customers)
+    );
+
+    localStorage.setItem(
+        "transactions",
+        JSON.stringify(transactions)
+    );
 }
 
+
 function closeModal(id){
+
     document.getElementById(id).style.display="none";
 }
 
+
 function openModal(id){
+
     document.getElementById(id).style.display="block";
 }
 
+
 function uid(){
-    return Date.now().toString(36)+Math.random().toString(36).substring(2,8);
+
+    if(window.crypto && crypto.randomUUID){
+        return crypto.randomUUID();
+    }
+
+    return Date.now().toString(36)+
+           Math.random().toString(36).substring(2,8);
 }
 
+
 function money(n){
+
     return Number(n||0).toLocaleString("en-US",{
         maximumFractionDigits:2
     });
 }
 
+
 function escapeHtml(value){
+
     return String(value ?? "")
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
@@ -703,89 +1210,145 @@ function escapeHtml(value){
 }
 
 
+function currencyBalance(){
+
+    return {
+        AFN:0,
+        USD:0,
+        PKR:0,
+        IRR:0
+    };
+}
+
+
+/* =========================
+   NORMALIZE DATA
+========================= */
+
+customers.forEach(c=>{
+
+    if(!c.balance){
+        c.balance=currencyBalance();
+    }
+
+    ["AFN","USD","PKR","IRR"].forEach(cur=>{
+
+        if(typeof c.balance[cur]!=="number"){
+            c.balance[cur]=Number(c.balance[cur])||0;
+        }
+
+    });
+
+});
+
+
 /* =========================
    DASHBOARD
 ========================= */
 
 function updateDashboard(){
 
-    document.getElementById("totalCustomers").textContent =
+    document.getElementById("totalCustomers").textContent=
         customers.length;
 
-    document.getElementById("totalTransactions").textContent =
+    document.getElementById("totalTransactions").textContent=
         transactions.length;
 
     let dep=0;
     let wit=0;
 
     transactions.forEach(t=>{
+
         if(t.type==="deposit"){
-            dep += Math.abs(Number(t.amount)||0);
+            dep+=Math.abs(Number(t.amount)||0);
         }
 
         if(t.type==="withdraw"){
-            wit += Math.abs(Number(t.amount)||0);
+            wit+=Math.abs(Number(t.amount)||0);
         }
+
     });
 
-    document.getElementById("totalDeposits").textContent=money(dep);
-    document.getElementById("totalWithdraws").textContent=money(wit);
+    document.getElementById("totalDeposits").textContent=
+        money(dep);
+
+    document.getElementById("totalWithdraws").textContent=
+        money(wit);
 }
+
 
 updateDashboard();
 
 
 /* =========================
-   CUSTOMER
+   CUSTOMER FORM
 ========================= */
 
 function openCustomer(){
 
     document.getElementById("editCustomerId").value="";
-    document.getElementById("cAccount").value="";
-    document.getElementById("cName").value="";
-    document.getElementById("cPhone").value="";
-    document.getElementById("cId").value="";
-    document.getElementById("cFather").value="";
-    document.getElementById("cBirth").value="";
-    document.getElementById("cGender").value="";
-    document.getElementById("cJob").value="";
-    document.getElementById("cAddress").value="";
-    document.getElementById("cNote").value="";
+
+    document.getElementById("customerFormTitle").textContent=
+        "👤 Customer Registration";
+
+    [
+        "cAccount",
+        "cName",
+        "cPhone",
+        "cId",
+        "cFather",
+        "cBirth",
+        "cGender",
+        "cJob",
+        "cAddress",
+        "cNote"
+    ].forEach(id=>{
+        document.getElementById(id).value="";
+    });
 
     openModal("customerModal");
 }
 
+
 function saveCustomer(){
 
-    let editId =
+    let editId=
         document.getElementById("editCustomerId").value;
 
-    let account =
+    let account=
         document.getElementById("cAccount").value.trim();
 
-    let name =
+    let name=
         document.getElementById("cName").value.trim();
 
     if(!account || !name){
+
         alert("Account Number او Customer Name ضروري دی.");
         return;
     }
 
+
     let duplicate=customers.find(c=>
-        c.account===account && c.id!==editId
+        c.account===account &&
+        c.id!==editId
     );
 
     if(duplicate){
+
         alert("دا Account Number مخکې موجود دی.");
         return;
     }
 
+
+    /* EDIT */
     if(editId){
 
         let c=customers.find(x=>x.id===editId);
 
         if(!c)return;
+
+        let oldAccount=c.account;
+        let oldName=c.name;
 
         c.account=account;
         c.name=name;
@@ -798,9 +1361,22 @@ function saveCustomer(){
         c.address=document.getElementById("cAddress").value;
         c.note=document.getElementById("cNote").value;
 
+        /* Update old transactions */
+        transactions.forEach(t=>{
+
+            if(t.customer_id===c.id){
+
+                t.account=account;
+                t.customer=name;
+
+            }
+
+        });
+
         saveData();
 
-        alert("Customer معلومات Update شول.");
+        alert("✅ Customer معلومات Update شول.");
+
         closeModal("customerModal");
 
         renderCustomers();
@@ -809,32 +1385,44 @@ function saveCustomer(){
         return;
     }
 
+
+    /* NEW CUSTOMER */
+
     customers.push({
+
         id:uid(),
+
         account:account,
+
         name:name,
+
         phone:document.getElementById("cPhone").value,
+
         idNumber:document.getElementById("cId").value,
+
         father:document.getElementById("cFather").value,
+
         birth:document.getElementById("cBirth").value,
+
         gender:document.getElementById("cGender").value,
+
         job:document.getElementById("cJob").value,
+
         address:document.getElementById("cAddress").value,
+
         note:document.getElementById("cNote").value,
 
-        balance:{
-            AFN:0,
-            USD:0,
-            PKR:0,
-            IRR:0
-        },
+        balance:currencyBalance(),
 
         created:new Date().toISOString()
+
     });
+
 
     saveData();
 
-    alert("Customer په بریالیتوب سره ثبت شو.");
+    alert("✅ Customer په بریالیتوب سره ثبت شو.");
+
     closeModal("customerModal");
 
     updateDashboard();
@@ -852,6 +1440,10 @@ function editCustomer(id){
     if(!c)return;
 
     document.getElementById("editCustomerId").value=c.id;
+
+    document.getElementById("customerFormTitle").textContent=
+        "✏️ Edit Customer";
+
     document.getElementById("cAccount").value=c.account||"";
     document.getElementById("cName").value=c.name||"";
     document.getElementById("cPhone").value=c.phone||"";
@@ -878,6 +1470,7 @@ function askPassword(action){
     pendingAction=action;
 
     document.getElementById("supervisorPassword").value="";
+
     document.getElementById("passError").textContent="";
 
     openModal("passwordModal");
@@ -887,13 +1480,14 @@ function askPassword(action){
     },100);
 }
 
+
 function verifyPassword(){
 
-    let pass =
+    let pass=
         document.getElementById("supervisorPassword").value;
 
-    let saved =
-        localStorage.getItem("supervisorPassword") || "2580";
+    let saved=
+        localStorage.getItem("supervisorPassword")||"2580";
 
     if(pass!==saved){
 
@@ -906,15 +1500,22 @@ function verifyPassword(){
     closeModal("passwordModal");
 
     let action=pendingAction;
+
     pendingAction=null;
 
-    if(action)action();
+    if(action){
+        action();
+    }
 }
+
 
 function cancelPassword(){
+
     pendingAction=null;
+
     closeModal("passwordModal");
 }
+
 
 function passwordEnter(e){
 
@@ -930,7 +1531,7 @@ function passwordEnter(e){
 
 function deleteCustomer(id){
 
-    askPassword(function(){
+    askPassword(()=>{
 
         let c=customers.find(x=>x.id===id);
 
@@ -942,17 +1543,19 @@ function deleteCustomer(id){
             return;
         }
 
-        customers=customers.filter(x=>x.id!==id);
+        customers=
+            customers.filter(x=>x.id!==id);
 
         transactions=
-            transactions.filter(t=>t.customer_id!==id);
+            transactions.filter(x=>x.customer_id!==id);
 
         saveData();
 
         renderCustomers();
+
         updateDashboard();
 
-        alert("Customer حذف شو.");
+        alert("✅ Customer حذف شو.");
     });
 }
 
@@ -962,9 +1565,12 @@ function deleteCustomer(id){
 ========================= */
 
 function openCustomers(){
+
     renderCustomers();
+
     openModal("customersModal");
 }
+
 
 function renderCustomers(){
 
@@ -974,55 +1580,84 @@ function renderCustomers(){
         .toLowerCase();
 
     let list=customers.filter(c=>
-        String(c.account).toLowerCase().includes(search) ||
-        String(c.name).toLowerCase().includes(search)
+        String(c.account||"")
+        .toLowerCase()
+        .includes(search)
+
+        ||
+
+        String(c.name||"")
+        .toLowerCase()
+        .includes(search)
     );
 
+
     let html="";
+
 
     list.forEach(c=>{
 
         if(!c.balance){
-            c.balance={
-                AFN:0,
-                USD:0,
-                PKR:0,
-                IRR:0
-            };
+            c.balance=currencyBalance();
         }
 
         html+=`
-        <tr>
-            <td>${escapeHtml(c.account)}</td>
-            <td>${escapeHtml(c.name)}</td>
-            <td>${escapeHtml(c.phone)}</td>
-            <td>${money(c.balance.AFN)}</td>
-            <td>${money(c.balance.USD)}</td>
-            <td>${money(c.balance.PKR)}</td>
-            <td>${money(c.balance.IRR)}</td>
-            <td>
-                <div class="actions">
-                    <button class="btn btn-warning"
-                    onclick="askPassword(()=>editCustomer('${c.id}'))">
-                    ✏️ Edit
-                    </button>
 
-                    <button class="btn btn-danger"
-                    onclick="deleteCustomer('${c.id}')">
-                    🗑️ Delete
-                    </button>
-                </div>
-            </td>
-        </tr>`;
+        <tr>
+
+        <td>${escapeHtml(c.account)}</td>
+
+        <td>${escapeHtml(c.name)}</td>
+
+        <td>${escapeHtml(c.phone)}</td>
+
+        <td>${money(c.balance.AFN)}</td>
+
+        <td>${money(c.balance.USD)}</td>
+
+        <td>${money(c.balance.PKR)}</td>
+
+        <td>${money(c.balance.IRR)}</td>
+
+        <td>
+
+        <div class="actions">
+
+        <button
+        class="btn btn-warning"
+        onclick="askPassword(()=>editCustomer('${c.id}'))">
+        ✏️ Edit
+        </button>
+
+        <button
+        class="btn btn-danger"
+        onclick="deleteCustomer('${c.id}')">
+        🗑️ Delete
+        </button>
+
+        </div>
+
+        </td>
+
+        </tr>
+
+        `;
     });
 
-    document.getElementById("customersTable").innerHTML =
-        html || `<tr><td colspan="8">Customer پیدا نه شو.</td></tr>`;
+
+    document.getElementById("customersTable").innerHTML=
+        html ||
+
+        `<tr>
+        <td colspan="8">
+        Customer پیدا نه شو.
+        </td>
+        </tr>`;
 }
 
 
 /* =========================
-   MONEY
+   DEPOSIT / WITHDRAW
 ========================= */
 
 function openMoney(type){
@@ -1034,36 +1669,41 @@ function openMoney(type){
     document.getElementById("moneyDescription").value="";
     document.getElementById("customerFound").innerHTML="";
 
-    document.getElementById("moneyTitle").textContent =
-        type==="deposit" ? "💵 Deposit" : "💸 Withdraw";
+    document.getElementById("moneyTitle").textContent=
+        type==="deposit"
+        ? "💵 Deposit"
+        : "💸 Withdraw";
 
     openModal("moneyModal");
 }
+
 
 function findCustomer(){
 
     let account=
         document.getElementById("accountInput").value.trim();
 
-    let c=customers.find(x=>x.account===account);
+    let c=
+        customers.find(x=>x.account===account);
 
     if(!c){
 
         document.getElementById("customerFound").innerHTML=
-            `<div class="message error" style="display:block">
-            Customer پیدا نه شو.
-            </div>`;
+        `<div class="message error" style="display:block">
+        Customer پیدا نه شو.
+        </div>`;
 
         return null;
     }
 
     document.getElementById("customerFound").innerHTML=
-        `<div class="message success" style="display:block">
-        ✅ ${escapeHtml(c.name)} — ${escapeHtml(c.account)}
-        </div>`;
+    `<div class="message success" style="display:block">
+    ✅ ${escapeHtml(c.name)} — ${escapeHtml(c.account)}
+    </div>`;
 
     return c;
 }
+
 
 function saveMoney(){
 
@@ -1082,66 +1722,103 @@ function saveMoney(){
     let description=
         document.getElementById("moneyDescription").value.trim();
 
+
     if(!account || !amount || amount<=0){
+
         alert("Account او Amount صحیح داخل کړئ.");
         return;
     }
 
+
     if(!description){
+
         alert("Narration / Description ضروري دی.");
-        document.getElementById("moneyDescription").focus();
         return;
     }
 
-    let c=customers.find(x=>x.account===account);
+
+    let c=
+        customers.find(x=>x.account===account);
 
     if(!c){
+
         alert("Customer پیدا نه شو.");
         return;
     }
 
+
     if(!c.balance){
-        c.balance={AFN:0,USD:0,PKR:0,IRR:0};
+        c.balance=currencyBalance();
     }
 
-    if(type==="withdraw" &&
-       Number(c.balance[currency]||0)<amount){
+
+    if(
+        type==="withdraw" &&
+        Number(c.balance[currency]||0)<amount
+    ){
 
         alert("❌ د Customer Balance کافي نه دی.");
         return;
     }
 
+
     if(type==="deposit"){
+
         c.balance[currency]+=amount;
+
     }else{
+
         c.balance[currency]-=amount;
+
     }
 
+
+    let now=new Date();
+
+
     transactions.push({
+
         id:uid(),
+
         customer_id:c.id,
+
         account:c.account,
+
         customer:c.name,
+
         type:type,
-        amount:type==="withdraw"?-amount:amount,
+
+        amount:
+            type==="withdraw"
+            ? -amount
+            : amount,
+
         currency:currency,
+
         balance:c.balance[currency],
+
         description:description,
-        time:new Date().toLocaleTimeString("en-GB",{
+
+        time:now.toLocaleTimeString("en-GB",{
             hour:"2-digit",
             minute:"2-digit"
         }),
-        date:new Date().toLocaleDateString("en-GB"),
-        created_at:new Date().toISOString()
+
+        date:now.toLocaleDateString("en-GB"),
+
+        created_at:now.toISOString()
+
     });
 
+
     saveData();
+
     updateDashboard();
 
     alert(
         type==="deposit"
-        ? "Deposit ثبت شو."
-        : "Withdraw ثبت شو."
+        ? "✅ Deposit ثبت شو."
+        : "✅ Withdraw ثبت شو."
     );
 
     closeModal("moneyModal");
@@ -1163,6 +1840,7 @@ function openExchange(){
     openModal("exchangeModal");
 }
 
+
 function calculateExchange(){
 
     let amount=
@@ -1172,13 +1850,15 @@ function calculateExchange(){
         Number(document.getElementById("exchangeRate").value);
 
     if(!amount || !rate){
+
         alert("Amount او Rate داخل کړئ.");
         return;
     }
 
-    document.getElementById("receivedAmount").value =
+    document.getElementById("receivedAmount").value=
         money(amount*rate);
 }
+
 
 function exchangeMoney(){
 
@@ -1200,84 +1880,143 @@ function exchangeMoney(){
     let description=
         document.getElementById("exchangeDescription").value.trim();
 
+
     if(!account || !amount || amount<=0 || !rate || rate<=0){
+
         alert("ټول معلومات صحیح داخل کړئ.");
         return;
     }
 
+
     if(from===to){
+
         alert("From او To Currency باید مختلف وي.");
         return;
     }
 
+
     if(!description){
+
         alert("Narration / Description ضروري دی.");
         return;
     }
 
-    let c=customers.find(x=>x.account===account);
+
+    let c=
+        customers.find(x=>x.account===account);
 
     if(!c){
+
         alert("Customer پیدا نه شو.");
         return;
     }
 
+
     if(!c.balance){
-        c.balance={AFN:0,USD:0,PKR:0,IRR:0};
+        c.balance=currencyBalance();
     }
 
+
     if(Number(c.balance[from]||0)<amount){
+
         alert("❌ د Source Currency Balance کافي نه دی.");
         return;
     }
 
+
     let received=amount*rate;
 
     c.balance[from]-=amount;
+
     c.balance[to]+=received;
+
 
     let now=new Date();
 
-    transactions.push({
-        id:uid(),
-        customer_id:c.id,
-        account:c.account,
-        customer:c.name,
-        type:"exchange",
-        amount:-amount,
-        currency:from,
-        balance:c.balance[from],
-        description:description+" | Exchange → "+to,
-        time:now.toLocaleTimeString("en-GB",{
-            hour:"2-digit",
-            minute:"2-digit"
-        }),
-        date:now.toLocaleDateString("en-GB"),
-        created_at:now.toISOString()
-    });
+    let exchangeId=uid();
+
 
     transactions.push({
+
         id:uid(),
+
+        exchangeId:exchangeId,
+
         customer_id:c.id,
+
         account:c.account,
+
         customer:c.name,
+
         type:"exchange",
-        amount:received,
-        currency:to,
-        balance:c.balance[to],
-        description:description+" | Exchange ← "+from,
+
+        amount:-amount,
+
+        currency:from,
+
+        balance:c.balance[from],
+
+        description:
+            description+
+            " | Exchange → "+
+            to,
+
         time:now.toLocaleTimeString("en-GB",{
             hour:"2-digit",
             minute:"2-digit"
         }),
+
         date:now.toLocaleDateString("en-GB"),
+
         created_at:now.toISOString()
+
     });
+
+
+    transactions.push({
+
+        id:uid(),
+
+        exchangeId:exchangeId,
+
+        customer_id:c.id,
+
+        account:c.account,
+
+        customer:c.name,
+
+        type:"exchange",
+
+        amount:received,
+
+        currency:to,
+
+        balance:c.balance[to],
+
+        description:
+            description+
+            " | Exchange ← "+
+            from,
+
+        time:now.toLocaleTimeString("en-GB",{
+            hour:"2-digit",
+            minute:"2-digit"
+        }),
+
+        date:now.toLocaleDateString("en-GB"),
+
+        created_at:new Date(
+            now.getTime()+1
+        ).toISOString()
+
+    });
+
 
     saveData();
+
     updateDashboard();
 
-    alert("Exchange په بریالیتوب سره ثبت شو.");
+    alert("✅ Exchange په بریالیتوب سره ثبت شو.");
 
     closeModal("exchangeModal");
 }
@@ -1290,65 +2029,86 @@ function exchangeMoney(){
 function openCustomerHistory(){
 
     document.getElementById("historyAccount").value="";
+
     document.getElementById("historyCustomer").innerHTML="";
+
     document.getElementById("historyTable").innerHTML="";
 
     openModal("historyModal");
 }
+
 
 function showCustomerHistory(){
 
     let account=
         document.getElementById("historyAccount").value.trim();
 
-    let c=customers.find(x=>x.account===account);
+    let c=
+        customers.find(x=>x.account===account);
 
     if(!c){
+
         alert("Customer پیدا نه شو.");
         return;
     }
+
 
     let list=
         transactions
         .filter(t=>t.customer_id===c.id)
         .sort((a,b)=>
-            new Date(a.created_at||0)-new Date(b.created_at||0)
+            new Date(a.created_at||0)-
+            new Date(b.created_at||0)
         );
 
-    let balances={
-        AFN:0,
-        USD:0,
-        PKR:0,
-        IRR:0
-    };
+
+    let balances=currencyBalance();
 
     let calculated=[];
+
 
     list.forEach(t=>{
 
         let cur=t.currency;
-        let amount=Number(t.amount)||0;
+
+        let amount=
+            Number(t.amount)||0;
 
         if(balances[cur]!==undefined){
+
             balances[cur]+=amount;
+
         }
 
+
         calculated.push({
+
             ...t,
-            calculatedBalance:balances[cur]||0
+
+            calculatedBalance:
+                balances[cur]||0
+
         });
+
     });
+
 
     calculated.reverse();
 
+
     document.getElementById("historyCustomer").innerHTML=
-        `<div class="message success" style="display:block">
-        👤 ${escapeHtml(c.name)}
-        &nbsp; | &nbsp;
-        Account: ${escapeHtml(c.account)}
-        </div>`;
+    `<div class="message success"
+    style="display:block">
+
+    👤 ${escapeHtml(c.name)}
+    &nbsp; | &nbsp;
+    Account: ${escapeHtml(c.account)}
+
+    </div>`;
+
 
     let html="";
+
 
     calculated.forEach(t=>{
 
@@ -1357,79 +2117,257 @@ function showCustomerHistory(){
             ? "positive"
             : "negative";
 
-        html+=`
-        <tr>
-            <td>${escapeHtml(t.time||"")}</td>
-            <td>${escapeHtml(t.date||"")}</td>
-            <td class="${cls}">
-                ${Number(t.amount)>=0?"+":""}${money(t.amount)}
-            </td>
-            <td>${money(t.calculatedBalance)}</td>
-            <td>${escapeHtml(t.currency||"")}</td>
-            <td>${escapeHtml(t.description||"")}</td>
-            <td>
-                <div class="actions">
-                    <button class="btn btn-warning"
-                    onclick="askPassword(()=>editTransaction('${t.id}'))">
-                    ✏️ Edit
-                    </button>
 
-                    <button class="btn btn-danger"
-                    onclick="deleteTransaction('${t.id}')">
-                    🗑️ Delete
-                    </button>
-                </div>
-            </td>
-        </tr>`;
+        html+=`
+
+        <tr>
+
+        <td>${escapeHtml(t.time||"")}</td>
+
+        <td>${escapeHtml(t.date||"")}</td>
+
+        <td class="${cls}">
+        ${Number(t.amount)>=0?"+":""}
+        ${money(t.amount)}
+        </td>
+
+        <td>
+        ${money(t.calculatedBalance)}
+        </td>
+
+        <td>
+        ${escapeHtml(t.description||"")}
+        </td>
+
+        <td>
+
+        <div class="actions">
+
+        <button
+        class="btn btn-warning"
+        onclick="askPassword(()=>editTransaction('${t.id}'))">
+        ✏️ Edit
+        </button>
+
+        <button
+        class="btn btn-danger"
+        onclick="deleteTransaction('${t.id}')">
+        🗑️ Delete
+        </button>
+
+        </div>
+
+        </td>
+
+        </tr>
+
+        `;
     });
 
-    document.getElementById("historyTable").innerHTML =
+
+    document.getElementById("historyTable").innerHTML=
+
         html ||
-        `<tr><td colspan="7">هیڅ Transaction نشته.</td></tr>`;
+
+        `<tr>
+        <td colspan="6">
+        هیڅ Transaction نشته.
+        </td>
+        </tr>`;
 }
 
 
 /* =========================
-   EDIT TRANSACTION
+   TRANSACTION EDIT
 ========================= */
 
 function editTransaction(id){
 
-    let t=transactions.find(x=>x.id===id);
+    let t=
+        transactions.find(x=>x.id===id);
 
     if(!t)return;
 
-    let newAmount=
-        prompt("Amount داخل کړئ:",Math.abs(t.amount));
 
-    if(newAmount===null)return;
+    document.getElementById("editTransactionId").value=t.id;
 
-    newAmount=Number(newAmount);
+    document.getElementById("editTransactionType").value=
+        t.type||"deposit";
 
-    if(!newAmount || newAmount<=0){
-        alert("Amount صحیح نه دی.");
+    document.getElementById("editTransactionCurrency").value=
+        t.currency||"AFN";
+
+    document.getElementById("editTransactionAmount").value=
+        Math.abs(Number(t.amount)||0);
+
+
+    let dateValue="";
+
+    if(t.created_at){
+
+        let d=new Date(t.created_at);
+
+        if(!isNaN(d)){
+
+            dateValue=
+                d.toISOString().slice(0,10);
+
+            document.getElementById("editTransactionTime").value=
+                d.toTimeString().slice(0,5);
+        }
+
+    }
+
+
+    document.getElementById("editTransactionDate").value=
+        dateValue;
+
+    document.getElementById("editTransactionDescription").value=
+        t.description||"";
+
+
+    closeModal("historyModal");
+
+    openModal("transactionEditModal");
+}
+
+
+/* =========================
+   SAVE TRANSACTION EDIT
+========================= */
+
+function saveTransactionEdit(){
+
+    let id=
+        document.getElementById("editTransactionId").value;
+
+    let t=
+        transactions.find(x=>x.id===id);
+
+    if(!t)return;
+
+
+    let amount=
+        Number(
+            document.getElementById("editTransactionAmount").value
+        );
+
+    let type=
+        document.getElementById("editTransactionType").value;
+
+    let currency=
+        document.getElementById("editTransactionCurrency").value;
+
+    let description=
+        document.getElementById(
+            "editTransactionDescription"
+        ).value.trim();
+
+    let date=
+        document.getElementById("editTransactionDate").value;
+
+    let time=
+        document.getElementById("editTransactionTime").value;
+
+
+    if(!amount || amount<=0){
+
+        alert("Amount صحیح داخل کړئ.");
         return;
     }
 
-    let newDescription=
-        prompt("Description:",t.description||"");
 
-    if(newDescription===null)return;
+    if(!description){
+
+        alert("Description ضروري دی.");
+        return;
+    }
+
+
+    /*
+      Exchange pair:
+      که Exchange وي، یوازې د pair edit کول
+      به ډېر خطرناک وي.
+    */
+
+    if(t.exchangeId){
+
+        alert(
+            "دا د Exchange Transaction دی. "+
+            "د Exchange دواړه اړخونه باید یوځای Edit شي."
+        );
+
+        return;
+    }
+
 
     let sign=
-        Number(t.amount)<0 ? -1 : 1;
+        type==="withdraw"
+        ? -1
+        : 1;
 
-    t.amount=sign*newAmount;
-    t.description=newDescription;
 
-    recalculateCustomerBalances(t.customer_id);
+    t.type=type;
+
+    t.currency=currency;
+
+    t.amount=sign*amount;
+
+    t.description=description;
+
+
+    if(date){
+
+        let dateTime=
+            date+
+            "T"+
+            (time||"00:00")+
+            ":00";
+
+        let d=new Date(dateTime);
+
+        if(!isNaN(d)){
+
+            t.created_at=d.toISOString();
+
+            t.date=d.toLocaleDateString("en-GB");
+
+            t.time=d.toLocaleTimeString("en-GB",{
+                hour:"2-digit",
+                minute:"2-digit"
+            });
+
+        }
+
+    }
+
+
+    recalculateCustomerBalances(
+        t.customer_id
+    );
+
 
     saveData();
 
-    alert("Transaction Update شو.");
 
-    showCustomerHistory();
+    closeModal("transactionEditModal");
+
+
+    alert("✅ Transaction Update شو.");
+
+
     updateDashboard();
+
+
+    let account=
+        document.getElementById("historyAccount").value.trim();
+
+    if(account){
+
+        showCustomerHistory();
+
+    }
+
 }
 
 
@@ -1439,49 +2377,74 @@ function editTransaction(id){
 
 function deleteTransaction(id){
 
-    askPassword(function(){
+    askPassword(()=>{
 
-        let t=transactions.find(x=>x.id===id);
+        let t=
+            transactions.find(x=>x.id===id);
 
         if(!t)return;
+
 
         if(!confirm("ایا دا Transaction حذف کړئ؟")){
             return;
         }
 
+
         let customerId=t.customer_id;
 
-        transactions=
-            transactions.filter(x=>x.id!==id);
+
+        /*
+          Exchange pair:
+          دواړه records یوځای حذف
+        */
+
+        if(t.exchangeId){
+
+            transactions=
+                transactions.filter(
+                    x=>x.exchangeId!==t.exchangeId
+                );
+
+        }else{
+
+            transactions=
+                transactions.filter(
+                    x=>x.id!==id
+                );
+
+        }
+
 
         recalculateCustomerBalances(customerId);
 
         saveData();
 
-        alert("Transaction حذف شو.");
+
+        alert("✅ Transaction حذف شو.");
+
+
+        updateDashboard();
 
         showCustomerHistory();
-        updateDashboard();
+
     });
 }
 
 
 /* =========================
-   RECALCULATE BALANCE
+   RECALCULATE
 ========================= */
 
 function recalculateCustomerBalances(customerId){
 
-    let c=customers.find(x=>x.id===customerId);
+    let c=
+        customers.find(x=>x.id===customerId);
 
     if(!c)return;
 
-    c.balance={
-        AFN:0,
-        USD:0,
-        PKR:0,
-        IRR:0
-    };
+
+    c.balance=currencyBalance();
+
 
     let list=
         transactions
@@ -1491,17 +2454,26 @@ function recalculateCustomerBalances(customerId){
             new Date(b.created_at||0)
         );
 
+
     list.forEach(t=>{
 
         let cur=t.currency;
 
         if(c.balance[cur]!==undefined){
-            c.balance[cur]+=Number(t.amount)||0;
+
+            c.balance[cur]+=
+                Number(t.amount)||0;
+
         }
+
 
         t.balance=
             c.balance[cur]||0;
+
     });
+
+
+    saveData();
 }
 
 
@@ -1514,43 +2486,95 @@ function openReports(){
     let dep=0;
     let wit=0;
 
+
     transactions.forEach(t=>{
 
         if(t.type==="deposit"){
-            dep+=Math.abs(Number(t.amount)||0);
+
+            dep+=Math.abs(
+                Number(t.amount)||0
+            );
+
         }
 
         if(t.type==="withdraw"){
-            wit+=Math.abs(Number(t.amount)||0);
+
+            wit+=Math.abs(
+                Number(t.amount)||0
+            );
+
         }
+
     });
 
-    document.getElementById("reportDeposit").textContent=money(dep);
-    document.getElementById("reportWithdraw").textContent=money(wit);
+
+    document.getElementById("reportDeposit").textContent=
+        money(dep);
+
+    document.getElementById("reportWithdraw").textContent=
+        money(wit);
+
     document.getElementById("reportTransactions").textContent=
         transactions.length;
 
+
     let html="";
 
-    let list=[...transactions].reverse();
 
-    list.forEach(t=>{
+    [...transactions]
+    .sort((a,b)=>
+        new Date(b.created_at||0)-
+        new Date(a.created_at||0)
+    )
+    .forEach(t=>{
 
         html+=`
+
         <tr>
-            <td>${escapeHtml(t.account||"")}</td>
-            <td>${escapeHtml(t.customer||"")}</td>
-            <td>${escapeHtml(t.type||"")}</td>
-            <td>${escapeHtml(t.currency||"")}</td>
-            <td>${money(t.amount)}</td>
-            <td>${escapeHtml(t.description||"")}</td>
-            <td>${escapeHtml(t.date||"")}</td>
-        </tr>`;
+
+        <td>${escapeHtml(t.account||"")}</td>
+
+        <td>${escapeHtml(t.customer||"")}</td>
+
+        <td>${escapeHtml(t.type||"")}</td>
+
+        <td>${escapeHtml(t.currency||"")}</td>
+
+        <td class="${
+            Number(t.amount)>=0
+            ? "positive"
+            : "negative"
+        }">
+
+        ${Number(t.amount)>=0?"+":""}
+        ${money(t.amount)}
+
+        </td>
+
+        <td>
+        ${escapeHtml(t.description||"")}
+        </td>
+
+        <td>
+        ${escapeHtml(t.date||"")}
+        </td>
+
+        </tr>
+
+        `;
     });
 
-    document.getElementById("reportTable").innerHTML =
+
+    document.getElementById("reportTable").innerHTML=
+
         html ||
-        `<tr><td colspan="7">هیڅ معلومات نشته.</td></tr>`;
+
+        `<tr>
+        <td colspan="7">
+        هیڅ معلومات نشته.
+        </td>
+        </tr>`;
+
 
     openModal("reportsModal");
 }
@@ -1574,23 +2598,34 @@ function openRates(){
     openModal("ratesModal");
 }
 
+
 function saveRates(){
 
     let usdAfn=
-        Number(document.getElementById("rateUSD_AFN").value);
+        Number(
+            document.getElementById("rateUSD_AFN").value
+        );
 
     let usdIrr=
-        Number(document.getElementById("rateUSD_IRR").value);
+        Number(
+            document.getElementById("rateUSD_IRR").value
+        );
 
     let usdPkr=
-        Number(document.getElementById("rateUSD_PKR").value);
+        Number(
+            document.getElementById("rateUSD_PKR").value
+        );
+
 
     if(!usdAfn || !usdIrr || !usdPkr){
+
         alert("ټول Rates داخل کړئ.");
         return;
     }
 
+
     exchangeRates={
+
         USD:{
             AFN:usdAfn,
             IRR:usdIrr,
@@ -1614,14 +2649,17 @@ function saveRates(){
             AFN:usdAfn/usdPkr,
             IRR:usdIrr/usdPkr
         }
+
     };
+
 
     localStorage.setItem(
         "exchangeRates",
         JSON.stringify(exchangeRates)
     );
 
-    alert("Exchange Rates Update شول.");
+
+    alert("✅ Exchange Rates Update شول.");
 
     closeModal("ratesModal");
 }
@@ -1634,10 +2672,12 @@ function saveRates(){
 function openSettings(){
 
     document.getElementById("newLoginPassword").value="";
+
     document.getElementById("newSupervisorPassword").value="";
 
     openModal("settingsModal");
 }
+
 
 function saveSettings(){
 
@@ -1645,17 +2685,32 @@ function saveSettings(){
         document.getElementById("newLoginPassword").value.trim();
 
     let supervisor=
-        document.getElementById("newSupervisorPassword").value.trim();
+        document.getElementById(
+            "newSupervisorPassword"
+        ).value.trim();
+
 
     if(login){
-        localStorage.setItem("loginPassword",login);
+
+        localStorage.setItem(
+            "loginPassword",
+            login
+        );
+
     }
+
 
     if(supervisor){
-        localStorage.setItem("supervisorPassword",supervisor);
+
+        localStorage.setItem(
+            "supervisorPassword",
+            supervisor
+        );
+
     }
 
-    alert("Settings Save شول.");
+
+    alert("✅ Settings Save شول.");
 
     closeModal("settingsModal");
 }
@@ -1670,24 +2725,38 @@ function logout(){
     if(confirm("ایا Logout کول غواړئ؟")){
 
         window.location.href="index.html";
+
     }
+
 }
 
 
 /* =========================
-   ESCAPE MODALS
+   MODAL CLICK
 ========================= */
 
 window.onclick=function(e){
 
-    document.querySelectorAll(".modal").forEach(m=>{
+    document
+    .querySelectorAll(".modal")
+    .forEach(m=>{
 
         if(e.target===m){
+
             m.style.display="none";
+
         }
 
     });
+
 };
+
+
+/* =========================
+   INITIAL SAVE
+========================= */
+
+saveData();
 
 </script>
 
