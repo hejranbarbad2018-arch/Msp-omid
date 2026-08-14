@@ -1,3490 +1,1693 @@
 <!DOCTYPE html>
 <html lang="ps" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>د صرافۍ مدیریت سیستم</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Exchange Dashboard</title>
 
 <style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,Tahoma,sans-serif;
-}
-
+*{box-sizing:border-box}
 body{
-    min-height:100vh;
-    color:#222;
-    background:
-    radial-gradient(circle at top left,rgba(40,190,120,.25),transparent 35%),
-    radial-gradient(circle at bottom right,rgba(0,70,45,.45),transparent 40%),
-    linear-gradient(135deg,#061b13,#0b3927,#126b43);
-    background-attachment:fixed;
+    margin:0;
+    font-family:Tahoma,Arial,sans-serif;
+    background:#f1f5f9;
+    color:#172033;
 }
-
-/* HEADER */
-
 .header{
-    background:rgba(0,35,23,.94);
+    background:linear-gradient(135deg,#064e3b,#10b981);
     color:white;
-    padding:15px 22px;
+    padding:18px 25px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    position:sticky;
-    top:0;
-    z-index:50;
-    box-shadow:0 5px 25px #0005;
+    box-shadow:0 3px 12px #0002;
 }
-
-.logo{
-    font-size:21px;
-    font-weight:bold;
-}
-
-.header-buttons{
-    display:flex;
-    gap:8px;
-}
-
-.header-btn{
+.header h1{margin:0;font-size:23px}
+.header button{
     border:0;
-    color:white;
-    padding:10px 14px;
+    background:white;
+    color:#065f46;
+    padding:10px 16px;
     border-radius:8px;
     cursor:pointer;
+    font-weight:bold;
+    margin-right:6px;
 }
-
-.settings-btn{
-    background:#2980b9;
-}
-
-.logout{
-    background:#c0392b;
-}
-
-
-/* MAIN */
-
-.container{
-    max-width:1200px;
-    margin:25px auto;
-    padding:25px;
-    background:#ffffff12;
-    border:1px solid #ffffff22;
-    border-radius:22px;
-    backdrop-filter:blur(10px);
-    box-shadow:0 15px 50px #0004;
-}
-
-.title{
-    text-align:center;
-    color:white;
-    margin-bottom:30px;
-}
-
-.title h1{
-    font-size:30px;
-    margin-bottom:8px;
-}
-
-.title p{
-    color:#d8eee4;
-}
-
-
-/* MENU */
+.container{padding:25px;max-width:1400px;margin:auto}
 
 .menu{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:15px;
+    margin-bottom:25px;
 }
-
 .menu button{
-    border:1px solid #ffffff22;
-    border-radius:18px;
-    padding:28px 15px;
-    font-size:17px;
+    border:0;
+    background:white;
+    padding:20px 10px;
+    border-radius:14px;
+    box-shadow:0 3px 12px #0001;
     cursor:pointer;
-    background:#fffffff5;
-    color:#123;
-    box-shadow:0 8px 25px #0003;
+    font-size:16px;
+    font-weight:bold;
+    color:#064e3b;
     transition:.2s;
 }
-
 .menu button:hover{
-    transform:translateY(-5px);
+    transform:translateY(-3px);
+    box-shadow:0 7px 18px #0002;
 }
 
-.icon{
-    display:block;
-    font-size:42px;
-    margin-bottom:12px;
+.card{
+    background:white;
+    border-radius:15px;
+    padding:22px;
+    box-shadow:0 3px 15px #0001;
+    margin-bottom:20px;
 }
+.card h2{margin-top:0;color:#065f46}
 
-.report-button{
-    background:linear-gradient(135deg,#126b43,#20a464)!important;
-    color:white!important;
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
 }
-
-.rate-button{
-    background:linear-gradient(135deg,#34495e,#2980b9)!important;
-    color:white!important;
+.stat{
+    background:white;
+    padding:20px;
+    border-radius:14px;
+    box-shadow:0 3px 12px #0001;
 }
-
-
-/* MODAL */
+.stat b{font-size:25px;color:#047857}
 
 .modal{
     display:none;
     position:fixed;
+    z-index:1000;
     inset:0;
-    background:#000b;
-    justify-content:center;
-    align-items:center;
-    padding:15px;
-    z-index:100;
-}
-
-.box{
-    width:720px;
-    max-width:100%;
-    max-height:92vh;
+    background:#0008;
     overflow:auto;
-    padding:25px;
-    border-radius:20px;
+    padding:30px 15px;
+}
+.modal-box{
     background:white;
-    box-shadow:0 20px 70px #0008;
+    max-width:850px;
+    margin:auto;
+    border-radius:15px;
+    padding:25px;
+    position:relative;
+}
+.close{
+    position:absolute;
+    left:15px;
+    top:12px;
+    border:0;
+    background:#fee2e2;
+    color:#991b1b;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:18px;
 }
 
-.box h2{
-    color:#126b43;
-    margin-bottom:18px;
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
 }
-
-label{
-    display:block;
-    margin-top:10px;
-    font-weight:bold;
-}
-
-input,
-select,
-textarea{
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+label{font-weight:bold;font-size:14px}
+input,select,textarea{
     width:100%;
-    padding:12px;
-    margin-top:5px;
-    border:1px solid #ccc;
+    padding:11px;
+    border:1px solid #cbd5e1;
     border-radius:8px;
     outline:none;
+    font-size:14px;
 }
-
-input:focus,
-select:focus,
-textarea:focus{
-    border-color:#126b43;
+input:focus,select:focus,textarea:focus{
+    border-color:#10b981;
 }
-
-textarea{
-    height:80px;
-    resize:none;
-}
+textarea{min-height:80px;resize:vertical}
 
 .btn{
-    width:100%;
-    padding:13px;
     border:0;
-    border-radius:9px;
-    margin-top:12px;
-    color:white;
-    font-size:16px;
+    padding:11px 18px;
+    border-radius:8px;
     cursor:pointer;
+    font-weight:bold;
 }
+.btn-primary{background:#059669;color:white}
+.btn-danger{background:#dc2626;color:white}
+.btn-warning{background:#d97706;color:white}
+.btn-gray{background:#64748b;color:white}
+.btn-info{background:#2563eb;color:white}
 
-.green{
-    background:#20a464;
-}
-
-.gray{
-    background:#777;
-}
-
-.blue{
-    background:#2980b9;
-}
-
-.red{
-    background:#c0392b;
-}
-
-.dark{
-    background:#34495e;
-}
-
-
-/* CUSTOMER */
-
-.customer-summary{
-    background:#f1faf5;
-    border:1px solid #c8e8d6;
-    border-radius:12px;
-    padding:18px;
-    margin-top:15px;
-    line-height:2;
-}
-
-.balance-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    margin-top:15px;
-}
-
-.balance{
-    background:white;
-    border-radius:10px;
-    padding:14px;
-    text-align:center;
-    border:1px solid #ddd;
-}
-
-.balance strong{
-    display:block;
-    color:#126b43;
-    font-size:20px;
-    margin-top:5px;
-}
-
-
-/* TABLE */
-
-.table-wrap{
-    overflow-x:auto;
-    margin-top:15px;
+.actions{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
 }
 
 table{
     width:100%;
     border-collapse:collapse;
-    min-width:850px;
+    margin-top:15px;
+    min-width:750px;
 }
-
-th,
-td{
-    padding:11px;
-    border-bottom:1px solid #ddd;
+.table-wrap{overflow-x:auto}
+th,td{
+    border:1px solid #e2e8f0;
+    padding:10px;
     text-align:center;
 }
-
 th{
-    background:#126b43;
+    background:#065f46;
     color:white;
 }
+tr:nth-child(even){background:#f8fafc}
 
-.deposit{
-    color:#159447;
-    font-weight:bold;
+.positive{color:#047857;font-weight:bold}
+.negative{color:#dc2626;font-weight:bold}
+
+.search-box{
+    display:flex;
+    gap:10px;
+    margin-bottom:15px;
 }
+.search-box input{flex:1}
 
-.withdraw{
-    color:#c0392b;
-    font-weight:bold;
-}
-
-.exchange{
-    color:#2980b9;
-    font-weight:bold;
-}
-
-.empty{
-    text-align:center;
-    padding:20px;
-    color:#777;
-}
-
-
-/* PASSWORD */
-
-.password-box{
-    width:390px;
-    max-width:100%;
-    padding:30px;
-    border-radius:20px;
-    background:white;
-    text-align:center;
-}
-
-.lock{
-    font-size:52px;
-    margin-bottom:10px;
-}
-
-.password-box h2{
-    color:#126b43;
-}
-
-.password-box p{
-    color:#777;
-    margin:10px 0 20px;
-}
-
-.pass-container{
-    position:relative;
-}
-
-.pass-container input{
-    direction:ltr;
-    text-align:left;
-    padding-left:45px;
-}
-
-.eye{
-    position:absolute;
-    left:10px;
-    top:10px;
-    border:0;
-    background:none;
-    cursor:pointer;
-    font-size:20px;
-}
-
-.pass-error{
-    display:none;
-    color:#c0392b;
-    margin-top:10px;
-    font-weight:bold;
-}
-
-
-/* REPORT */
-
-.currency-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-}
-
-.currency-btn{
-    border:0;
-    border-radius:12px;
-    padding:18px;
-    background:#126b43;
-    color:white;
-    font-size:17px;
-    cursor:pointer;
-}
-
-.report-result{
-    margin-top:20px;
-    background:#effaf4;
-    border:1px solid #bde2cd;
-    border-radius:14px;
-    padding:20px;
-    text-align:center;
-}
-
-.report-result .amount{
-    color:#126b43;
-    font-size:30px;
-    font-weight:bold;
-    margin-top:10px;
-}
-
-
-/* RATES */
-
-.rate-card{
-    background:#f4f8f6;
-    border:1px solid #ddd;
-    border-radius:12px;
-    padding:15px;
-    margin-top:12px;
-}
-
-.rate-card h3{
-    color:#126b43;
-    margin-bottom:10px;
-}
-
-.note{
-    background:#fff8df;
-    padding:12px;
+.message{
+    padding:10px;
     border-radius:8px;
-    color:#765b00;
-    margin-bottom:12px;
+    margin-top:10px;
+    display:none;
 }
+.success{background:#dcfce7;color:#166534}
+.error{background:#fee2e2;color:#991b1b}
 
-
-/* MOBILE */
-
-@media(max-width:800px){
-
-    .menu{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .balance-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
+@media(max-width:650px){
+    .form-grid{grid-template-columns:1fr}
+    .header h1{font-size:17px}
+    .container{padding:12px}
 }
-
-@media(max-width:550px){
-
-    .container{
-        margin:15px;
-        padding:15px;
-    }
-
-    .menu{
-        grid-template-columns:1fr;
-    }
-
-    .header{
-        padding:12px;
-    }
-
-    .logo{
-        font-size:16px;
-    }
-
-    .header-btn{
-        padding:8px;
-        font-size:12px;
-    }
-
-    .balance-grid,
-    .currency-grid{
-        grid-template-columns:1fr;
-    }
-
-}
-
 </style>
-
 </head>
 
 <body>
 
-
-<!-- HEADER -->
-
 <header class="header">
-
-<div class="logo">
-💱 د صرافۍ مدیریت سیستم
-</div>
-
-<div class="header-buttons">
-
-<button
-class="header-btn settings-btn"
-onclick="openSettings()">
-⚙️ Settings
-</button>
-
-<button
-class="header-btn logout"
-onclick="logout()">
-🚪 Logout
-</button>
-
-</div>
-
+    <h1>💱 د صرافۍ مدیریت سیستم</h1>
+    <div>
+        <button onclick="openSettings()">⚙️ Settings</button>
+        <button onclick="logout()">Logout</button>
+    </div>
 </header>
-
-
-<!-- MAIN -->
 
 <div class="container">
 
-<div class="title">
+<div class="menu">
+    <button onclick="openCustomer()">👤 Customer Registration</button>
+    <button onclick="openMoney('deposit')">💵 Deposit</button>
+    <button onclick="openMoney('withdraw')">💸 Withdraw</button>
+    <button onclick="openExchange()">🔄 Exchange</button>
+    <button onclick="openCustomers()">📋 Customers</button>
+    <button onclick="openCustomerHistory()">📜 Customer History</button>
+    <button onclick="openReports()">📊 General Report</button>
+    <button onclick="openRates()">💱 Exchange Rates</button>
+</div>
 
-<h1>
-د صرافۍ عمومي صفحه
-</h1>
+<div class="stats">
+    <div class="stat">
+        <div>ټول Customers</div>
+        <b id="totalCustomers">0</b>
+    </div>
+    <div class="stat">
+        <div>ټولې Transactions</div>
+        <b id="totalTransactions">0</b>
+    </div>
+    <div class="stat">
+        <div>Deposit</div>
+        <b id="totalDeposits">0</b>
+    </div>
+    <div class="stat">
+        <div>Withdraw</div>
+        <b id="totalWithdraws">0</b>
+    </div>
+</div>
 
-<p>
-د مشتریانو او مالي معاملاتو مدیریت
-</p>
+<div class="card" style="margin-top:20px">
+    <h2>د سیستم معلومات</h2>
+    <p>
+        د Customer ثبت، Deposit، Withdraw، Exchange او Transaction History
+        له همدې Dashboard څخه اداره کولی شئ.
+    </p>
+</div>
 
 </div>
 
 
-<div class="menu">
+<!-- CUSTOMER REGISTRATION -->
+<div class="modal" id="customerModal">
+<div class="modal-box">
+<button class="close" onclick="closeModal('customerModal')">×</button>
+<h2>👤 Customer Registration</h2>
+
+<input type="hidden" id="editCustomerId">
+
+<div class="form-grid">
+
+<div class="field">
+<label>Account Number *</label>
+<input id="cAccount">
+</div>
+
+<div class="field">
+<label>Customer Name *</label>
+<input id="cName">
+</div>
+
+<div class="field">
+<label>Phone</label>
+<input id="cPhone">
+</div>
+
+<div class="field">
+<label>ID Number</label>
+<input id="cId">
+</div>
+
+<div class="field">
+<label>Father Name</label>
+<input id="cFather">
+</div>
+
+<div class="field">
+<label>Birth Date</label>
+<input type="date" id="cBirth">
+</div>
+
+<div class="field">
+<label>Gender</label>
+<select id="cGender">
+<option value="">انتخاب</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+</div>
+
+<div class="field">
+<label>Job</label>
+<input id="cJob">
+</div>
+
+<div class="field full">
+<label>Address</label>
+<input id="cAddress">
+</div>
+
+<div class="field full">
+<label>Note</label>
+<textarea id="cNote"></textarea>
+</div>
+
+</div>
+
+<br>
+
+<div class="actions">
+<button class="btn btn-primary" onclick="saveCustomer()">💾 Save Customer</button>
+<button class="btn btn-gray" onclick="closeModal('customerModal')">Cancel</button>
+</div>
+
+<div id="customerMessage" class="message"></div>
+
+</div>
+</div>
 
 
-<!-- CUSTOMER -->
+<!-- DEPOSIT / WITHDRAW -->
+<div class="modal" id="moneyModal">
+<div class="modal-box">
+<button class="close" onclick="closeModal('moneyModal')">×</button>
 
-<button onclick="openCustomer()">
+<h2 id="moneyTitle">Transaction</h2>
 
-<span class="icon">👤</span>
+<input type="hidden" id="moneyType">
 
-Customer Registration
+<div class="form-grid">
 
-</button>
+<div class="field full">
+<label>Account Number *</label>
+<div class="search-box">
+<input id="accountInput" placeholder="Account Number">
+<button class="btn btn-info" onclick="findCustomer()">Search</button>
+</div>
+<div id="customerFound"></div>
+</div>
 
+<div class="field">
+<label>Currency *</label>
+<select id="moneyCurrency">
+<option value="AFN">AFN</option>
+<option value="USD">USD</option>
+<option value="PKR">PKR</option>
+<option value="IRR">Toman</option>
+</select>
+</div>
 
-<!-- DEPOSIT -->
+<div class="field">
+<label>Amount *</label>
+<input type="number" step="any" id="moneyAmount">
+</div>
 
-<button onclick="openMoney('deposit')">
+<div class="field full">
+<label>Narration / Description *</label>
+<textarea id="moneyDescription"
+placeholder="مثلاً: د احمد له طرفه جمع"></textarea>
+</div>
 
-<span class="icon">💰</span>
+</div>
 
-Deposit
+<br>
 
-</button>
+<button class="btn btn-primary" onclick="saveMoney()">💾 Save</button>
+<button class="btn btn-gray" onclick="closeModal('moneyModal')">Cancel</button>
 
-
-<!-- WITHDRAW -->
-
-<button onclick="openMoney('withdraw')">
-
-<span class="icon">💸</span>
-
-Withdraw
-
-</button>
+</div>
+</div>
 
 
 <!-- EXCHANGE -->
+<div class="modal" id="exchangeModal">
+<div class="modal-box">
+<button class="close" onclick="closeModal('exchangeModal')">×</button>
 
-<button onclick="openExchange()">
+<h2>🔄 Currency Exchange</h2>
 
-<span class="icon">💱</span>
+<div class="form-grid">
 
-Currency Exchange
+<div class="field full">
+<label>Account Number *</label>
+<input id="exchangeAccount">
+</div>
 
-</button>
+<div class="field">
+<label>From Currency</label>
+<select id="fromCurrency">
+<option value="AFN">AFN</option>
+<option value="USD">USD</option>
+<option value="PKR">PKR</option>
+<option value="IRR">Toman</option>
+</select>
+</div>
+
+<div class="field">
+<label>To Currency</label>
+<select id="toCurrency">
+<option value="USD">USD</option>
+<option value="AFN">AFN</option>
+<option value="PKR">PKR</option>
+<option value="IRR">Toman</option>
+</select>
+</div>
+
+<div class="field">
+<label>Amount *</label>
+<input type="number" step="any" id="exchangeAmount">
+</div>
+
+<div class="field">
+<label>Rate</label>
+<input type="number" step="any" id="exchangeRate">
+</div>
+
+<div class="field full">
+<label>Received Amount</label>
+<input id="receivedAmount" readonly>
+</div>
+
+<div class="field full">
+<label>Narration / Description *</label>
+<textarea id="exchangeDescription"
+placeholder="مثلاً: USD څخه AFN ته تبدیل"></textarea>
+</div>
+
+</div>
+
+<br>
+
+<button class="btn btn-primary" onclick="calculateExchange()">Calculate</button>
+<button class="btn btn-primary" onclick="exchangeMoney()">💾 Save Exchange</button>
+<button class="btn btn-gray" onclick="closeModal('exchangeModal')">Cancel</button>
+
+</div>
+</div>
 
 
 <!-- CUSTOMERS -->
+<div class="modal" id="customersModal">
+<div class="modal-box" style="max-width:1100px">
+<button class="close" onclick="closeModal('customersModal')">×</button>
 
-<button onclick="openCustomerHistory()">
+<h2>📋 Customers</h2>
 
-<span class="icon">👥</span>
+<div class="search-box">
+<input id="customerSearch" placeholder="Account یا Name..." oninput="renderCustomers()">
+</div>
 
-Customers
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Account</th>
+<th>Name</th>
+<th>Phone</th>
+<th>AFN</th>
+<th>USD</th>
+<th>PKR</th>
+<th>Toman</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="customersTable"></tbody>
+</table>
+</div>
 
-</button>
+</div>
+</div>
+
+
+<!-- HISTORY -->
+<div class="modal" id="historyModal">
+<div class="modal-box" style="max-width:1200px">
+<button class="close" onclick="closeModal('historyModal')">×</button>
+
+<h2>📜 Customer Transaction History</h2>
+
+<div class="search-box">
+<input id="historyAccount" placeholder="Account Number">
+<button class="btn btn-info" onclick="showCustomerHistory()">Search</button>
+</div>
+
+<div id="historyCustomer"></div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>ساعت</th>
+<th>تاریخ</th>
+<th>مبلغ</th>
+<th>Balance</th>
+<th>اسعار</th>
+<th>Description</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="historyTable"></tbody>
+</table>
+</div>
+
+</div>
+</div>
 
 
 <!-- REPORT -->
+<div class="modal" id="reportsModal">
+<div class="modal-box" style="max-width:1100px">
+<button class="close" onclick="closeModal('reportsModal')">×</button>
 
-<button
-class="report-button"
-onclick="openReports()">
+<h2>📊 General Report</h2>
 
-<span class="icon">📊</span>
+<div class="stats">
+<div class="stat">Deposit<br><b id="reportDeposit">0</b></div>
+<div class="stat">Withdraw<br><b id="reportWithdraw">0</b></div>
+<div class="stat">Transactions<br><b id="reportTransactions">0</b></div>
+</div>
 
-عمومي راپور
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Account</th>
+<th>Customer</th>
+<th>Type</th>
+<th>Currency</th>
+<th>Amount</th>
+<th>Description</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody id="reportTable"></tbody>
+</table>
+</div>
 
-</button>
+</div>
+</div>
 
 
 <!-- RATES -->
+<div class="modal" id="ratesModal">
+<div class="modal-box">
+<button class="close" onclick="closeModal('ratesModal')">×</button>
 
-<button
-class="rate-button"
-onclick="openRates()">
+<h2>💱 Exchange Rates</h2>
 
-<span class="icon">💹</span>
+<div class="form-grid">
 
-Exchange Rates
+<div class="field">
+<label>USD → AFN</label>
+<input id="rateUSD_AFN" type="number">
+</div>
 
-</button>
+<div class="field">
+<label>USD → Toman</label>
+<input id="rateUSD_IRR" type="number">
+</div>
 
-
+<div class="field">
+<label>USD → PKR</label>
+<input id="rateUSD_PKR" type="number">
 </div>
 
 </div>
 
-
-
-<!-- =========================================
-     CUSTOMER REGISTRATION
-========================================= -->
-
-<div
-class="modal"
-id="customerModal">
-
-<div class="box">
-
-<h2>
-👤 د مشتری ثبتول
-</h2>
-
-<label>
-د مشتری بشپړ نوم
-</label>
-
-<input
-id="cName"
-placeholder="مثلاً احمد خان">
-
-
-<label>
-د موبایل نمبر / Account Number
-</label>
-
-<input
-id="cPhone"
-type="tel"
-placeholder="0700000000">
-
-
-<label>
-د تذکرې نمبر
-</label>
-
-<input
-id="cId">
-
-
-<label>
-د پلار نوم
-</label>
-
-<input
-id="cFather">
-
-
-<label>
-د زېږېدو نېټه
-</label>
-
-<input
-id="cBirth"
-type="date">
-
-
-<label>
-جنسیت
-</label>
-
-<select id="cGender">
-
-<option value="">
-انتخاب کړئ
-</option>
-
-<option>
-نارینه
-</option>
-
-<option>
-ښځینه
-</option>
-
-</select>
-
-
-<label>
-دنده / وظیفه
-</label>
-
-<input
-id="cJob">
-
-
-<label>
-پته
-</label>
-
-<textarea
-id="cAddress">
-</textarea>
-
-
-<label>
-یادښت
-</label>
-
-<textarea
-id="cNote">
-</textarea>
-
-
-<button
-class="btn green"
-onclick="registerCustomer()">
-
-🔐 Register Customer
-
-</button>
-
-
-<button
-class="btn gray"
-onclick="closeAll()">
-
-Close
-
-</button>
-
-</div>
-</div>
-
-
-
-<!-- =========================================
-     DEPOSIT / WITHDRAW
-========================================= -->
-
-<div
-class="modal"
-id="moneyModal">
-
-<div class="box">
-
-<h2 id="moneyTitle"></h2>
-
-
-<label>
-Account Number / Mobile
-</label>
-
-<input
-id="accountInput"
-type="tel"
-placeholder="د مشتری Account Number">
-
-
-<button
-class="btn dark"
-onclick="findCustomer()">
-
-🔍 د مشتری لټون
-
-</button>
-
-
-<div
-class="customer-summary"
-id="customerInfo"
-style="display:none">
-</div>
-
-
-<label>
-Currency
-</label>
-
-<select id="moneyCurrency">
-
-<option value="AFN">
-AFN - افغاني
-</option>
-
-<option value="USD">
-USD - ډالر
-</option>
-
-<option value="IRR">
-IRR - تومان
-</option>
-
-<option value="PKR">
-PKR - کلدار
-</option>
-
-</select>
-
-
-<label>
-Amount
-</label>
-
-<input
-id="moneyAmount"
-type="number"
-min="0"
-placeholder="مبلغ">
-
-
-<label>
-Narration / Description
-</label>
-
-<textarea
-id="moneyDescription"
-placeholder="مثلاً: د احمد له طرفه جمع، محمد ته ورکړل، د شرکت له طرفه معاش...">
-</textarea>
-
-
-<button
-class="btn green"
-onclick="saveMoney()">
-
-🔐 Confirm & Save
-
-</button>
-
-
-<button
-class="btn gray"
-onclick="closeAll()">
-
-Close
-
-</button>
-
-</div>
-</div>
-
-
-
-<!-- =========================================
-     CUSTOMER HISTORY
-========================================= -->
-
-<div
-class="modal"
-id="customerHistoryModal">
-
-<div class="box">
-
-<h2>
-👥 د مشتری معاملاتي تاریخچه
-</h2>
-
-
-<label>
-د مشتری Account Number
-</label>
-
-<input
-id="historyAccount"
-type="tel"
-placeholder="مثلاً 0700000000">
-
-
-<button
-class="btn blue"
-onclick="showCustomerHistory()">
-
-🔍 د مشتری معلومات
-
-</button>
-
-
-<div
-id="historyResult">
-</div>
-
-
-<button
-class="btn gray"
-onclick="closeAll()">
-
-Close
-
-</button>
-
-</div>
-</div>
-
-
-
-<!-- =========================================
-     EXCHANGE
-========================================= -->
-
-<div
-class="modal"
-id="exchangeModal">
-
-<div class="box">
-
-<h2>
-💱 Currency Exchange
-</h2>
-
-
-<div class="note">
-
-Exchange د ټاکل شوو Exchange Rates مطابق ترسره کېږي.
-
-</div>
-
-
-<label>
-Customer Account Number
-</label>
-
-<input
-id="exchangeAccount"
-type="tel">
-
-
-<label>
-From Currency
-</label>
-
-<select id="fromCurrency">
-
-<option value="USD">
-USD - ډالر
-</option>
-
-<option value="AFN">
-AFN - افغاني
-</option>
-
-<option value="IRR">
-IRR - تومان
-</option>
-
-<option value="PKR">
-PKR - کلدار
-</option>
-
-</select>
-
-
-<label>
-To Currency
-</label>
-
-<select id="toCurrency">
-
-<option value="AFN">
-AFN - افغاني
-</option>
-
-<option value="USD">
-USD - ډالر
-</option>
-
-<option value="IRR">
-IRR - تومان
-</option>
-
-<option value="PKR">
-PKR - کلدار
-</option>
-
-</select>
-
-
-<label>
-Amount
-</label>
-
-<input
-id="exchangeAmount"
-type="number"
-min="0">
-
-
-<label>
-Narration / Description
-</label>
-
-<textarea
-id="exchangeDescription"
-placeholder="د Exchange تشریح">
-</textarea>
-
-
-<button
-class="btn green"
-onclick="exchangeMoney()">
-
-🔐 Exchange
-
-</button>
-
-
-<button
-class="btn gray"
-onclick="closeAll()">
-
-Close
-
-</button>
-
-</div>
-</div>
-
-
-
-<!-- =========================================
-     REPORT
-========================================= -->
-
-<div
-class="modal"
-id="reportsModal">
-
-<div class="box">
-
-<h2 style="text-align:center">
-📊 عمومي راپور
-</h2>
-
-
-<p
-style="text-align:center;color:#777;margin-bottom:20px">
-
-د کوم اسعارو عمومي بیلانس لیدل غواړئ؟
-
-</p>
-
-
-<div class="currency-grid">
-
-
-<button
-class="currency-btn"
-onclick="requestCurrencyReport('AFN')">
-
-🇦🇫
 <br>
-افغاني
 
-</button>
+<button class="btn btn-primary" onclick="saveRates()">💾 Save Rates</button>
+
+</div>
+</div>
 
 
-<button
-class="currency-btn"
-onclick="requestCurrencyReport('USD')">
+<!-- SETTINGS -->
+<div class="modal" id="settingsModal">
+<div class="modal-box">
+<button class="close" onclick="closeModal('settingsModal')">×</button>
 
-🇺🇸
+<h2>⚙️ Settings</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>New Login Password</label>
+<input type="password" id="newLoginPassword">
+</div>
+
+<div class="field">
+<label>New Supervisor Password</label>
+<input type="password" id="newSupervisorPassword">
+</div>
+
+</div>
+
 <br>
-ډالر
 
-</button>
-
-
-<button
-class="currency-btn"
-onclick="requestCurrencyReport('IRR')">
-
-🇮🇷
-<br>
-تومان
-
-</button>
-
-
-<button
-class="currency-btn"
-onclick="requestCurrencyReport('PKR')">
-
-🇵🇰
-<br>
-کلدار
-
-</button>
-
-
-</div>
-
-
-<div
-id="reportResult">
-</div>
-
-
-<button
-class="btn gray"
-onclick="closeAll()">
-
-Close
-
-</button>
+<button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
 
 </div>
 </div>
 
 
+<!-- PASSWORD -->
+<div class="modal" id="passwordModal">
+<div class="modal-box" style="max-width:400px">
 
-<!-- =========================================
-     RATES
-========================================= -->
+<h2>🔐 Supervisor Authorization</h2>
 
-<div
-class="modal"
-id="ratesModal">
+<p>د عملیات لپاره Supervisor Password داخل کړئ.</p>
 
-<div class="box">
-
-<h2>
-💹 Exchange Rates
-</h2>
-
-
-<div class="note">
-
-دلته Exchange Rates تنظیم کړئ.
-
-</div>
-
-
-<div class="rate-card">
-
-<h3>
-🇺🇸 USD
-</h3>
-
-
-<label>
-1 USD = AFN
-</label>
-
-<input
-id="rateUSD_AFN"
-type="number"
-step="0.000001">
-
-
-<label>
-1 USD = IRR
-</label>
-
-<input
-id="rateUSD_IRR"
-type="number"
-step="0.000001">
-
-
-<label>
-1 USD = PKR
-</label>
-
-<input
-id="rateUSD_PKR"
-type="number"
-step="0.000001">
-
-</div>
-
-
-<div class="rate-card">
-
-<h3>
-🇦🇫 AFN
-</h3>
-
-
-<label>
-1 AFN = USD
-</label>
-
-<input
-id="rateAFN_USD"
-type="number"
-step="0.000001">
-
-
-<label>
-1 AFN = IRR
-</label>
-
-<input
-id="rateAFN_IRR"
-type="number"
-step="0.000001">
-
-
-<label>
-1 AFN = PKR
-</label>
-
-<input
-id="rateAFN_PKR"
-type="number"
-step="0.000001">
-
-</div>
-
-
-<div class="rate-card">
-
-<h3>
-🇮🇷 IRR - تومان
-</h3>
-
-
-<label>
-1 IRR = USD
-</label>
-
-<input
-id="rateIRR_USD"
-type="number"
-step="0.000001">
-
-
-<label>
-1 IRR = AFN
-</label>
-
-<input
-id="rateIRR_AFN"
-type="number"
-step="0.000001">
-
-
-<label>
-1 IRR = PKR
-</label>
-
-<input
-id="rateIRR_PKR"
-type="number"
-step="0.000001">
-
-</div>
-
-
-<div class="rate-card">
-
-<h3>
-🇵🇰 PKR - کلدار
-</h3>
-
-
-<label>
-1 PKR = USD
-</label>
-
-<input
-id="ratePKR_USD"
-type="number"
-step="0.000001">
-
-
-<label>
-1 PKR = AFN
-</label>
-
-<input
-id="ratePKR_AFN"
-type="number"
-step="0.000001">
-
-
-<label>
-1 PKR = IRR
-</label>
-
-<input
-id="ratePKR_IRR"
-type="number"
-step="0.000001">
-
-</div>
-
-
-<button
-class="btn green"
-onclick="saveRates()">
-
-🔐 Save Exchange Rates
-
-</button>
-
-
-<button
-class="btn gray"
-onclick="closeAll()">
-
-Close
-
-</button>
-
-</div>
-</div>
-
-
-
-<!-- =========================================
-     SETTINGS
-========================================= -->
-
-<div
-class="modal"
-id="settingsModal">
-
-<div class="box">
-
-<h2>
-⚙️ Settings
-</h2>
-
-
-<div class="rate-card">
-
-<h3>
-🔑 Login Password
-</h3>
-
-
-<label>
-نوی Login Password
-</label>
-
-<input
-id="newLoginPassword"
-type="password">
-
-
-<button
-class="btn blue"
-onclick="changeLoginPassword()">
-
-🔐 Login Password بدلول
-
-</button>
-
-</div>
-
-
-<div class="rate-card">
-
-<h3>
-🛡️ Supervisor Password
-</h3>
-
-
-<label>
-نوی Supervisor Password
-</label>
-
-<input
-id="newSupervisorPassword"
-type="password">
-
-
-<button
-class="btn green"
-onclick="changeSupervisorPassword()">
-
-🔐 Supervisor Password بدلول
-
-</button>
-
-</div>
-
-
-<button
-class="btn gray"
-onclick="closeAll()">
-
-Close
-
-</button>
-
-</div>
-</div>
-
-
-
-<!-- =========================================
-     PASSWORD
-========================================= -->
-
-<div
-class="modal"
-id="passwordModal">
-
-<div class="password-box">
-
-<div class="lock">
-🔐
-</div>
-
-
-<h2>
-Supervisor Authorization
-</h2>
-
-
-<p id="passwordMessage">
-Supervisor Password داخل کړئ
-</p>
-
-
-<div class="pass-container">
-
-<input
-id="supervisorPassword"
-type="password"
-placeholder="Password"
+<input type="password" id="supervisorPassword"
+placeholder="Supervisor Password"
 onkeydown="passwordEnter(event)">
 
+<p id="passError" style="color:red"></p>
 
-<button
-class="eye"
-onclick="togglePassword()">
+<br>
 
-👁
-
-</button>
-
-</div>
-
-
-<div
-id="passError"
-class="pass-error">
-
-❌ Password غلط دی
-
-</div>
-
-
-<button
-class="btn green"
-onclick="verifyPassword()">
-
-🔓 تایید
-
-</button>
-
-
-<button
-class="btn gray"
-onclick="cancelPassword()">
-
-لغوه
-
-</button>
+<button class="btn btn-primary" onclick="verifyPassword()">Confirm</button>
+<button class="btn btn-gray" onclick="cancelPassword()">Cancel</button>
 
 </div>
 </div>
-
 
 
 <script>
 
-/* =========================================
-   PASSWORD
-========================================= */
-
-const DEFAULT_LOGIN_PASSWORD="123456";
-
-const DEFAULT_SUPERVISOR_PASSWORD="2580";
-
-let loginPassword=
-localStorage.getItem("loginPassword")
-||DEFAULT_LOGIN_PASSWORD;
-
-let supervisorPassword=
-localStorage.getItem("supervisorPassword")
-||DEFAULT_SUPERVISOR_PASSWORD;
-
-
-/* =========================================
+/* =========================
    DATA
-========================================= */
+========================= */
 
-let customers=
-JSON.parse(
-localStorage.getItem("customers")
-)||[];
+let customers =
+JSON.parse(localStorage.getItem("customers") || "[]");
 
-let transactions=
-JSON.parse(
-localStorage.getItem("transactions")
-)||[];
+let transactions =
+JSON.parse(localStorage.getItem("transactions") || "[]");
 
-
-/* =========================================
-   RATES
-========================================= */
-
-let rates=
-JSON.parse(
-localStorage.getItem("exchangeRates")
-)||{
-
-USD:{
-AFN:70,
-IRR:42000,
-PKR:280
-},
-
-AFN:{
-USD:1/70,
-IRR:42000/70,
-PKR:280/70
-},
-
-IRR:{
-USD:1/42000,
-AFN:1/42000,
-PKR:280/42000
-},
-
-PKR:{
-USD:1/280,
-AFN:70/280,
-IRR:42000/280
-}
-
+let exchangeRates =
+JSON.parse(localStorage.getItem("exchangeRates") || "null") || {
+    USD:{AFN:70,IRR:42000,PKR:280},
+    AFN:{USD:1/70,IRR:42000/70,PKR:280/70},
+    IRR:{USD:1/42000,AFN:1/42000,PKR:280/42000},
+    PKR:{USD:1/280,AFN:70/280,IRR:42000/280}
 };
 
-
-/* =========================================
-   FIX CUSTOMER DATA
-========================================= */
-
-customers.forEach(function(c){
-
-    if(!c.balance)
-        c.balance={};
-
-    if(c.balance.AFN===undefined)
-        c.balance.AFN=0;
-
-    if(c.balance.USD===undefined)
-        c.balance.USD=0;
-
-    if(c.balance.IRR===undefined)
-        c.balance.IRR=0;
-
-    if(c.balance.PKR===undefined)
-        c.balance.PKR=0;
-
-    if(!c.id)
-        c.id=Date.now()+Math.random();
-
-});
-
-saveData();
-
-
-/* =========================================
-   SAVE DATA
-========================================= */
-
-function saveData(){
-
-    localStorage.setItem(
-        "customers",
-        JSON.stringify(customers)
-    );
-
-    localStorage.setItem(
-        "transactions",
-        JSON.stringify(transactions)
-    );
-
+if(!localStorage.getItem("loginPassword")){
+    localStorage.setItem("loginPassword","5766");
 }
 
-
-/* =========================================
-   PASSWORD SYSTEM
-========================================= */
+if(!localStorage.getItem("supervisorPassword")){
+    localStorage.setItem("supervisorPassword","2580");
+}
 
 let pendingAction=null;
 
-let passwordMode="supervisor";
 
+/* =========================
+   BASIC
+========================= */
 
-function askPassword(
-    action,
-    mode="supervisor"
-){
+function saveData(){
+    localStorage.setItem("customers",JSON.stringify(customers));
+    localStorage.setItem("transactions",JSON.stringify(transactions));
+}
 
-    pendingAction=action;
+function closeModal(id){
+    document.getElementById(id).style.display="none";
+}
 
-    passwordMode=mode;
+function openModal(id){
+    document.getElementById(id).style.display="block";
+}
 
-    document.getElementById(
-        "supervisorPassword"
-    ).value="";
+function uid(){
+    return Date.now().toString(36)+Math.random().toString(36).substring(2,8);
+}
 
-    document.getElementById(
-        "passError"
-    ).style.display="none";
+function money(n){
+    return Number(n||0).toLocaleString("en-US",{
+        maximumFractionDigits:2
+    });
+}
 
-
-    if(mode==="currentLogin"){
-
-        document.getElementById(
-            "passwordMessage"
-        ).innerText=
-        "اوسنی Login Password داخل کړئ";
-
-    }else{
-
-        document.getElementById(
-            "passwordMessage"
-        ).innerText=
-        "Supervisor Password داخل کړئ";
-
-    }
-
-
-    document.getElementById(
-        "passwordModal"
-    ).style.display="flex";
-
-
-    setTimeout(function(){
-
-        document.getElementById(
-            "supervisorPassword"
-        ).focus();
-
-    },100);
-
+function escapeHtml(value){
+    return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
 
-function verifyPassword(){
+/* =========================
+   DASHBOARD
+========================= */
 
-    let entered=
-        document.getElementById(
-            "supervisorPassword"
-        ).value;
+function updateDashboard(){
 
+    document.getElementById("totalCustomers").textContent =
+        customers.length;
 
-    let correct=
-        passwordMode==="currentLogin"
-        ?loginPassword
-        :supervisorPassword;
+    document.getElementById("totalTransactions").textContent =
+        transactions.length;
 
+    let dep=0;
+    let wit=0;
 
-    if(entered!==correct){
+    transactions.forEach(t=>{
+        if(t.type==="deposit"){
+            dep += Math.abs(Number(t.amount)||0);
+        }
 
-        document.getElementById(
-            "passError"
-        ).style.display="block";
+        if(t.type==="withdraw"){
+            wit += Math.abs(Number(t.amount)||0);
+        }
+    });
 
-        document.getElementById(
-            "supervisorPassword"
-        ).value="";
-
-        return;
-
-    }
-
-
-    document.getElementById(
-        "passwordModal"
-    ).style.display="none";
-
-
-    if(pendingAction){
-
-        let action=pendingAction;
-
-        pendingAction=null;
-
-        action();
-
-    }
-
+    document.getElementById("totalDeposits").textContent=money(dep);
+    document.getElementById("totalWithdraws").textContent=money(wit);
 }
 
-
-function cancelPassword(){
-
-    pendingAction=null;
-
-    document.getElementById(
-        "passwordModal"
-    ).style.display="none";
-
-}
+updateDashboard();
 
 
-function togglePassword(){
-
-    let input=
-        document.getElementById(
-            "supervisorPassword"
-        );
-
-    input.type=
-        input.type==="password"
-        ?"text"
-        :"password";
-
-}
-
-
-function passwordEnter(e){
-
-    if(e.key==="Enter")
-        verifyPassword();
-
-}
-
-
-/* =========================================
-   CUSTOMER REGISTRATION
-========================================= */
+/* =========================
+   CUSTOMER
+========================= */
 
 function openCustomer(){
 
-    document.getElementById(
-        "customerModal"
-    ).style.display="flex";
+    document.getElementById("editCustomerId").value="";
+    document.getElementById("cAccount").value="";
+    document.getElementById("cName").value="";
+    document.getElementById("cPhone").value="";
+    document.getElementById("cId").value="";
+    document.getElementById("cFather").value="";
+    document.getElementById("cBirth").value="";
+    document.getElementById("cGender").value="";
+    document.getElementById("cJob").value="";
+    document.getElementById("cAddress").value="";
+    document.getElementById("cNote").value="";
 
+    openModal("customerModal");
 }
 
+function saveCustomer(){
 
-function registerCustomer(){
+    let editId =
+        document.getElementById("editCustomerId").value;
 
-    askPassword(function(){
+    let account =
+        document.getElementById("cAccount").value.trim();
 
-        let name=
-            document.getElementById(
-                "cName"
-            ).value.trim();
+    let name =
+        document.getElementById("cName").value.trim();
 
-        let phone=
-            document.getElementById(
-                "cPhone"
-            ).value.trim();
+    if(!account || !name){
+        alert("Account Number او Customer Name ضروري دی.");
+        return;
+    }
 
+    let duplicate=customers.find(c=>
+        c.account===account && c.id!==editId
+    );
 
-        if(!name||!phone){
+    if(duplicate){
+        alert("دا Account Number مخکې موجود دی.");
+        return;
+    }
 
-            alert(
-                "❌ نوم او Account Number ضروري دي"
-            );
+    if(editId){
 
-            return;
+        let c=customers.find(x=>x.id===editId);
 
-        }
+        if(!c)return;
 
-
-        let exists=
-            customers.find(
-                c=>c.account===phone
-            );
-
-
-        if(exists){
-
-            alert(
-                "❌ دا Account Number مخکې ثبت شوی دی"
-            );
-
-            return;
-
-        }
-
-
-        customers.push({
-
-            id:Date.now(),
-
-            account:phone,
-
-            name:name,
-
-            phone:phone,
-
-            idNumber:
-                document.getElementById(
-                    "cId"
-                ).value.trim(),
-
-            father:
-                document.getElementById(
-                    "cFather"
-                ).value.trim(),
-
-            birth:
-                document.getElementById(
-                    "cBirth"
-                ).value,
-
-            gender:
-                document.getElementById(
-                    "cGender"
-                ).value,
-
-            job:
-                document.getElementById(
-                    "cJob"
-                ).value.trim(),
-
-            address:
-                document.getElementById(
-                    "cAddress"
-                ).value.trim(),
-
-            note:
-                document.getElementById(
-                    "cNote"
-                ).value.trim(),
-
-            balance:{
-
-                AFN:0,
-
-                USD:0,
-
-                IRR:0,
-
-                PKR:0
-
-            },
-
-            created:
-                new Date().toLocaleString()
-
-        });
-
+        c.account=account;
+        c.name=name;
+        c.phone=document.getElementById("cPhone").value;
+        c.idNumber=document.getElementById("cId").value;
+        c.father=document.getElementById("cFather").value;
+        c.birth=document.getElementById("cBirth").value;
+        c.gender=document.getElementById("cGender").value;
+        c.job=document.getElementById("cJob").value;
+        c.address=document.getElementById("cAddress").value;
+        c.note=document.getElementById("cNote").value;
 
         saveData();
 
+        alert("Customer معلومات Update شول.");
+        closeModal("customerModal");
 
-        alert(
-            "✅ مشتری په بریالیتوب ثبت شو"
-        );
+        renderCustomers();
+        updateDashboard();
 
+        return;
+    }
 
-        closeAll();
+    customers.push({
+        id:uid(),
+        account:account,
+        name:name,
+        phone:document.getElementById("cPhone").value,
+        idNumber:document.getElementById("cId").value,
+        father:document.getElementById("cFather").value,
+        birth:document.getElementById("cBirth").value,
+        gender:document.getElementById("cGender").value,
+        job:document.getElementById("cJob").value,
+        address:document.getElementById("cAddress").value,
+        note:document.getElementById("cNote").value,
 
+        balance:{
+            AFN:0,
+            USD:0,
+            PKR:0,
+            IRR:0
+        },
+
+        created:new Date().toISOString()
     });
 
+    saveData();
+
+    alert("Customer په بریالیتوب سره ثبت شو.");
+    closeModal("customerModal");
+
+    updateDashboard();
 }
 
 
-/* =========================================
+/* =========================
+   EDIT CUSTOMER
+========================= */
+
+function editCustomer(id){
+
+    let c=customers.find(x=>x.id===id);
+
+    if(!c)return;
+
+    document.getElementById("editCustomerId").value=c.id;
+    document.getElementById("cAccount").value=c.account||"";
+    document.getElementById("cName").value=c.name||"";
+    document.getElementById("cPhone").value=c.phone||"";
+    document.getElementById("cId").value=c.idNumber||"";
+    document.getElementById("cFather").value=c.father||"";
+    document.getElementById("cBirth").value=c.birth||"";
+    document.getElementById("cGender").value=c.gender||"";
+    document.getElementById("cJob").value=c.job||"";
+    document.getElementById("cAddress").value=c.address||"";
+    document.getElementById("cNote").value=c.note||"";
+
+    closeModal("customersModal");
+
+    openModal("customerModal");
+}
+
+
+/* =========================
+   PASSWORD
+========================= */
+
+function askPassword(action){
+
+    pendingAction=action;
+
+    document.getElementById("supervisorPassword").value="";
+    document.getElementById("passError").textContent="";
+
+    openModal("passwordModal");
+
+    setTimeout(()=>{
+        document.getElementById("supervisorPassword").focus();
+    },100);
+}
+
+function verifyPassword(){
+
+    let pass =
+        document.getElementById("supervisorPassword").value;
+
+    let saved =
+        localStorage.getItem("supervisorPassword") || "2580";
+
+    if(pass!==saved){
+
+        document.getElementById("passError").textContent=
+            "❌ Supervisor Password غلط دی.";
+
+        return;
+    }
+
+    closeModal("passwordModal");
+
+    let action=pendingAction;
+    pendingAction=null;
+
+    if(action)action();
+}
+
+function cancelPassword(){
+    pendingAction=null;
+    closeModal("passwordModal");
+}
+
+function passwordEnter(e){
+
+    if(e.key==="Enter"){
+        verifyPassword();
+    }
+}
+
+
+/* =========================
+   DELETE CUSTOMER
+========================= */
+
+function deleteCustomer(id){
+
+    askPassword(function(){
+
+        let c=customers.find(x=>x.id===id);
+
+        if(!c)return;
+
+        if(!confirm(
+            "ایا غواړئ Customer او د هغه ټول Transactions حذف کړئ؟"
+        )){
+            return;
+        }
+
+        customers=customers.filter(x=>x.id!==id);
+
+        transactions=
+            transactions.filter(t=>t.customer_id!==id);
+
+        saveData();
+
+        renderCustomers();
+        updateDashboard();
+
+        alert("Customer حذف شو.");
+    });
+}
+
+
+/* =========================
+   CUSTOMERS LIST
+========================= */
+
+function openCustomers(){
+    renderCustomers();
+    openModal("customersModal");
+}
+
+function renderCustomers(){
+
+    let search=
+        (document.getElementById("customerSearch")?.value||"")
+        .trim()
+        .toLowerCase();
+
+    let list=customers.filter(c=>
+        String(c.account).toLowerCase().includes(search) ||
+        String(c.name).toLowerCase().includes(search)
+    );
+
+    let html="";
+
+    list.forEach(c=>{
+
+        if(!c.balance){
+            c.balance={
+                AFN:0,
+                USD:0,
+                PKR:0,
+                IRR:0
+            };
+        }
+
+        html+=`
+        <tr>
+            <td>${escapeHtml(c.account)}</td>
+            <td>${escapeHtml(c.name)}</td>
+            <td>${escapeHtml(c.phone)}</td>
+            <td>${money(c.balance.AFN)}</td>
+            <td>${money(c.balance.USD)}</td>
+            <td>${money(c.balance.PKR)}</td>
+            <td>${money(c.balance.IRR)}</td>
+            <td>
+                <div class="actions">
+                    <button class="btn btn-warning"
+                    onclick="askPassword(()=>editCustomer('${c.id}'))">
+                    ✏️ Edit
+                    </button>
+
+                    <button class="btn btn-danger"
+                    onclick="deleteCustomer('${c.id}')">
+                    🗑️ Delete
+                    </button>
+                </div>
+            </td>
+        </tr>`;
+    });
+
+    document.getElementById("customersTable").innerHTML =
+        html || `<tr><td colspan="8">Customer پیدا نه شو.</td></tr>`;
+}
+
+
+/* =========================
    MONEY
-========================================= */
-
-let operation="";
-
+========================= */
 
 function openMoney(type){
 
-    operation=type;
+    document.getElementById("moneyType").value=type;
 
+    document.getElementById("accountInput").value="";
+    document.getElementById("moneyAmount").value="";
+    document.getElementById("moneyDescription").value="";
+    document.getElementById("customerFound").innerHTML="";
 
-    document.getElementById(
-        "moneyTitle"
-    ).innerText=
-        type==="deposit"
-        ?"💰 Deposit"
-        :"💸 Withdraw";
+    document.getElementById("moneyTitle").textContent =
+        type==="deposit" ? "💵 Deposit" : "💸 Withdraw";
 
-
-    document.getElementById(
-        "accountInput"
-    ).value="";
-
-
-    document.getElementById(
-        "moneyAmount"
-    ).value="";
-
-
-    document.getElementById(
-        "moneyDescription"
-    ).value="";
-
-
-    document.getElementById(
-        "customerInfo"
-    ).style.display="none";
-
-
-    document.getElementById(
-        "moneyModal"
-    ).style.display="flex";
-
+    openModal("moneyModal");
 }
-
-
-/* FIND CUSTOMER */
 
 function findCustomer(){
 
     let account=
-        document.getElementById(
-            "accountInput"
-        ).value.trim();
+        document.getElementById("accountInput").value.trim();
 
+    let c=customers.find(x=>x.account===account);
 
-    let customer=
-        customers.find(
-            c=>c.account===account
-        );
+    if(!c){
 
+        document.getElementById("customerFound").innerHTML=
+            `<div class="message error" style="display:block">
+            Customer پیدا نه شو.
+            </div>`;
 
-    let info=
-        document.getElementById(
-            "customerInfo"
-        );
-
-
-    if(!customer){
-
-        info.style.display="block";
-
-        info.innerHTML=
-        "<b style='color:red'>❌ مشتری پیدا نشو</b>";
-
-        return;
-
+        return null;
     }
 
+    document.getElementById("customerFound").innerHTML=
+        `<div class="message success" style="display:block">
+        ✅ ${escapeHtml(c.name)} — ${escapeHtml(c.account)}
+        </div>`;
 
-    info.style.display="block";
-
-
-    info.innerHTML=
-
-    `
-
-    <b>نوم:</b>
-    ${customer.name}
-
-    <br>
-
-    <b>Account:</b>
-    ${customer.account}
-
-    <div class="balance-grid">
-
-        <div class="balance">
-        AFN
-        <strong>
-        ${Number(
-            customer.balance.AFN
-        ).toLocaleString()}
-        </strong>
-        </div>
-
-
-        <div class="balance">
-        USD
-        <strong>
-        ${Number(
-            customer.balance.USD
-        ).toLocaleString()}
-        </strong>
-        </div>
-
-
-        <div class="balance">
-        IRR
-        <strong>
-        ${Number(
-            customer.balance.IRR
-        ).toLocaleString()}
-        </strong>
-        </div>
-
-
-        <div class="balance">
-        PKR
-        <strong>
-        ${Number(
-            customer.balance.PKR
-        ).toLocaleString()}
-        </strong>
-        </div>
-
-    </div>
-
-    `;
-
+    return c;
 }
-
-
-/* =========================================
-   DEPOSIT / WITHDRAW SAVE
-========================================= */
 
 function saveMoney(){
 
-    askPassword(function(){
-
-        let account=
-            document.getElementById(
-                "accountInput"
-            ).value.trim();
-
-
-        let currency=
-            document.getElementById(
-                "moneyCurrency"
-            ).value;
-
-
-        let amount=
-            Number(
-                document.getElementById(
-                    "moneyAmount"
-                ).value
-            );
-
-
-        let narration=
-            document.getElementById(
-                "moneyDescription"
-            ).value.trim();
-
-
-        let customer=
-            customers.find(
-                c=>c.account===account
-            );
-
-
-        if(!customer){
-
-            alert(
-                "❌ Customer پیدا نشو"
-            );
-
-            return;
-
-        }
-
-
-        if(!amount||amount<=0){
-
-            alert(
-                "❌ صحیح Amount ولیکئ"
-            );
-
-            return;
-
-        }
-
-
-        if(!narration){
-
-            alert(
-                "❌ Narration / Description ضروري دی"
-            );
-
-            document.getElementById(
-                "moneyDescription"
-            ).focus();
-
-            return;
-
-        }
-
-
-        /* WITHDRAW */
-
-        if(operation==="withdraw"){
-
-            if(
-                Number(
-                    customer.balance[currency]
-                ) < amount
-            ){
-
-                alert(
-                    "❌ د مشتری بیلانس کافي نه دی"
-                );
-
-                return;
-
-            }
-
-
-            customer.balance[currency]-=
-                amount;
-
-        }
-
-
-        /* DEPOSIT */
-
-        else{
-
-            customer.balance[currency]+=
-                amount;
-
-        }
-
-
-        /* AFTER BALANCE */
-
-        let balanceAfter=
-            Number(
-                customer.balance[currency]
-            );
-
-
-        let now=new Date();
-
-
-        /* TRANSACTION */
-
-        transactions.push({
-
-            id:Date.now(),
-
-            customer_id:
-                customer.id,
-
-            account:
-                customer.account,
-
-            customer:
-                customer.name,
-
-            type:
-                operation==="deposit"
-                ?"Deposit"
-                :"Withdraw",
-
-            amount:
-                operation==="withdraw"
-                ?-amount
-                :amount,
-
-            currency:
-                currency,
-
-            balance:
-                balanceAfter,
-
-            description:
-                narration,
-
-            time:
-                now.toLocaleTimeString(
-                    [],
-                    {
-                        hour:"2-digit",
-                        minute:"2-digit"
-                    }
-                ),
-
-            date:
-                now.toLocaleDateString(),
-
-            dateTime:
-                now.toLocaleString()
-
-        });
-
-
-        saveData();
-
-
-        alert(
-            operation==="deposit"
-            ?"✅ Deposit په بریالیتوب ثبت شو"
-            :"✅ Withdraw په بریالیتوب ثبت شو"
-        );
-
-
-        closeAll();
-
+    let type=
+        document.getElementById("moneyType").value;
+
+    let account=
+        document.getElementById("accountInput").value.trim();
+
+    let currency=
+        document.getElementById("moneyCurrency").value;
+
+    let amount=
+        Number(document.getElementById("moneyAmount").value);
+
+    let description=
+        document.getElementById("moneyDescription").value.trim();
+
+    if(!account || !amount || amount<=0){
+        alert("Account او Amount صحیح داخل کړئ.");
+        return;
+    }
+
+    if(!description){
+        alert("Narration / Description ضروري دی.");
+        document.getElementById("moneyDescription").focus();
+        return;
+    }
+
+    let c=customers.find(x=>x.account===account);
+
+    if(!c){
+        alert("Customer پیدا نه شو.");
+        return;
+    }
+
+    if(!c.balance){
+        c.balance={AFN:0,USD:0,PKR:0,IRR:0};
+    }
+
+    if(type==="withdraw" &&
+       Number(c.balance[currency]||0)<amount){
+
+        alert("❌ د Customer Balance کافي نه دی.");
+        return;
+    }
+
+    if(type==="deposit"){
+        c.balance[currency]+=amount;
+    }else{
+        c.balance[currency]-=amount;
+    }
+
+    transactions.push({
+        id:uid(),
+        customer_id:c.id,
+        account:c.account,
+        customer:c.name,
+        type:type,
+        amount:type==="withdraw"?-amount:amount,
+        currency:currency,
+        balance:c.balance[currency],
+        description:description,
+        time:new Date().toLocaleTimeString("en-GB",{
+            hour:"2-digit",
+            minute:"2-digit"
+        }),
+        date:new Date().toLocaleDateString("en-GB"),
+        created_at:new Date().toISOString()
     });
 
+    saveData();
+    updateDashboard();
+
+    alert(
+        type==="deposit"
+        ? "Deposit ثبت شو."
+        : "Withdraw ثبت شو."
+    );
+
+    closeModal("moneyModal");
 }
 
 
-/* =========================================
-   CUSTOMER HISTORY
-========================================= */
+/* =========================
+   EXCHANGE
+========================= */
+
+function openExchange(){
+
+    document.getElementById("exchangeAccount").value="";
+    document.getElementById("exchangeAmount").value="";
+    document.getElementById("exchangeRate").value="";
+    document.getElementById("receivedAmount").value="";
+    document.getElementById("exchangeDescription").value="";
+
+    openModal("exchangeModal");
+}
+
+function calculateExchange(){
+
+    let amount=
+        Number(document.getElementById("exchangeAmount").value);
+
+    let rate=
+        Number(document.getElementById("exchangeRate").value);
+
+    if(!amount || !rate){
+        alert("Amount او Rate داخل کړئ.");
+        return;
+    }
+
+    document.getElementById("receivedAmount").value =
+        money(amount*rate);
+}
+
+function exchangeMoney(){
+
+    let account=
+        document.getElementById("exchangeAccount").value.trim();
+
+    let from=
+        document.getElementById("fromCurrency").value;
+
+    let to=
+        document.getElementById("toCurrency").value;
+
+    let amount=
+        Number(document.getElementById("exchangeAmount").value);
+
+    let rate=
+        Number(document.getElementById("exchangeRate").value);
+
+    let description=
+        document.getElementById("exchangeDescription").value.trim();
+
+    if(!account || !amount || amount<=0 || !rate || rate<=0){
+        alert("ټول معلومات صحیح داخل کړئ.");
+        return;
+    }
+
+    if(from===to){
+        alert("From او To Currency باید مختلف وي.");
+        return;
+    }
+
+    if(!description){
+        alert("Narration / Description ضروري دی.");
+        return;
+    }
+
+    let c=customers.find(x=>x.account===account);
+
+    if(!c){
+        alert("Customer پیدا نه شو.");
+        return;
+    }
+
+    if(!c.balance){
+        c.balance={AFN:0,USD:0,PKR:0,IRR:0};
+    }
+
+    if(Number(c.balance[from]||0)<amount){
+        alert("❌ د Source Currency Balance کافي نه دی.");
+        return;
+    }
+
+    let received=amount*rate;
+
+    c.balance[from]-=amount;
+    c.balance[to]+=received;
+
+    let now=new Date();
+
+    transactions.push({
+        id:uid(),
+        customer_id:c.id,
+        account:c.account,
+        customer:c.name,
+        type:"exchange",
+        amount:-amount,
+        currency:from,
+        balance:c.balance[from],
+        description:description+" | Exchange → "+to,
+        time:now.toLocaleTimeString("en-GB",{
+            hour:"2-digit",
+            minute:"2-digit"
+        }),
+        date:now.toLocaleDateString("en-GB"),
+        created_at:now.toISOString()
+    });
+
+    transactions.push({
+        id:uid(),
+        customer_id:c.id,
+        account:c.account,
+        customer:c.name,
+        type:"exchange",
+        amount:received,
+        currency:to,
+        balance:c.balance[to],
+        description:description+" | Exchange ← "+from,
+        time:now.toLocaleTimeString("en-GB",{
+            hour:"2-digit",
+            minute:"2-digit"
+        }),
+        date:now.toLocaleDateString("en-GB"),
+        created_at:now.toISOString()
+    });
+
+    saveData();
+    updateDashboard();
+
+    alert("Exchange په بریالیتوب سره ثبت شو.");
+
+    closeModal("exchangeModal");
+}
+
+
+/* =========================
+   HISTORY
+========================= */
 
 function openCustomerHistory(){
 
-    document.getElementById(
-        "historyAccount"
-    ).value="";
+    document.getElementById("historyAccount").value="";
+    document.getElementById("historyCustomer").innerHTML="";
+    document.getElementById("historyTable").innerHTML="";
 
-
-    document.getElementById(
-        "historyResult"
-    ).innerHTML="";
-
-
-    document.getElementById(
-        "customerHistoryModal"
-    ).style.display="flex";
-
+    openModal("historyModal");
 }
-
-
-/*
-IMPORTANT:
-Calculate transaction balance again
-from the beginning.
-*/
-
-function calculateHistoryBalance(
-    customer,
-    list
-){
-
-    let runningBalance={
-
-        AFN:0,
-
-        USD:0,
-
-        IRR:0,
-
-        PKR:0
-
-    };
-
-
-    return list.map(function(t){
-
-        let amount=
-            Number(t.amount)||0;
-
-
-        let currency=
-            t.currency;
-
-
-        if(
-            runningBalance[currency]
-            !==undefined
-        ){
-
-            runningBalance[currency]
-            +=amount;
-
-        }
-
-
-        return {
-
-            transaction:t,
-
-            balance:
-                runningBalance[currency]||0
-
-        };
-
-    });
-
-}
-
 
 function showCustomerHistory(){
 
     let account=
-        document.getElementById(
-            "historyAccount"
-        ).value.trim();
+        document.getElementById("historyAccount").value.trim();
 
+    let c=customers.find(x=>x.account===account);
 
-    let customer=
-        customers.find(
-            c=>c.account===account
-        );
-
-
-    let result=
-        document.getElementById(
-            "historyResult"
-        );
-
-
-    if(!customer){
-
-        result.innerHTML=
-
-        `
-
-        <div class="customer-summary">
-
-        <b style="color:#c0392b">
-
-        ❌ دا Customer پیدا نشو
-
-        </b>
-
-        </div>
-
-        `;
-
+    if(!c){
+        alert("Customer پیدا نه شو.");
         return;
-
     }
 
-
-    /*
-    Get transactions.
-    Old transactions without customer_id
-    are also supported.
-    */
-
-    let customerTransactions=
-
-        transactions.filter(function(t){
-
-            return(
-                t.account===account
-                ||
-                t.customer_id===customer.id
-            );
-
-        });
-
-
-    /*
-    Sort oldest → newest
-    */
-
-    customerTransactions.sort(
-        function(a,b){
-
-            let aTime=
-                a.id||0;
-
-            let bTime=
-                b.id||0;
-
-            return aTime-bTime;
-
-        }
-    );
-
-
-    /*
-    Calculate balance separately
-    */
-
-    let calculated=
-        calculateHistoryBalance(
-            customer,
-            customerTransactions
+    let list=
+        transactions
+        .filter(t=>t.customer_id===c.id)
+        .sort((a,b)=>
+            new Date(a.created_at||0)-new Date(b.created_at||0)
         );
 
-
-    let html=
-
-    `
-
-    <div class="customer-summary">
-
-        <h3>
-        👤 ${customer.name}
-        </h3>
-
-
-        <div>
-        <b>Account Number:</b>
-        ${customer.account}
-        </div>
-
-
-        <div>
-        <b>Mobile:</b>
-        ${customer.phone}
-        </div>
-
-
-        <div class="balance-grid">
-
-            <div class="balance">
-
-            AFN
-
-            <strong>
-            ${Number(
-                customer.balance.AFN
-            ).toLocaleString()}
-            </strong>
-
-            </div>
-
-
-            <div class="balance">
-
-            USD
-
-            <strong>
-            ${Number(
-                customer.balance.USD
-            ).toLocaleString()}
-            </strong>
-
-            </div>
-
-
-            <div class="balance">
-
-            IRR / تومان
-
-            <strong>
-            ${Number(
-                customer.balance.IRR
-            ).toLocaleString()}
-            </strong>
-
-            </div>
-
-
-            <div class="balance">
-
-            PKR / کلدار
-
-            <strong>
-            ${Number(
-                customer.balance.PKR
-            ).toLocaleString()}
-            </strong>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <h3
-    style="margin-top:20px;color:#126b43">
-
-    🧾 د مشتری د معاملاتو تاریخچه
-
-    </h3>
-
-
-    <div class="table-wrap">
-
-    <table>
-
-    <thead>
-
-    <tr>
-
-        <th>
-        ساعت
-        </th>
-
-        <th>
-        تاریخ
-        </th>
-
-        <th>
-        مبلغ
-        </th>
-
-        <th>
-        بیلانس
-        </th>
-
-        <th>
-        اسعار
-        </th>
-
-        <th>
-        Narration / Description
-        </th>
-
-    </tr>
-
-    </thead>
-
-
-    <tbody>
-
-    `;
-
-
-    if(calculated.length===0){
-
-        html+=
-
-        `
-
-        <tr>
-
-        <td
-        colspan="6"
-        class="empty">
-
-        تر اوسه هیڅ معامله نشته
-
-        </td>
-
-        </tr>
-
-        `;
-
-    }
-
-
-    else{
-
-        /*
-        Show newest first
-        */
-
-        calculated
-        .slice()
-        .reverse()
-        .forEach(function(item){
-
-            let t=
-                item.transaction;
-
-
-            let amount=
-                Number(t.amount)||0;
-
-
-            let cls=
-                t.type==="Withdraw"
-                ?"withdraw"
-                :t.type==="Exchange"
-                ?"exchange"
-                :"deposit";
-
-
-            /*
-            For old transactions:
-            use calculated balance.
-            */
-
-            let balance=
-                item.balance;
-
-
-            /*
-            If transaction has multiple
-            currency exchange fields,
-            show received information.
-            */
-
-            let description=
-                t.description
-                ||
-                t.type
-                ||
-                "-";
-
-
-            if(
-                t.type==="Exchange"
-                &&
-                t.received!==undefined
-            ){
-
-                description+=
-                    " | ترلاسه شوی: "+
-                    Number(
-                        t.received
-                    ).toLocaleString()+
-                    " "+
-                    (
-                        t.receivedCurrency||""
-                    );
-
-            }
-
-
-            html+=
-
-            `
-
-            <tr>
-
-                <td>
-
-                ${t.time||"-"}
-
-                </td>
-
-
-                <td>
-
-                ${t.date||"-"}
-
-                </td>
-
-
-                <td class="${cls}">
-
-                ${
-                    amount>0
-                    ?"+"
-                    :""
-                }
-
-                ${amount.toLocaleString()}
-
-                </td>
-
-
-                <td>
-
-                ${Number(
-                    balance
-                ).toLocaleString()}
-
-                </td>
-
-
-                <td>
-
-                ${t.currency||"-"}
-
-                </td>
-
-
-                <td>
-
-                ${description}
-
-                </td>
-
-            </tr>
-
-            `;
-
+    let balances={
+        AFN:0,
+        USD:0,
+        PKR:0,
+        IRR:0
+    };
+
+    let calculated=[];
+
+    list.forEach(t=>{
+
+        let cur=t.currency;
+        let amount=Number(t.amount)||0;
+
+        if(balances[cur]!==undefined){
+            balances[cur]+=amount;
+        }
+
+        calculated.push({
+            ...t,
+            calculatedBalance:balances[cur]||0
         });
+    });
 
+    calculated.reverse();
+
+    document.getElementById("historyCustomer").innerHTML=
+        `<div class="message success" style="display:block">
+        👤 ${escapeHtml(c.name)}
+        &nbsp; | &nbsp;
+        Account: ${escapeHtml(c.account)}
+        </div>`;
+
+    let html="";
+
+    calculated.forEach(t=>{
+
+        let cls=
+            Number(t.amount)>=0
+            ? "positive"
+            : "negative";
+
+        html+=`
+        <tr>
+            <td>${escapeHtml(t.time||"")}</td>
+            <td>${escapeHtml(t.date||"")}</td>
+            <td class="${cls}">
+                ${Number(t.amount)>=0?"+":""}${money(t.amount)}
+            </td>
+            <td>${money(t.calculatedBalance)}</td>
+            <td>${escapeHtml(t.currency||"")}</td>
+            <td>${escapeHtml(t.description||"")}</td>
+            <td>
+                <div class="actions">
+                    <button class="btn btn-warning"
+                    onclick="askPassword(()=>editTransaction('${t.id}'))">
+                    ✏️ Edit
+                    </button>
+
+                    <button class="btn btn-danger"
+                    onclick="deleteTransaction('${t.id}')">
+                    🗑️ Delete
+                    </button>
+                </div>
+            </td>
+        </tr>`;
+    });
+
+    document.getElementById("historyTable").innerHTML =
+        html ||
+        `<tr><td colspan="7">هیڅ Transaction نشته.</td></tr>`;
+}
+
+
+/* =========================
+   EDIT TRANSACTION
+========================= */
+
+function editTransaction(id){
+
+    let t=transactions.find(x=>x.id===id);
+
+    if(!t)return;
+
+    let newAmount=
+        prompt("Amount داخل کړئ:",Math.abs(t.amount));
+
+    if(newAmount===null)return;
+
+    newAmount=Number(newAmount);
+
+    if(!newAmount || newAmount<=0){
+        alert("Amount صحیح نه دی.");
+        return;
     }
 
+    let newDescription=
+        prompt("Description:",t.description||"");
 
-    html+=
+    if(newDescription===null)return;
 
-    `
+    let sign=
+        Number(t.amount)<0 ? -1 : 1;
 
-    </tbody>
+    t.amount=sign*newAmount;
+    t.description=newDescription;
 
-    </table>
+    recalculateCustomerBalances(t.customer_id);
 
-    </div>
+    saveData();
 
-    `;
+    alert("Transaction Update شو.");
 
-
-    result.innerHTML=
-        html;
-
+    showCustomerHistory();
+    updateDashboard();
 }
 
 
-/* =========================================
-   EXCHANGE
-========================================= */
+/* =========================
+   DELETE TRANSACTION
+========================= */
 
-function openExchange(){
-
-    document.getElementById(
-        "exchangeAccount"
-    ).value="";
-
-
-    document.getElementById(
-        "exchangeAmount"
-    ).value="";
-
-
-    document.getElementById(
-        "exchangeDescription"
-    ).value="";
-
-
-    document.getElementById(
-        "exchangeModal"
-    ).style.display="flex";
-
-}
-
-
-function exchangeMoney(){
+function deleteTransaction(id){
 
     askPassword(function(){
 
-        let account=
-            document.getElementById(
-                "exchangeAccount"
-            ).value.trim();
+        let t=transactions.find(x=>x.id===id);
 
+        if(!t)return;
 
-        let from=
-            document.getElementById(
-                "fromCurrency"
-            ).value;
-
-
-        let to=
-            document.getElementById(
-                "toCurrency"
-            ).value;
-
-
-        let amount=
-            Number(
-                document.getElementById(
-                    "exchangeAmount"
-                ).value
-            );
-
-
-        let description=
-            document.getElementById(
-                "exchangeDescription"
-            ).value.trim();
-
-
-        let customer=
-            customers.find(
-                c=>c.account===account
-            );
-
-
-        if(!customer){
-
-            alert(
-                "❌ Customer پیدا نشو"
-            );
-
+        if(!confirm("ایا دا Transaction حذف کړئ؟")){
             return;
-
         }
 
+        let customerId=t.customer_id;
 
-        if(from===to){
+        transactions=
+            transactions.filter(x=>x.id!==id);
 
-            alert(
-                "❌ From او To Currency باید مختلف وي"
-            );
-
-            return;
-
-        }
-
-
-        if(!amount||amount<=0){
-
-            alert(
-                "❌ صحیح Amount ولیکئ"
-            );
-
-            return;
-
-        }
-
-
-        if(
-            Number(
-                customer.balance[from]
-            ) < amount
-        ){
-
-            alert(
-                "❌ د مشتری بیلانس کافي نه دی"
-            );
-
-            return;
-
-        }
-
-
-        if(!description){
-
-            alert(
-                "❌ Exchange Narration ضروري دی"
-            );
-
-            return;
-
-        }
-
-
-        let received=
-            amount*rates[from][to];
-
-
-        /*
-        Remove FROM
-        */
-
-        customer.balance[from]-=
-            amount;
-
-
-        /*
-        Add TO
-        */
-
-        customer.balance[to]+=
-            received;
-
-
-        let now=
-            new Date();
-
-
-        /*
-        Record FROM transaction
-        */
-
-        transactions.push({
-
-            id:Date.now(),
-
-            customer_id:
-                customer.id,
-
-            account:
-                customer.account,
-
-            customer:
-                customer.name,
-
-            type:"Exchange",
-
-            amount:-amount,
-
-            currency:from,
-
-            balance:
-                Number(
-                    customer.balance[from]
-                ),
-
-            description:
-                description+
-                " | "+
-
-                amount+
-                " "+
-                from+
-                " → "+
-                received.toFixed(4)+
-                " "+
-                to,
-
-            time:
-                now.toLocaleTimeString(
-                    [],
-                    {
-                        hour:"2-digit",
-                        minute:"2-digit"
-                    }
-                ),
-
-            date:
-                now.toLocaleDateString(),
-
-            dateTime:
-                now.toLocaleString(),
-
-            received:
-                received,
-
-            receivedCurrency:
-                to
-
-        });
-
-
-        /*
-        Record TO transaction
-        */
-
-        transactions.push({
-
-            id:Date.now()+1,
-
-            customer_id:
-                customer.id,
-
-            account:
-                customer.account,
-
-            customer:
-                customer.name,
-
-            type:"Exchange",
-
-            amount:
-                received,
-
-            currency:
-                to,
-
-            balance:
-                Number(
-                    customer.balance[to]
-                ),
-
-            description:
-                description+
-                " | له "+
-
-                amount+
-                " "+
-                from+
-                " څخه ترلاسه شول",
-
-            time:
-                now.toLocaleTimeString(
-                    [],
-                    {
-                        hour:"2-digit",
-                        minute:"2-digit"
-                    }
-                ),
-
-            date:
-                now.toLocaleDateString(),
-
-            dateTime:
-                now.toLocaleString()
-
-        });
-
+        recalculateCustomerBalances(customerId);
 
         saveData();
 
+        alert("Transaction حذف شو.");
 
-        alert(
-
-            "✅ Exchange کامیاب شو\n\n"+
-
-            amount+
-            " "+
-            from+
-
-            " = "+
-
-            received.toFixed(4)+
-            " "+
-            to
-
-        );
-
-
-        closeAll();
-
+        showCustomerHistory();
+        updateDashboard();
     });
-
 }
 
 
-/* =========================================
-   REPORT
-========================================= */
+/* =========================
+   RECALCULATE BALANCE
+========================= */
+
+function recalculateCustomerBalances(customerId){
+
+    let c=customers.find(x=>x.id===customerId);
+
+    if(!c)return;
+
+    c.balance={
+        AFN:0,
+        USD:0,
+        PKR:0,
+        IRR:0
+    };
+
+    let list=
+        transactions
+        .filter(t=>t.customer_id===customerId)
+        .sort((a,b)=>
+            new Date(a.created_at||0)-
+            new Date(b.created_at||0)
+        );
+
+    list.forEach(t=>{
+
+        let cur=t.currency;
+
+        if(c.balance[cur]!==undefined){
+            c.balance[cur]+=Number(t.amount)||0;
+        }
+
+        t.balance=
+            c.balance[cur]||0;
+    });
+}
+
+
+/* =========================
+   REPORTS
+========================= */
 
 function openReports(){
 
-    document.getElementById(
-        "reportResult"
-    ).innerHTML="";
+    let dep=0;
+    let wit=0;
 
+    transactions.forEach(t=>{
 
-    document.getElementById(
-        "reportsModal"
-    ).style.display="flex";
+        if(t.type==="deposit"){
+            dep+=Math.abs(Number(t.amount)||0);
+        }
 
-}
-
-
-function requestCurrencyReport(currency){
-
-    askPassword(function(){
-
-        let total=0;
-
-
-        customers.forEach(function(c){
-
-            total+=Number(
-                c.balance[currency]||0
-            );
-
-        });
-
-
-        let names={
-
-            AFN:"افغاني",
-
-            USD:"ډالر",
-
-            IRR:"تومان",
-
-            PKR:"کلدار"
-
-        };
-
-
-        document.getElementById(
-            "reportResult"
-        ).innerHTML=
-
-        `
-
-        <div class="report-result">
-
-            <div>
-            📊 د ${names[currency]} عمومي بیلانس
-            </div>
-
-            <div class="amount">
-
-            ${total.toLocaleString()}
-            ${currency}
-
-            </div>
-
-        </div>
-
-        `;
-
+        if(t.type==="withdraw"){
+            wit+=Math.abs(Number(t.amount)||0);
+        }
     });
 
+    document.getElementById("reportDeposit").textContent=money(dep);
+    document.getElementById("reportWithdraw").textContent=money(wit);
+    document.getElementById("reportTransactions").textContent=
+        transactions.length;
+
+    let html="";
+
+    let list=[...transactions].reverse();
+
+    list.forEach(t=>{
+
+        html+=`
+        <tr>
+            <td>${escapeHtml(t.account||"")}</td>
+            <td>${escapeHtml(t.customer||"")}</td>
+            <td>${escapeHtml(t.type||"")}</td>
+            <td>${escapeHtml(t.currency||"")}</td>
+            <td>${money(t.amount)}</td>
+            <td>${escapeHtml(t.description||"")}</td>
+            <td>${escapeHtml(t.date||"")}</td>
+        </tr>`;
+    });
+
+    document.getElementById("reportTable").innerHTML =
+        html ||
+        `<tr><td colspan="7">هیڅ معلومات نشته.</td></tr>`;
+
+    openModal("reportsModal");
 }
 
 
-/* =========================================
+/* =========================
    RATES
-========================================= */
+========================= */
 
 function openRates(){
 
-    loadRatesToForm();
+    document.getElementById("rateUSD_AFN").value=
+        exchangeRates.USD.AFN;
 
+    document.getElementById("rateUSD_IRR").value=
+        exchangeRates.USD.IRR;
 
-    document.getElementById(
-        "ratesModal"
-    ).style.display="flex";
+    document.getElementById("rateUSD_PKR").value=
+        exchangeRates.USD.PKR;
 
+    openModal("ratesModal");
 }
-
-
-function loadRatesToForm(){
-
-    document.getElementById(
-        "rateUSD_AFN"
-    ).value=
-        rates.USD.AFN;
-
-
-    document.getElementById(
-        "rateUSD_IRR"
-    ).value=
-        rates.USD.IRR;
-
-
-    document.getElementById(
-        "rateUSD_PKR"
-    ).value=
-        rates.USD.PKR;
-
-
-    document.getElementById(
-        "rateAFN_USD"
-    ).value=
-        rates.AFN.USD;
-
-
-    document.getElementById(
-        "rateAFN_IRR"
-    ).value=
-        rates.AFN.IRR;
-
-
-    document.getElementById(
-        "rateAFN_PKR"
-    ).value=
-        rates.AFN.PKR;
-
-
-    document.getElementById(
-        "rateIRR_USD"
-    ).value=
-        rates.IRR.USD;
-
-
-    document.getElementById(
-        "rateIRR_AFN"
-    ).value=
-        rates.IRR.AFN;
-
-
-    document.getElementById(
-        "rateIRR_PKR"
-    ).value=
-        rates.IRR.PKR;
-
-
-    document.getElementById(
-        "ratePKR_USD"
-    ).value=
-        rates.PKR.USD;
-
-
-    document.getElementById(
-        "ratePKR_AFN"
-    ).value=
-        rates.PKR.AFN;
-
-
-    document.getElementById(
-        "ratePKR_IRR"
-    ).value=
-        rates.PKR.IRR;
-
-}
-
 
 function saveRates(){
 
-    askPassword(function(){
+    let usdAfn=
+        Number(document.getElementById("rateUSD_AFN").value);
 
-        let ids=[
+    let usdIrr=
+        Number(document.getElementById("rateUSD_IRR").value);
 
-            "rateUSD_AFN",
-            "rateUSD_IRR",
-            "rateUSD_PKR",
+    let usdPkr=
+        Number(document.getElementById("rateUSD_PKR").value);
 
-            "rateAFN_USD",
-            "rateAFN_IRR",
-            "rateAFN_PKR",
+    if(!usdAfn || !usdIrr || !usdPkr){
+        alert("ټول Rates داخل کړئ.");
+        return;
+    }
 
-            "rateIRR_USD",
-            "rateIRR_AFN",
-            "rateIRR_PKR",
+    exchangeRates={
+        USD:{
+            AFN:usdAfn,
+            IRR:usdIrr,
+            PKR:usdPkr
+        },
 
-            "ratePKR_USD",
-            "ratePKR_AFN",
-            "ratePKR_IRR"
+        AFN:{
+            USD:1/usdAfn,
+            IRR:usdIrr/usdAfn,
+            PKR:usdPkr/usdAfn
+        },
 
-        ];
+        IRR:{
+            USD:1/usdIrr,
+            AFN:usdAfn/usdIrr,
+            PKR:usdPkr/usdIrr
+        },
 
-
-        for(let id of ids){
-
-            let value=
-                Number(
-                    document.getElementById(
-                        id
-                    ).value
-                );
-
-
-            if(!value||value<=0){
-
-                alert(
-                    "❌ ټول Rates باید صحیح وي"
-                );
-
-                return;
-
-            }
-
+        PKR:{
+            USD:1/usdPkr,
+            AFN:usdAfn/usdPkr,
+            IRR:usdIrr/usdPkr
         }
+    };
 
+    localStorage.setItem(
+        "exchangeRates",
+        JSON.stringify(exchangeRates)
+    );
 
-        rates={
+    alert("Exchange Rates Update شول.");
 
-            USD:{
-
-                AFN:
-                    Number(
-                        document.getElementById(
-                            "rateUSD_AFN"
-                        ).value
-                    ),
-
-                IRR:
-                    Number(
-                        document.getElementById(
-                            "rateUSD_IRR"
-                        ).value
-                    ),
-
-                PKR:
-                    Number(
-                        document.getElementById(
-                            "rateUSD_PKR"
-                        ).value
-                    )
-
-            },
-
-
-            AFN:{
-
-                USD:
-                    Number(
-                        document.getElementById(
-                            "rateAFN_USD"
-                        ).value
-                    ),
-
-                IRR:
-                    Number(
-                        document.getElementById(
-                            "rateAFN_IRR"
-                        ).value
-                    ),
-
-                PKR:
-                    Number(
-                        document.getElementById(
-                            "rateAFN_PKR"
-                        ).value
-                    )
-
-            },
-
-
-            IRR:{
-
-                USD:
-                    Number(
-                        document.getElementById(
-                            "rateIRR_USD"
-                        ).value
-                    ),
-
-                AFN:
-                    Number(
-                        document.getElementById(
-                            "rateIRR_AFN"
-                        ).value
-                    ),
-
-                PKR:
-                    Number(
-                        document.getElementById(
-                            "rateIRR_PKR"
-                        ).value
-                    )
-
-            },
-
-
-            PKR:{
-
-                USD:
-                    Number(
-                        document.getElementById(
-                            "ratePKR_USD"
-                        ).value
-                    ),
-
-                AFN:
-                    Number(
-                        document.getElementById(
-                            "ratePKR_AFN"
-                        ).value
-                    ),
-
-                IRR:
-                    Number(
-                        document.getElementById(
-                            "ratePKR_IRR"
-                        ).value
-                    )
-
-            }
-
-        };
-
-
-        localStorage.setItem(
-            "exchangeRates",
-            JSON.stringify(rates)
-        );
-
-
-        alert(
-            "✅ Exchange Rates په بریالیتوب Save شول"
-        );
-
-
-        closeAll();
-
-    });
-
+    closeModal("ratesModal");
 }
 
 
-/* =========================================
+/* =========================
    SETTINGS
-========================================= */
+========================= */
 
 function openSettings(){
 
-    document.getElementById(
-        "newLoginPassword"
-    ).value="";
+    document.getElementById("newLoginPassword").value="";
+    document.getElementById("newSupervisorPassword").value="";
 
-
-    document.getElementById(
-        "newSupervisorPassword"
-    ).value="";
-
-
-    document.getElementById(
-        "settingsModal"
-    ).style.display="flex";
-
+    openModal("settingsModal");
 }
 
+function saveSettings(){
 
-function changeLoginPassword(){
+    let login=
+        document.getElementById("newLoginPassword").value.trim();
 
-    let newPassword=
-        document.getElementById(
-            "newLoginPassword"
-        ).value;
+    let supervisor=
+        document.getElementById("newSupervisorPassword").value.trim();
 
-
-    if(
-        !newPassword||
-        newPassword.length<4
-    ){
-
-        alert(
-            "❌ Login Password لږ تر لږه 4 حروف/شمېرې ولري"
-        );
-
-        return;
-
+    if(login){
+        localStorage.setItem("loginPassword",login);
     }
 
-
-    askPassword(function(){
-
-        loginPassword=
-            newPassword;
-
-
-        localStorage.setItem(
-            "loginPassword",
-            loginPassword
-        );
-
-
-        alert(
-            "✅ Login Password بدل شو"
-        );
-
-
-        document.getElementById(
-            "newLoginPassword"
-        ).value="";
-
-    });
-
-}
-
-
-function changeSupervisorPassword(){
-
-    let newPassword=
-        document.getElementById(
-            "newSupervisorPassword"
-        ).value;
-
-
-    if(
-        !newPassword||
-        newPassword.length<4
-    ){
-
-        alert(
-            "❌ Supervisor Password لږ تر لږه 4 حروف/شمېرې ولري"
-        );
-
-        return;
-
+    if(supervisor){
+        localStorage.setItem("supervisorPassword",supervisor);
     }
 
+    alert("Settings Save شول.");
 
-    pendingAction=function(){
-
-        supervisorPassword=
-            newPassword;
-
-
-        localStorage.setItem(
-            "supervisorPassword",
-            supervisorPassword
-        );
-
-
-        alert(
-            "✅ Supervisor Password بدل شو"
-        );
-
-
-        document.getElementById(
-            "newSupervisorPassword"
-        ).value="";
-
-    };
-
-
-    passwordMode="currentLogin";
-
-
-    document.getElementById(
-        "supervisorPassword"
-    ).value="";
-
-
-    document.getElementById(
-        "passError"
-    ).style.display="none";
-
-
-    document.getElementById(
-        "passwordMessage"
-    ).innerText=
-        "د Supervisor Password بدلولو لپاره اوسنی Login Password داخل کړئ";
-
-
-    document.getElementById(
-        "passwordModal"
-    ).style.display="flex";
-
+    closeModal("settingsModal");
 }
 
 
-/* =========================================
-   CLOSE
-========================================= */
-
-function closeAll(){
-
-    document
-    .querySelectorAll(".modal")
-    .forEach(function(m){
-
-        m.style.display="none";
-
-    });
-
-}
-
-
-/* =========================================
+/* =========================
    LOGOUT
-========================================= */
+========================= */
 
 function logout(){
 
-    window.location.href=
-        "index.html";
+    if(confirm("ایا Logout کول غواړئ؟")){
 
+        window.location.href="index.html";
+    }
 }
+
+
+/* =========================
+   ESCAPE MODALS
+========================= */
+
+window.onclick=function(e){
+
+    document.querySelectorAll(".modal").forEach(m=>{
+
+        if(e.target===m){
+            m.style.display="none";
+        }
+
+    });
+};
 
 </script>
 
