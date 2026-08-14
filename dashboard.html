@@ -13,53 +13,130 @@ body{
  radial-gradient(circle at 90% 15%,rgba(37,99,235,.18),transparent 28%),
  linear-gradient(135deg,#ecfdf5,#eff6ff 55%,#f8fafc);
 }
-.header{background:linear-gradient(135deg,#022c22,#065f46,#10b981);color:white;padding:18px 25px;
-display:flex;justify-content:space-between;align-items:center;gap:15px;box-shadow:0 5px 25px #0003;
-position:sticky;top:0;z-index:100}
+.header{
+ background:linear-gradient(135deg,#022c22,#065f46,#10b981);
+ color:white;padding:18px 25px;display:flex;justify-content:space-between;
+ align-items:center;gap:15px;box-shadow:0 5px 25px #0003;
+ position:sticky;top:0;z-index:100
+}
 .brand{display:flex;align-items:center;gap:14px}
-.logo{width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;
-font-size:30px;background:#ffffff22;border:1px solid #ffffff44}
-.header h1{margin:0;font-size:23px}.subtitle{margin-top:5px;font-size:13px;color:#d1fae5}
-.header-actions{display:flex;gap:8px}.header button{border:0;background:white;color:#065f46;padding:10px 15px;
-border-radius:9px;cursor:pointer;font-weight:bold}
+.logo{
+ width:58px;height:58px;border-radius:16px;display:flex;
+ align-items:center;justify-content:center;font-size:30px;
+ background:#ffffff22;border:1px solid #ffffff44
+}
+.header h1{margin:0;font-size:23px}
+.subtitle{margin-top:5px;font-size:13px;color:#d1fae5}
+.header-actions{display:flex;gap:8px}
+.header button{
+ border:0;background:white;color:#065f46;padding:10px 15px;
+ border-radius:9px;cursor:pointer;font-weight:bold
+}
 .container{padding:25px;max-width:1450px;margin:auto}
-.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:15px;margin-bottom:25px}
-.menu button{border:0;background:#ffffffdd;padding:20px 10px;border-radius:16px;box-shadow:0 5px 18px #0001;
-cursor:pointer;font-size:15px;font-weight:bold;color:#064e3b;transition:.2s}
+.menu{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));
+ gap:15px;margin-bottom:25px
+}
+.menu button{
+ border:0;background:#ffffffdd;padding:20px 10px;border-radius:16px;
+ box-shadow:0 5px 18px #0001;cursor:pointer;font-size:15px;
+ font-weight:bold;color:#064e3b;transition:.2s
+}
 .menu button:hover{transform:translateY(-4px)}
-.currency-banner{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:25px}
-.currency,.stat{background:#ffffffdd;border-radius:16px;padding:20px;text-align:center;box-shadow:0 5px 18px #0001}
-.currency-icon{font-size:34px;margin-bottom:8px}.currency b,.stat b{display:block;color:#047857;font-size:20px;margin-top:6px}
-.stat{text-align:right}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}
-.modal{display:none;position:fixed;z-index:1000;inset:0;background:#0009;overflow:auto;padding:30px 15px}
-.modal-box{background:white;max-width:900px;margin:auto;border-radius:18px;padding:25px;position:relative;box-shadow:0 15px 50px #0005}
-.close{position:absolute;left:15px;top:12px;border:0;background:#fee2e2;color:#991b1b;width:35px;height:35px;
-border-radius:50%;cursor:pointer;font-size:18px}
-.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.field{display:flex;flex-direction:column;gap:6px}.full{grid-column:1/-1}
+.currency-banner{
+ display:grid;grid-template-columns:repeat(4,1fr);
+ gap:15px;margin-bottom:25px
+}
+.currency,.stat{
+ background:#ffffffdd;border-radius:16px;padding:20px;text-align:center;
+ box-shadow:0 5px 18px #0001
+}
+.currency-icon{font-size:34px;margin-bottom:8px}
+.currency b,.stat b{
+ display:block;color:#047857;font-size:20px;margin-top:6px
+}
+.stat{text-align:right}
+.stats{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+ gap:15px
+}
+.modal{
+ display:none;position:fixed;z-index:1000;inset:0;background:#0009;
+ overflow:auto;padding:30px 15px
+}
+.modal-box{
+ background:white;max-width:900px;margin:auto;border-radius:18px;
+ padding:25px;position:relative;box-shadow:0 15px 50px #0005
+}
+.close{
+ position:absolute;left:15px;top:12px;border:0;background:#fee2e2;
+ color:#991b1b;width:35px;height:35px;border-radius:50%;
+ cursor:pointer;font-size:18px
+}
+.form-grid{
+ display:grid;grid-template-columns:repeat(2,1fr);gap:14px
+}
+.field{display:flex;flex-direction:column;gap:6px}
+.full{grid-column:1/-1}
 label{font-weight:bold;font-size:14px}
-input,select,textarea{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:9px;outline:none;font-size:14px}
+input,select,textarea{
+ width:100%;padding:11px;border:1px solid #cbd5e1;
+ border-radius:9px;outline:none;font-size:14px
+}
 input:focus,select:focus,textarea:focus{border-color:#10b981}
 textarea{min-height:80px;resize:vertical}
-.btn{border:0;padding:10px 17px;border-radius:9px;cursor:pointer;font-weight:bold}
-.primary{background:#059669;color:#fff}.danger{background:#dc2626;color:#fff}.warning{background:#d97706;color:#fff}
-.gray{background:#64748b;color:#fff}.info{background:#2563eb;color:#fff}
-.actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
-.search{display:flex;gap:8px;margin-bottom:15px}.search input{flex:1}
-.message{padding:10px;border-radius:8px;margin-top:8px}.success{background:#dcfce7;color:#166534}
+.btn{
+ border:0;padding:10px 17px;border-radius:9px;
+ cursor:pointer;font-weight:bold
+}
+.primary{background:#059669;color:#fff}
+.danger{background:#dc2626;color:#fff}
+.warning{background:#d97706;color:#fff}
+.gray{background:#64748b;color:#fff}
+.info{background:#2563eb;color:#fff}
+.actions{
+ display:flex;gap:6px;flex-wrap:wrap;justify-content:center
+}
+.search{display:flex;gap:8px;margin-bottom:15px}
+.search input{flex:1}
+.message{padding:10px;border-radius:8px;margin-top:8px}
+.success{background:#dcfce7;color:#166534}
 .error{background:#fee2e2;color:#991b1b}
-.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin-top:15px;min-width:780px}
-th,td{border:1px solid #e2e8f0;padding:9px;text-align:center}th{background:#065f46;color:white}
-tr:nth-child(even){background:#f8fafc}.positive{color:#047857;font-weight:bold}.negative{color:#dc2626;font-weight:bold}
-.report-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:15px 0}
-.report-card{padding:18px;border-radius:14px;background:#f8fafc;border:1px solid #e2e8f0;text-align:center}
-.report-card .icon{font-size:30px}.report-card b{display:block;font-size:22px;color:#065f46;margin-top:5px}
-.rate-note{font-size:12px;color:#64748b;margin-top:5px}.footer{text-align:center;padding:25px;color:#475569;font-size:13px}
+.table-wrap{overflow-x:auto}
+table{
+ width:100%;border-collapse:collapse;margin-top:15px;min-width:780px
+}
+th,td{
+ border:1px solid #e2e8f0;padding:9px;text-align:center
+}
+th{background:#065f46;color:white}
+tr:nth-child(even){background:#f8fafc}
+.positive{color:#047857;font-weight:bold}
+.negative{color:#dc2626;font-weight:bold}
+.report-cards{
+ display:grid;grid-template-columns:repeat(4,1fr);
+ gap:12px;margin:15px 0
+}
+.report-card{
+ padding:18px;border-radius:14px;background:#f8fafc;
+ border:1px solid #e2e8f0;text-align:center
+}
+.report-card .icon{font-size:30px}
+.report-card b{
+ display:block;font-size:22px;color:#065f46;margin-top:5px
+}
+.rate-note{font-size:12px;color:#64748b;margin-top:5px}
+.footer{text-align:center;padding:25px;color:#475569;font-size:13px}
+
 @media(max-width:750px){
-.currency-banner,.report-cards{grid-template-columns:repeat(2,1fr)}
-.form-grid{grid-template-columns:1fr}.header{padding:13px}.header h1{font-size:17px}
-.subtitle{font-size:11px}.logo{width:45px;height:45px;font-size:24px}
-.header-actions button{padding:8px 10px;font-size:12px}.container{padding:12px}
+ .currency-banner,.report-cards{grid-template-columns:repeat(2,1fr)}
+ .form-grid{grid-template-columns:1fr}
+ .header{padding:13px}
+ .header h1{font-size:17px}
+ .subtitle{font-size:11px}
+ .logo{width:45px;height:45px;font-size:24px}
+ .header-actions button{padding:8px 10px;font-size:12px}
+ .container{padding:12px}
 }
 </style>
 </head>
@@ -67,8 +144,10 @@ tr:nth-child(even){background:#f8fafc}.positive{color:#047857;font-weight:bold}.
 <body>
 
 <header class="header">
+
 <div class="brand">
 <div class="logo">💱</div>
+
 <div>
 <h1>Omid Es-haqzai</h1>
 <div class="subtitle">Monetary Service Provider</div>
@@ -79,349 +158,841 @@ tr:nth-child(even){background:#f8fafc}.positive{color:#047857;font-weight:bold}.
 <button onclick="openSettings()">⚙️ Settings</button>
 <button onclick="logout()">🚪 Logout</button>
 </div>
+
 </header>
+
 
 <div class="container">
 
 <div class="menu">
+
 <button onclick="openCustomer()">👤 Customer Registration</button>
-<button onclick="openMoney('deposit')">💵 Deposit</button>
-<button onclick="openMoney('withdraw')">💸 Withdraw</button>
-<button onclick="openExchange()">🔄 Exchange</button>
-<button onclick="openCustomers()">📋 Customers</button>
-<button onclick="openCustomerHistory()">📜 Customer History</button>
-<button onclick="openReports()">📊 General Report</button>
-<button onclick="openRates()">💱 Exchange Rates</button>
+
+<button onclick="openMoney('deposit')">
+💵 Deposit
+</button>
+
+<button onclick="openMoney('withdraw')">
+💸 Withdraw
+</button>
+
+<button onclick="openExchange()">
+🔄 Exchange
+</button>
+
+<button onclick="openCustomers()">
+📋 Customers
+</button>
+
+<button onclick="openCustomerHistory()">
+📜 Customer History
+</button>
+
+<button onclick="openReports()">
+📊 General Report
+</button>
+
+<button onclick="openRates()">
+💱 Exchange Rates
+</button>
+
 </div>
+
 
 <div class="currency-banner">
-<div class="currency"><div class="currency-icon">🇦🇫</div><b>AFN</b><span>افغانۍ</span></div>
-<div class="currency"><div class="currency-icon">💵</div><b>USD</b><span>US Dollar</span></div>
-<div class="currency"><div class="currency-icon">🇵🇰</div><b>PKR</b><span>کلدارې</span></div>
-<div class="currency"><div class="currency-icon">🇮🇷</div><b>Toman</b><span>ایراني تومان</span></div>
+
+<div class="currency">
+<div class="currency-icon">🇦🇫</div>
+<b>AFN</b>
+<span>افغانۍ</span>
 </div>
+
+<div class="currency">
+<div class="currency-icon">💵</div>
+<b>USD</b>
+<span>US Dollar</span>
+</div>
+
+<div class="currency">
+<div class="currency-icon">🇵🇰</div>
+<b>PKR</b>
+<span>کلدارې</span>
+</div>
+
+<div class="currency">
+<div class="currency-icon">🇮🇷</div>
+<b>Toman</b>
+<span>ایراني تومان</span>
+</div>
+
+</div>
+
 
 <div class="stats">
-<div class="stat">ټول Customers<b id="totalCustomers">0</b></div>
-<div class="stat">ټولې Transactions<b id="totalTransactions">0</b></div>
-<div class="stat">ټول Deposit<b id="totalDeposits">0</b></div>
-<div class="stat">ټول Withdraw<b id="totalWithdraws">0</b></div>
-</div>
+
+<div class="stat">
+ټول Customers
+<b id="totalCustomers">0</b>
 </div>
 
-<div class="footer">Omid Es-haqzai — Monetary Service Provider</div>
+<div class="stat">
+ټولې Transactions
+<b id="totalTransactions">0</b>
+</div>
+
+<div class="stat">
+ټول Deposit
+<b id="totalDeposits">0</b>
+</div>
+
+<div class="stat">
+ټول Withdraw
+<b id="totalWithdraws">0</b>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="footer">
+Omid Es-haqzai — Monetary Service Provider
+</div>
+
 
 <!-- CUSTOMER -->
+
 <div class="modal" id="customerModal">
+
 <div class="modal-box">
-<button class="close" onclick="closeModal('customerModal')">×</button>
+
+<button class="close"
+onclick="closeModal('customerModal')">
+×
+</button>
+
 <h2>👤 Customer Registration</h2>
+
 <input type="hidden" id="editCustomerId">
 
 <div class="form-grid">
-<div class="field"><label>Account Number *</label><input id="cAccount"></div>
-<div class="field"><label>Customer Name *</label><input id="cName"></div>
-<div class="field"><label>Phone</label><input id="cPhone"></div>
-<div class="field"><label>ID Number</label><input id="cId"></div>
-<div class="field"><label>Father Name</label><input id="cFather"></div>
-<div class="field"><label>Birth Date</label><input type="date" id="cBirth"></div>
+
 <div class="field">
-<label>Gender</label>
-<select id="cGender"><option value="">انتخاب</option><option>Male</option><option>Female</option></select>
+<label>Account Number *</label>
+<input id="cAccount">
 </div>
-<div class="field"><label>Job</label><input id="cJob"></div>
-<div class="field full"><label>Address</label><input id="cAddress"></div>
-<div class="field full"><label>Note</label><textarea id="cNote"></textarea></div>
+
+<div class="field">
+<label>Customer Name *</label>
+<input id="cName">
+</div>
+
+<div class="field">
+<label>Phone</label>
+<input id="cPhone">
+</div>
+
+<div class="field">
+<label>ID Number</label>
+<input id="cId">
+</div>
+
+<div class="field">
+<label>Father Name</label>
+<input id="cFather">
+</div>
+
+<div class="field">
+<label>Birth Date</label>
+<input type="date" id="cBirth">
+</div>
+
+<div class="field">
+
+<label>Gender</label>
+
+<select id="cGender">
+<option value="">انتخاب</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+
+</div>
+
+<div class="field">
+<label>Job</label>
+<input id="cJob">
+</div>
+
+<div class="field full">
+<label>Address</label>
+<input id="cAddress">
+</div>
+
+<div class="field full">
+<label>Note</label>
+<textarea id="cNote"></textarea>
+</div>
+
 </div>
 
 <br>
-<button class="btn primary" onclick="saveCustomer()">💾 Save Customer</button>
-<button class="btn gray" onclick="closeModal('customerModal')">Cancel</button>
+
+<button class="btn primary"
+onclick="saveCustomer()">
+💾 Save Customer
+</button>
+
+<button class="btn gray"
+onclick="closeModal('customerModal')">
+Cancel
+</button>
+
 </div>
 </div>
 
+
 <!-- MONEY -->
+
 <div class="modal" id="moneyModal">
+
 <div class="modal-box">
-<button class="close" onclick="closeModal('moneyModal')">×</button>
+
+<button class="close"
+onclick="closeModal('moneyModal')">
+×
+</button>
+
 <h2 id="moneyTitle"></h2>
+
 <input type="hidden" id="moneyType">
 
 <div class="form-grid">
+
 <div class="field full">
+
 <label>Account Number *</label>
+
 <div class="search">
+
 <input id="accountInput">
-<button class="btn info" onclick="findCustomer()">Search</button>
-</div>
-<div id="customerFound"></div>
+
+<button class="btn info"
+onclick="findCustomer()">
+Search
+</button>
+
 </div>
 
+<div id="customerFound"></div>
+
+</div>
+
+
 <div class="field">
+
 <label>Currency *</label>
+
 <select id="moneyCurrency">
+
 <option value="AFN">AFN</option>
 <option value="USD">USD</option>
 <option value="PKR">PKR</option>
 <option value="IRR">Toman</option>
+
 </select>
+
 </div>
+
 
 <div class="field">
+
 <label>Amount *</label>
-<input type="number" step="any" id="moneyAmount">
+
+<input
+type="number"
+step="any"
+id="moneyAmount">
+
 </div>
 
+
 <div class="field full">
+
 <label>Narration / Description *</label>
-<textarea id="moneyDescription" placeholder="مثلاً: د احمد له طرفه جمع"></textarea>
+
+<textarea
+id="moneyDescription"
+placeholder="مثلاً: د احمد له طرفه جمع">
+</textarea>
+
 </div>
+
 </div>
 
 <br>
-<button class="btn primary" onclick="saveMoney()">🔐 Save</button>
-<button class="btn gray" onclick="closeModal('moneyModal')">Cancel</button>
+
+<button class="btn primary"
+onclick="saveMoney()">
+🔐 Save
+</button>
+
+<button class="btn gray"
+onclick="closeModal('moneyModal')">
+Cancel
+</button>
+
 </div>
 </div>
 
+
 <!-- EXCHANGE -->
+
 <div class="modal" id="exchangeModal">
+
 <div class="modal-box">
-<button class="close" onclick="closeModal('exchangeModal')">×</button>
+
+<button class="close"
+onclick="closeModal('exchangeModal')">
+×
+</button>
+
 <h2>🔄 Currency Exchange</h2>
 
 <div class="form-grid">
-<div class="field full"><label>Account Number *</label><input id="exchangeAccount"></div>
+
+<div class="field full">
+
+<label>Account Number *</label>
+<input id="exchangeAccount">
+
+</div>
+
 
 <div class="field">
+
 <label>From Currency</label>
-<select id="fromCurrency" onchange="loadExchangeRate()">
+
+<select id="fromCurrency"
+onchange="loadExchangeRate()">
+
 <option value="AFN">AFN</option>
 <option value="USD">USD</option>
 <option value="PKR">PKR</option>
 <option value="IRR">Toman</option>
+
 </select>
+
 </div>
 
+
 <div class="field">
+
 <label>To Currency</label>
-<select id="toCurrency" onchange="loadExchangeRate()">
+
+<select id="toCurrency"
+onchange="loadExchangeRate()">
+
 <option value="USD">USD</option>
 <option value="AFN">AFN</option>
 <option value="PKR">PKR</option>
 <option value="IRR">Toman</option>
+
 </select>
+
 </div>
 
+
 <div class="field">
+
 <label>Amount *</label>
-<input type="number" step="any" id="exchangeAmount" oninput="calculateExchange()">
+
+<input
+type="number"
+step="any"
+id="exchangeAmount"
+oninput="calculateExchange()">
+
 </div>
+
 
 <div class="field">
+
 <label>Exchange Rate</label>
-<input type="number" step="any" id="exchangeRate" readonly>
+
+<input
+type="number"
+step="any"
+id="exchangeRate"
+readonly>
+
 </div>
 
+
 <div class="field full">
+
 <label>Received Amount</label>
+
 <input id="receivedAmount" readonly>
+
 </div>
+
 
 <div class="field full">
+
 <label>Narration / Description *</label>
-<textarea id="exchangeDescription" placeholder="مثلاً: USD څخه AFN ته تبدیل"></textarea>
+
+<textarea
+id="exchangeDescription"
+placeholder="مثلاً: USD څخه AFN ته تبدیل">
+</textarea>
+
+</div>
+
+</div>
+
+<div class="rate-note">
+Exchange Rate به په اتومات ډول د Exchange Rates څخه واخیستل شي.
+</div>
+
+<br>
+
+<button class="btn primary"
+onclick="exchangeMoney()">
+🔐 Save Exchange
+</button>
+
+<button class="btn gray"
+onclick="closeModal('exchangeModal')">
+Cancel
+</button>
+
 </div>
 </div>
 
-<div class="rate-note">Exchange Rate به په اتومات ډول د Exchange Rates څخه واخیستل شي.</div>
-<br>
-<button class="btn primary" onclick="exchangeMoney()">🔐 Save Exchange</button>
-<button class="btn gray" onclick="closeModal('exchangeModal')">Cancel</button>
-</div>
-</div>
 
 <!-- CUSTOMERS -->
+
 <div class="modal" id="customersModal">
+
 <div class="modal-box" style="max-width:1150px">
-<button class="close" onclick="closeModal('customersModal')">×</button>
+
+<button class="close"
+onclick="closeModal('customersModal')">
+×
+</button>
+
 <h2>📋 Customers</h2>
 
 <div class="search">
-<input id="customerSearch" placeholder="Account یا Name..." oninput="renderCustomers()">
+
+<input
+id="customerSearch"
+placeholder="Account یا Name..."
+oninput="renderCustomers()">
+
 </div>
 
 <div class="table-wrap">
+
 <table>
-<thead><tr>
-<th>Account</th><th>Name</th><th>Phone</th><th>AFN</th><th>USD</th><th>PKR</th><th>Toman</th><th>Actions</th>
-</tr></thead>
+
+<thead>
+
+<tr>
+<th>Account</th>
+<th>Name</th>
+<th>Phone</th>
+<th>AFN</th>
+<th>USD</th>
+<th>PKR</th>
+<th>Toman</th>
+<th>Actions</th>
+</tr>
+
+</thead>
+
 <tbody id="customersTable"></tbody>
+
 </table>
+
 </div>
+
 </div>
 </div>
 
+
 <!-- HISTORY -->
+
 <div class="modal" id="historyModal">
+
 <div class="modal-box" style="max-width:1250px">
-<button class="close" onclick="closeModal('historyModal')">×</button>
+
+<button class="close"
+onclick="closeModal('historyModal')">
+×
+</button>
+
 <h2>📜 Customer Transaction History</h2>
 
 <div class="search">
-<input id="historyAccount" placeholder="Account Number">
-<button class="btn info" onclick="showCustomerHistory()">Search</button>
+
+<input
+id="historyAccount"
+placeholder="Account Number">
+
+<button
+class="btn info"
+onclick="showCustomerHistory()">
+Search
+</button>
+
 </div>
 
 <div id="historyCustomer"></div>
 
 <div class="table-wrap">
+
 <table>
-<thead><tr>
-<th>ساعت</th><th>تاریخ</th><th>مبلغ</th><th>Balance</th><th>اسعار</th><th>Description</th><th>Actions</th>
-</tr></thead>
+
+<thead>
+
+<tr>
+<th>ساعت</th>
+<th>تاریخ</th>
+<th>مبلغ</th>
+<th>Balance</th>
+<th>اسعار</th>
+<th>Description</th>
+<th>Actions</th>
+</tr>
+
+</thead>
+
 <tbody id="historyTable"></tbody>
+
 </table>
+
 </div>
+
 </div>
 </div>
 
+
 <!-- REPORT -->
+
 <div class="modal" id="reportsModal">
+
 <div class="modal-box" style="max-width:1150px">
-<button class="close" onclick="closeModal('reportsModal')">×</button>
+
+<button class="close"
+onclick="closeModal('reportsModal')">
+×
+</button>
+
 <h2>📊 General Report</h2>
+
 <h3>اوسنی مجموعي موجوده</h3>
 
 <div class="report-cards">
-<div class="report-card"><div class="icon">💵</div>USD<b id="reportUSD">0</b></div>
-<div class="report-card"><div class="icon">🇦🇫</div>AFN<b id="reportAFN">0</b></div>
-<div class="report-card"><div class="icon">🇵🇰</div>PKR / کلدارې<b id="reportPKR">0</b></div>
-<div class="report-card"><div class="icon">🇮🇷</div>Toman<b id="reportIRR">0</b></div>
+
+<div class="report-card">
+<div class="icon">💵</div>
+USD
+<b id="reportUSD">0</b>
 </div>
+
+<div class="report-card">
+<div class="icon">🇦🇫</div>
+AFN
+<b id="reportAFN">0</b>
+</div>
+
+<div class="report-card">
+<div class="icon">🇵🇰</div>
+PKR / کلدارې
+<b id="reportPKR">0</b>
+</div>
+
+<div class="report-card">
+<div class="icon">🇮🇷</div>
+Toman
+<b id="reportIRR">0</b>
+</div>
+
+</div>
+
 
 <div class="stats">
-<div class="stat">ټول Deposit<b id="reportDeposit">0</b></div>
-<div class="stat">ټول Withdraw<b id="reportWithdraw">0</b></div>
-<div class="stat">ټولې معاملې<b id="reportTransactions">0</b></div>
+
+<div class="stat">
+ټول Deposit
+<b id="reportDeposit">0</b>
 </div>
+
+<div class="stat">
+ټول Withdraw
+<b id="reportWithdraw">0</b>
+</div>
+
+<div class="stat">
+ټولې معاملې
+<b id="reportTransactions">0</b>
+</div>
+
+</div>
+
 
 <div class="table-wrap">
+
 <table>
-<thead><tr>
-<th>Account</th><th>Customer</th><th>Type</th><th>Currency</th><th>Amount</th><th>Description</th><th>Date</th>
-</tr></thead>
+
+<thead>
+
+<tr>
+<th>Account</th>
+<th>Customer</th>
+<th>Type</th>
+<th>Currency</th>
+<th>Amount</th>
+<th>Description</th>
+<th>Date</th>
+</tr>
+
+</thead>
+
 <tbody id="reportTable"></tbody>
+
 </table>
+
+</div>
+
 </div>
 </div>
-</div>
+
 
 <!-- RATES -->
+
 <div class="modal" id="ratesModal">
+
 <div class="modal-box" style="max-width:700px">
-<button class="close" onclick="closeModal('ratesModal')">×</button>
+
+<button class="close"
+onclick="closeModal('ratesModal')">
+×
+</button>
+
 <h2>💱 Exchange Rates</h2>
-<p>دلته Rate مشخص کړه. Exchange به همدا Rate په اتومات ډول اخلي.</p>
+
+<p>
+دلته Rate مشخص کړه. Exchange به همدا Rate په اتومات ډول اخلي.
+</p>
 
 <div class="form-grid">
-<div class="field"><label>USD → AFN</label><input id="rateUSD_AFN" type="number" step="any"></div>
-<div class="field"><label>USD → PKR</label><input id="rateUSD_PKR" type="number" step="any"></div>
-<div class="field"><label>USD → Toman</label><input id="rateUSD_IRR" type="number" step="any"></div>
-<div class="field"><label>AFN → PKR</label><input id="rateAFN_PKR" type="number" step="any"></div>
-<div class="field"><label>AFN → Toman</label><input id="rateAFN_IRR" type="number" step="any"></div>
-<div class="field"><label>PKR → Toman</label><input id="ratePKR_IRR" type="number" step="any"></div>
+
+<div class="field">
+<label>USD → AFN</label>
+<input id="rateUSD_AFN" type="number" step="any">
+</div>
+
+<div class="field">
+<label>USD → PKR</label>
+<input id="rateUSD_PKR" type="number" step="any">
+</div>
+
+<div class="field">
+<label>USD → Toman</label>
+<input id="rateUSD_IRR" type="number" step="any">
+</div>
+
+<div class="field">
+<label>AFN → PKR</label>
+<input id="rateAFN_PKR" type="number" step="any">
+</div>
+
+<div class="field">
+<label>AFN → Toman</label>
+<input id="rateAFN_IRR" type="number" step="any">
+</div>
+
+<div class="field">
+<label>PKR → Toman</label>
+<input id="ratePKR_IRR" type="number" step="any">
+</div>
+
 </div>
 
 <br>
-<button class="btn primary" onclick="saveRates()">💾 Save Rates</button>
+
+<button class="btn primary"
+onclick="saveRates()">
+💾 Save Rates
+</button>
+
 </div>
 </div>
 
+
 <!-- SETTINGS -->
+
 <div class="modal" id="settingsModal">
+
 <div class="modal-box">
-<button class="close" onclick="closeModal('settingsModal')">×</button>
+
+<button class="close"
+onclick="closeModal('settingsModal')">
+×
+</button>
+
 <h2>⚙️ Settings</h2>
 
 <div class="form-grid">
+
 <div class="field">
+
 <label>New Login Password</label>
-<input type="password" id="newLoginPassword">
-</div>
-
-<div class="field">
-<label>New Supervisor Password</label>
-<input type="password" id="newSupervisorPassword">
-</div>
-</div>
-
-<br>
-<button class="btn primary" onclick="saveSettings()">Save Settings</button>
-</div>
-</div>
-
-<!-- PASSWORD -->
-<div class="modal" id="passwordModal">
-<div class="modal-box" style="max-width:400px;text-align:center">
-<div style="font-size:50px">🔐</div>
-<h2>Supervisor Authorization</h2>
-<p>د دې عملیات لپاره Supervisor Password داخل کړئ.</p>
 
 <input
- type="password"
- id="supervisorPassword"
- placeholder="Supervisor Password"
- onkeydown="passwordEnter(event)"
->
+type="password"
+id="newLoginPassword">
 
-<p id="passError" style="color:red"></p>
+</div>
+
+<div class="field">
+
+<label>New Supervisor Password</label>
+
+<input
+type="password"
+id="newSupervisorPassword">
+
+</div>
+
+</div>
 
 <br>
 
-<button class="btn primary" onclick="verifyPassword()">Confirm</button>
-<button class="btn gray" onclick="cancelPassword()">Cancel</button>
+<button
+class="btn primary"
+onclick="saveSettings()">
+Save Settings
+</button>
 
 </div>
 </div>
+
+
+<!-- PASSWORD -->
+
+<div class="modal" id="passwordModal">
+
+<div
+class="modal-box"
+style="max-width:400px;text-align:center">
+
+<div style="font-size:50px">🔐</div>
+
+<h2>Supervisor Authorization</h2>
+
+<p>
+د دې عملیات لپاره Supervisor Password داخل کړئ.
+</p>
+
+<input
+type="password"
+id="supervisorPassword"
+placeholder="Supervisor Password"
+onkeydown="passwordEnter(event)">
+
+<p
+id="passError"
+style="color:red">
+</p>
+
+<br>
+
+<button
+class="btn primary"
+onclick="verifyPassword()">
+Confirm
+</button>
+
+<button
+class="btn gray"
+onclick="cancelPassword()">
+Cancel
+</button>
+
+</div>
+</div>
+
 
 <!-- EDIT TRANSACTION -->
+
 <div class="modal" id="editTransactionModal">
+
 <div class="modal-box" style="max-width:500px">
-<button class="close" onclick="closeModal('editTransactionModal')">×</button>
+
+<button
+class="close"
+onclick="closeModal('editTransactionModal')">
+×
+</button>
+
 <h2>✏️ Edit Transaction</h2>
 
-<input type="hidden" id="editTransactionId">
+<input
+type="hidden"
+id="editTransactionId">
 
 <div class="field">
+
 <label>Amount *</label>
-<input type="number" step="any" id="editTransactionAmount">
+
+<input
+type="number"
+step="any"
+id="editTransactionAmount">
+
 </div>
 
 <br>
 
 <div class="field">
+
 <label>Description *</label>
-<textarea id="editTransactionDescription"></textarea>
+
+<textarea
+id="editTransactionDescription">
+</textarea>
+
 </div>
 
 <br>
 
-<button class="btn primary" onclick="saveEditedTransaction()">💾 Update Transaction</button>
-<button class="btn gray" onclick="closeModal('editTransactionModal')">Cancel</button>
+<button
+class="btn primary"
+onclick="saveEditedTransaction()">
+💾 Update Transaction
+</button>
+
+<button
+class="btn gray"
+onclick="closeModal('editTransactionModal')">
+Cancel
+</button>
 
 </div>
 </div>
 
 
-<!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-/* =========================================================
-   SUPABASE CONNECTION
-========================================================= */
+/* =====================================================
+SUPABASE
+===================================================== */
 
 const SUPABASE_URL =
 "https://ggblghhfngmshmmkwnsl.supabase.co";
@@ -436,9 +1007,9 @@ window.supabase.createClient(
 );
 
 
-/* =========================================================
-   AUTHENTICATION
-========================================================= */
+/* =====================================================
+AUTH
+===================================================== */
 
 async function checkUser(){
 
@@ -448,20 +1019,26 @@ async function checkUser(){
  if(error || !data.session){
 
   window.location.href="index.html";
-
   return false;
+
  }
 
  return true;
 }
 
 
-/* =========================================================
-   LOCAL SETTINGS
-========================================================= */
+/* =====================================================
+LOCAL SETTINGS
+===================================================== */
 
-if(!localStorage.getItem("supervisorPassword"))
- localStorage.setItem("supervisorPassword","2580");
+if(!localStorage.getItem("supervisorPassword")){
+
+ localStorage.setItem(
+  "supervisorPassword",
+  "2580"
+ );
+
+}
 
 
 let customers=[];
@@ -501,9 +1078,9 @@ JSON.parse(
 };
 
 
-/* =========================================================
-   HELPERS
-========================================================= */
+/* =====================================================
+HELPERS
+===================================================== */
 
 function money(n){
 
@@ -543,14 +1120,20 @@ function escapeHtml(v){
 
 function closeModal(id){
 
- document.getElementById(id).style.display="none";
+ const el=document.getElementById(id);
+
+ if(el)
+  el.style.display="none";
 
 }
 
 
 function openModal(id){
 
- document.getElementById(id).style.display="block";
+ const el=document.getElementById(id);
+
+ if(el)
+  el.style.display="block";
 
 }
 
@@ -584,9 +1167,9 @@ function dateOf(date){
 }
 
 
-/* =========================================================
-   LOAD DATABASE
-========================================================= */
+/* =====================================================
+LOAD DATABASE
+===================================================== */
 
 async function loadData(){
 
@@ -605,7 +1188,7 @@ async function loadData(){
    cError.message
   );
 
-  return;
+  return false;
 
  }
 
@@ -631,7 +1214,7 @@ async function loadData(){
    tError.message
   );
 
-  return;
+  return false;
 
  }
 
@@ -690,40 +1273,35 @@ async function loadData(){
 
   const c =
   customers.find(
-   x=>String(x.id)===
-   String(t.customer_id)
+   x=>String(x.id)===String(t.customer_id)
   );
 
 
   if(c){
 
    t.account=c.account;
-
    t.customer=c.name;
 
   }
 
-
-  t.time=timeOf(t.created_at);
-
-  t.date=dateOf(t.created_at);
-
  });
 
 
- customers.forEach(c=>
-  recalculateCustomerBalances(c.id)
- );
+ customers.forEach(c=>{
+  recalculateCustomerBalances(c.id);
+ });
 
 
  updateDashboard();
 
+ return true;
+
 }
 
 
-/* =========================================================
-   INITIAL LOAD
-========================================================= */
+/* =====================================================
+INITIAL LOAD
+===================================================== */
 
 document.addEventListener(
  "DOMContentLoaded",
@@ -740,22 +1318,20 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   DASHBOARD STATS
-========================================================= */
+/* =====================================================
+DASHBOARD
+===================================================== */
 
 function updateDashboard(){
 
  document.getElementById(
   "totalCustomers"
- ).textContent=
- customers.length;
+ ).textContent=customers.length;
 
 
  document.getElementById(
   "totalTransactions"
- ).textContent=
- transactions.length;
+ ).textContent=transactions.length;
 
 
  let d=0;
@@ -764,43 +1340,30 @@ function updateDashboard(){
 
  transactions.forEach(t=>{
 
-  if(t.type==="deposit"){
+  if(t.type==="deposit")
+   d+=Math.abs(Number(t.amount)||0);
 
-   d+=Math.abs(
-    Number(t.amount)||0
-   );
-
-  }
-
-
-  if(t.type==="withdraw"){
-
-   w+=Math.abs(
-    Number(t.amount)||0
-   );
-
-  }
+  if(t.type==="withdraw")
+   w+=Math.abs(Number(t.amount)||0);
 
  });
 
 
  document.getElementById(
   "totalDeposits"
- ).textContent=
- money(d);
+ ).textContent=money(d);
 
 
  document.getElementById(
   "totalWithdraws"
- ).textContent=
- money(w);
+ ).textContent=money(w);
 
 }
 
 
-/* =========================================================
-   CUSTOMER REGISTRATION
-========================================================= */
+/* =====================================================
+CUSTOMER
+===================================================== */
 
 function openCustomer(){
 
@@ -821,9 +1384,7 @@ function openCustomer(){
   "cAddress",
   "cNote"
  ].forEach(id=>{
-
   document.getElementById(id).value="";
-
  });
 
 
@@ -889,44 +1450,28 @@ async function saveCustomer(){
   name:name,
 
   phone:
-  document.getElementById(
-   "cPhone"
-  ).value.trim(),
+  document.getElementById("cPhone").value.trim(),
 
   id_number:
-  document.getElementById(
-   "cId"
-  ).value.trim(),
+  document.getElementById("cId").value.trim(),
 
   father_name:
-  document.getElementById(
-   "cFather"
-  ).value.trim(),
+  document.getElementById("cFather").value.trim(),
 
   birth_date:
-  document.getElementById(
-   "cBirth"
-  ).value || null,
+  document.getElementById("cBirth").value || null,
 
   gender:
-  document.getElementById(
-   "cGender"
-  ).value,
+  document.getElementById("cGender").value,
 
   job:
-  document.getElementById(
-   "cJob"
-  ).value.trim(),
+  document.getElementById("cJob").value.trim(),
 
   address:
-  document.getElementById(
-   "cAddress"
-  ).value.trim(),
+  document.getElementById("cAddress").value.trim(),
 
   note:
-  document.getElementById(
-   "cNote"
-  ).value.trim()
+  document.getElementById("cNote").value.trim()
 
  };
 
@@ -984,75 +1529,42 @@ async function saveCustomer(){
 }
 
 
-/* =========================================================
-   EDIT CUSTOMER
-========================================================= */
+/* =====================================================
+EDIT CUSTOMER
+===================================================== */
 
 function editCustomer(id){
 
  const c =
  customers.find(
-  x=>String(x.id)===
-  String(id)
+  x=>String(x.id)===String(id)
  );
 
 
  if(!c)return;
 
 
- document.getElementById(
-  "editCustomerId"
- ).value=c.id;
+ document.getElementById("editCustomerId").value=c.id;
 
+ document.getElementById("cAccount").value=c.account||"";
 
- document.getElementById(
-  "cAccount"
- ).value=c.account||"";
+ document.getElementById("cName").value=c.name||"";
 
+ document.getElementById("cPhone").value=c.phone||"";
 
- document.getElementById(
-  "cName"
- ).value=c.name||"";
+ document.getElementById("cId").value=c.idNumber||"";
 
+ document.getElementById("cFather").value=c.father||"";
 
- document.getElementById(
-  "cPhone"
- ).value=c.phone||"";
+ document.getElementById("cBirth").value=c.birth||"";
 
+ document.getElementById("cGender").value=c.gender||"";
 
- document.getElementById(
-  "cId"
- ).value=c.idNumber||"";
+ document.getElementById("cJob").value=c.job||"";
 
+ document.getElementById("cAddress").value=c.address||"";
 
- document.getElementById(
-  "cFather"
- ).value=c.father||"";
-
-
- document.getElementById(
-  "cBirth"
- ).value=c.birth||"";
-
-
- document.getElementById(
-  "cGender"
- ).value=c.gender||"";
-
-
- document.getElementById(
-  "cJob"
- ).value=c.job||"";
-
-
- document.getElementById(
-  "cAddress"
- ).value=c.address||"";
-
-
- document.getElementById(
-  "cNote"
- ).value=c.note||"";
+ document.getElementById("cNote").value=c.note||"";
 
 
  closeModal("customersModal");
@@ -1062,27 +1574,23 @@ function editCustomer(id){
 }
 
 
-/* =========================================================
-   SUPERVISOR PASSWORD
-========================================================= */
+/* =====================================================
+PASSWORD
+===================================================== */
 
 function askPassword(action){
 
  pendingAction=action;
 
-
  document.getElementById(
   "supervisorPassword"
  ).value="";
-
 
  document.getElementById(
   "passError"
  ).textContent="";
 
-
  openModal("passwordModal");
-
 
  setTimeout(()=>{
 
@@ -1106,8 +1614,7 @@ function verifyPassword(){
  const saved =
  localStorage.getItem(
   "supervisorPassword"
- ) ||
- "2580";
+ ) || "2580";
 
 
  if(p!==saved){
@@ -1124,15 +1631,11 @@ function verifyPassword(){
 
  closeModal("passwordModal");
 
-
- const action =
- pendingAction;
+ const action=pendingAction;
 
  pendingAction=null;
 
-
- if(action)
-  action();
+ if(action)action();
 
 }
 
@@ -1154,9 +1657,9 @@ function passwordEnter(e){
 }
 
 
-/* =========================================================
-   CUSTOMERS
-========================================================= */
+/* =====================================================
+CUSTOMERS
+===================================================== */
 
 function openCustomers(){
 
@@ -1197,74 +1700,60 @@ function renderCustomers(){
 
  list.map(c=>`
 
- <tr>
+<tr>
 
- <td>
- ${escapeHtml(c.account)}
- </td>
+<td>${escapeHtml(c.account)}</td>
 
- <td>
- ${escapeHtml(c.name)}
- </td>
+<td>${escapeHtml(c.name)}</td>
 
- <td>
- ${escapeHtml(c.phone)}
- </td>
+<td>${escapeHtml(c.phone)}</td>
 
- <td>
- ${money(c.balance.AFN)}
- </td>
+<td>${money(c.balance.AFN)}</td>
 
- <td>
- ${money(c.balance.USD)}
- </td>
+<td>${money(c.balance.USD)}</td>
 
- <td>
- ${money(c.balance.PKR)}
- </td>
+<td>${money(c.balance.PKR)}</td>
 
- <td>
- ${money(c.balance.IRR)}
- </td>
+<td>${money(c.balance.IRR)}</td>
 
- <td>
+<td>
 
- <div class="actions">
+<div class="actions">
 
- <button
-  class="btn warning"
-  onclick="askPassword(()=>editCustomer('${c.id}'))">
-  ✏️ Edit
- </button>
+<button
+class="btn warning"
+onclick="askPassword(()=>editCustomer('${c.id}'))">
+✏️ Edit
+</button>
 
- <button
-  class="btn danger"
-  onclick="deleteCustomer('${c.id}')">
-  🗑️ Delete
- </button>
+<button
+class="btn danger"
+onclick="deleteCustomer('${c.id}')">
+🗑️ Delete
+</button>
 
- </div>
+</div>
 
- </td>
+</td>
 
- </tr>
+</tr>
 
- `).join("")
+`).join("")
 
  ||
 
  `<tr>
- <td colspan="8">
- Customer پیدا نه شو.
- </td>
- </tr>`;
+<td colspan="8">
+Customer پیدا نه شو.
+</td>
+</tr>`;
 
 }
 
 
-/* =========================================================
-   DELETE CUSTOMER
-========================================================= */
+/* =====================================================
+DELETE CUSTOMER
+===================================================== */
 
 function deleteCustomer(id){
 
@@ -1272,8 +1761,7 @@ function deleteCustomer(id){
 
   const c =
   customers.find(
-   x=>String(x.id)===
-   String(id)
+   x=>String(x.id)===String(id)
   );
 
 
@@ -1327,7 +1815,6 @@ function deleteCustomer(id){
 
   renderCustomers();
 
-
   alert(
    "Customer او ټول Transactions حذف شول."
   );
@@ -1337,9 +1824,9 @@ function deleteCustomer(id){
 }
 
 
-/* =========================================================
-   DEPOSIT / WITHDRAW
-========================================================= */
+/* =====================================================
+DEPOSIT / WITHDRAW
+===================================================== */
 
 function openMoney(type){
 
@@ -1358,24 +1845,10 @@ function openMoney(type){
  "💸 Withdraw";
 
 
- document.getElementById(
-  "accountInput"
- ).value="";
-
-
- document.getElementById(
-  "moneyAmount"
- ).value="";
-
-
- document.getElementById(
-  "moneyDescription"
- ).value="";
-
-
- document.getElementById(
-  "customerFound"
- ).innerHTML="";
+ document.getElementById("accountInput").value="";
+ document.getElementById("moneyAmount").value="";
+ document.getElementById("moneyDescription").value="";
+ document.getElementById("customerFound").innerHTML="";
 
 
  openModal("moneyModal");
@@ -1406,16 +1879,16 @@ function findCustomer(){
  ?
 
  `<div class="message success">
-  ✅ ${escapeHtml(c.name)}
-  —
-  ${escapeHtml(c.account)}
-  </div>`
+ ✅ ${escapeHtml(c.name)}
+ —
+ ${escapeHtml(c.account)}
+ </div>`
 
  :
 
  `<div class="message error">
-  Customer پیدا نه شو.
-  </div>`;
+ Customer پیدا نه شو.
+ </div>`;
 
 
  return c;
@@ -1426,35 +1899,21 @@ function findCustomer(){
 function saveMoney(){
 
  const type =
- document.getElementById(
-  "moneyType"
- ).value;
-
+ document.getElementById("moneyType").value;
 
  const account =
- document.getElementById(
-  "accountInput"
- ).value.trim();
-
+ document.getElementById("accountInput").value.trim();
 
  const cur =
- document.getElementById(
-  "moneyCurrency"
- ).value;
-
+ document.getElementById("moneyCurrency").value;
 
  const amount =
  Number(
-  document.getElementById(
-   "moneyAmount"
-  ).value
+  document.getElementById("moneyAmount").value
  );
 
-
  const desc =
- document.getElementById(
-  "moneyDescription"
- ).value.trim();
+ document.getElementById("moneyDescription").value.trim();
 
 
  const c =
@@ -1502,10 +1961,7 @@ function saveMoney(){
   Number(c.balance[cur]||0);
 
 
-  if(
-   type==="withdraw" &&
-   current<amount
-  ){
+  if(type==="withdraw" && current<amount){
 
    alert(
     "❌ د Customer Balance کافي نه دی."
@@ -1520,10 +1976,8 @@ function saveMoney(){
   current+
   (
    type==="deposit"
-   ?
-   amount
-   :
-   -amount
+   ? amount
+   : -amount
   );
 
 
@@ -1537,10 +1991,8 @@ function saveMoney(){
 
    amount:
    type==="withdraw"
-   ?
-   -amount
-   :
-   amount,
+   ? -amount
+   : amount,
 
    balance:newBalance,
 
@@ -1587,36 +2039,17 @@ function saveMoney(){
 }
 
 
-/* =========================================================
-   EXCHANGE
-========================================================= */
+/* =====================================================
+EXCHANGE
+===================================================== */
 
 function openExchange(){
 
- document.getElementById(
-  "exchangeAccount"
- ).value="";
-
-
- document.getElementById(
-  "exchangeAmount"
- ).value="";
-
-
- document.getElementById(
-  "exchangeRate"
- ).value="";
-
-
- document.getElementById(
-  "receivedAmount"
- ).value="";
-
-
- document.getElementById(
-  "exchangeDescription"
- ).value="";
-
+ document.getElementById("exchangeAccount").value="";
+ document.getElementById("exchangeAmount").value="";
+ document.getElementById("exchangeRate").value="";
+ document.getElementById("receivedAmount").value="";
+ document.getElementById("exchangeDescription").value="";
 
  loadExchangeRate();
 
@@ -1630,7 +2063,6 @@ function getRate(from,to){
  if(from===to)
   return 1;
 
-
  return Number(
   exchangeRates?.[from]?.[to]||0
  );
@@ -1641,26 +2073,17 @@ function getRate(from,to){
 function loadExchangeRate(){
 
  const from =
- document.getElementById(
-  "fromCurrency"
- ).value;
-
+ document.getElementById("fromCurrency").value;
 
  const to =
- document.getElementById(
-  "toCurrency"
- ).value;
-
+ document.getElementById("toCurrency").value;
 
  const rate =
  getRate(from,to);
 
-
  document.getElementById(
   "exchangeRate"
- ).value=
- rate||"";
-
+ ).value=rate||"";
 
  calculateExchange();
 
@@ -1676,14 +2099,12 @@ function calculateExchange(){
   ).value
  );
 
-
  const rate =
  Number(
   document.getElementById(
    "exchangeRate"
   ).value
  );
-
 
  document.getElementById(
   "receivedAmount"
@@ -1705,18 +2126,15 @@ function exchangeMoney(){
   "exchangeAccount"
  ).value.trim();
 
-
  const from =
  document.getElementById(
   "fromCurrency"
  ).value;
 
-
  const to =
  document.getElementById(
   "toCurrency"
  ).value;
-
 
  const amount =
  Number(
@@ -1725,16 +2143,13 @@ function exchangeMoney(){
   ).value
  );
 
-
  const desc =
  document.getElementById(
   "exchangeDescription"
  ).value.trim();
 
-
  const rate =
  getRate(from,to);
-
 
  const c =
  customers.find(
@@ -1812,20 +2227,15 @@ function exchangeMoney(){
 
  askPassword(async()=>{
 
-  const received =
-  amount*rate;
+  const received=amount*rate;
 
+  const exchangeTime=nowISO();
 
-  const exchangeTime =
-  nowISO();
+  const sourceBalance=
+   Number(c.balance[from]||0)-amount;
 
-
-  const sourceBalance =
-  Number(c.balance[from]||0)-amount;
-
-
-  const targetBalance =
-  Number(c.balance[to]||0)+received;
+  const targetBalance=
+   Number(c.balance[to]||0)+received;
 
 
   const rows=[
@@ -1837,9 +2247,7 @@ function exchangeMoney(){
     amount:-amount,
     balance:sourceBalance,
     description:
-    desc+
-    " | Exchange → "+
-    to,
+     desc+" | Exchange → "+to,
     created_at:exchangeTime
    },
 
@@ -1850,9 +2258,7 @@ function exchangeMoney(){
     amount:received,
     balance:targetBalance,
     description:
-    desc+
-    " | Exchange ← "+
-    from,
+     desc+" | Exchange ← "+from,
     created_at:exchangeTime
    }
 
@@ -1881,19 +2287,16 @@ function exchangeMoney(){
 
   closeModal("exchangeModal");
 
-
-  alert(
-   "Exchange ثبت شو."
-  );
+  alert("Exchange ثبت شو.");
 
  });
 
 }
 
 
-/* =========================================================
-   CUSTOMER HISTORY
-========================================================= */
+/* =====================================================
+CUSTOMER HISTORY
+===================================================== */
 
 function openCustomerHistory(){
 
@@ -1901,16 +2304,13 @@ function openCustomerHistory(){
   "historyAccount"
  ).value="";
 
-
  document.getElementById(
   "historyCustomer"
  ).innerHTML="";
 
-
  document.getElementById(
   "historyTable"
  ).innerHTML="";
-
 
  openModal("historyModal");
 
@@ -1945,8 +2345,7 @@ function showCustomerHistory(){
  const list =
  transactions
  .filter(t=>
-  String(t.customer_id)===
-  String(c.id)
+  String(t.customer_id)===String(c.id)
  )
  .sort((a,b)=>
   new Date(a.created_at)-
@@ -1954,9 +2353,7 @@ function showCustomerHistory(){
  );
 
 
- let bal =
- balanceTemplate();
-
+ let bal=balanceTemplate();
 
  let rows=[];
 
@@ -1964,21 +2361,13 @@ function showCustomerHistory(){
  list.forEach(t=>{
 
   bal[t.currency]=
-  Number(
-   bal[t.currency]||0
-  )+
-  Number(
-   t.amount||0
-  );
+   Number(bal[t.currency]||0)+
+   Number(t.amount||0);
 
 
   rows.push({
-
    ...t,
-
-   calculatedBalance:
-   bal[t.currency]
-
+   calculatedBalance:bal[t.currency]
   });
 
  });
@@ -2009,111 +2398,100 @@ function showCustomerHistory(){
 
  rows.map(t=>`
 
- <tr>
+<tr>
 
- <td>
- ${escapeHtml(
-  timeOf(t.created_at)
- )}
- </td>
+<td>
+${escapeHtml(timeOf(t.created_at))}
+</td>
 
- <td>
- ${escapeHtml(
-  dateOf(t.created_at)
- )}
- </td>
+<td>
+${escapeHtml(dateOf(t.created_at))}
+</td>
 
- <td class="${
-  Number(t.amount)>=0
-  ?
-  "positive"
-  :
-  "negative"
- }">
+<td class="${
+ Number(t.amount)>=0
+ ? "positive"
+ : "negative"
+}">
 
- ${
-  Number(t.amount)>=0
-  ?
-  "+"
-  :
-  ""
- }
+${
+ Number(t.amount)>=0
+ ? "+"
+ : ""
+}
 
- ${money(t.amount)}
+${money(t.amount)}
 
- </td>
+</td>
 
- <td>
- ${money(t.calculatedBalance)}
- </td>
+<td>
+${money(t.calculatedBalance)}
+</td>
 
- <td>
- ${escapeHtml(t.currency)}
- </td>
+<td>
+${escapeHtml(t.currency)}
+</td>
 
- <td>
- ${escapeHtml(t.description)}
- </td>
+<td>
+${escapeHtml(t.description)}
+</td>
 
- <td>
+<td>
 
- <div class="actions">
+<div class="actions">
 
- <button
-  class="btn warning"
-  onclick="askPassword(()=>editTransaction('${t.id}'))">
-  ✏️ Edit
- </button>
+<button
+class="btn warning"
+onclick="askPassword(()=>editTransaction('${t.id}'))">
+✏️ Edit
+</button>
 
- <button
-  class="btn danger"
-  onclick="deleteTransaction('${t.id}')">
-  🗑️ Delete
- </button>
+<button
+class="btn danger"
+onclick="deleteTransaction('${t.id}')">
+🗑️ Delete
+</button>
 
- </div>
+</div>
 
- </td>
+</td>
 
- </tr>
+</tr>
 
- `).join("")
+`).join("")
 
  ||
 
  `<tr>
- <td colspan="7">
- هیڅ Transaction نشته.
- </td>
- </tr>`;
+<td colspan="7">
+هیڅ Transaction نشته.
+</td>
+</tr>`;
 
 }
 
 
-/* =========================================================
-   BALANCE RECALCULATION
-========================================================= */
+/* =====================================================
+BALANCE
+===================================================== */
 
 function recalculateCustomerBalances(cid){
 
  const c =
  customers.find(
-  x=>String(x.id)===
-  String(cid)
+  x=>String(x.id)===String(cid)
  );
 
 
  if(!c)return;
 
 
- c.balance =
- balanceTemplate();
+ c.balance=balanceTemplate();
 
 
  transactions
  .filter(t=>
-  String(t.customer_id)===
-  String(cid)
+  String(t.customer_id)===String(cid)
  )
  .sort((a,b)=>
   new Date(a.created_at)-
@@ -2121,9 +2499,7 @@ function recalculateCustomerBalances(cid){
  )
  .forEach(t=>{
 
-  if(
-   c.balance[t.currency]!==undefined
-  ){
+  if(c.balance[t.currency]!==undefined){
 
    c.balance[t.currency]+=
    Number(t.amount)||0;
@@ -2135,16 +2511,15 @@ function recalculateCustomerBalances(cid){
 }
 
 
-/* =========================================================
-   EDIT TRANSACTION
-========================================================= */
+/* =====================================================
+EDIT TRANSACTION
+===================================================== */
 
 function editTransaction(id){
 
  const t =
  transactions.find(
-  x=>String(x.id)===
-  String(id)
+  x=>String(x.id)===String(id)
  );
 
 
@@ -2159,9 +2534,7 @@ function editTransaction(id){
  document.getElementById(
   "editTransactionAmount"
  ).value=
- Math.abs(
-  Number(t.amount)||0
- );
+ Math.abs(Number(t.amount)||0);
 
 
  document.getElementById(
@@ -2201,8 +2574,7 @@ function saveEditedTransaction(){
 
  const t =
  transactions.find(
-  x=>String(x.id)===
-  String(id)
+  x=>String(x.id)===String(id)
  );
 
 
@@ -2225,11 +2597,9 @@ function saveEditedTransaction(){
  askPassword(async()=>{
 
   const newAmount =
-  Number(t.amount)<0
-  ?
-  -amount
-  :
-  amount;
+   Number(t.amount)<0
+   ? -amount
+   : amount;
 
 
   const result =
@@ -2264,15 +2634,14 @@ function saveEditedTransaction(){
   );
 
 
-  if(
+  const account =
    document.getElementById(
     "historyAccount"
-   ).value.trim()
-  ){
+   ).value.trim();
 
+
+  if(account)
    showCustomerHistory();
-
-  }
 
 
   alert(
@@ -2284,9 +2653,9 @@ function saveEditedTransaction(){
 }
 
 
-/* =========================================================
-   DELETE TRANSACTION
-========================================================= */
+/* =====================================================
+DELETE TRANSACTION
+===================================================== */
 
 function deleteTransaction(id){
 
@@ -2294,8 +2663,7 @@ function deleteTransaction(id){
 
   const t =
   transactions.find(
-   x=>String(x.id)===
-   String(id)
+   x=>String(x.id)===String(id)
   );
 
 
@@ -2330,15 +2698,14 @@ function deleteTransaction(id){
   await loadData();
 
 
-  if(
+  const account =
    document.getElementById(
     "historyAccount"
-   ).value.trim()
-  ){
+   ).value.trim();
 
+
+  if(account)
    showCustomerHistory();
-
-  }
 
 
   alert(
@@ -2350,100 +2717,74 @@ function deleteTransaction(id){
 }
 
 
-/* =========================================================
-   GENERAL REPORT
-========================================================= */
+/* =====================================================
+REPORT
+===================================================== */
 
 function openReports(){
 
- let totals =
- balanceTemplate();
+ let totals=balanceTemplate();
 
 
  customers.forEach(c=>{
 
-  totals.AFN +=
-  Number(c.balance.AFN)||0;
-
-  totals.USD +=
-  Number(c.balance.USD)||0;
-
-  totals.PKR +=
-  Number(c.balance.PKR)||0;
-
-  totals.IRR +=
-  Number(c.balance.IRR)||0;
+  totals.AFN+=Number(c.balance.AFN)||0;
+  totals.USD+=Number(c.balance.USD)||0;
+  totals.PKR+=Number(c.balance.PKR)||0;
+  totals.IRR+=Number(c.balance.IRR)||0;
 
  });
 
 
  let deposit=0;
-
  let withdraw=0;
 
 
  transactions.forEach(t=>{
 
-  if(t.type==="deposit"){
+  if(t.type==="deposit")
+   deposit+=Math.abs(Number(t.amount)||0);
 
-   deposit+=Math.abs(
-    Number(t.amount)||0
-   );
-
-  }
-
-
-  if(t.type==="withdraw"){
-
-   withdraw+=Math.abs(
-    Number(t.amount)||0
-   );
-
-  }
+  if(t.type==="withdraw")
+   withdraw+=Math.abs(Number(t.amount)||0);
 
  });
 
 
  document.getElementById(
   "reportUSD"
- ).textContent=
- money(totals.USD);
+ ).textContent=money(totals.USD);
 
 
  document.getElementById(
   "reportAFN"
- ).textContent=
- money(totals.AFN);
+ ).textContent=money(totals.AFN);
 
 
  document.getElementById(
   "reportPKR"
- ).textContent=
- money(totals.PKR);
+ ).textContent=money(totals.PKR);
 
 
  document.getElementById(
   "reportIRR"
- ).textContent=
- money(totals.IRR);
+ ).textContent=money(totals.IRR);
 
 
  document.getElementById(
   "reportDeposit"
- ).textContent=
- money(deposit);
+ ).textContent=money(deposit);
 
 
  document.getElementById(
   "reportWithdraw"
- ).textContent=
- money(withdraw);
+ ).textContent=money(withdraw);
 
 
  document.getElementById(
   "reportTransactions"
  ).textContent=
- transactions.length;
+  transactions.length;
 
 
  document.getElementById(
@@ -2459,67 +2800,62 @@ function openReports(){
 
   const c =
   customers.find(
-   x=>String(x.id)===
-   String(t.customer_id)
+   x=>String(x.id)===String(t.customer_id)
   );
 
 
   return `
 
-  <tr>
+<tr>
 
-  <td>
-  ${escapeHtml(c?.account||"")}
-  </td>
+<td>
+${escapeHtml(c?.account||"")}
+</td>
 
-  <td>
-  ${escapeHtml(c?.name||"")}
-  </td>
+<td>
+${escapeHtml(c?.name||"")}
+</td>
 
-  <td>
-  ${escapeHtml(t.type)}
-  </td>
+<td>
+${escapeHtml(t.type)}
+</td>
 
-  <td>
-  ${escapeHtml(t.currency)}
-  </td>
+<td>
+${escapeHtml(t.currency)}
+</td>
 
-  <td class="${
-   Number(t.amount)>=0
-   ?
-   "positive"
-   :
-   "negative"
-  }">
+<td class="${
+ Number(t.amount)>=0
+ ? "positive"
+ : "negative"
+}">
 
-  ${Number(t.amount)>=0?"+":""}
-  ${money(t.amount)}
+${Number(t.amount)>=0?"+":""}
+${money(t.amount)}
 
-  </td>
+</td>
 
-  <td>
-  ${escapeHtml(t.description)}
-  </td>
+<td>
+${escapeHtml(t.description)}
+</td>
 
-  <td>
-  ${escapeHtml(
-   dateOf(t.created_at)
-  )}
-  </td>
+<td>
+${escapeHtml(dateOf(t.created_at))}
+</td>
 
-  </tr>
+</tr>
 
-  `;
+`;
 
  }).join("")
 
  ||
 
  `<tr>
- <td colspan="7">
- هیڅ معلومات نشته.
- </td>
- </tr>`;
+<td colspan="7">
+هیڅ معلومات نشته.
+</td>
+</tr>`;
 
 
  openModal("reportsModal");
@@ -2527,9 +2863,9 @@ function openReports(){
 }
 
 
-/* =========================================================
-   EXCHANGE RATES
-========================================================= */
+/* =====================================================
+RATES
+===================================================== */
 
 function openRates(){
 
@@ -2538,36 +2874,30 @@ function openRates(){
  ).value=
  exchangeRates.USD.AFN||"";
 
-
  document.getElementById(
   "rateUSD_PKR"
  ).value=
  exchangeRates.USD.PKR||"";
-
 
  document.getElementById(
   "rateUSD_IRR"
  ).value=
  exchangeRates.USD.IRR||"";
 
-
  document.getElementById(
   "rateAFN_PKR"
  ).value=
  exchangeRates.AFN.PKR||"";
-
 
  document.getElementById(
   "rateAFN_IRR"
  ).value=
  exchangeRates.AFN.IRR||"";
 
-
  document.getElementById(
   "ratePKR_IRR"
  ).value=
  exchangeRates.PKR.IRR||"";
-
 
  openModal("ratesModal");
 
@@ -2576,66 +2906,34 @@ function openRates(){
 
 function saveRates(){
 
- const uA =
- Number(
-  document.getElementById(
-   "rateUSD_AFN"
-  ).value
+ const uA=Number(
+  document.getElementById("rateUSD_AFN").value
+ );
+
+ const uP=Number(
+  document.getElementById("rateUSD_PKR").value
+ );
+
+ const uI=Number(
+  document.getElementById("rateUSD_IRR").value
+ );
+
+ const aP=Number(
+  document.getElementById("rateAFN_PKR").value
+ );
+
+ const aI=Number(
+  document.getElementById("rateAFN_IRR").value
+ );
+
+ const pI=Number(
+  document.getElementById("ratePKR_IRR").value
  );
 
 
- const uP =
- Number(
-  document.getElementById(
-   "rateUSD_PKR"
-  ).value
- );
+ if(!uA||!uP||!uI||!aP||!aI||!pI){
 
-
- const uI =
- Number(
-  document.getElementById(
-   "rateUSD_IRR"
-  ).value
- );
-
-
- const aP =
- Number(
-  document.getElementById(
-   "rateAFN_PKR"
-  ).value
- );
-
-
- const aI =
- Number(
-  document.getElementById(
-   "rateAFN_IRR"
-  ).value
- );
-
-
- const pI =
- Number(
-  document.getElementById(
-   "ratePKR_IRR"
-  ).value
- );
-
-
- if(
-  !uA ||
-  !uP ||
-  !uI ||
-  !aP ||
-  !aI ||
-  !pI
- ){
-
-  alert(
-   "ټول Rates داخل کړئ."
-  );
+  alert("ټول Rates داخل کړئ.");
 
   return;
 
@@ -2673,25 +2971,22 @@ function saveRates(){
 
  localStorage.setItem(
   "exchangeRates",
-  JSON.stringify(
-   exchangeRates
-  )
+  JSON.stringify(exchangeRates)
  );
 
 
  closeModal("ratesModal");
 
-
  alert(
-  "Exchange Rates Save شول. Exchange به دا Rates په اتومات ډول اخلي."
+  "Exchange Rates Save شول."
  );
 
 }
 
 
-/* =========================================================
-   SETTINGS
-========================================================= */
+/* =====================================================
+SETTINGS
+===================================================== */
 
 function openSettings(){
 
@@ -2699,11 +2994,9 @@ function openSettings(){
   "newLoginPassword"
  ).value="";
 
-
  document.getElementById(
   "newSupervisorPassword"
  ).value="";
-
 
  openModal("settingsModal");
 
@@ -2724,8 +3017,6 @@ async function saveSettings(){
  ).value.trim();
 
 
- /* Login Password = Supabase Auth Password */
-
  if(login){
 
   if(login.length<6){
@@ -2741,9 +3032,7 @@ async function saveSettings(){
 
   const {error} =
   await db.auth.updateUser({
-
    password:login
-
   });
 
 
@@ -2761,8 +3050,6 @@ async function saveSettings(){
  }
 
 
- /* Supervisor Password */
-
  if(supervisor){
 
   localStorage.setItem(
@@ -2775,7 +3062,6 @@ async function saveSettings(){
 
  closeModal("settingsModal");
 
-
  alert(
   "Settings Save شول."
  );
@@ -2783,9 +3069,9 @@ async function saveSettings(){
 }
 
 
-/* =========================================================
-   LOGOUT
-========================================================= */
+/* =====================================================
+LOGOUT
+===================================================== */
 
 async function logout(){
 
@@ -2798,15 +3084,14 @@ async function logout(){
 
  sessionStorage.clear();
 
- window.location.href=
- "index.html";
+ window.location.href="index.html";
 
 }
 
 
-/* =========================================================
-   CLOSE MODAL OUTSIDE
-========================================================= */
+/* =====================================================
+CLOSE MODAL OUTSIDE
+===================================================== */
 
 window.onclick=function(e){
 
