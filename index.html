@@ -18,15 +18,30 @@
 
 body{
     min-height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     padding:20px;
 
     background:
-    radial-gradient(circle at top left,rgba(32,164,100,.35),transparent 35%),
-    radial-gradient(circle at bottom right,rgba(0,80,50,.55),transparent 40%),
-    linear-gradient(135deg,#041a11,#0b3927,#126b43);
+    radial-gradient(
+        circle at top left,
+        rgba(32,164,100,.35),
+        transparent 35%
+    ),
+    radial-gradient(
+        circle at bottom right,
+        rgba(0,80,50,.55),
+        transparent 40%
+    ),
+    linear-gradient(
+        135deg,
+        #041a11,
+        #0b3927,
+        #126b43
+    );
 }
 
 .login-box{
@@ -109,6 +124,11 @@ button:active{
     transform:scale(.98);
 }
 
+button:disabled{
+    opacity:.7;
+    cursor:not-allowed;
+}
+
 #error{
     display:none;
     margin-top:15px;
@@ -133,7 +153,9 @@ button:active{
 
 <div class="login-box">
 
-    <div class="logo">💱</div>
+    <div class="logo">
+        💱
+    </div>
 
     <div class="title">
         د صرافۍ مدیریت سیستم
@@ -151,8 +173,9 @@ button:active{
 
         <input
             id="username"
-            type="text"
-            placeholder="Username"
+            type="email"
+            placeholder="Email"
+            autocomplete="email"
             required
         >
 
@@ -164,15 +187,16 @@ button:active{
             id="password"
             type="password"
             placeholder="Password"
+            autocomplete="current-password"
             required
         >
 
-        <button type="submit">
+        <button id="loginBtn" type="submit">
             🔐 Login
         </button>
 
         <div id="error">
-            ❌ Username یا Password غلط دی
+            ❌ Email یا Password غلط دی
         </div>
 
     </form>
@@ -183,7 +207,8 @@ button:active{
 
 </div>
 
-<!-- SUPABASE -->
+
+<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
@@ -191,80 +216,119 @@ button:active{
 const SUPABASE_URL =
 "https://ggblghhfngmshmmkwnsl.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY =
+const SUPABASE_KEY =
 "sb_publishable_7u9V---1ywtKp9EK9yZhIA_F8vIzCJK";
 
-const db =
-window.supabase.createClient(
+const db = window.supabase.createClient(
     SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
+    SUPABASE_KEY
 );
 
 
-/* که مخکې Login شوی وي، مستقیم Dashboard ته ځي */
-async function checkExistingSession(){
-
-    const {data} =
-    await db.auth.getSession();
-
-    if(data.session){
-        window.location.href="dashboard.html";
-    }
-}
-
-
-/* LOGIN */
+// Login
 async function login(event){
 
     event.preventDefault();
 
-    const username =
-        document.getElementById("username").value.trim();
+    const email =
+        document.getElementById("username")
+        .value
+        .trim();
 
     const password =
-        document.getElementById("password").value;
+        document.getElementById("password")
+        .value;
 
     const errorBox =
         document.getElementById("error");
 
-    errorBox.style.display="none";
+    const loginBtn =
+        document.getElementById("loginBtn");
 
-    /*
-      Supabase Auth Email/Password استعمالوي.
-      هغه Email داخل کړه چې User دې پرې جوړ کړی.
-    */
 
-    const {data,error} =
-    await db.auth.signInWithPassword({
-        email:username,
-        password:password
-    });
+    // Hide old error
+    errorBox.style.display = "none";
 
-    if(error){
+
+    // Loading
+    loginBtn.disabled = true;
+    loginBtn.textContent = "⏳ Login...";
+
+
+    try{
+
+        const { data, error } =
+            await db.auth.signInWithPassword({
+
+                email: email,
+
+                password: password
+
+            });
+
+
+        if(error){
+
+            console.error(
+                "LOGIN ERROR:",
+                error
+            );
+
+            errorBox.textContent =
+                "❌ " + error.message;
+
+            errorBox.style.display =
+                "block";
+
+            loginBtn.disabled =
+                false;
+
+            loginBtn.textContent =
+                "🔐 Login";
+
+            return;
+        }
+
+
+        if(data && data.session){
+
+            window.location.href =
+                "dashboard.html";
+
+            return;
+        }
+
 
         errorBox.textContent =
-        "❌ Email یا Password غلط دی";
+            "❌ Login Session جوړه نه شوه";
 
-        errorBox.style.display="block";
+        errorBox.style.display =
+            "block";
 
-        document.getElementById("password").value="";
 
-        return;
-    }
+    }catch(err){
 
-    if(data.session){
-
-        sessionStorage.setItem(
-            "loggedIn",
-            "yes"
+        console.error(
+            "LOGIN ERROR:",
+            err
         );
 
-        window.location.href="dashboard.html";
+        errorBox.textContent =
+            "❌ د Login پر وخت ستونزه رامنځته شوه";
+
+        errorBox.style.display =
+            "block";
+
     }
+
+
+    loginBtn.disabled =
+        false;
+
+    loginBtn.textContent =
+        "🔐 Login";
+
 }
-
-
-checkExistingSession();
 
 </script>
 
