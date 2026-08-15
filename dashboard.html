@@ -321,6 +321,144 @@ color:#475569;
 font-size:13px
 }
 
+
+/* =========================
+   SUCCESS POPUP
+========================= */
+
+.success-popup{
+display:none;
+position:fixed;
+z-index:3000;
+inset:0;
+background:rgba(0,0,0,.72);
+align-items:center;
+justify-content:center;
+padding:20px
+}
+
+.success-popup-box{
+width:100%;
+max-width:500px;
+background:#fff;
+border-radius:24px;
+padding:30px 25px 25px;
+text-align:center;
+box-shadow:0 25px 80px rgba(0,0,0,.35);
+border-top:6px solid #059669;
+animation:successPopupIn .25s ease
+}
+
+.success-icon{
+width:75px;
+height:75px;
+margin:0 auto 15px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#dcfce7;
+color:#059669;
+font-size:42px;
+font-weight:bold
+}
+
+.success-popup-title{
+color:#065f46;
+font-size:23px;
+font-weight:bold;
+margin-bottom:18px
+}
+
+.success-message{
+color:#172033;
+font-size:17px;
+line-height:2;
+text-align:right
+}
+
+.success-customer{
+font-weight:bold;
+color:#065f46
+}
+
+.success-amount{
+font-size:21px;
+font-weight:bold;
+color:#059669
+}
+
+.success-balances{
+margin-top:18px;
+padding:15px;
+background:#f0fdf4;
+border:1px solid #bbf7d0;
+border-radius:14px;
+text-align:right
+}
+
+.success-balances-title{
+font-weight:bold;
+color:#064e3b;
+margin-bottom:8px
+}
+
+.success-balance-row{
+display:flex;
+justify-content:space-between;
+padding:6px 0;
+border-bottom:1px solid #dcfce7
+}
+
+.success-balance-row:last-child{
+border-bottom:0
+}
+
+.success-balance-row span:first-child{
+font-weight:bold;
+color:#475569
+}
+
+.success-balance-row span:last-child{
+font-weight:bold;
+color:#065f46
+}
+
+.success-thanks{
+margin-top:18px;
+color:#475569;
+font-weight:bold
+}
+
+.success-ok{
+width:100%;
+margin-top:20px;
+padding:14px;
+border:0;
+border-radius:12px;
+background:#059669;
+color:white;
+font-size:17px;
+font-weight:bold;
+cursor:pointer
+}
+
+.success-ok:hover{
+background:#047857
+}
+
+@keyframes successPopupIn{
+from{
+opacity:0;
+transform:scale(.92)
+}
+to{
+opacity:1;
+transform:scale(1)
+}
+}
+
+
 /* STATEMENT */
 
 .statement-page{
@@ -503,6 +641,7 @@ font-size:11px;
 color:#64748b
 }
 
+
 @media(max-width:750px){
 
 .form-grid{
@@ -558,7 +697,24 @@ grid-template-columns:1fr
 grid-template-columns:1fr 1fr
 }
 
+.success-popup{
+padding:12px
 }
+
+.success-popup-box{
+padding:25px 18px 20px
+}
+
+.success-message{
+font-size:15px
+}
+
+.success-amount{
+font-size:19px
+}
+
+}
+
 
 @media print{
 
@@ -583,6 +739,7 @@ margin:8mm
 </head>
 
 <body>
+
 
 <header class="header">
 
@@ -1439,56 +1596,32 @@ onclick="closeModal('ratesModal')"
 
 <div class="field">
 <label>USD → AFN</label>
-<input
-id="rateUSD_AFN"
-type="number"
-step="any"
->
+<input id="rateUSD_AFN" type="number" step="any">
 </div>
 
 <div class="field">
 <label>USD → PKR</label>
-<input
-id="rateUSD_PKR"
-type="number"
-step="any"
->
+<input id="rateUSD_PKR" type="number" step="any">
 </div>
 
 <div class="field">
 <label>USD → Toman</label>
-<input
-id="rateUSD_IRR"
-type="number"
-step="any"
->
+<input id="rateUSD_IRR" type="number" step="any">
 </div>
 
 <div class="field">
 <label>AFN → PKR</label>
-<input
-id="rateAFN_PKR"
-type="number"
-step="any"
->
+<input id="rateAFN_PKR" type="number" step="any">
 </div>
 
 <div class="field">
 <label>AFN → Toman</label>
-<input
-id="rateAFN_IRR"
-type="number"
-step="any"
->
+<input id="rateAFN_IRR" type="number" step="any">
 </div>
 
 <div class="field">
 <label>PKR → Toman</label>
-<input
-id="ratePKR_IRR"
-type="number"
-step="any"
->
+<input id="ratePKR_IRR" type="number" step="any">
 </div>
 
 </div>
@@ -1535,10 +1668,7 @@ placeholder="Supervisor Password"
 onkeydown="passwordEnter(event)"
 >
 
-<p
-id="passError"
-style="color:red"
-></p>
+<p id="passError" style="color:red"></p>
 
 <br>
 
@@ -1628,6 +1758,95 @@ class="btn gray"
 onclick="closeModal('editTransactionModal')"
 >
 Cancel
+</button>
+
+</div>
+
+</div>
+
+
+<!-- SUCCESS POPUP -->
+
+<div class="success-popup" id="successPopup">
+
+<div class="success-popup-box">
+
+<div class="success-icon">
+✓
+</div>
+
+<div class="success-popup-title">
+معامله په بریالیتوب سره ترسره شوه
+</div>
+
+<div class="success-message">
+
+ګرانه
+<span
+class="success-customer"
+id="successCustomerName"
+></span>
+
+<br>
+
+ستاسی حساب ته په بریالی توګه
+
+<span
+class="success-amount"
+id="successTransactionAmount"
+></span>
+
+<span
+class="success-amount"
+id="successTransactionCurrency"
+></span>
+
+<span id="successTransactionText">
+جمعه شو
+</span>
+
+
+<div class="success-balances">
+
+<div class="success-balances-title">
+ستاسو اوسنی حساب دی:
+</div>
+
+<div class="success-balance-row">
+<span>افغانی</span>
+<span id="successAFN">0</span>
+</div>
+
+<div class="success-balance-row">
+<span>دالر</span>
+<span id="successUSD">0</span>
+</div>
+
+<div class="success-balance-row">
+<span>تومن</span>
+<span id="successIRR">0</span>
+</div>
+
+<div class="success-balance-row">
+<span>کلدار</span>
+<span id="successPKR">0</span>
+</div>
+
+</div>
+
+
+<div class="success-thanks">
+مننه
+</div>
+
+</div>
+
+
+<button
+class="success-ok"
+onclick="closeSuccessPopup()"
+>
+کافي
 </button>
 
 </div>
@@ -2541,6 +2760,10 @@ return c
 }
 
 
+/* =========================
+   DEPOSIT / WITHDRAW
+========================= */
+
 function saveMoney(){
 
 const type=
@@ -2698,15 +2921,125 @@ await loadData();
 closeModal("moneyModal");
 
 
-alert(
-type==="deposit"
-?
-"Deposit ثبت شو."
-:
-"Withdraw ثبت شو."
-)
+/*
+  تازه Balance له Database څخه اخیستل کېږي
+*/
+const updatedCustomer=
+customers.find(
+x=>String(x.id)===String(c.id)
+);
+
+
+if(updatedCustomer){
+
+showMoneySuccess(
+updatedCustomer,
+type,
+amount,
+cur
+);
+
+}
 
 })
+
+}
+
+
+/* =========================
+   SUCCESS POPUP
+========================= */
+
+function currencyName(cur){
+
+if(cur==="AFN")
+return "افغانی";
+
+if(cur==="USD")
+return "دالر";
+
+if(cur==="IRR")
+return "تومن";
+
+if(cur==="PKR")
+return "کلدار";
+
+return cur;
+
+}
+
+
+function showMoneySuccess(
+customer,
+type,
+amount,
+currency
+){
+
+document.getElementById(
+"successCustomerName"
+).textContent=
+customer.name||"";
+
+
+document.getElementById(
+"successTransactionAmount"
+).textContent=
+money(amount);
+
+
+document.getElementById(
+"successTransactionCurrency"
+).textContent=
+" "+currencyName(currency);
+
+
+document.getElementById(
+"successTransactionText"
+).textContent=
+type==="deposit"
+?
+" جمعه شو"
+:
+" وویستل شو";
+
+
+document.getElementById(
+"successAFN"
+).textContent=
+money(customer.balance.AFN);
+
+
+document.getElementById(
+"successUSD"
+).textContent=
+money(customer.balance.USD);
+
+
+document.getElementById(
+"successIRR"
+).textContent=
+money(customer.balance.IRR);
+
+
+document.getElementById(
+"successPKR"
+).textContent=
+money(customer.balance.PKR);
+
+
+document.getElementById(
+"successPopup"
+).style.display="flex";
+
+}
+
+
+function closeSuccessPopup(){
+
+document.getElementById(
+"successPopup"
+).style.display="none";
 
 }
 
@@ -4694,6 +5027,13 @@ window.location.href=
 
 }
 
+
+/*
+IMPORTANT:
+د Success Popup د باندې کلیک،
+Escape، او Auto-close هېڅ اغېز نه لري.
+یوازې د "کافي" تڼۍ Popup بندوي.
+*/
 
 window.onclick=function(e){
 
