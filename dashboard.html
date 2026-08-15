@@ -26,294 +26,133 @@ padding:18px 25px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-gap:15px;
 box-shadow:0 5px 25px #0003;
 position:sticky;
 top:0;
-z-index:100
+z-index:100;
 }
 
-.brand{
-display:flex;
-align-items:center;
-gap:14px
-}
+.brand{display:flex;align-items:center;gap:14px}
 
 .logo{
-width:58px;
-height:58px;
-border-radius:16px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-background:#ffffff22;
-border:1px solid #ffffff44
+width:58px;height:58px;border-radius:16px;
+display:flex;align-items:center;justify-content:center;
+font-size:30px;background:#ffffff22;border:1px solid #ffffff44
 }
 
-.header h1{
-margin:0;
-font-size:23px
-}
-
-.subtitle{
-margin-top:5px;
-font-size:13px;
-color:#d1fae5
-}
+.header h1{margin:0;font-size:23px}
+.subtitle{margin-top:5px;font-size:13px;color:#d1fae5}
 
 .header button{
-border:0;
-background:white;
-color:#065f46;
-padding:10px 15px;
-border-radius:9px;
-cursor:pointer;
-font-weight:bold
+border:0;background:white;color:#065f46;
+padding:10px 15px;border-radius:9px;
+cursor:pointer;font-weight:bold
 }
 
-.container{
-padding:25px;
-max-width:1450px;
-margin:auto
-}
+.container{padding:25px;max-width:1450px;margin:auto}
 
 .menu{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(165px,1fr));
-gap:15px;
-margin-bottom:25px
+gap:15px;margin-bottom:25px
 }
 
 .menu button{
-border:0;
-background:#ffffffdd;
-padding:20px 10px;
-border-radius:16px;
-box-shadow:0 5px 18px #0001;
-cursor:pointer;
-font-size:15px;
-font-weight:bold;
-color:#064e3b;
-transition:.2s
+border:0;background:#ffffffdd;padding:20px 10px;
+border-radius:16px;box-shadow:0 5px 18px #0001;
+cursor:pointer;font-size:15px;font-weight:bold;
+color:#064e3b;transition:.2s
 }
 
-.menu button:hover{
-transform:translateY(-4px)
-}
+.menu button:hover{transform:translateY(-4px)}
 
 .modal{
-display:none;
-position:fixed;
-z-index:1000;
-inset:0;
-background:#0009;
-overflow:auto;
-padding:30px 15px
+display:none;position:fixed;z-index:1000;inset:0;
+background:#0009;overflow:auto;padding:30px 15px
 }
 
 .modal-box{
-background:white;
-max-width:900px;
-margin:auto;
-border-radius:18px;
-padding:25px;
-position:relative;
+background:white;max-width:900px;margin:auto;
+border-radius:18px;padding:25px;position:relative;
 box-shadow:0 15px 50px #0005
 }
 
 .close{
-position:absolute;
-left:15px;
-top:12px;
-border:0;
-background:#fee2e2;
-color:#991b1b;
-width:35px;
-height:35px;
-border-radius:50%;
-cursor:pointer;
-font-size:18px
+position:absolute;left:15px;top:12px;border:0;
+background:#fee2e2;color:#991b1b;width:35px;height:35px;
+border-radius:50%;cursor:pointer;font-size:18px
 }
 
 .form-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:14px
+display:grid;grid-template-columns:repeat(2,1fr);gap:14px
 }
 
-.field{
-display:flex;
-flex-direction:column;
-gap:6px
-}
+.field{display:flex;flex-direction:column;gap:6px}
+.full{grid-column:1/-1}
 
-.full{
-grid-column:1/-1
-}
-
-label{
-font-weight:bold;
-font-size:14px
-}
+label{font-weight:bold;font-size:14px}
 
 input,select,textarea{
-width:100%;
-padding:11px;
-border:1px solid #cbd5e1;
-border-radius:9px;
-outline:none;
-font-size:14px
+width:100%;padding:11px;border:1px solid #cbd5e1;
+border-radius:9px;outline:none;font-size:14px
 }
 
-input:focus,select:focus,textarea:focus{
-border-color:#10b981
-}
+input:focus,select:focus,textarea:focus{border-color:#10b981}
 
-textarea{
-min-height:80px;
-resize:vertical
-}
+textarea{min-height:80px;resize:vertical}
 
 .btn{
-border:0;
-padding:10px 17px;
-border-radius:9px;
-cursor:pointer;
-font-weight:bold
+border:0;padding:10px 17px;border-radius:9px;
+cursor:pointer;font-weight:bold
 }
 
-.primary{
-background:#059669;
-color:#fff
-}
+.primary{background:#059669;color:#fff}
+.danger{background:#dc2626;color:#fff}
+.warning{background:#d97706;color:#fff}
+.gray{background:#64748b;color:#fff}
+.info{background:#2563eb;color:#fff}
 
-.danger{
-background:#dc2626;
-color:#fff
-}
+.search{display:flex;gap:8px;margin-bottom:15px}
+.search input{flex:1}
 
-.warning{
-background:#d97706;
-color:#fff
-}
+.message{padding:10px;border-radius:8px;margin-top:8px}
+.success{background:#dcfce7;color:#166534}
+.error{background:#fee2e2;color:#991b1b}
 
-.gray{
-background:#64748b;
-color:#fff
-}
-
-.info{
-background:#2563eb;
-color:#fff
-}
-
-.actions{
-display:flex;
-gap:6px;
-flex-wrap:wrap;
-justify-content:center
-}
-
-.search{
-display:flex;
-gap:8px;
-margin-bottom:15px
-}
-
-.search input{
-flex:1
-}
-
-.message{
-padding:10px;
-border-radius:8px;
-margin-top:8px
-}
-
-.success{
-background:#dcfce7;
-color:#166534
-}
-
-.error{
-background:#fee2e2;
-color:#991b1b
-}
-
-.table-wrap{
-overflow-x:auto
-}
+.table-wrap{overflow-x:auto}
 
 table{
-width:100%;
-border-collapse:collapse;
-margin-top:15px;
-min-width:780px
+width:100%;border-collapse:collapse;margin-top:15px;min-width:780px
 }
 
 th,td{
-border:1px solid #e2e8f0;
-padding:9px;
-text-align:center
+border:1px solid #e2e8f0;padding:9px;text-align:center
 }
 
-th{
-background:#065f46;
-color:white
-}
+th{background:#065f46;color:white}
+tr:nth-child(even){background:#f8fafc}
 
-tr:nth-child(even){
-background:#f8fafc
-}
-
-.positive{
-color:#047857;
-font-weight:bold
-}
-
-.negative{
-color:#dc2626;
-font-weight:bold
-}
+.positive{color:#047857;font-weight:bold}
+.negative{color:#dc2626;font-weight:bold}
 
 .report-cards{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
-margin:15px 0
+display:grid;grid-template-columns:repeat(4,1fr);
+gap:12px;margin:15px 0
 }
 
 .report-card{
-padding:18px;
-border-radius:14px;
-background:#f8fafc;
-border:1px solid #e2e8f0;
-text-align:center
+padding:18px;border-radius:14px;background:#f8fafc;
+border:1px solid #e2e8f0;text-align:center
 }
 
-.report-card .icon{
-font-size:30px
-}
+.report-card .icon{font-size:30px}
 
 .report-card b{
-display:block;
-font-size:22px;
-color:#065f46;
-margin-top:5px
-}
-
-.rate-note{
-font-size:12px;
-color:#64748b;
-margin-top:5px
+display:block;font-size:22px;color:#065f46;margin-top:5px
 }
 
 .footer{
-text-align:center;
-padding:25px;
-color:#475569;
-font-size:13px
+text-align:center;padding:25px;color:#475569;font-size:13px
 }
 
 
@@ -342,84 +181,58 @@ border-top:6px solid #059669
 }
 
 .success-icon{
-width:75px;
-height:75px;
-margin:0 auto 15px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#dcfce7;
-color:#059669;
-font-size:42px;
-font-weight:bold
+width:75px;height:75px;margin:0 auto 15px;
+border-radius:50%;display:flex;
+align-items:center;justify-content:center;
+background:#dcfce7;color:#059669;
+font-size:42px;font-weight:bold
 }
 
 .success-popup-title{
-color:#065f46;
-font-size:23px;
-font-weight:bold;
+color:#065f46;font-size:23px;font-weight:bold;
 margin-bottom:18px
 }
 
 .success-message{
-color:#172033;
-font-size:17px;
-line-height:2;
-text-align:right
+color:#172033;font-size:17px;
+line-height:2;text-align:right
 }
 
 .success-customer{
-font-weight:bold;
-color:#065f46
+font-weight:bold;color:#065f46
 }
 
 .success-amount{
-font-size:21px;
-font-weight:bold;
-color:#059669
+font-size:21px;font-weight:bold;color:#059669
 }
 
 .success-balances{
-margin-top:18px;
-padding:15px;
-background:#f0fdf4;
-border:1px solid #bbf7d0;
-border-radius:14px;
-text-align:right
+margin-top:18px;padding:15px;
+background:#f0fdf4;border:1px solid #bbf7d0;
+border-radius:14px;text-align:right
 }
 
 .success-balances-title{
-font-weight:bold;
-color:#064e3b;
-margin-bottom:8px
+font-weight:bold;color:#064e3b;margin-bottom:8px
 }
 
 .success-balance-row{
-display:flex;
-justify-content:space-between;
-padding:6px 0;
-border-bottom:1px solid #dcfce7
+display:flex;justify-content:space-between;
+padding:6px 0;border-bottom:1px solid #dcfce7
 }
 
-.success-balance-row:last-child{
-border-bottom:0
-}
+.success-balance-row:last-child{border-bottom:0}
 
 .success-balance-row span:first-child{
-font-weight:bold;
-color:#475569
+font-weight:bold;color:#475569
 }
 
 .success-balance-row span:last-child{
-font-weight:bold;
-color:#065f46
+font-weight:bold;color:#065f46
 }
 
 .success-thanks{
-margin-top:18px;
-color:#475569;
-font-weight:bold
+margin-top:18px;color:#475569;font-weight:bold
 }
 
 .success-ok{
@@ -435,273 +248,135 @@ font-weight:bold;
 cursor:pointer
 }
 
-.success-ok:hover{
-background:#047857
+.success-ok:hover{background:#047857}
+
+.whatsapp-ok{
+width:100%;
+margin-top:10px;
+padding:14px;
+border:0;
+border-radius:12px;
+background:#25D366;
+color:white;
+font-size:17px;
+font-weight:bold;
+cursor:pointer
 }
+
+.whatsapp-ok:hover{background:#1ebe5d}
 
 
 /* ================= STATEMENT ================= */
 
 .statement-page{
-background:#fff;
-color:#111827;
-max-width:1000px;
-margin:20px auto;
-padding:35px;
-border:1px solid #cbd5e1;
+background:#fff;color:#111827;max-width:1000px;
+margin:20px auto;padding:35px;border:1px solid #cbd5e1;
 box-shadow:0 5px 20px #0001;
-direction:ltr;
-font-family:Arial,Tahoma,sans-serif
+direction:ltr;font-family:Arial,Tahoma,sans-serif
 }
 
 .statement-header{
-display:flex;
-justify-content:space-between;
-align-items:flex-start;
-border-bottom:3px solid #065f46;
-padding-bottom:18px;
-margin-bottom:20px
+display:flex;justify-content:space-between;align-items:flex-start;
+border-bottom:3px solid #065f46;padding-bottom:18px;margin-bottom:20px
 }
 
-.statement-brand{
-display:flex;
-align-items:center;
-gap:12px
-}
+.statement-brand{display:flex;align-items:center;gap:12px}
 
 .statement-logo{
-width:58px;
-height:58px;
-border:2px solid #065f46;
-border-radius:10px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:28px
+width:58px;height:58px;border:2px solid #065f46;
+border-radius:10px;display:flex;align-items:center;
+justify-content:center;font-size:28px
 }
 
 .statement-company{
-font-size:20px;
-font-weight:bold;
-color:#064e3b
+font-size:20px;font-weight:bold;color:#064e3b
 }
 
 .statement-subtitle{
-font-size:12px;
-color:#64748b;
-margin-top:4px
+font-size:12px;color:#64748b;margin-top:4px
 }
 
-.statement-title{
-text-align:right
-}
-
-.statement-title h1{
-margin:0;
-font-size:27px
-}
-
-.statement-title div{
-font-size:12px;
-color:#64748b;
-margin-top:5px
-}
+.statement-title{text-align:right}
+.statement-title h1{margin:0;font-size:27px}
+.statement-title div{font-size:12px;color:#64748b;margin-top:5px}
 
 .statement-info{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:8px 30px;
-border:1px solid #d1d5db;
-padding:14px;
-margin-bottom:18px
+display:grid;grid-template-columns:1fr 1fr;
+gap:8px 30px;border:1px solid #d1d5db;
+padding:14px;margin-bottom:18px
 }
 
-.statement-info div{
-font-size:13px;
-padding:4px
-}
-
-.statement-info strong{
-display:inline-block;
-min-width:125px
-}
-
-.statement-summary{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin-bottom:22px
-}
-
-.statement-summary-card{
-border:1px solid #d1d5db;
-padding:13px;
-min-height:75px
-}
-
-.statement-summary-card .label{
-font-size:11px;
-color:#64748b;
-text-transform:uppercase
-}
-
-.statement-summary-card .value{
-font-size:17px;
-font-weight:bold;
-margin-top:7px;
-color:#064e3b
-}
+.statement-info div{font-size:13px;padding:4px}
+.statement-info strong{display:inline-block;min-width:125px}
 
 .statement-section-title{
-font-size:16px;
-font-weight:bold;
-border-bottom:2px solid #111827;
-padding-bottom:7px;
-margin-bottom:8px
+font-size:16px;font-weight:bold;border-bottom:2px solid #111827;
+padding-bottom:7px;margin-bottom:8px
 }
 
 .statement-table{
-width:100%;
-border-collapse:collapse;
-margin-top:0;
-min-width:0;
-direction:ltr
+width:100%;border-collapse:collapse;margin-top:0;
+min-width:0;direction:ltr
 }
 
 .statement-table th{
-background:#065f46;
-color:white;
-border:1px solid #064e3b;
-padding:9px 7px;
-font-size:12px
+background:#065f46;color:white;border:1px solid #064e3b;
+padding:9px 7px;font-size:12px
 }
 
 .statement-table td{
-border:1px solid #d1d5db;
-padding:8px 7px;
-font-size:12px;
-text-align:center
+border:1px solid #d1d5db;padding:8px 7px;
+font-size:12px;text-align:center
 }
 
-.statement-table tbody tr:nth-child(even){
-background:#f3f4f6
-}
+.statement-table tbody tr:nth-child(even){background:#f3f4f6}
 
-.statement-credit{
-color:#047857;
-font-weight:bold
-}
-
-.statement-debit{
-color:#dc2626;
-font-weight:bold
-}
+.statement-credit{color:#047857;font-weight:bold}
+.statement-debit{color:#dc2626;font-weight:bold}
 
 .statement-signatures{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:80px;
-margin-top:45px
+display:grid;grid-template-columns:1fr 1fr;
+gap:80px;margin-top:45px
 }
 
 .signature-box{
-text-align:center;
-padding-top:8px;
-border-top:1px solid #334155;
-font-size:12px
+text-align:center;padding-top:8px;
+border-top:1px solid #334155;font-size:12px
 }
-
-.statement-footer{
-margin-top:25px;
-padding-top:12px;
-border-top:1px solid #cbd5e1;
-display:flex;
-justify-content:space-between;
-font-size:11px;
-color:#64748b
-}
-
 
 @media(max-width:750px){
 
-.form-grid{
-grid-template-columns:1fr
-}
+.form-grid{grid-template-columns:1fr}
 
-.header{
-padding:13px
-}
+.header{padding:13px}
+.header h1{font-size:17px}
+.subtitle{font-size:11px}
+.logo{width:45px;height:45px;font-size:24px}
+.container{padding:12px}
 
-.header h1{
-font-size:17px
-}
-
-.subtitle{
-font-size:11px
-}
-
-.logo{
-width:45px;
-height:45px;
-font-size:24px
-}
-
-.container{
-padding:12px
-}
-
-.statement-page{
-padding:15px;
-margin:5px
-}
+.statement-page{padding:15px;margin:5px}
 
 .statement-header{
-flex-direction:column;
-gap:15px
+flex-direction:column;gap:15px
 }
 
-.statement-title{
-text-align:left
-}
+.statement-title{text-align:left}
 
-.statement-info{
-grid-template-columns:1fr
-}
+.statement-info{grid-template-columns:1fr}
 
-.statement-summary{
-grid-template-columns:1fr 1fr
-}
-
-.success-popup{
-padding:12px
-}
-
-.success-popup-box{
-padding:25px 18px 20px
-}
-
-.success-message{
-font-size:15px
-}
-
-.success-amount{
-font-size:19px
-}
+.success-popup{padding:12px}
+.success-popup-box{padding:25px 18px 20px}
+.success-message{font-size:15px}
+.success-amount{font-size:19px}
 
 }
-
 
 @media print{
 
-body{
-background:#fff!important
-}
+body{background:#fff!important}
 
 .statement-page{
-box-shadow:none;
-border:0;
-margin:0;
-padding:0
+box-shadow:none;border:0;margin:0;padding:0
 }
 
 @page{
@@ -722,22 +397,13 @@ margin:8mm
 <div class="logo">💱</div>
 
 <div>
-
 <h1>Omid Es-haqzai</h1>
-
-<div class="subtitle">
-Monetary Service Provider
+<div class="subtitle">Monetary Service Provider</div>
 </div>
 
 </div>
 
-</div>
-
-<div>
-<button onclick="logout()">
-🚪 Logout
-</button>
-</div>
+<button onclick="logout()">🚪 Logout</button>
 
 </header>
 
@@ -746,53 +412,34 @@ Monetary Service Provider
 
 <div class="menu">
 
-<button onclick="openCustomer()">
-👤 Customer Registration
-</button>
+<button onclick="openCustomer()">👤 Customer Registration</button>
 
-<button onclick="openMoney('deposit')">
-💵 Deposit
-</button>
+<button onclick="openMoney('deposit')">💵 Deposit</button>
 
-<button onclick="openMoney('withdraw')">
-💸 Withdraw
-</button>
+<button onclick="openMoney('withdraw')">💸 Withdraw</button>
 
-<button onclick="openExchange()">
-🔄 Exchange
-</button>
+<button onclick="openExchange()">🔄 Exchange</button>
 
-<button onclick="openCustomers()">
-📋 Customers
-</button>
+<button onclick="openCustomers()">📋 Customers</button>
 
-<button onclick="openCustomerHistory()">
-📜 Customer History
-</button>
+<button onclick="openCustomerHistory()">📜 Customer History</button>
 
-<button onclick="openStatement()">
-📄 Statement
-</button>
+<button onclick="openStatement()">📄 Statement</button>
 
-<button onclick="openReports()">
-📊 General Report
-</button>
+<button onclick="openReports()">📊 General Report</button>
 
-<button onclick="openRates()">
-💱 Exchange Rates
-</button>
+<button onclick="openRates()">💱 Exchange Rates</button>
 
 </div>
 
 </div>
-
 
 <div class="footer">
 Omid Es-haqzai — Monetary Service Provider
 </div>
 
 
-<!-- CUSTOMER MODAL -->
+<!-- CUSTOMER -->
 
 <div class="modal" id="customerModal">
 
@@ -818,7 +465,7 @@ Omid Es-haqzai — Monetary Service Provider
 
 <div class="field">
 <label>Phone</label>
-<input id="cPhone">
+<input id="cPhone" placeholder="07xxxxxxxx">
 </div>
 
 <div class="field">
@@ -837,17 +484,12 @@ Omid Es-haqzai — Monetary Service Provider
 </div>
 
 <div class="field">
-
 <label>Gender</label>
-
 <select id="cGender">
-
 <option value="">انتخاب</option>
 <option>Male</option>
 <option>Female</option>
-
 </select>
-
 </div>
 
 <div class="field">
@@ -881,7 +523,7 @@ Cancel
 </div>
 
 
-<!-- MONEY MODAL -->
+<!-- DEPOSIT / WITHDRAW -->
 
 <div class="modal" id="moneyModal">
 
@@ -903,9 +545,7 @@ Cancel
 
 <input id="accountInput">
 
-<button class="btn info" onclick="findCustomer()">
-Search
-</button>
+<button class="btn info" onclick="findCustomer()">Search</button>
 
 </div>
 
@@ -918,12 +558,10 @@ Search
 <label>Currency *</label>
 
 <select id="moneyCurrency">
-
 <option value="AFN">AFN</option>
 <option value="USD">USD</option>
 <option value="PKR">PKR</option>
 <option value="IRR">Toman</option>
-
 </select>
 
 </div>
@@ -931,15 +569,13 @@ Search
 <div class="field">
 
 <label>Amount *</label>
-
 <input type="number" step="any" id="moneyAmount">
 
 </div>
 
 <div class="field full">
 
-<label>Narration / Description *</label>
-
+<label>Description *</label>
 <textarea id="moneyDescription"></textarea>
 
 </div>
@@ -948,13 +584,9 @@ Search
 
 <br>
 
-<button class="btn primary" onclick="saveMoney()">
-🔐 Save
-</button>
+<button class="btn primary" onclick="saveMoney()">🔐 Save</button>
 
-<button class="btn gray" onclick="closeModal('moneyModal')">
-Cancel
-</button>
+<button class="btn gray" onclick="closeModal('moneyModal')">Cancel</button>
 
 </div>
 </div>
@@ -973,10 +605,8 @@ Cancel
 <div class="form-grid">
 
 <div class="field full">
-
 <label>Account Number *</label>
 <input id="exchangeAccount">
-
 </div>
 
 <div class="field">
@@ -984,12 +614,10 @@ Cancel
 <label>From Currency</label>
 
 <select id="fromCurrency" onchange="loadExchangeRate()">
-
 <option value="AFN">AFN</option>
 <option value="USD">USD</option>
 <option value="PKR">PKR</option>
 <option value="IRR">Toman</option>
-
 </select>
 
 </div>
@@ -999,12 +627,10 @@ Cancel
 <label>To Currency</label>
 
 <select id="toCurrency" onchange="loadExchangeRate()">
-
 <option value="USD">USD</option>
 <option value="AFN">AFN</option>
 <option value="PKR">PKR</option>
 <option value="IRR">Toman</option>
-
 </select>
 
 </div>
@@ -1012,28 +638,40 @@ Cancel
 <div class="field">
 
 <label>Amount *</label>
-<input type="number" step="any" id="exchangeAmount"
-oninput="calculateExchange()">
+
+<input
+type="number"
+step="any"
+id="exchangeAmount"
+oninput="calculateExchange()"
+>
 
 </div>
 
 <div class="field">
 
 <label>Exchange Rate</label>
-<input type="number" step="any" id="exchangeRate" readonly>
+
+<input
+type="number"
+step="any"
+id="exchangeRate"
+readonly
+>
 
 </div>
 
 <div class="field full">
 
 <label>Received Amount</label>
+
 <input id="receivedAmount" readonly>
 
 </div>
 
 <div class="field full">
 
-<label>Narration / Description *</label>
+<label>Description *</label>
 
 <textarea id="exchangeDescription"></textarea>
 
@@ -1066,13 +704,9 @@ Cancel
 <h2>📋 Customers</h2>
 
 <div class="search">
-
-<input
-id="customerSearch"
+<input id="customerSearch"
 placeholder="Account یا Name..."
-oninput="renderCustomers()"
->
-
+oninput="renderCustomers()">
 </div>
 
 <div class="table-wrap">
@@ -1116,10 +750,7 @@ oninput="renderCustomers()"
 
 <div class="search">
 
-<input
-id="historyAccount"
-placeholder="Account Number"
->
+<input id="historyAccount" placeholder="Account Number">
 
 <button class="btn info" onclick="showCustomerHistory()">
 Search
@@ -1142,7 +773,6 @@ Search
 <th>Balance</th>
 <th>اسعار</th>
 <th>Description</th>
-<th>Actions</th>
 </tr>
 
 </thead>
@@ -1170,11 +800,8 @@ Search
 <div class="form-grid">
 
 <div class="field">
-
 <label>Account Number *</label>
-
 <input id="statementAccount">
-
 </div>
 
 <div class="field">
@@ -1182,28 +809,12 @@ Search
 <label>Currency *</label>
 
 <select id="statementCurrency">
-
 <option value="">Select Currency</option>
 <option value="AFN">AFN — افغانۍ</option>
 <option value="USD">USD — US Dollar</option>
 <option value="PKR">PKR — کلدارې</option>
 <option value="IRR">Toman — تومان</option>
-
 </select>
-
-</div>
-
-<div class="field">
-
-<label>From Date *</label>
-<input type="date" id="statementFromDate">
-
-</div>
-
-<div class="field">
-
-<label>To Date *</label>
-<input type="date" id="statementToDate">
 
 </div>
 
@@ -1326,21 +937,6 @@ Toman
 <input id="rateUSD_IRR" type="number" step="any">
 </div>
 
-<div class="field">
-<label>AFN → PKR</label>
-<input id="rateAFN_PKR" type="number" step="any">
-</div>
-
-<div class="field">
-<label>AFN → Toman</label>
-<input id="rateAFN_IRR" type="number" step="any">
-</div>
-
-<div class="field">
-<label>PKR → Toman</label>
-<input id="ratePKR_IRR" type="number" step="any">
-</div>
-
 </div>
 
 <br>
@@ -1383,63 +979,13 @@ Cancel
 </div>
 
 
-<!-- EDIT TRANSACTION -->
-
-<div class="modal" id="editTransactionModal">
-
-<div class="modal-box" style="max-width:500px">
-
-<button class="close" onclick="closeModal('editTransactionModal')">
-×
-</button>
-
-<h2>✏️ Edit Transaction</h2>
-
-<input type="hidden" id="editTransactionId">
-
-<div class="field">
-
-<label>Amount *</label>
-
-<input
-type="number"
-step="any"
-id="editTransactionAmount"
->
-
-</div>
-
-<br>
-
-<div class="field">
-
-<label>Description *</label>
-
-<textarea id="editTransactionDescription"></textarea>
-
-</div>
-
-<br>
-
-<button class="btn primary" onclick="saveEditedTransaction()">
-💾 Update Transaction
-</button>
-
-</div>
-</div>
-
-
-<!-- =========================
-     SUCCESS POPUP
-========================= -->
+<!-- ================= SUCCESS POPUP ================= -->
 
 <div class="success-popup" id="successPopup">
 
 <div class="success-popup-box">
 
-<div class="success-icon">
-✓
-</div>
+<div class="success-icon">✓</div>
 
 <div class="success-popup-title">
 معامله په بریالیتوب سره ترسره شوه
@@ -1454,19 +1000,11 @@ id="editTransactionAmount"
 
 ستاسی حساب ته په بریالی توګه
 
-<span
-class="success-amount"
-id="successTransactionAmount">
-</span>
+<span class="success-amount" id="successTransactionAmount"></span>
 
-<span
-class="success-amount"
-id="successTransactionCurrency">
-</span>
+<span class="success-amount" id="successTransactionCurrency"></span>
 
-<span id="successTransactionText">
-جمعه شو
-</span>
+<span id="successTransactionText">جمعه شو</span>
 
 <div class="success-balances">
 
@@ -1496,12 +1034,23 @@ id="successTransactionCurrency">
 
 </div>
 
-<div class="success-thanks">
-مننه
-</div>
+<div class="success-thanks">مننه</div>
 
 </div>
 
+
+<!-- WHATSAPP -->
+
+<button
+type="button"
+class="whatsapp-ok"
+onclick="sendSuccessToWhatsApp()"
+>
+📱 WhatsApp ته لېږل
+</button>
+
+
+<!-- COPY + CLOSE -->
 
 <button
 type="button"
@@ -1520,6 +1069,8 @@ onclick="copySuccessAndClose()"
 
 <script>
 
+/* ================= SUPABASE ================= */
+
 const SUPABASE_URL=
 "https://ggblghhfngmshmmkwnsl.supabase.co";
 
@@ -1533,9 +1084,12 @@ SUPABASE_PUBLISHABLE_KEY
 );
 
 
+/* ================= VARIABLES ================= */
+
 let customers=[];
 let transactions=[];
 let pendingAction=null;
+let successCustomerId=null;
 
 
 let exchangeRates=
@@ -1578,14 +1132,13 @@ localStorage.setItem(
 }
 
 
+/* ================= HELPERS ================= */
+
 function money(n){
 
-return Number(n||0)
-.toLocaleString(
+return Number(n||0).toLocaleString(
 "en-US",
-{
-maximumFractionDigits:2
-}
+{maximumFractionDigits:2}
 );
 
 }
@@ -1616,42 +1169,29 @@ return String(v??"")
 
 
 function openModal(id){
-
 document.getElementById(id).style.display="block";
-
 }
 
 
 function closeModal(id){
-
 document.getElementById(id).style.display="none";
-
 }
 
 
 function timeOf(date){
-
-return new Date(date)
-.toLocaleTimeString(
+return new Date(date).toLocaleTimeString(
 "en-GB",
-{
-hour:"2-digit",
-minute:"2-digit"
-}
+{hour:"2-digit",minute:"2-digit"}
 );
-
 }
 
 
 function dateOf(date){
-
-return new Date(date)
-.toLocaleDateString("en-GB");
-
+return new Date(date).toLocaleDateString("en-GB");
 }
 
 
-/* ================= DATABASE ================= */
+/* ================= LOGIN ================= */
 
 async function checkUser(){
 
@@ -1661,7 +1201,6 @@ await db.auth.getSession();
 if(error||!data.session){
 
 window.location.href="index.html";
-
 return false;
 
 }
@@ -1671,45 +1210,29 @@ return true;
 }
 
 
+/* ================= LOAD DATA ================= */
+
 async function loadData(){
 
 const {data:cData,error:cError}=
-await db
-.from("customers")
-.select("*");
-
+await db.from("customers").select("*");
 
 if(cError){
 
-alert(
-"Customers Error:\n"+
-cError.message
-);
-
+alert("Customers Error:\n"+cError.message);
 return false;
 
 }
 
 
 const {data:tData,error:tError}=
-await db
-.from("transactions")
+await db.from("transactions")
 .select("*")
-.order(
-"created_at",
-{
-ascending:true
-}
-);
-
+.order("created_at",{ascending:true});
 
 if(tError){
 
-alert(
-"Transactions Error:\n"+
-tError.message
-);
-
+alert("Transactions Error:\n"+tError.message);
 return false;
 
 }
@@ -1808,10 +1331,7 @@ document.getElementById("cName").value.trim();
 
 if(!account||!name){
 
-alert(
-"Account Number او Customer Name ضروري دی."
-);
-
+alert("Account Number او Customer Name ضروري دی.");
 return;
 
 }
@@ -1820,7 +1340,6 @@ return;
 const payload={
 
 account_number:account,
-
 name:name,
 
 phone:
@@ -1855,16 +1374,14 @@ let result;
 if(id){
 
 result=
-await db
-.from("customers")
+await db.from("customers")
 .update(payload)
 .eq("id",id);
 
 }else{
 
 result=
-await db
-.from("customers")
+await db.from("customers")
 .insert(payload);
 
 }
@@ -1872,11 +1389,7 @@ await db
 
 if(result.error){
 
-alert(
-"Database Error:\n"+
-result.error.message
-);
-
+alert("Database Error:\n"+result.error.message);
 return;
 
 }
@@ -1893,33 +1406,6 @@ id
 :
 "Customer ثبت شو."
 );
-
-}
-
-
-function editCustomer(id){
-
-const c=
-customers.find(
-x=>String(x.id)===String(id)
-);
-
-if(!c)return;
-
-document.getElementById("editCustomerId").value=c.id;
-document.getElementById("cAccount").value=c.account||"";
-document.getElementById("cName").value=c.name||"";
-document.getElementById("cPhone").value=c.phone||"";
-document.getElementById("cId").value=c.idNumber||"";
-document.getElementById("cFather").value=c.father||"";
-document.getElementById("cBirth").value=c.birth||"";
-document.getElementById("cGender").value=c.gender||"";
-document.getElementById("cJob").value=c.job||"";
-document.getElementById("cAddress").value=c.address||"";
-document.getElementById("cNote").value=c.note||"";
-
-closeModal("customersModal");
-openModal("customerModal");
 
 }
 
@@ -1960,8 +1446,7 @@ if(password!==saved){
 
 document.getElementById(
 "passError"
-).textContent=
-"Password غلط دی.";
+).textContent="Password غلط دی.";
 
 return;
 
@@ -1982,7 +1467,6 @@ if(action)action();
 function cancelPassword(){
 
 pendingAction=null;
-
 closeModal("passwordModal");
 
 }
@@ -1992,34 +1476,19 @@ closeModal("passwordModal");
 
 function openMoney(type){
 
-document.getElementById(
-"moneyType"
-).value=type;
+document.getElementById("moneyType").value=type;
 
-document.getElementById(
-"moneyTitle"
-).textContent=
+document.getElementById("moneyTitle").textContent=
 type==="deposit"
 ?
 "💵 Deposit"
 :
 "💸 Withdraw";
 
-document.getElementById(
-"accountInput"
-).value="";
-
-document.getElementById(
-"moneyAmount"
-).value="";
-
-document.getElementById(
-"moneyDescription"
-).value="";
-
-document.getElementById(
-"customerFound"
-).innerHTML="";
+document.getElementById("accountInput").value="";
+document.getElementById("moneyAmount").value="";
+document.getElementById("moneyDescription").value="";
+document.getElementById("customerFound").innerHTML="";
 
 openModal("moneyModal");
 
@@ -2029,18 +1498,12 @@ openModal("moneyModal");
 function findCustomer(){
 
 const account=
-document.getElementById(
-"accountInput"
-).value.trim();
+document.getElementById("accountInput").value.trim();
 
 const c=
-customers.find(
-x=>x.account===account
-);
+customers.find(x=>x.account===account);
 
-document.getElementById(
-"customerFound"
-).innerHTML=
+document.getElementById("customerFound").innerHTML=
 
 c
 ?
@@ -2066,36 +1529,22 @@ return c;
 function saveMoney(){
 
 const type=
-document.getElementById(
-"moneyType"
-).value;
+document.getElementById("moneyType").value;
 
 const account=
-document.getElementById(
-"accountInput"
-).value.trim();
+document.getElementById("accountInput").value.trim();
 
 const cur=
-document.getElementById(
-"moneyCurrency"
-).value;
+document.getElementById("moneyCurrency").value;
 
 const amount=
-Number(
-document.getElementById(
-"moneyAmount"
-).value
-);
+Number(document.getElementById("moneyAmount").value);
 
 const desc=
-document.getElementById(
-"moneyDescription"
-).value.trim();
+document.getElementById("moneyDescription").value.trim();
 
 const c=
-customers.find(
-x=>x.account===account
-);
+customers.find(x=>x.account===account);
 
 
 if(!c){
@@ -2126,15 +1575,9 @@ const current=
 Number(c.balance[cur]||0);
 
 
-if(
-type==="withdraw"&&
-current<amount
-){
+if(type==="withdraw"&&current<amount){
 
-alert(
-"❌ Balance کافي نه دی."
-);
-
+alert("❌ Balance کافي نه دی.");
 return;
 
 }
@@ -2149,27 +1592,14 @@ current-amount;
 
 
 const result=
-await db
-.from("transactions")
-.insert({
+await db.from("transactions").insert({
 
 customer_id:c.id,
-
 type:type,
-
 currency:cur,
-
-amount:
-type==="deposit"
-?
-amount
-:
--amount,
-
+amount:type==="deposit"?amount:-amount,
 balance:newBalance,
-
 description:desc,
-
 created_at:new Date().toISOString()
 
 });
@@ -2177,11 +1607,7 @@ created_at:new Date().toISOString()
 
 if(result.error){
 
-alert(
-"Database Error:\n"+
-result.error.message
-);
-
+alert("Database Error:\n"+result.error.message);
 return;
 
 }
@@ -2214,7 +1640,7 @@ cur
 }
 
 
-/* ================= SUCCESS MESSAGE ================= */
+/* ================= SUCCESS ================= */
 
 function currencyName(cur){
 
@@ -2234,6 +1660,11 @@ type,
 amount,
 currency
 ){
+
+/* د WhatsApp لپاره د مشتری ID ساتل */
+
+successCustomerId=customer.id;
+
 
 document.getElementById(
 "successCustomerName"
@@ -2291,12 +1722,7 @@ document.getElementById(
 }
 
 
-/*
-  د کافي په کلیک:
-  1- ټول پیغام Copy کوي
-  2- متن پاکوي
-  3- Popup بندوي
-*/
+/* ================= COPY + CLOSE ================= */
 
 async function copySuccessAndClose(){
 
@@ -2308,9 +1734,7 @@ document.getElementById(
 
 try{
 
-await navigator.clipboard.writeText(
-message
-);
+await navigator.clipboard.writeText(message);
 
 }catch(error){
 
@@ -2318,7 +1742,6 @@ const textarea=
 document.createElement("textarea");
 
 textarea.value=message;
-
 textarea.style.position="fixed";
 textarea.style.left="-9999px";
 
@@ -2333,18 +1756,127 @@ textarea.remove();
 }
 
 
-/* متن پاکول */
+/* متن پاک کړه */
 
 document.getElementById(
 "successMessage"
 ).innerHTML="";
 
 
-/* Popup بندول */
+/* Popup بند کړه */
 
 document.getElementById(
 "successPopup"
 ).style.display="none";
+
+
+successCustomerId=null;
+
+}
+
+
+/* ================= WHATSAPP ================= */
+
+function sendSuccessToWhatsApp(){
+
+/* د هغه مشتری معلومات واخله */
+
+const customer=
+customers.find(
+c=>String(c.id)===String(successCustomerId)
+);
+
+
+if(!customer){
+
+alert("د مشتری معلومات پیدا نه شول.");
+return;
+
+}
+
+
+if(!customer.phone){
+
+alert(
+"د دې مشتری Phone Number ثبت شوی نه دی."
+);
+
+return;
+
+}
+
+
+/* نمبر پاکول */
+
+let phone=
+String(customer.phone)
+.trim()
+.replace(/\D/g,"");
+
+
+/*
+افغانستان نمبر:
+0701234567
+→
+93701234567
+*/
+
+if(phone.startsWith("0")){
+
+phone=
+"93"+
+phone.substring(1);
+
+}
+
+
+/*
+که نمبر 93 سره شروع نه وي
+او له 9 digits زیات وي
+*/
+
+if(!phone.startsWith("93")){
+
+if(phone.length===9){
+
+phone="93"+phone;
+
+}
+
+}
+
+
+/* Success متن واخله */
+
+const message=
+document.getElementById(
+"successMessage"
+).innerText.trim();
+
+
+if(!message){
+
+alert("د پیغام متن پیدا نه شو.");
+return;
+
+}
+
+
+/* WhatsApp Link */
+
+const whatsappURL=
+"https://wa.me/"+
+phone+
+"?text="+
+encodeURIComponent(message);
+
+
+/* WhatsApp خلاص کړه */
+
+window.open(
+whatsappURL,
+"_blank"
+);
 
 }
 
@@ -2353,17 +1885,9 @@ document.getElementById(
 
 function openExchange(){
 
-document.getElementById(
-"exchangeAccount"
-).value="";
-
-document.getElementById(
-"exchangeAmount"
-).value="";
-
-document.getElementById(
-"exchangeDescription"
-).value="";
+document.getElementById("exchangeAccount").value="";
+document.getElementById("exchangeAmount").value="";
+document.getElementById("exchangeDescription").value="";
 
 loadExchangeRate();
 
@@ -2386,18 +1910,12 @@ exchangeRates?.[from]?.[to]||0
 function loadExchangeRate(){
 
 const from=
-document.getElementById(
-"fromCurrency"
-).value;
+document.getElementById("fromCurrency").value;
 
 const to=
-document.getElementById(
-"toCurrency"
-).value;
+document.getElementById("toCurrency").value;
 
-document.getElementById(
-"exchangeRate"
-).value=
+document.getElementById("exchangeRate").value=
 getRate(from,to);
 
 calculateExchange();
@@ -2408,22 +1926,12 @@ calculateExchange();
 function calculateExchange(){
 
 const amount=
-Number(
-document.getElementById(
-"exchangeAmount"
-).value
-);
+Number(document.getElementById("exchangeAmount").value);
 
 const rate=
-Number(
-document.getElementById(
-"exchangeRate"
-).value
-);
+Number(document.getElementById("exchangeRate").value);
 
-document.getElementById(
-"receivedAmount"
-).value=
+document.getElementById("receivedAmount").value=
 amount&&rate
 ?
 money(amount*rate)
@@ -2436,39 +1944,24 @@ money(amount*rate)
 function exchangeMoney(){
 
 const account=
-document.getElementById(
-"exchangeAccount"
-).value.trim();
+document.getElementById("exchangeAccount").value.trim();
 
 const from=
-document.getElementById(
-"fromCurrency"
-).value;
+document.getElementById("fromCurrency").value;
 
 const to=
-document.getElementById(
-"toCurrency"
-).value;
+document.getElementById("toCurrency").value;
 
 const amount=
-Number(
-document.getElementById(
-"exchangeAmount"
-).value
-);
+Number(document.getElementById("exchangeAmount").value);
 
 const desc=
-document.getElementById(
-"exchangeDescription"
-).value.trim();
+document.getElementById("exchangeDescription").value.trim();
 
 const c=
-customers.find(
-x=>x.account===account
-);
+customers.find(x=>x.account===account);
 
-const rate=
-getRate(from,to);
+const rate=getRate(from,to);
 
 
 if(!c){
@@ -2487,42 +1980,28 @@ return;
 
 if(from===to){
 
-alert(
-"From او To باید مختلف وي."
-);
-
+alert("From او To باید مختلف وي.");
 return;
 
 }
 
 if(!rate){
 
-alert(
-"Exchange Rate نشته."
-);
-
+alert("Exchange Rate نشته.");
 return;
 
 }
 
-if(
-Number(c.balance[from]||0)<amount
-){
+if(Number(c.balance[from]||0)<amount){
 
-alert(
-"Balance کافي نه دی."
-);
-
+alert("Balance کافي نه دی.");
 return;
 
 }
 
 if(!desc){
 
-alert(
-"Description ضروري دی."
-);
-
+alert("Description ضروري دی.");
 return;
 
 }
@@ -2530,11 +2009,9 @@ return;
 
 askPassword(async()=>{
 
-const received=
-amount*rate;
+const received=amount*rate;
 
-const time=
-new Date().toISOString();
+const time=new Date().toISOString();
 
 const rows=[
 
@@ -2543,10 +2020,8 @@ customer_id:c.id,
 type:"exchange",
 currency:from,
 amount:-amount,
-balance:
-Number(c.balance[from]||0)-amount,
-description:
-desc+" | Exchange → "+to,
+balance:Number(c.balance[from]||0)-amount,
+description:desc+" | Exchange → "+to,
 created_at:time
 },
 
@@ -2555,10 +2030,8 @@ customer_id:c.id,
 type:"exchange",
 currency:to,
 amount:received,
-balance:
-Number(c.balance[to]||0)+received,
-description:
-desc+" | Exchange ← "+from,
+balance:Number(c.balance[to]||0)+received,
+description:desc+" | Exchange ← "+from,
 created_at:time
 }
 
@@ -2566,18 +2039,12 @@ created_at:time
 
 
 const result=
-await db
-.from("transactions")
-.insert(rows);
+await db.from("transactions").insert(rows);
 
 
 if(result.error){
 
-alert(
-"Exchange Error:\n"+
-result.error.message
-);
-
+alert("Exchange Error:\n"+result.error.message);
 return;
 
 }
@@ -2587,9 +2054,7 @@ await loadData();
 
 closeModal("exchangeModal");
 
-alert(
-"Exchange په بریالیتوب سره ثبت شو."
-);
+alert("Exchange په بریالیتوب سره ثبت شو.");
 
 });
 
@@ -2607,17 +2072,15 @@ x=>String(x.id)===String(id)
 
 if(!c)return;
 
-c.balance=
-balanceTemplate();
+c.balance=balanceTemplate();
+
 
 transactions
 .filter(
 t=>String(t.customer_id)===String(id)
 )
 .sort(
-(a,b)=>
-new Date(a.created_at)-
-new Date(b.created_at)
+(a,b)=>new Date(a.created_at)-new Date(b.created_at)
 )
 .forEach(t=>{
 
@@ -2653,19 +2116,14 @@ function renderCustomers(){
 const q=
 document.getElementById(
 "customerSearch"
-).value
-.toLowerCase()
-.trim();
+).value.toLowerCase().trim();
+
 
 const list=
 customers.filter(c=>
-String(c.account||"")
-.toLowerCase()
-.includes(q)
+String(c.account||"").toLowerCase().includes(q)
 ||
-String(c.name||"")
-.toLowerCase()
-.includes(q)
+String(c.name||"").toLowerCase().includes(q)
 );
 
 
@@ -2695,7 +2153,7 @@ list.map(c=>`
 
 <button
 class="btn warning"
-onclick="askPassword(()=>editCustomer('${c.id}'))"
+onclick="editCustomer('${c.id}')"
 >
 ✏️ Edit
 </button>
@@ -2719,17 +2177,40 @@ Customer پیدا نه شو.
 }
 
 
+function editCustomer(id){
+
+const c=
+customers.find(
+x=>String(x.id)===String(id)
+);
+
+if(!c)return;
+
+document.getElementById("editCustomerId").value=c.id;
+document.getElementById("cAccount").value=c.account||"";
+document.getElementById("cName").value=c.name||"";
+document.getElementById("cPhone").value=c.phone||"";
+document.getElementById("cId").value=c.idNumber||"";
+document.getElementById("cFather").value=c.father||"";
+document.getElementById("cBirth").value=c.birth||"";
+document.getElementById("cGender").value=c.gender||"";
+document.getElementById("cJob").value=c.job||"";
+document.getElementById("cAddress").value=c.address||"";
+document.getElementById("cNote").value=c.note||"";
+
+closeModal("customersModal");
+
+openModal("customerModal");
+
+}
+
+
 /* ================= HISTORY ================= */
 
 function openCustomerHistory(){
 
-document.getElementById(
-"historyAccount"
-).value="";
-
-document.getElementById(
-"historyTable"
-).innerHTML="";
+document.getElementById("historyAccount").value="";
+document.getElementById("historyTable").innerHTML="";
 
 openModal("historyModal");
 
@@ -2739,55 +2220,39 @@ openModal("historyModal");
 function showCustomerHistory(){
 
 const account=
-document.getElementById(
-"historyAccount"
-).value.trim();
+document.getElementById("historyAccount").value.trim();
 
 const c=
-customers.find(
-x=>x.account===account
-);
+customers.find(x=>x.account===account);
+
 
 if(!c){
 
-alert(
-"Customer پیدا نه شو."
-);
-
+alert("Customer پیدا نه شو.");
 return;
 
 }
 
 
-document.getElementById(
-"historyCustomer"
-).innerHTML=
-
+document.getElementById("historyCustomer").innerHTML=
 `
 <div class="message success">
 👤 ${escapeHtml(c.name)}
 |
-Account:
-${escapeHtml(c.account)}
+Account: ${escapeHtml(c.account)}
 </div>
 `;
 
 
-let balance=
-balanceTemplate();
-
+let balance=balanceTemplate();
 
 const list=
 transactions
 .filter(
-t=>
-String(t.customer_id)===
-String(c.id)
+t=>String(t.customer_id)===String(c.id)
 )
 .sort(
-(a,b)=>
-new Date(a.created_at)-
-new Date(b.created_at)
+(a,b)=>new Date(a.created_at)-new Date(b.created_at)
 );
 
 
@@ -2800,12 +2265,8 @@ balance[t.currency]+=
 Number(t.amount)||0;
 
 rows.push({
-
 ...t,
-
-currentBalance:
-balance[t.currency]
-
+currentBalance:balance[t.currency]
 });
 
 });
@@ -2814,9 +2275,7 @@ balance[t.currency]
 rows.reverse();
 
 
-document.getElementById(
-"historyTable"
-).innerHTML=
+document.getElementById("historyTable").innerHTML=
 
 rows.map(t=>`
 
@@ -2827,21 +2286,10 @@ rows.map(t=>`
 <td>${dateOf(t.created_at)}</td>
 
 <td class="${
-Number(t.amount)>=0
-?
-"positive"
-:
-"negative"
+Number(t.amount)>=0?"positive":"negative"
 }">
 
-${
-Number(t.amount)>=0
-?
-"+"
-:
-""
-}
-
+${Number(t.amount)>=0?"+":""}
 ${money(t.amount)}
 
 </td>
@@ -2852,17 +2300,6 @@ ${money(t.amount)}
 
 <td>${escapeHtml(t.description)}</td>
 
-<td>
-
-<button
-class="btn warning"
-onclick="askPassword(()=>editTransaction('${t.id}'))"
->
-✏️ Edit
-</button>
-
-</td>
-
 </tr>
 
 `).join("")
@@ -2871,7 +2308,7 @@ onclick="askPassword(()=>editTransaction('${t.id}'))"
 
 `
 <tr>
-<td colspan="7">
+<td colspan="6">
 هیڅ معامله نشته.
 </td>
 </tr>
@@ -2880,134 +2317,13 @@ onclick="askPassword(()=>editTransaction('${t.id}'))"
 }
 
 
-/* ================= EDIT ================= */
-
-function editTransaction(id){
-
-const t=
-transactions.find(
-x=>String(x.id)===String(id)
-);
-
-if(!t)return;
-
-document.getElementById(
-"editTransactionId"
-).value=t.id;
-
-document.getElementById(
-"editTransactionAmount"
-).value=
-Math.abs(t.amount);
-
-document.getElementById(
-"editTransactionDescription"
-).value=
-t.description||"";
-
-openModal("editTransactionModal");
-
-}
-
-
-function saveEditedTransaction(){
-
-const id=
-document.getElementById(
-"editTransactionId"
-).value;
-
-const amount=
-Number(
-document.getElementById(
-"editTransactionAmount"
-).value
-);
-
-const description=
-document.getElementById(
-"editTransactionDescription"
-).value.trim();
-
-if(!amount||!description){
-
-alert(
-"Amount او Description ضروري دي."
-);
-
-return;
-
-}
-
-
-askPassword(async()=>{
-
-const t=
-transactions.find(
-x=>String(x.id)===String(id)
-);
-
-if(!t)return;
-
-
-const result=
-await db
-.from("transactions")
-.update({
-
-amount:
-t.amount<0
-?
--amount
-:
-amount,
-
-description:description
-
-})
-.eq("id",id);
-
-
-if(result.error){
-
-alert(
-"Update Error:\n"+
-result.error.message
-);
-
-return;
-
-}
-
-
-await loadData();
-
-closeModal("editTransactionModal");
-
-alert(
-"Transaction Update شو."
-);
-
-});
-
-}
-
-
 /* ================= STATEMENT ================= */
 
 function openStatement(){
 
-document.getElementById(
-"statementAccount"
-).value="";
-
-document.getElementById(
-"statementCurrency"
-).value="";
-
-document.getElementById(
-"statementResult"
-).innerHTML="";
+document.getElementById("statementAccount").value="";
+document.getElementById("statementCurrency").value="";
+document.getElementById("statementResult").innerHTML="";
 
 openModal("statementModal");
 
@@ -3017,18 +2333,13 @@ openModal("statementModal");
 function findStatementCustomer(){
 
 const account=
-document.getElementById(
-"statementAccount"
-).value.trim();
+document.getElementById("statementAccount").value.trim();
 
 const c=
-customers.find(
-x=>x.account===account
-);
+customers.find(x=>x.account===account);
 
-document.getElementById(
-"statementCustomer"
-).innerHTML=
+
+document.getElementById("statementCustomer").innerHTML=
 
 c
 ?
@@ -3050,26 +2361,18 @@ Customer پیدا نه شو.
 function showStatement(){
 
 const account=
-document.getElementById(
-"statementAccount"
-).value.trim();
+document.getElementById("statementAccount").value.trim();
 
 const currency=
-document.getElementById(
-"statementCurrency"
-).value;
+document.getElementById("statementCurrency").value;
 
 const c=
-customers.find(
-x=>x.account===account
-);
+customers.find(x=>x.account===account);
+
 
 if(!c||!currency){
 
-alert(
-"Customer او Currency انتخاب کړئ."
-);
-
+alert("Customer او Currency انتخاب کړئ.");
 return;
 
 }
@@ -3079,27 +2382,22 @@ const list=
 transactions
 .filter(
 t=>
-String(t.customer_id)===
-String(c.id)
+String(t.customer_id)===String(c.id)
 &&
 t.currency===currency
 )
 .sort(
-(a,b)=>
-new Date(a.created_at)-
-new Date(b.created_at)
+(a,b)=>new Date(a.created_at)-new Date(b.created_at)
 );
 
 
 let balance=0;
-
 let rows="";
 
 
 list.forEach(t=>{
 
-balance+=
-Number(t.amount)||0;
+balance+=Number(t.amount)||0;
 
 rows+=`
 
@@ -3112,15 +2410,11 @@ rows+=`
 <td>${escapeHtml(t.description)}</td>
 
 <td class="statement-credit">
-
 ${t.amount>0?money(t.amount):""}
-
 </td>
 
 <td class="statement-debit">
-
 ${t.amount<0?money(Math.abs(t.amount)):""}
-
 </td>
 
 <td>${money(balance)}</td>
@@ -3132,9 +2426,7 @@ ${t.amount<0?money(Math.abs(t.amount)):""}
 });
 
 
-document.getElementById(
-"statementResult"
-).innerHTML=
+document.getElementById("statementResult").innerHTML=
 
 `
 
@@ -3144,9 +2436,7 @@ document.getElementById(
 
 <div class="statement-brand">
 
-<div class="statement-logo">
-💱
-</div>
+<div class="statement-logo">💱</div>
 
 <div>
 
@@ -3163,11 +2453,7 @@ Monetary Service Provider
 </div>
 
 <div class="statement-title">
-
-<h1>
-STATEMENT OF ACCOUNT
-</h1>
-
+<h1>STATEMENT OF ACCOUNT</h1>
 </div>
 
 </div>
@@ -3208,14 +2494,12 @@ TRANSACTIONS
 <thead>
 
 <tr>
-
 <th>Date</th>
 <th>Time</th>
 <th>Description</th>
 <th>Credit</th>
 <th>Debit</th>
 <th>Balance</th>
-
 </tr>
 
 </thead>
@@ -3226,9 +2510,7 @@ ${rows||
 
 `
 <tr>
-<td colspan="6">
-No transactions
-</td>
+<td colspan="6">No transactions</td>
 </tr>
 `
 }
@@ -3250,7 +2532,6 @@ Authorized Signature
 
 </div>
 
-
 </div>
 
 `;
@@ -3261,46 +2542,67 @@ Authorized Signature
 function printStatement(){
 
 const area=
-document.querySelector(
-".statement-page"
-);
+document.querySelector(".statement-page");
 
 if(!area){
 
-alert(
-"لومړی Statement جوړ کړئ."
-);
-
+alert("لومړی Statement جوړ کړئ.");
 return;
 
 }
 
 
 const w=
-window.open(
-"",
-"_blank"
-);
+window.open("","_blank");
+
 
 w.document.write(`
+
 <html>
+
 <head>
+
 <title>Statement</title>
+
 <style>
-body{font-family:Arial;padding:20px}
-table{width:100%;border-collapse:collapse}
-th,td{border:1px solid #999;padding:8px;text-align:center}
-th{background:#065f46;color:#fff}
+
+body{
+font-family:Arial;
+padding:20px
+}
+
+table{
+width:100%;
+border-collapse:collapse
+}
+
+th,td{
+border:1px solid #999;
+padding:8px;
+text-align:center
+}
+
+th{
+background:#065f46;
+color:#fff
+}
+
 </style>
+
 </head>
+
 <body>
+
 ${area.outerHTML}
+
 </body>
+
 </html>
+
 `);
 
-w.document.close();
 
+w.document.close();
 w.print();
 
 }
@@ -3310,8 +2612,8 @@ w.print();
 
 function openReports(){
 
-let totals=
-balanceTemplate();
+let totals=balanceTemplate();
+
 
 customers.forEach(c=>{
 
@@ -3323,30 +2625,20 @@ totals.IRR+=c.balance.IRR;
 });
 
 
-document.getElementById(
-"reportUSD"
-).textContent=
+document.getElementById("reportUSD").textContent=
 money(totals.USD);
 
-document.getElementById(
-"reportAFN"
-).textContent=
+document.getElementById("reportAFN").textContent=
 money(totals.AFN);
 
-document.getElementById(
-"reportPKR"
-).textContent=
+document.getElementById("reportPKR").textContent=
 money(totals.PKR);
 
-document.getElementById(
-"reportIRR"
-).textContent=
+document.getElementById("reportIRR").textContent=
 money(totals.IRR);
 
 
-document.getElementById(
-"reportTable"
-).innerHTML=
+document.getElementById("reportTable").innerHTML=
 
 transactions
 .slice()
@@ -3355,8 +2647,7 @@ transactions
 
 const c=
 customers.find(
-x=>String(x.id)===
-String(t.customer_id)
+x=>String(x.id)===String(t.customer_id)
 );
 
 return`
@@ -3372,15 +2663,9 @@ return`
 <td>${escapeHtml(t.currency)}</td>
 
 <td class="${
-t.amount>=0
-?
-"positive"
-:
-"negative"
+t.amount>=0?"positive":"negative"
 }">
-
 ${money(t.amount)}
-
 </td>
 
 <td>${escapeHtml(t.description)}</td>
@@ -3403,35 +2688,14 @@ openModal("reportsModal");
 
 function openRates(){
 
-document.getElementById(
-"rateUSD_AFN"
-).value=
+document.getElementById("rateUSD_AFN").value=
 exchangeRates.USD.AFN;
 
-document.getElementById(
-"rateUSD_PKR"
-).value=
+document.getElementById("rateUSD_PKR").value=
 exchangeRates.USD.PKR;
 
-document.getElementById(
-"rateUSD_IRR"
-).value=
+document.getElementById("rateUSD_IRR").value=
 exchangeRates.USD.IRR;
-
-document.getElementById(
-"rateAFN_PKR"
-).value=
-exchangeRates.AFN.PKR;
-
-document.getElementById(
-"rateAFN_IRR"
-).value=
-exchangeRates.AFN.IRR;
-
-document.getElementById(
-"ratePKR_IRR"
-).value=
-exchangeRates.PKR.IRR;
 
 openModal("ratesModal");
 
@@ -3441,46 +2705,21 @@ openModal("ratesModal");
 function saveRates(){
 
 const uA=
-Number(
-document.getElementById(
-"rateUSD_AFN"
-).value
-);
+Number(document.getElementById("rateUSD_AFN").value);
 
 const uP=
-Number(
-document.getElementById(
-"rateUSD_PKR"
-).value
-);
+Number(document.getElementById("rateUSD_PKR").value);
 
 const uI=
-Number(
-document.getElementById(
-"rateUSD_IRR"
-).value
-);
+Number(document.getElementById("rateUSD_IRR").value);
 
-const aP=
-Number(
-document.getElementById(
-"rateAFN_PKR"
-).value
-);
 
-const aI=
-Number(
-document.getElementById(
-"rateAFN_IRR"
-).value
-);
+if(!uA||!uP||!uI){
 
-const pI=
-Number(
-document.getElementById(
-"ratePKR_IRR"
-).value
-);
+alert("ټول Rates داخل کړئ.");
+return;
+
+}
 
 
 exchangeRates={
@@ -3493,20 +2732,20 @@ IRR:uI
 
 AFN:{
 USD:1/uA,
-PKR:aP,
-IRR:aI
+PKR:uP/uA,
+IRR:uI/uA
 },
 
 PKR:{
 USD:1/uP,
-AFN:1/aP,
-IRR:pI
+AFN:uA/uP,
+IRR:uI/uP
 },
 
 IRR:{
 USD:1/uI,
-AFN:1/aI,
-PKR:1/pI
+AFN:uA/uI,
+PKR:uP/uI
 }
 
 };
@@ -3519,9 +2758,7 @@ JSON.stringify(exchangeRates)
 
 closeModal("ratesModal");
 
-alert(
-"Exchange Rates Save شول."
-);
+alert("Exchange Rates Save شول.");
 
 }
 
@@ -3532,36 +2769,28 @@ async function logout(){
 
 await db.auth.signOut();
 
-window.location.href=
-"index.html";
+window.location.href="index.html";
 
 }
 
 
 /*
-  مهم:
-  دلته Success Popup د باندې
-  د کلیک له لارې نه بندېږي.
-
-  یوازې عادي Modal د باندې کلیک
-  سره بندېږي.
+IMPORTANT:
+Success Popup یوازې د خپلو تڼیو له لارې بندېږي.
+د Popup په شا کلیک کولو سره نه بندېږي.
 */
 
 window.onclick=function(e){
 
-document
-.querySelectorAll(".modal")
-.forEach(m=>{
+document.querySelectorAll(".modal").forEach(m=>{
 
 if(e.target===m){
-
 m.style.display="none";
-
 }
 
 });
 
-}
+};
 
 </script>
 
