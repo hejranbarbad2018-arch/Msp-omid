@@ -62,11 +62,6 @@ font-size:13px;
 color:#d1fae5
 }
 
-.header-actions{
-display:flex;
-gap:8px
-}
-
 .header button{
 border:0;
 background:white;
@@ -322,15 +317,13 @@ font-size:13px
 }
 
 
-/* =========================
-   SUCCESS POPUP
-========================= */
+/* ================= SUCCESS POPUP ================= */
 
 .success-popup{
 display:none;
 position:fixed;
-z-index:3000;
 inset:0;
+z-index:99999;
 background:rgba(0,0,0,.72);
 align-items:center;
 justify-content:center;
@@ -345,8 +338,7 @@ border-radius:24px;
 padding:30px 25px 25px;
 text-align:center;
 box-shadow:0 25px 80px rgba(0,0,0,.35);
-border-top:6px solid #059669;
-animation:successPopupIn .25s ease
+border-top:6px solid #059669
 }
 
 .success-icon{
@@ -447,19 +439,8 @@ cursor:pointer
 background:#047857
 }
 
-@keyframes successPopupIn{
-from{
-opacity:0;
-transform:scale(.92)
-}
-to{
-opacity:1;
-transform:scale(1)
-}
-}
 
-
-/* STATEMENT */
+/* ================= STATEMENT ================= */
 
 .statement-page{
 background:#fff;
@@ -517,8 +498,7 @@ text-align:right
 
 .statement-title h1{
 margin:0;
-font-size:27px;
-color:#172033
+font-size:27px
 }
 
 .statement-title div{
@@ -666,11 +646,6 @@ height:45px;
 font-size:24px
 }
 
-.header-actions button{
-padding:8px 10px;
-font-size:12px
-}
-
 .container{
 padding:12px
 }
@@ -740,7 +715,6 @@ margin:8mm
 
 <body>
 
-
 <header class="header">
 
 <div class="brand">
@@ -759,12 +733,10 @@ Monetary Service Provider
 
 </div>
 
-<div class="header-actions">
-
+<div>
 <button onclick="logout()">
 🚪 Logout
 </button>
-
 </div>
 
 </header>
@@ -820,15 +792,13 @@ Omid Es-haqzai — Monetary Service Provider
 </div>
 
 
-<!-- CUSTOMER -->
+<!-- CUSTOMER MODAL -->
 
 <div class="modal" id="customerModal">
 
 <div class="modal-box">
 
-<button class="close" onclick="closeModal('customerModal')">
-×
-</button>
+<button class="close" onclick="closeModal('customerModal')">×</button>
 
 <h2>👤 Customer Registration</h2>
 
@@ -872,17 +842,9 @@ Omid Es-haqzai — Monetary Service Provider
 
 <select id="cGender">
 
-<option value="">
-انتخاب
-</option>
-
-<option>
-Male
-</option>
-
-<option>
-Female
-</option>
+<option value="">انتخاب</option>
+<option>Male</option>
+<option>Female</option>
 
 </select>
 
@@ -916,19 +878,16 @@ Cancel
 </button>
 
 </div>
-
 </div>
 
 
-<!-- MONEY -->
+<!-- MONEY MODAL -->
 
 <div class="modal" id="moneyModal">
 
 <div class="modal-box">
 
-<button class="close" onclick="closeModal('moneyModal')">
-×
-</button>
+<button class="close" onclick="closeModal('moneyModal')">×</button>
 
 <h2 id="moneyTitle"></h2>
 
@@ -938,9 +897,7 @@ Cancel
 
 <div class="field full">
 
-<label>
-Account Number *
-</label>
+<label>Account Number *</label>
 
 <div class="search">
 
@@ -956,61 +913,34 @@ Search
 
 </div>
 
-
 <div class="field">
 
-<label>
-Currency *
-</label>
+<label>Currency *</label>
 
 <select id="moneyCurrency">
 
-<option value="AFN">
-AFN
-</option>
-
-<option value="USD">
-USD
-</option>
-
-<option value="PKR">
-PKR
-</option>
-
-<option value="IRR">
-Toman
-</option>
+<option value="AFN">AFN</option>
+<option value="USD">USD</option>
+<option value="PKR">PKR</option>
+<option value="IRR">Toman</option>
 
 </select>
 
 </div>
 
-
 <div class="field">
 
-<label>
-Amount *
-</label>
+<label>Amount *</label>
 
-<input
-type="number"
-step="any"
-id="moneyAmount"
->
+<input type="number" step="any" id="moneyAmount">
 
 </div>
 
-
 <div class="field full">
 
-<label>
-Narration / Description *
-</label>
+<label>Narration / Description *</label>
 
-<textarea
-id="moneyDescription"
-placeholder="مثلاً: د احمد له طرفه جمع">
-</textarea>
+<textarea id="moneyDescription"></textarea>
 
 </div>
 
@@ -1027,7 +957,6 @@ Cancel
 </button>
 
 </div>
-
 </div>
 
 
@@ -1037,174 +966,92 @@ Cancel
 
 <div class="modal-box">
 
-<button class="close" onclick="closeModal('exchangeModal')">
-×
-</button>
+<button class="close" onclick="closeModal('exchangeModal')">×</button>
 
-<h2>
-🔄 Currency Exchange
-</h2>
+<h2>🔄 Currency Exchange</h2>
 
 <div class="form-grid">
 
 <div class="field full">
 
-<label>
-Account Number *
-</label>
-
+<label>Account Number *</label>
 <input id="exchangeAccount">
 
 </div>
 
-
 <div class="field">
 
-<label>
-From Currency
-</label>
+<label>From Currency</label>
 
-<select
-id="fromCurrency"
-onchange="loadExchangeRate()"
->
+<select id="fromCurrency" onchange="loadExchangeRate()">
 
-<option value="AFN">
-AFN
-</option>
-
-<option value="USD">
-USD
-</option>
-
-<option value="PKR">
-PKR
-</option>
-
-<option value="IRR">
-Toman
-</option>
+<option value="AFN">AFN</option>
+<option value="USD">USD</option>
+<option value="PKR">PKR</option>
+<option value="IRR">Toman</option>
 
 </select>
 
 </div>
 
-
 <div class="field">
 
-<label>
-To Currency
-</label>
+<label>To Currency</label>
 
-<select
-id="toCurrency"
-onchange="loadExchangeRate()"
->
+<select id="toCurrency" onchange="loadExchangeRate()">
 
-<option value="USD">
-USD
-</option>
-
-<option value="AFN">
-AFN
-</option>
-
-<option value="PKR">
-PKR
-</option>
-
-<option value="IRR">
-Toman
-</option>
+<option value="USD">USD</option>
+<option value="AFN">AFN</option>
+<option value="PKR">PKR</option>
+<option value="IRR">Toman</option>
 
 </select>
 
 </div>
 
+<div class="field">
+
+<label>Amount *</label>
+<input type="number" step="any" id="exchangeAmount"
+oninput="calculateExchange()">
+
+</div>
 
 <div class="field">
 
-<label>
-Amount *
-</label>
-
-<input
-type="number"
-step="any"
-id="exchangeAmount"
-oninput="calculateExchange()"
->
+<label>Exchange Rate</label>
+<input type="number" step="any" id="exchangeRate" readonly>
 
 </div>
-
-
-<div class="field">
-
-<label>
-Exchange Rate
-</label>
-
-<input
-type="number"
-step="any"
-id="exchangeRate"
-readonly
->
-
-</div>
-
 
 <div class="field full">
 
-<label>
-Received Amount
-</label>
-
-<input
-id="receivedAmount"
-readonly
->
+<label>Received Amount</label>
+<input id="receivedAmount" readonly>
 
 </div>
-
 
 <div class="field full">
 
-<label>
-Narration / Description *
-</label>
+<label>Narration / Description *</label>
 
-<textarea
-id="exchangeDescription"
-placeholder="مثلاً: USD څخه AFN ته تبدیل">
-</textarea>
+<textarea id="exchangeDescription"></textarea>
 
 </div>
 
-</div>
-
-<div class="rate-note">
-Exchange Rate به په اتومات ډول د Exchange Rates څخه واخیستل شي.
 </div>
 
 <br>
 
-<button
-class="btn primary"
-onclick="exchangeMoney()"
->
+<button class="btn primary" onclick="exchangeMoney()">
 🔐 Save Exchange
 </button>
 
-<button
-class="btn gray"
-onclick="closeModal('exchangeModal')"
->
+<button class="btn gray" onclick="closeModal('exchangeModal')">
 Cancel
 </button>
 
 </div>
-
 </div>
 
 
@@ -1214,16 +1061,9 @@ Cancel
 
 <div class="modal-box" style="max-width:1150px">
 
-<button
-class="close"
-onclick="closeModal('customersModal')"
->
-×
-</button>
+<button class="close" onclick="closeModal('customersModal')">×</button>
 
-<h2>
-📋 Customers
-</h2>
+<h2>📋 Customers</h2>
 
 <div class="search">
 
@@ -1242,7 +1082,6 @@ oninput="renderCustomers()"
 <thead>
 
 <tr>
-
 <th>Account</th>
 <th>Name</th>
 <th>Phone</th>
@@ -1251,7 +1090,6 @@ oninput="renderCustomers()"
 <th>PKR</th>
 <th>Toman</th>
 <th>Actions</th>
-
 </tr>
 
 </thead>
@@ -1263,7 +1101,6 @@ oninput="renderCustomers()"
 </div>
 
 </div>
-
 </div>
 
 
@@ -1273,16 +1110,9 @@ oninput="renderCustomers()"
 
 <div class="modal-box" style="max-width:1250px">
 
-<button
-class="close"
-onclick="closeModal('historyModal')"
->
-×
-</button>
+<button class="close" onclick="closeModal('historyModal')">×</button>
 
-<h2>
-📜 Customer Transaction History
-</h2>
+<h2>📜 Customer Transaction History</h2>
 
 <div class="search">
 
@@ -1291,10 +1121,7 @@ id="historyAccount"
 placeholder="Account Number"
 >
 
-<button
-class="btn info"
-onclick="showCustomerHistory()"
->
+<button class="btn info" onclick="showCustomerHistory()">
 Search
 </button>
 
@@ -1309,7 +1136,6 @@ Search
 <thead>
 
 <tr>
-
 <th>ساعت</th>
 <th>تاریخ</th>
 <th>مبلغ</th>
@@ -1317,7 +1143,6 @@ Search
 <th>اسعار</th>
 <th>Description</th>
 <th>Actions</th>
-
 </tr>
 
 </thead>
@@ -1329,7 +1154,6 @@ Search
 </div>
 
 </div>
-
 </div>
 
 
@@ -1339,134 +1163,73 @@ Search
 
 <div class="modal-box" style="max-width:1250px">
 
-<button
-class="close"
-onclick="closeModal('statementModal')"
->
-×
-</button>
+<button class="close" onclick="closeModal('statementModal')">×</button>
 
-<h2>
-📄 Statement of Account
-</h2>
+<h2>📄 Statement of Account</h2>
 
 <div class="form-grid">
 
 <div class="field">
 
-<label>
-Account Number *
-</label>
+<label>Account Number *</label>
 
-<div class="search">
-
-<input
-id="statementAccount"
-placeholder="Account Number"
->
-
-<button
-class="btn info"
-onclick="findStatementCustomer()"
->
-Search
-</button>
+<input id="statementAccount">
 
 </div>
-
-</div>
-
 
 <div class="field">
 
-<label>
-Currency *
-</label>
+<label>Currency *</label>
 
 <select id="statementCurrency">
 
-<option value="">
-Select Currency
-</option>
-
-<option value="AFN">
-AFN — افغانۍ
-</option>
-
-<option value="USD">
-USD — US Dollar
-</option>
-
-<option value="PKR">
-PKR — کلدارې
-</option>
-
-<option value="IRR">
-Toman — تومان
-</option>
+<option value="">Select Currency</option>
+<option value="AFN">AFN — افغانۍ</option>
+<option value="USD">USD — US Dollar</option>
+<option value="PKR">PKR — کلدارې</option>
+<option value="IRR">Toman — تومان</option>
 
 </select>
 
 </div>
 
-
 <div class="field">
 
-<label>
-From Date *
-</label>
-
-<input
-type="date"
-id="statementFromDate"
->
+<label>From Date *</label>
+<input type="date" id="statementFromDate">
 
 </div>
 
-
 <div class="field">
 
-<label>
-To Date *
-</label>
-
-<input
-type="date"
-id="statementToDate"
->
+<label>To Date *</label>
+<input type="date" id="statementToDate">
 
 </div>
 
 </div>
 
 <br>
+
+<button class="btn info" onclick="findStatementCustomer()">
+Search Customer
+</button>
 
 <div id="statementCustomer"></div>
 
 <br>
 
-<div class="actions">
-
-<button
-class="btn primary"
-onclick="showStatement()"
->
+<button class="btn primary" onclick="showStatement()">
 📄 Generate Statement
 </button>
 
-<button
-class="btn info"
-onclick="printStatement()"
->
+<button class="btn info" onclick="printStatement()">
 🖨️ Print / Save PDF
 </button>
-
-</div>
 
 <div id="statementResult"></div>
 
 </div>
-
 </div>
 
 
@@ -1476,20 +1239,9 @@ onclick="printStatement()"
 
 <div class="modal-box" style="max-width:1150px">
 
-<button
-class="close"
-onclick="closeModal('reportsModal')"
->
-×
-</button>
+<button class="close" onclick="closeModal('reportsModal')">×</button>
 
-<h2>
-📊 General Report
-</h2>
-
-<h3>
-اوسنی مجموعي موجوده
-</h3>
+<h2>📊 General Report</h2>
 
 <div class="report-cards">
 
@@ -1507,7 +1259,7 @@ AFN
 
 <div class="report-card">
 <div class="icon">🇵🇰</div>
-PKR / کلدارې
+PKR
 <b id="reportPKR">0</b>
 </div>
 
@@ -1519,27 +1271,6 @@ Toman
 
 </div>
 
-
-<div class="stats">
-
-<div class="stat">
-ټول Deposit
-<b id="reportDeposit">0</b>
-</div>
-
-<div class="stat">
-ټول Withdraw
-<b id="reportWithdraw">0</b>
-</div>
-
-<div class="stat">
-ټولې معاملې
-<b id="reportTransactions">0</b>
-</div>
-
-</div>
-
-
 <div class="table-wrap">
 
 <table>
@@ -1547,7 +1278,6 @@ Toman
 <thead>
 
 <tr>
-
 <th>Account</th>
 <th>Customer</th>
 <th>Type</th>
@@ -1555,7 +1285,6 @@ Toman
 <th>Amount</th>
 <th>Description</th>
 <th>Date</th>
-
 </tr>
 
 </thead>
@@ -1567,7 +1296,6 @@ Toman
 </div>
 
 </div>
-
 </div>
 
 
@@ -1575,22 +1303,11 @@ Toman
 
 <div class="modal" id="ratesModal">
 
-<div class="modal-box" style="max-width:700px">
+<div class="modal-box">
 
-<button
-class="close"
-onclick="closeModal('ratesModal')"
->
-×
-</button>
+<button class="close" onclick="closeModal('ratesModal')">×</button>
 
-<h2>
-💱 Exchange Rates
-</h2>
-
-<p>
-دلته Rate مشخص کړه. Exchange به همدا Rate په اتومات ډول اخلي.
-</p>
+<h2>💱 Exchange Rates</h2>
 
 <div class="form-grid">
 
@@ -1628,15 +1345,11 @@ onclick="closeModal('ratesModal')"
 
 <br>
 
-<button
-class="btn primary"
-onclick="saveRates()"
->
+<button class="btn primary" onclick="saveRates()">
 💾 Save Rates
 </button>
 
 </div>
-
 </div>
 
 
@@ -1644,50 +1357,29 @@ onclick="saveRates()"
 
 <div class="modal" id="passwordModal">
 
-<div
-class="modal-box"
-style="max-width:400px;text-align:center"
->
+<div class="modal-box" style="max-width:400px;text-align:center">
 
-<div style="font-size:50px">
-🔐
-</div>
+<div style="font-size:50px">🔐</div>
 
-<h2>
-Supervisor Authorization
-</h2>
-
-<p>
-د دې عملیات لپاره Supervisor Password داخل کړئ.
-</p>
+<h2>Supervisor Authorization</h2>
 
 <input
 type="password"
 id="supervisorPassword"
 placeholder="Supervisor Password"
-onkeydown="passwordEnter(event)"
 >
 
 <p id="passError" style="color:red"></p>
 
-<br>
-
-<button
-class="btn primary"
-onclick="verifyPassword()"
->
+<button class="btn primary" onclick="verifyPassword()">
 Confirm
 </button>
 
-<button
-class="btn gray"
-onclick="cancelPassword()"
->
+<button class="btn gray" onclick="cancelPassword()">
 Cancel
 </button>
 
 </div>
-
 </div>
 
 
@@ -1695,32 +1387,19 @@ Cancel
 
 <div class="modal" id="editTransactionModal">
 
-<div
-class="modal-box"
-style="max-width:500px"
->
+<div class="modal-box" style="max-width:500px">
 
-<button
-class="close"
-onclick="closeModal('editTransactionModal')"
->
+<button class="close" onclick="closeModal('editTransactionModal')">
 ×
 </button>
 
-<h2>
-✏️ Edit Transaction
-</h2>
+<h2>✏️ Edit Transaction</h2>
 
-<input
-type="hidden"
-id="editTransactionId"
->
+<input type="hidden" id="editTransactionId">
 
 <div class="field">
 
-<label>
-Amount *
-</label>
+<label>Amount *</label>
 
 <input
 type="number"
@@ -1734,38 +1413,25 @@ id="editTransactionAmount"
 
 <div class="field">
 
-<label>
-Description *
-</label>
+<label>Description *</label>
 
-<textarea
-id="editTransactionDescription"
-></textarea>
+<textarea id="editTransactionDescription"></textarea>
 
 </div>
 
 <br>
 
-<button
-class="btn primary"
-onclick="saveEditedTransaction()"
->
+<button class="btn primary" onclick="saveEditedTransaction()">
 💾 Update Transaction
 </button>
 
-<button
-class="btn gray"
-onclick="closeModal('editTransactionModal')"
->
-Cancel
-</button>
-
 </div>
-
 </div>
 
 
-<!-- SUCCESS POPUP -->
+<!-- =========================
+     SUCCESS POPUP
+========================= -->
 
 <div class="success-popup" id="successPopup">
 
@@ -1779,13 +1445,10 @@ Cancel
 معامله په بریالیتوب سره ترسره شوه
 </div>
 
-<div class="success-message">
+<div class="success-message" id="successMessage">
 
 ګرانه
-<span
-class="success-customer"
-id="successCustomerName"
-></span>
+<span class="success-customer" id="successCustomerName"></span>
 
 <br>
 
@@ -1793,18 +1456,17 @@ id="successCustomerName"
 
 <span
 class="success-amount"
-id="successTransactionAmount"
-></span>
+id="successTransactionAmount">
+</span>
 
 <span
 class="success-amount"
-id="successTransactionCurrency"
-></span>
+id="successTransactionCurrency">
+</span>
 
 <span id="successTransactionText">
 جمعه شو
 </span>
-
 
 <div class="success-balances">
 
@@ -1834,7 +1496,6 @@ id="successTransactionCurrency"
 
 </div>
 
-
 <div class="success-thanks">
 مننه
 </div>
@@ -1843,8 +1504,9 @@ id="successTransactionCurrency"
 
 
 <button
+type="button"
 class="success-ok"
-onclick="closeSuccessPopup()"
+onclick="copySuccessAndClose()"
 >
 کافي
 </button>
@@ -1871,35 +1533,6 @@ SUPABASE_PUBLISHABLE_KEY
 );
 
 
-async function checkUser(){
-
-const {data,error}=
-await db.auth.getSession();
-
-if(error||!data.session){
-
-window.location.href="index.html";
-
-return false
-
-}
-
-return true
-
-}
-
-
-if(
-!localStorage.getItem(
-"supervisorPassword"
-)
-)
-localStorage.setItem(
-"supervisorPassword",
-"2580"
-);
-
-
 let customers=[];
 let transactions=[];
 let pendingAction=null;
@@ -1907,13 +1540,10 @@ let pendingAction=null;
 
 let exchangeRates=
 JSON.parse(
-localStorage.getItem(
-"exchangeRates"
-)||"null"
+localStorage.getItem("exchangeRates")||"null"
 )
 ||
 {
-
 USD:{
 AFN:70,
 PKR:280,
@@ -1937,8 +1567,15 @@ USD:1/42000,
 AFN:70/42000,
 PKR:280/42000
 }
-
 };
+
+
+if(!localStorage.getItem("supervisorPassword")){
+localStorage.setItem(
+"supervisorPassword",
+"2580"
+);
+}
 
 
 function money(n){
@@ -1949,7 +1586,7 @@ return Number(n||0)
 {
 maximumFractionDigits:2
 }
-)
+);
 
 }
 
@@ -1961,7 +1598,7 @@ AFN:0,
 USD:0,
 PKR:0,
 IRR:0
-}
+};
 
 }
 
@@ -1973,36 +1610,21 @@ return String(v??"")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
 .replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;")
-
-}
-
-
-function closeModal(id){
-
-const el=
-document.getElementById(id);
-
-if(el)
-el.style.display="none"
+.replace(/'/g,"&#039;");
 
 }
 
 
 function openModal(id){
 
-const el=
-document.getElementById(id);
-
-if(el)
-el.style.display="block"
+document.getElementById(id).style.display="block";
 
 }
 
 
-function nowISO(){
+function closeModal(id){
 
-return new Date().toISOString()
+document.getElementById(id).style.display="none";
 
 }
 
@@ -2016,7 +1638,7 @@ return new Date(date)
 hour:"2-digit",
 minute:"2-digit"
 }
-)
+);
 
 }
 
@@ -2024,17 +1646,34 @@ minute:"2-digit"
 function dateOf(date){
 
 return new Date(date)
-.toLocaleDateString("en-GB")
+.toLocaleDateString("en-GB");
+
+}
+
+
+/* ================= DATABASE ================= */
+
+async function checkUser(){
+
+const {data,error}=
+await db.auth.getSession();
+
+if(error||!data.session){
+
+window.location.href="index.html";
+
+return false;
+
+}
+
+return true;
 
 }
 
 
 async function loadData(){
 
-const {
-data:cData,
-error:cError
-}=
+const {data:cData,error:cError}=
 await db
 .from("customers")
 .select("*");
@@ -2042,22 +1681,17 @@ await db
 
 if(cError){
 
-console.error(cError);
-
 alert(
-"Customers Database Error:\n"+
+"Customers Error:\n"+
 cError.message
 );
 
-return false
+return false;
 
 }
 
 
-const {
-data:tData,
-error:tError
-}=
+const {data:tData,error:tError}=
 await db
 .from("transactions")
 .select("*")
@@ -2071,98 +1705,54 @@ ascending:true
 
 if(tError){
 
-console.error(tError);
-
 alert(
-"Transactions Database Error:\n"+
+"Transactions Error:\n"+
 tError.message
 );
 
-return false
+return false;
 
 }
 
 
-customers=
-(cData||[])
-.map(c=>({
+customers=(cData||[]).map(c=>({
 
 id:c.id,
-
 account:c.account_number,
-
 name:c.name||"",
-
 phone:c.phone||"",
-
 idNumber:c.id_number||"",
-
 father:c.father_name||"",
-
 birth:c.birth_date||"",
-
 gender:c.gender||"",
-
 job:c.job||"",
-
 address:c.address||"",
-
 note:c.note||"",
-
 balance:balanceTemplate()
 
 }));
 
 
-transactions=
-(tData||[])
-.map(t=>({
+transactions=(tData||[]).map(t=>({
 
 id:t.id,
-
 customer_id:t.customer_id,
-
 type:t.type||"",
-
 currency:t.currency||"",
-
 amount:Number(t.amount)||0,
-
 balance:Number(t.balance)||0,
-
 description:t.description||"",
-
-created_at:t.created_at||nowISO()
+created_at:t.created_at||new Date().toISOString()
 
 }));
 
 
-transactions.forEach(t=>{
-
-const c=
-customers.find(
-x=>String(x.id)===
-String(t.customer_id)
-);
-
-
-if(c){
-
-t.account=c.account;
-
-t.customer=c.name
-
-}
-
+customers.forEach(c=>{
+recalculateCustomerBalances(c.id);
 });
 
 
-customers.forEach(c=>
-recalculateCustomerBalances(c.id)
-);
-
-
-return true
+return true;
 
 }
 
@@ -2171,21 +1761,19 @@ document.addEventListener(
 "DOMContentLoaded",
 async()=>{
 
-if(await checkUser())
-await loadData()
+if(await checkUser()){
+await loadData();
+}
 
 }
 );
 
 
-/* CUSTOMER */
+/* ================= CUSTOMER ================= */
 
 function openCustomer(){
 
-document.getElementById(
-"editCustomerId"
-).value="";
-
+document.getElementById("editCustomerId").value="";
 
 [
 "cAccount",
@@ -2198,13 +1786,11 @@ document.getElementById(
 "cJob",
 "cAddress",
 "cNote"
-]
-.forEach(id=>
-document.getElementById(id).value=""
-);
+].forEach(id=>{
+document.getElementById(id).value="";
+});
 
-
-openModal("customerModal")
+openModal("customerModal");
 
 }
 
@@ -2212,22 +1798,13 @@ openModal("customerModal")
 async function saveCustomer(){
 
 const id=
-document.getElementById(
-"editCustomerId"
-).value;
-
+document.getElementById("editCustomerId").value;
 
 const account=
-document.getElementById(
-"cAccount"
-).value.trim();
-
+document.getElementById("cAccount").value.trim();
 
 const name=
-document.getElementById(
-"cName"
-).value.trim();
-
+document.getElementById("cName").value.trim();
 
 if(!account||!name){
 
@@ -2235,24 +1812,7 @@ alert(
 "Account Number او Customer Name ضروري دی."
 );
 
-return
-
-}
-
-
-if(
-customers.some(
-c=>
-c.account===account&&
-String(c.id)!==String(id)
-)
-){
-
-alert(
-"دا Account Number مخکې موجود دی."
-);
-
-return
+return;
 
 }
 
@@ -2264,42 +1824,33 @@ account_number:account,
 name:name,
 
 phone:
-document.getElementById("cPhone")
-.value.trim(),
+document.getElementById("cPhone").value.trim(),
 
 id_number:
-document.getElementById("cId")
-.value.trim(),
+document.getElementById("cId").value.trim(),
 
 father_name:
-document.getElementById("cFather")
-.value.trim(),
+document.getElementById("cFather").value.trim(),
 
 birth_date:
-document.getElementById("cBirth")
-.value||null,
+document.getElementById("cBirth").value||null,
 
 gender:
-document.getElementById("cGender")
-.value,
+document.getElementById("cGender").value,
 
 job:
-document.getElementById("cJob")
-.value.trim(),
+document.getElementById("cJob").value.trim(),
 
 address:
-document.getElementById("cAddress")
-.value.trim(),
+document.getElementById("cAddress").value.trim(),
 
 note:
-document.getElementById("cNote")
-.value.trim()
+document.getElementById("cNote").value.trim()
 
 };
 
 
 let result;
-
 
 if(id){
 
@@ -2307,18 +1858,14 @@ result=
 await db
 .from("customers")
 .update(payload)
-.eq("id",id)
-.select()
-.single();
+.eq("id",id);
 
 }else{
 
 result=
 await db
 .from("customers")
-.insert(payload)
-.select()
-.single();
+.insert(payload);
 
 }
 
@@ -2330,7 +1877,7 @@ alert(
 result.error.message
 );
 
-return
+return;
 
 }
 
@@ -2339,14 +1886,13 @@ await loadData();
 
 closeModal("customerModal");
 
-
 alert(
 id
 ?
-"Customer معلومات Update شول."
+"Customer Update شو."
 :
-"Customer په بریالیتوب سره ثبت شو."
-)
+"Customer ثبت شو."
+);
 
 }
 
@@ -2355,66 +1901,30 @@ function editCustomer(id){
 
 const c=
 customers.find(
-x=>String(x.id)===
-String(id)
+x=>String(x.id)===String(id)
 );
 
 if(!c)return;
 
-
-document.getElementById(
-"editCustomerId"
-).value=c.id;
-
-document.getElementById(
-"cAccount"
-).value=c.account||"";
-
-document.getElementById(
-"cName"
-).value=c.name||"";
-
-document.getElementById(
-"cPhone"
-).value=c.phone||"";
-
-document.getElementById(
-"cId"
-).value=c.idNumber||"";
-
-document.getElementById(
-"cFather"
-).value=c.father||"";
-
-document.getElementById(
-"cBirth"
-).value=c.birth||"";
-
-document.getElementById(
-"cGender"
-).value=c.gender||"";
-
-document.getElementById(
-"cJob"
-).value=c.job||"";
-
-document.getElementById(
-"cAddress"
-).value=c.address||"";
-
-document.getElementById(
-"cNote"
-).value=c.note||"";
-
+document.getElementById("editCustomerId").value=c.id;
+document.getElementById("cAccount").value=c.account||"";
+document.getElementById("cName").value=c.name||"";
+document.getElementById("cPhone").value=c.phone||"";
+document.getElementById("cId").value=c.idNumber||"";
+document.getElementById("cFather").value=c.father||"";
+document.getElementById("cBirth").value=c.birth||"";
+document.getElementById("cGender").value=c.gender||"";
+document.getElementById("cJob").value=c.job||"";
+document.getElementById("cAddress").value=c.address||"";
+document.getElementById("cNote").value=c.note||"";
 
 closeModal("customersModal");
-
-openModal("customerModal")
+openModal("customerModal");
 
 }
 
 
-/* PASSWORD */
+/* ================= PASSWORD ================= */
 
 function askPassword(action){
 
@@ -2430,25 +1940,15 @@ document.getElementById(
 
 openModal("passwordModal");
 
-
-setTimeout(
-()=>
-document.getElementById(
-"supervisorPassword"
-).focus(),
-100
-)
-
 }
 
 
 function verifyPassword(){
 
-const p=
+const password=
 document.getElementById(
 "supervisorPassword"
 ).value;
-
 
 const saved=
 localStorage.getItem(
@@ -2456,29 +1956,25 @@ localStorage.getItem(
 )||"2580";
 
 
-if(p!==saved){
+if(password!==saved){
 
 document.getElementById(
 "passError"
 ).textContent=
-"❌ Supervisor Password غلط دی.";
+"Password غلط دی.";
 
-return
+return;
 
 }
 
 
 closeModal("passwordModal");
 
-
-const action=
-pendingAction;
+const action=pendingAction;
 
 pendingAction=null;
 
-
-if(action)
-action()
+if(action)action();
 
 }
 
@@ -2487,206 +1983,18 @@ function cancelPassword(){
 
 pendingAction=null;
 
-closeModal("passwordModal")
+closeModal("passwordModal");
 
 }
 
 
-function passwordEnter(e){
-
-if(e.key==="Enter")
-verifyPassword()
-
-}
-
-
-/* CUSTOMERS */
-
-function openCustomers(){
-
-renderCustomers();
-
-openModal("customersModal")
-
-}
-
-
-function renderCustomers(){
-
-const q=
-document.getElementById(
-"customerSearch"
-).value
-.trim()
-.toLowerCase();
-
-
-const list=
-customers.filter(
-c=>
-String(c.account||"")
-.toLowerCase()
-.includes(q)
-||
-String(c.name||"")
-.toLowerCase()
-.includes(q)
-);
-
-
-document.getElementById(
-"customersTable"
-).innerHTML=
-
-list.map(c=>`
-
-<tr>
-
-<td>
-${escapeHtml(c.account)}
-</td>
-
-<td>
-${escapeHtml(c.name)}
-</td>
-
-<td>
-${escapeHtml(c.phone)}
-</td>
-
-<td>
-${money(c.balance.AFN)}
-</td>
-
-<td>
-${money(c.balance.USD)}
-</td>
-
-<td>
-${money(c.balance.PKR)}
-</td>
-
-<td>
-${money(c.balance.IRR)}
-</td>
-
-<td>
-
-<div class="actions">
-
-<button
-class="btn warning"
-onclick="askPassword(()=>editCustomer('${c.id}'))"
->
-✏️ Edit
-</button>
-
-<button
-class="btn danger"
-onclick="deleteCustomer('${c.id}')"
->
-🗑️ Delete
-</button>
-
-</div>
-
-</td>
-
-</tr>
-
-`).join("")
-
-||
-
-`<tr>
-<td colspan="8">
-Customer پیدا نه شو.
-</td>
-</tr>`
-
-}
-
-
-function deleteCustomer(id){
-
-askPassword(async()=>{
-
-const c=
-customers.find(
-x=>String(x.id)===
-String(id)
-);
-
-if(!c)return;
-
-
-if(
-!confirm(
-"ایا Customer او د هغه ټول Transactions حذف کړئ؟"
-)
-)
-return;
-
-
-const tResult=
-await db
-.from("transactions")
-.delete()
-.eq("customer_id",id);
-
-
-if(tResult.error){
-
-alert(
-"Transaction Delete Error:\n"+
-tResult.error.message
-);
-
-return
-
-}
-
-
-const cResult=
-await db
-.from("customers")
-.delete()
-.eq("id",id);
-
-
-if(cResult.error){
-
-alert(
-"Customer Delete Error:\n"+
-cResult.error.message
-);
-
-return
-
-}
-
-
-await loadData();
-
-renderCustomers();
-
-alert(
-"Customer او ټول Transactions حذف شول."
-)
-
-})
-
-}
-
-
-/* MONEY */
+/* ================= MONEY ================= */
 
 function openMoney(type){
 
 document.getElementById(
 "moneyType"
 ).value=type;
-
 
 document.getElementById(
 "moneyTitle"
@@ -2697,28 +2005,23 @@ type==="deposit"
 :
 "💸 Withdraw";
 
-
 document.getElementById(
 "accountInput"
 ).value="";
-
 
 document.getElementById(
 "moneyAmount"
 ).value="";
 
-
 document.getElementById(
 "moneyDescription"
 ).value="";
-
 
 document.getElementById(
 "customerFound"
 ).innerHTML="";
 
-
-openModal("moneyModal")
+openModal("moneyModal");
 
 }
 
@@ -2730,12 +2033,10 @@ document.getElementById(
 "accountInput"
 ).value.trim();
 
-
 const c=
 customers.find(
 x=>x.account===account
 );
-
 
 document.getElementById(
 "customerFound"
@@ -2743,26 +2044,24 @@ document.getElementById(
 
 c
 ?
-`<div class="message success">
+`
+<div class="message success">
 ✅ ${escapeHtml(c.name)}
-—
-${escapeHtml(c.account)}
-</div>`
-
+</div>
+`
 :
-`<div class="message error">
-Customer پیدا نه شو.
-</div>`;
+`
+<div class="message error">
+❌ Customer پیدا نه شو.
+</div>
+`;
 
-
-return c
+return c;
 
 }
 
 
-/* =========================
-   DEPOSIT / WITHDRAW
-========================= */
+/* ================= DEPOSIT / WITHDRAW ================= */
 
 function saveMoney(){
 
@@ -2771,18 +2070,15 @@ document.getElementById(
 "moneyType"
 ).value;
 
-
 const account=
 document.getElementById(
 "accountInput"
 ).value.trim();
 
-
 const cur=
 document.getElementById(
 "moneyCurrency"
 ).value;
-
 
 const amount=
 Number(
@@ -2791,12 +2087,10 @@ document.getElementById(
 ).value
 );
 
-
 const desc=
 document.getElementById(
 "moneyDescription"
 ).value.trim();
-
 
 const c=
 customers.find(
@@ -2804,39 +2098,24 @@ x=>x.account===account
 );
 
 
-if(
-!account||
-!amount||
-amount<=0
-){
+if(!c){
 
-alert(
-"Account او Amount صحیح داخل کړئ."
-);
-
-return
+alert("Customer پیدا نه شو.");
+return;
 
 }
 
+if(!amount||amount<=0){
+
+alert("Amount صحیح داخل کړئ.");
+return;
+
+}
 
 if(!desc){
 
-alert(
-"Narration / Description ضروري دی."
-);
-
-return
-
-}
-
-
-if(!c){
-
-alert(
-"Customer پیدا نه شو."
-);
-
-return
+alert("Description ضروري دی.");
+return;
 
 }
 
@@ -2844,9 +2123,7 @@ return
 askPassword(async()=>{
 
 const current=
-Number(
-c.balance[cur]||0
-);
+Number(c.balance[cur]||0);
 
 
 if(
@@ -2855,26 +2132,26 @@ current<amount
 ){
 
 alert(
-"❌ د Customer Balance کافي نه دی."
+"❌ Balance کافي نه دی."
 );
 
-return
+return;
 
 }
 
 
 const newBalance=
-current+
-(
 type==="deposit"
 ?
-amount
+current+amount
 :
--amount
-);
+current-amount;
 
 
-const payload={
+const result=
+await db
+.from("transactions")
+.insert({
 
 customer_id:c.id,
 
@@ -2883,25 +2160,19 @@ type:type,
 currency:cur,
 
 amount:
-type==="withdraw"
+type==="deposit"
 ?
--amount
+amount
 :
-amount,
+-amount,
 
 balance:newBalance,
 
 description:desc,
 
-created_at:nowISO()
+created_at:new Date().toISOString()
 
-};
-
-
-const result=
-await db
-.from("transactions")
-.insert(payload);
+});
 
 
 if(result.error){
@@ -2911,7 +2182,7 @@ alert(
 result.error.message
 );
 
-return
+return;
 
 }
 
@@ -2921,9 +2192,6 @@ await loadData();
 closeModal("moneyModal");
 
 
-/*
-  تازه Balance له Database څخه اخیستل کېږي
-*/
 const updatedCustomer=
 customers.find(
 x=>String(x.id)===String(c.id)
@@ -2941,28 +2209,19 @@ cur
 
 }
 
-})
+});
 
 }
 
 
-/* =========================
-   SUCCESS POPUP
-========================= */
+/* ================= SUCCESS MESSAGE ================= */
 
 function currencyName(cur){
 
-if(cur==="AFN")
-return "افغانی";
-
-if(cur==="USD")
-return "دالر";
-
-if(cur==="IRR")
-return "تومن";
-
-if(cur==="PKR")
-return "کلدار";
+if(cur==="AFN")return"افغانی";
+if(cur==="USD")return"دالر";
+if(cur==="IRR")return"تومن";
+if(cur==="PKR")return"کلدار";
 
 return cur;
 
@@ -3009,18 +2268,15 @@ document.getElementById(
 ).textContent=
 money(customer.balance.AFN);
 
-
 document.getElementById(
 "successUSD"
 ).textContent=
 money(customer.balance.USD);
 
-
 document.getElementById(
 "successIRR"
 ).textContent=
 money(customer.balance.IRR);
-
 
 document.getElementById(
 "successPKR"
@@ -3035,7 +2291,56 @@ document.getElementById(
 }
 
 
-function closeSuccessPopup(){
+/*
+  د کافي په کلیک:
+  1- ټول پیغام Copy کوي
+  2- متن پاکوي
+  3- Popup بندوي
+*/
+
+async function copySuccessAndClose(){
+
+const message=
+document.getElementById(
+"successMessage"
+).innerText.trim();
+
+
+try{
+
+await navigator.clipboard.writeText(
+message
+);
+
+}catch(error){
+
+const textarea=
+document.createElement("textarea");
+
+textarea.value=message;
+
+textarea.style.position="fixed";
+textarea.style.left="-9999px";
+
+document.body.appendChild(textarea);
+
+textarea.select();
+
+document.execCommand("copy");
+
+textarea.remove();
+
+}
+
+
+/* متن پاکول */
+
+document.getElementById(
+"successMessage"
+).innerHTML="";
+
+
+/* Popup بندول */
 
 document.getElementById(
 "successPopup"
@@ -3044,7 +2349,7 @@ document.getElementById(
 }
 
 
-/* EXCHANGE */
+/* ================= EXCHANGE ================= */
 
 function openExchange(){
 
@@ -3052,43 +2357,28 @@ document.getElementById(
 "exchangeAccount"
 ).value="";
 
-
 document.getElementById(
 "exchangeAmount"
 ).value="";
-
-
-document.getElementById(
-"exchangeRate"
-).value="";
-
-
-document.getElementById(
-"receivedAmount"
-).value="";
-
 
 document.getElementById(
 "exchangeDescription"
 ).value="";
 
-
 loadExchangeRate();
 
-openModal("exchangeModal")
+openModal("exchangeModal");
 
 }
 
 
 function getRate(from,to){
 
-if(from===to)
-return 1;
-
+if(from===to)return 1;
 
 return Number(
 exchangeRates?.[from]?.[to]||0
-)
+);
 
 }
 
@@ -3100,24 +2390,17 @@ document.getElementById(
 "fromCurrency"
 ).value;
 
-
 const to=
 document.getElementById(
 "toCurrency"
 ).value;
 
-
-const rate=
-getRate(from,to);
-
-
 document.getElementById(
 "exchangeRate"
 ).value=
-rate||"";
+getRate(from,to);
 
-
-calculateExchange()
+calculateExchange();
 
 }
 
@@ -3131,7 +2414,6 @@ document.getElementById(
 ).value
 );
 
-
 const rate=
 Number(
 document.getElementById(
@@ -3139,15 +2421,14 @@ document.getElementById(
 ).value
 );
 
-
 document.getElementById(
 "receivedAmount"
 ).value=
-amount>0&&rate>0
+amount&&rate
 ?
 money(amount*rate)
 :
-""
+"";
 
 }
 
@@ -3159,18 +2440,15 @@ document.getElementById(
 "exchangeAccount"
 ).value.trim();
 
-
 const from=
 document.getElementById(
 "fromCurrency"
 ).value;
 
-
 const to=
 document.getElementById(
 "toCurrency"
 ).value;
-
 
 const amount=
 Number(
@@ -3179,37 +2457,33 @@ document.getElementById(
 ).value
 );
 
-
 const desc=
 document.getElementById(
 "exchangeDescription"
 ).value.trim();
-
-
-const rate=
-getRate(from,to);
-
 
 const c=
 customers.find(
 x=>x.account===account
 );
 
+const rate=
+getRate(from,to);
 
-if(
-!account||
-!amount||
-amount<=0
-){
 
-alert(
-"Account او Amount صحیح داخل کړئ."
-);
+if(!c){
 
-return
+alert("Customer پیدا نه شو.");
+return;
 
 }
 
+if(!amount||amount<=0){
+
+alert("Amount صحیح داخل کړئ.");
+return;
+
+}
 
 if(from===to){
 
@@ -3217,55 +2491,39 @@ alert(
 "From او To باید مختلف وي."
 );
 
-return
+return;
 
 }
 
-
-if(!rate||rate<=0){
+if(!rate){
 
 alert(
-"د دې Currency Pair لپاره Exchange Rate مشخص شوی نه دی."
+"Exchange Rate نشته."
 );
 
-return
+return;
 
 }
 
+if(
+Number(c.balance[from]||0)<amount
+){
+
+alert(
+"Balance کافي نه دی."
+);
+
+return;
+
+}
 
 if(!desc){
 
 alert(
-"Narration / Description ضروري دی."
+"Description ضروري دی."
 );
 
-return
-
-}
-
-
-if(!c){
-
-alert(
-"Customer پیدا نه شو."
-);
-
-return
-
-}
-
-
-if(
-Number(c.balance[from]||0)
-<
-amount
-){
-
-alert(
-"❌ Source Balance کافي نه دی."
-);
-
-return
+return;
 
 }
 
@@ -3275,22 +2533,8 @@ askPassword(async()=>{
 const received=
 amount*rate;
 
-
-const exchangeTime=
-nowISO();
-
-
-const sourceBalance=
-Number(c.balance[from]||0)
--
-amount;
-
-
-const targetBalance=
-Number(c.balance[to]||0)
-+
-received;
-
+const time=
+new Date().toISOString();
 
 const rows=[
 
@@ -3299,10 +2543,11 @@ customer_id:c.id,
 type:"exchange",
 currency:from,
 amount:-amount,
-balance:sourceBalance,
+balance:
+Number(c.balance[from]||0)-amount,
 description:
 desc+" | Exchange → "+to,
-created_at:exchangeTime
+created_at:time
 },
 
 {
@@ -3310,10 +2555,11 @@ customer_id:c.id,
 type:"exchange",
 currency:to,
 amount:received,
-balance:targetBalance,
+balance:
+Number(c.balance[to]||0)+received,
 description:
 desc+" | Exchange ← "+from,
-created_at:exchangeTime
+created_at:time
 }
 
 ];
@@ -3328,11 +2574,11 @@ await db
 if(result.error){
 
 alert(
-"Exchange Database Error:\n"+
+"Exchange Error:\n"+
 result.error.message
 );
 
-return
+return;
 
 }
 
@@ -3342,15 +2588,138 @@ await loadData();
 closeModal("exchangeModal");
 
 alert(
-"Exchange ثبت شو."
-)
+"Exchange په بریالیتوب سره ثبت شو."
+);
 
-})
+});
 
 }
 
 
-/* HISTORY */
+/* ================= BALANCE ================= */
+
+function recalculateCustomerBalances(id){
+
+const c=
+customers.find(
+x=>String(x.id)===String(id)
+);
+
+if(!c)return;
+
+c.balance=
+balanceTemplate();
+
+transactions
+.filter(
+t=>String(t.customer_id)===String(id)
+)
+.sort(
+(a,b)=>
+new Date(a.created_at)-
+new Date(b.created_at)
+)
+.forEach(t=>{
+
+if(c.balance[t.currency]!==undefined){
+
+c.balance[t.currency]+=
+Number(t.amount)||0;
+
+}
+
+});
+
+}
+
+
+/* ================= CUSTOMERS ================= */
+
+function openCustomers(){
+
+document.getElementById(
+"customerSearch"
+).value="";
+
+renderCustomers();
+
+openModal("customersModal");
+
+}
+
+
+function renderCustomers(){
+
+const q=
+document.getElementById(
+"customerSearch"
+).value
+.toLowerCase()
+.trim();
+
+const list=
+customers.filter(c=>
+String(c.account||"")
+.toLowerCase()
+.includes(q)
+||
+String(c.name||"")
+.toLowerCase()
+.includes(q)
+);
+
+
+document.getElementById(
+"customersTable"
+).innerHTML=
+
+list.map(c=>`
+
+<tr>
+
+<td>${escapeHtml(c.account)}</td>
+
+<td>${escapeHtml(c.name)}</td>
+
+<td>${escapeHtml(c.phone)}</td>
+
+<td>${money(c.balance.AFN)}</td>
+
+<td>${money(c.balance.USD)}</td>
+
+<td>${money(c.balance.PKR)}</td>
+
+<td>${money(c.balance.IRR)}</td>
+
+<td>
+
+<button
+class="btn warning"
+onclick="askPassword(()=>editCustomer('${c.id}'))"
+>
+✏️ Edit
+</button>
+
+</td>
+
+</tr>
+
+`).join("")
+
+||
+
+`
+<tr>
+<td colspan="8">
+Customer پیدا نه شو.
+</td>
+</tr>
+`;
+
+}
+
+
+/* ================= HISTORY ================= */
 
 function openCustomerHistory(){
 
@@ -3358,18 +2727,11 @@ document.getElementById(
 "historyAccount"
 ).value="";
 
-
-document.getElementById(
-"historyCustomer"
-).innerHTML="";
-
-
 document.getElementById(
 "historyTable"
 ).innerHTML="";
 
-
-openModal("historyModal")
+openModal("historyModal");
 
 }
 
@@ -3381,12 +2743,10 @@ document.getElementById(
 "historyAccount"
 ).value.trim();
 
-
 const c=
 customers.find(
 x=>x.account===account
 );
-
 
 if(!c){
 
@@ -3394,9 +2754,27 @@ alert(
 "Customer پیدا نه شو."
 );
 
-return
+return;
 
 }
+
+
+document.getElementById(
+"historyCustomer"
+).innerHTML=
+
+`
+<div class="message success">
+👤 ${escapeHtml(c.name)}
+|
+Account:
+${escapeHtml(c.account)}
+</div>
+`;
+
+
+let balance=
+balanceTemplate();
 
 
 const list=
@@ -3413,41 +2791,27 @@ new Date(b.created_at)
 );
 
 
-let bal=
-balanceTemplate();
-
 let rows=[];
 
 
 list.forEach(t=>{
 
-bal[t.currency]=
-Number(bal[t.currency]||0)+
-Number(t.amount||0);
-
+balance[t.currency]+=
+Number(t.amount)||0;
 
 rows.push({
+
 ...t,
-calculatedBalance:
-bal[t.currency]
+
+currentBalance:
+balance[t.currency]
+
 });
 
 });
 
 
 rows.reverse();
-
-
-document.getElementById(
-"historyCustomer"
-).innerHTML=
-
-`<div class="message success">
-👤 ${escapeHtml(c.name)}
-|
-Account:
-${escapeHtml(c.account)}
-</div>`;
 
 
 document.getElementById(
@@ -3458,23 +2822,17 @@ rows.map(t=>`
 
 <tr>
 
-<td>
-${escapeHtml(timeOf(t.created_at))}
-</td>
+<td>${timeOf(t.created_at)}</td>
 
-<td>
-${escapeHtml(dateOf(t.created_at))}
-</td>
+<td>${dateOf(t.created_at)}</td>
 
-<td
-class="${
+<td class="${
 Number(t.amount)>=0
 ?
 "positive"
 :
 "negative"
-}"
->
+}">
 
 ${
 Number(t.amount)>=0
@@ -3488,21 +2846,13 @@ ${money(t.amount)}
 
 </td>
 
-<td>
-${money(t.calculatedBalance)}
-</td>
+<td>${money(t.currentBalance)}</td>
+
+<td>${escapeHtml(t.currency)}</td>
+
+<td>${escapeHtml(t.description)}</td>
 
 <td>
-${escapeHtml(t.currency)}
-</td>
-
-<td>
-${escapeHtml(t.description)}
-</td>
-
-<td>
-
-<div class="actions">
 
 <button
 class="btn warning"
@@ -3510,15 +2860,6 @@ onclick="askPassword(()=>editTransaction('${t.id}'))"
 >
 ✏️ Edit
 </button>
-
-<button
-class="btn danger"
-onclick="deleteTransaction('${t.id}')"
->
-🗑️ Delete
-</button>
-
-</div>
 
 </td>
 
@@ -3528,102 +2869,43 @@ onclick="deleteTransaction('${t.id}')"
 
 ||
 
-`<tr>
+`
+<tr>
 <td colspan="7">
-هیڅ Transaction نشته.
+هیڅ معامله نشته.
 </td>
-</tr>`
+</tr>
+`;
 
 }
 
 
-function recalculateCustomerBalances(cid){
-
-const c=
-customers.find(
-x=>String(x.id)===
-String(cid)
-);
-
-
-if(!c)return;
-
-
-c.balance=
-balanceTemplate();
-
-
-transactions
-.filter(
-t=>
-String(t.customer_id)===
-String(cid)
-)
-.sort(
-(a,b)=>
-new Date(a.created_at)-
-new Date(b.created_at)
-)
-.forEach(t=>{
-
-if(
-c.balance[t.currency]!==undefined
-)
-c.balance[t.currency]+=
-Number(t.amount)||0
-
-})
-
-}
-
-
-/* EDIT TRANSACTION */
+/* ================= EDIT ================= */
 
 function editTransaction(id){
 
 const t=
 transactions.find(
-x=>String(x.id)===
-String(id)
+x=>String(x.id)===String(id)
 );
-
 
 if(!t)return;
-
-
-if(t.type==="exchange"){
-
-alert(
-"Exchange Transaction له دې ځایه Edit نه شي کېدای."
-);
-
-return
-
-}
-
 
 document.getElementById(
 "editTransactionId"
 ).value=t.id;
 
-
 document.getElementById(
 "editTransactionAmount"
 ).value=
-Math.abs(
-Number(t.amount)||0
-);
-
+Math.abs(t.amount);
 
 document.getElementById(
 "editTransactionDescription"
 ).value=
 t.description||"";
 
-
-closeModal("historyModal");
-
-openModal("editTransactionModal")
+openModal("editTransactionModal");
 
 }
 
@@ -3635,7 +2917,6 @@ document.getElementById(
 "editTransactionId"
 ).value;
 
-
 const amount=
 Number(
 document.getElementById(
@@ -3643,52 +2924,46 @@ document.getElementById(
 ).value
 );
 
-
 const description=
 document.getElementById(
 "editTransactionDescription"
 ).value.trim();
 
-
-const t=
-transactions.find(
-x=>String(x.id)===
-String(id)
-);
-
-
-if(
-!t||
-!amount||
-amount<=0||
-!description
-){
+if(!amount||!description){
 
 alert(
-"Amount او Description صحیح داخل کړئ."
+"Amount او Description ضروري دي."
 );
 
-return
+return;
 
 }
 
 
 askPassword(async()=>{
 
-const newAmount=
-Number(t.amount)<0
-?
--amount
-:
-amount;
+const t=
+transactions.find(
+x=>String(x.id)===String(id)
+);
+
+if(!t)return;
 
 
 const result=
 await db
 .from("transactions")
 .update({
-amount:newAmount,
+
+amount:
+t.amount<0
+?
+-amount
+:
+amount,
+
 description:description
+
 })
 .eq("id",id);
 
@@ -3700,112 +2975,25 @@ alert(
 result.error.message
 );
 
-return
+return;
 
 }
 
 
 await loadData();
 
-closeModal(
-"editTransactionModal"
-);
-
-
-const account=
-document.getElementById(
-"historyAccount"
-).value.trim();
-
-
-if(account)
-showCustomerHistory();
-
+closeModal("editTransactionModal");
 
 alert(
 "Transaction Update شو."
-)
-
-})
-
-}
-
-
-function deleteTransaction(id){
-
-askPassword(async()=>{
-
-const t=
-transactions.find(
-x=>String(x.id)===
-String(id)
 );
 
-
-if(!t)return;
-
-
-if(t.type==="exchange"){
-
-alert(
-"Exchange Transaction له دې ځایه Delete نه شي کېدای."
-);
-
-return
+});
 
 }
 
 
-if(
-!confirm(
-"ایا دا Transaction حذف کړئ؟"
-)
-)
-return;
-
-
-const result=
-await db
-.from("transactions")
-.delete()
-.eq("id",id);
-
-
-if(result.error){
-
-alert(
-"Delete Error:\n"+
-result.error.message
-);
-
-return
-
-}
-
-
-await loadData();
-
-
-const account=
-document.getElementById(
-"historyAccount"
-).value.trim();
-
-
-if(account)
-showCustomerHistory();
-
-
-alert(
-"Transaction حذف شو او Balance بیا حساب شو."
-)
-
-})
-
-}
-
-
-/* STATEMENT */
+/* ================= STATEMENT ================= */
 
 function openStatement(){
 
@@ -3813,33 +3001,15 @@ document.getElementById(
 "statementAccount"
 ).value="";
 
-
 document.getElementById(
 "statementCurrency"
 ).value="";
-
-
-document.getElementById(
-"statementFromDate"
-).value="";
-
-
-document.getElementById(
-"statementToDate"
-).value="";
-
-
-document.getElementById(
-"statementCustomer"
-).innerHTML="";
-
 
 document.getElementById(
 "statementResult"
 ).innerHTML="";
 
-
-openModal("statementModal")
+openModal("statementModal");
 
 }
 
@@ -3851,13 +3021,10 @@ document.getElementById(
 "statementAccount"
 ).value.trim();
 
-
 const c=
 customers.find(
-x=>String(x.account)===
-String(account)
+x=>x.account===account
 );
-
 
 document.getElementById(
 "statementCustomer"
@@ -3865,20 +3032,17 @@ document.getElementById(
 
 c
 ?
-`<div class="message success">
-👤 <b>${escapeHtml(c.name)}</b>
-|
-Account:
-<b>${escapeHtml(c.account)}</b>
-</div>`
-
+`
+<div class="message success">
+👤 ${escapeHtml(c.name)}
+</div>
+`
 :
-`<div class="message error">
-❌ Customer پیدا نه شو.
-</div>`;
-
-
-return c
+`
+<div class="message error">
+Customer پیدا نه شو.
+</div>
+`;
 
 }
 
@@ -3890,77 +3054,28 @@ document.getElementById(
 "statementAccount"
 ).value.trim();
 
-
 const currency=
 document.getElementById(
 "statementCurrency"
 ).value;
 
-
-const fromDate=
-document.getElementById(
-"statementFromDate"
-).value;
-
-
-const toDate=
-document.getElementById(
-"statementToDate"
-).value;
-
-
 const c=
 customers.find(
-x=>String(x.account)===
-String(account)
+x=>x.account===account
 );
 
-
-if(!c){
+if(!c||!currency){
 
 alert(
-"Customer پیدا نه شو."
+"Customer او Currency انتخاب کړئ."
 );
 
-return
+return;
 
 }
 
 
-if(!currency){
-
-alert(
-"Currency انتخاب کړئ."
-);
-
-return
-
-}
-
-
-if(!fromDate||!toDate){
-
-alert(
-"From Date او To Date دواړه انتخاب کړئ."
-);
-
-return
-
-}
-
-
-if(fromDate>toDate){
-
-alert(
-"From Date باید د To Date څخه مخکې وي."
-);
-
-return
-
-}
-
-
-const all=
+const list=
 transactions
 .filter(
 t=>
@@ -3976,151 +3091,45 @@ new Date(b.created_at)
 );
 
 
-let opening=0;
-
-
-all.forEach(t=>{
-
-const d=
-new Date(t.created_at)
-.toISOString()
-.slice(0,10);
-
-
-if(d<fromDate)
-opening+=
-Number(t.amount)||0
-
-});
-
-
-const list=
-all.filter(t=>{
-
-const d=
-new Date(t.created_at)
-.toISOString()
-.slice(0,10);
-
-
-return d>=fromDate&&d<=toDate
-
-});
-
-
-let depositAmount=0;
-let withdrawAmount=0;
-let depositCount=0;
-let withdrawCount=0;
-
-
-list.forEach(t=>{
-
-const a=
-Number(t.amount)||0;
-
-
-if(a>0){
-
-depositAmount+=a;
-depositCount++
-
-}
-
-
-if(a<0){
-
-withdrawAmount+=
-Math.abs(a);
-
-withdrawCount++
-
-}
-
-});
-
-
-const closing=
-opening+
-depositAmount-
-withdrawAmount;
-
-
-const currencyName=
-currency==="AFN"
-?
-"AFN — افغانۍ"
-:
-currency==="USD"
-?
-"USD — US Dollar"
-:
-currency==="PKR"
-?
-"PKR — کلدارې"
-:
-"Toman — تومان";
-
-
-let balance=opening;
+let balance=0;
 
 let rows="";
 
 
 list.forEach(t=>{
 
-const a=
+balance+=
 Number(t.amount)||0;
-
-
-balance+=a;
-
 
 rows+=`
 
 <tr>
 
-<td>
-${escapeHtml(dateOf(t.created_at))}
-</td>
+<td>${dateOf(t.created_at)}</td>
 
-<td>
-${escapeHtml(timeOf(t.created_at))}
-</td>
+<td>${timeOf(t.created_at)}</td>
 
-<td>
-${escapeHtml(t.description||"")}
-</td>
+<td>${escapeHtml(t.description)}</td>
 
 <td class="statement-credit">
-${a>0?money(a):""}
+
+${t.amount>0?money(t.amount):""}
+
 </td>
 
 <td class="statement-debit">
-${a<0?money(Math.abs(a)):""}
+
+${t.amount<0?money(Math.abs(t.amount)):""}
+
 </td>
 
-<td>
-${money(balance)}
-</td>
+<td>${money(balance)}</td>
 
 </tr>
 
-`
+`;
 
 });
-
-
-if(!rows){
-
-rows=
-`<tr>
-<td colspan="6">
-No transactions found for this period.
-</td>
-</tr>`
-
-}
 
 
 document.getElementById(
@@ -4128,8 +3137,6 @@ document.getElementById(
 ).innerHTML=
 
 `
-
-<div id="printStatementArea">
 
 <div class="statement-page">
 
@@ -4151,24 +3158,15 @@ Omid Es-haqzai
 Monetary Service Provider
 </div>
 
-<div class="statement-subtitle">
-Currency Exchange & Money Service
 </div>
 
 </div>
-
-</div>
-
 
 <div class="statement-title">
 
 <h1>
 STATEMENT OF ACCOUNT
 </h1>
-
-<div>
-Customer Account Statement
-</div>
 
 </div>
 
@@ -4178,30 +3176,13 @@ Customer Account Statement
 <div class="statement-info">
 
 <div>
-<strong>Account Number:</strong>
+<strong>Account:</strong>
 ${escapeHtml(c.account)}
 </div>
 
 <div>
-<strong>Statement Date:</strong>
-${new Date().toLocaleDateString("en-GB")}
-</div>
-
-<div>
-<strong>Customer Name:</strong>
+<strong>Customer:</strong>
 ${escapeHtml(c.name)}
-</div>
-
-<div>
-<strong>Currency:</strong>
-${escapeHtml(currencyName)}
-</div>
-
-<div>
-<strong>Period Covered:</strong>
-${escapeHtml(fromDate)}
-—
-${escapeHtml(toDate)}
 </div>
 
 <div>
@@ -4210,134 +3191,8 @@ ${escapeHtml(c.phone||"-")}
 </div>
 
 <div>
-<strong>Address:</strong>
-${escapeHtml(c.address||"-")}
-</div>
-
-<div>
-<strong>Account Type:</strong>
-Customer Account
-</div>
-
-</div>
-
-
-<div class="statement-summary">
-
-<div class="statement-summary-card">
-
-<div class="label">
-Opening Balance
-</div>
-
-<div class="value">
-${money(opening)}
-</div>
-
-</div>
-
-
-<div class="statement-summary-card">
-
-<div class="label">
-Deposit Transactions
-</div>
-
-<div class="value">
-${depositCount}
-</div>
-
-</div>
-
-
-<div class="statement-summary-card">
-
-<div class="label">
-Total Deposit
-</div>
-
-<div class="value">
-${money(depositAmount)}
-</div>
-
-</div>
-
-
-<div class="statement-summary-card">
-
-<div class="label">
-Debit Transactions
-</div>
-
-<div class="value">
-${withdrawCount}
-</div>
-
-</div>
-
-
-<div class="statement-summary-card">
-
-<div class="label">
-Total Debit
-</div>
-
-<div class="value">
-${money(withdrawAmount)}
-</div>
-
-</div>
-
-
-<div class="statement-summary-card">
-
-<div class="label">
-Closing Balance
-</div>
-
-<div class="value">
-${money(closing)}
-</div>
-
-</div>
-
-
-<div class="statement-summary-card">
-
-<div class="label">
-Number of Transactions
-</div>
-
-<div class="value">
-${list.length}
-</div>
-
-</div>
-
-
-<div class="statement-summary-card">
-
-<div class="label">
-Currency
-</div>
-
-<div class="value">
+<strong>Currency:</strong>
 ${escapeHtml(currency)}
-</div>
-
-</div>
-
-
-<div class="statement-summary-card">
-
-<div class="label">
-Account Status
-</div>
-
-<div class="value">
-Active
-</div>
-
 </div>
 
 </div>
@@ -4367,7 +3222,16 @@ TRANSACTIONS
 
 <tbody>
 
-${rows}
+${rows||
+
+`
+<tr>
+<td colspan="6">
+No transactions
+</td>
+</tr>
+`
+}
 
 </tbody>
 
@@ -4387,29 +3251,9 @@ Authorized Signature
 </div>
 
 
-<div class="statement-footer">
-
-<div>
-Omid Es-haqzai — Monetary Service Provider
 </div>
 
-<div>
-Currency:
-${escapeHtml(currency)}
-</div>
-
-<div>
-Generated:
-${new Date().toLocaleString("en-GB")}
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-`
+`;
 
 }
 
@@ -4417,300 +3261,64 @@ ${new Date().toLocaleString("en-GB")}
 function printStatement(){
 
 const area=
-document.getElementById(
-"printStatementArea"
+document.querySelector(
+".statement-page"
 );
-
 
 if(!area){
 
 alert(
-"لومړی Statement Generate کړئ."
+"لومړی Statement جوړ کړئ."
 );
 
-return
+return;
 
 }
 
 
-const win=
+const w=
 window.open(
 "",
-"_blank",
-"width=1000,height=800"
+"_blank"
 );
 
-
-win.document.write(`
-
-<!DOCTYPE html>
-
+w.document.write(`
 <html>
-
 <head>
-
-<meta charset="UTF-8">
-
-<title>
-Statement of Account
-</title>
-
+<title>Statement</title>
 <style>
-
-*{
-box-sizing:border-box
-}
-
-body{
-margin:0;
-padding:0;
-background:white;
-color:#111827;
-font-family:Arial,Tahoma,sans-serif
-}
-
-.statement-page{
-width:100%;
-padding:8mm
-}
-
-.statement-header{
-display:flex;
-justify-content:space-between;
-align-items:flex-start;
-border-bottom:3px solid #065f46;
-padding-bottom:15px;
-margin-bottom:18px
-}
-
-.statement-brand{
-display:flex;
-align-items:center;
-gap:10px
-}
-
-.statement-logo{
-width:55px;
-height:55px;
-border:2px solid #065f46;
-border-radius:9px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:27px
-}
-
-.statement-company{
-font-size:19px;
-font-weight:bold;
-color:#064e3b
-}
-
-.statement-subtitle{
-font-size:11px;
-color:#64748b;
-margin-top:3px
-}
-
-.statement-title{
-text-align:right
-}
-
-.statement-title h1{
-margin:0;
-font-size:25px
-}
-
-.statement-title div{
-font-size:11px;
-color:#64748b;
-margin-top:4px
-}
-
-.statement-info{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:5px 25px;
-border:1px solid #d1d5db;
-padding:11px;
-margin-bottom:15px
-}
-
-.statement-info div{
-font-size:11px;
-padding:3px
-}
-
-.statement-info strong{
-display:inline-block;
-min-width:110px
-}
-
-.statement-summary{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:7px;
-margin-bottom:18px
-}
-
-.statement-summary-card{
-border:1px solid #d1d5db;
-padding:10px;
-min-height:58px
-}
-
-.statement-summary-card .label{
-font-size:9px;
-color:#64748b;
-text-transform:uppercase
-}
-
-.statement-summary-card .value{
-font-size:14px;
-font-weight:bold;
-margin-top:5px;
-color:#064e3b
-}
-
-.statement-section-title{
-font-size:14px;
-font-weight:bold;
-border-bottom:2px solid #111827;
-padding-bottom:5px;
-margin-bottom:6px
-}
-
-.statement-table{
-width:100%;
-border-collapse:collapse;
-margin:0
-}
-
-.statement-table th{
-background:#065f46;
-color:white;
-border:1px solid #064e3b;
-padding:7px 5px;
-font-size:10px
-}
-
-.statement-table td{
-border:1px solid #d1d5db;
-padding:6px 5px;
-font-size:10px;
-text-align:center
-}
-
-.statement-table tbody tr:nth-child(even){
-background:#f3f4f6
-}
-
-.statement-credit{
-color:#047857;
-font-weight:bold
-}
-
-.statement-debit{
-color:#dc2626;
-font-weight:bold
-}
-
-.statement-signatures{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:80px;
-margin-top:40px
-}
-
-.signature-box{
-text-align:center;
-padding-top:7px;
-border-top:1px solid #334155;
-font-size:10px
-}
-
-.statement-footer{
-margin-top:20px;
-padding-top:8px;
-border-top:1px solid #cbd5e1;
-display:flex;
-justify-content:space-between;
-font-size:9px;
-color:#64748b
-}
-
-@page{
-size:A4 portrait;
-margin:8mm
-}
-
+body{font-family:Arial;padding:20px}
+table{width:100%;border-collapse:collapse}
+th,td{border:1px solid #999;padding:8px;text-align:center}
+th{background:#065f46;color:#fff}
 </style>
-
 </head>
-
 <body>
-
-${area.innerHTML}
-
+${area.outerHTML}
 </body>
-
 </html>
-
 `);
 
+w.document.close();
 
-win.document.close();
-
-win.onload=function(){
-
-win.focus();
-
-win.print()
-
-}
+w.print();
 
 }
 
 
-/* REPORT */
+/* ================= REPORT ================= */
 
 function openReports(){
 
 let totals=
 balanceTemplate();
 
-
 customers.forEach(c=>{
 
-totals.AFN+=
-Number(c.balance.AFN)||0;
-
-totals.USD+=
-Number(c.balance.USD)||0;
-
-totals.PKR+=
-Number(c.balance.PKR)||0;
-
-totals.IRR+=
-Number(c.balance.IRR)||0;
-
-});
-
-
-let deposit=0;
-let withdraw=0;
-
-
-transactions.forEach(t=>{
-
-if(t.type==="deposit")
-deposit+=
-Math.abs(Number(t.amount)||0);
-
-
-if(t.type==="withdraw")
-withdraw+=
-Math.abs(Number(t.amount)||0);
+totals.AFN+=c.balance.AFN;
+totals.USD+=c.balance.USD;
+totals.PKR+=c.balance.PKR;
+totals.IRR+=c.balance.IRR;
 
 });
 
@@ -4720,18 +3328,15 @@ document.getElementById(
 ).textContent=
 money(totals.USD);
 
-
 document.getElementById(
 "reportAFN"
 ).textContent=
 money(totals.AFN);
 
-
 document.getElementById(
 "reportPKR"
 ).textContent=
 money(totals.PKR);
-
 
 document.getElementById(
 "reportIRR"
@@ -4740,35 +3345,12 @@ money(totals.IRR);
 
 
 document.getElementById(
-"reportDeposit"
-).textContent=
-money(deposit);
-
-
-document.getElementById(
-"reportWithdraw"
-).textContent=
-money(withdraw);
-
-
-document.getElementById(
-"reportTransactions"
-).textContent=
-transactions.length;
-
-
-document.getElementById(
 "reportTable"
 ).innerHTML=
 
-[...transactions]
-
-.sort(
-(a,b)=>
-new Date(b.created_at)-
-new Date(a.created_at)
-)
-
+transactions
+.slice()
+.reverse()
 .map(t=>{
 
 const c=
@@ -4777,118 +3359,81 @@ x=>String(x.id)===
 String(t.customer_id)
 );
 
-
 return`
 
 <tr>
 
-<td>
-${escapeHtml(c?.account||"")}
-</td>
+<td>${escapeHtml(c?.account||"")}</td>
 
-<td>
-${escapeHtml(c?.name||"")}
-</td>
+<td>${escapeHtml(c?.name||"")}</td>
 
-<td>
-${escapeHtml(t.type)}
-</td>
+<td>${escapeHtml(t.type)}</td>
 
-<td>
-${escapeHtml(t.currency)}
-</td>
+<td>${escapeHtml(t.currency)}</td>
 
-<td
-class="${
-Number(t.amount)>=0
+<td class="${
+t.amount>=0
 ?
 "positive"
 :
 "negative"
-}"
->
-
-${
-Number(t.amount)>=0
-?
-"+"
-:
-""
-}
+}">
 
 ${money(t.amount)}
 
 </td>
 
-<td>
-${escapeHtml(t.description)}
-</td>
+<td>${escapeHtml(t.description)}</td>
 
-<td>
-${escapeHtml(dateOf(t.created_at))}
-</td>
+<td>${dateOf(t.created_at)}</td>
 
 </tr>
 
-`
+`;
 
-}).join("")
-
-||
-
-`<tr>
-<td colspan="7">
-هیڅ معلومات نشته.
-</td>
-</tr>`;
+}).join("");
 
 
-openModal("reportsModal")
+openModal("reportsModal");
 
 }
 
 
-/* RATES */
+/* ================= RATES ================= */
 
 function openRates(){
 
 document.getElementById(
 "rateUSD_AFN"
 ).value=
-exchangeRates.USD.AFN||"";
-
+exchangeRates.USD.AFN;
 
 document.getElementById(
 "rateUSD_PKR"
 ).value=
-exchangeRates.USD.PKR||"";
-
+exchangeRates.USD.PKR;
 
 document.getElementById(
 "rateUSD_IRR"
 ).value=
-exchangeRates.USD.IRR||"";
-
+exchangeRates.USD.IRR;
 
 document.getElementById(
 "rateAFN_PKR"
 ).value=
-exchangeRates.AFN.PKR||"";
-
+exchangeRates.AFN.PKR;
 
 document.getElementById(
 "rateAFN_IRR"
 ).value=
-exchangeRates.AFN.IRR||"";
-
+exchangeRates.AFN.IRR;
 
 document.getElementById(
 "ratePKR_IRR"
 ).value=
-exchangeRates.PKR.IRR||"";
+exchangeRates.PKR.IRR;
 
-
-openModal("ratesModal")
+openModal("ratesModal");
 
 }
 
@@ -4902,14 +3447,12 @@ document.getElementById(
 ).value
 );
 
-
 const uP=
 Number(
 document.getElementById(
 "rateUSD_PKR"
 ).value
 );
-
 
 const uI=
 Number(
@@ -4918,14 +3461,12 @@ document.getElementById(
 ).value
 );
 
-
 const aP=
 Number(
 document.getElementById(
 "rateAFN_PKR"
 ).value
 );
-
 
 const aI=
 Number(
@@ -4934,31 +3475,12 @@ document.getElementById(
 ).value
 );
 
-
 const pI=
 Number(
 document.getElementById(
 "ratePKR_IRR"
 ).value
 );
-
-
-if(
-!uA||
-!uP||
-!uI||
-!aP||
-!aI||
-!pI
-){
-
-alert(
-"ټول Rates داخل کړئ."
-);
-
-return
-
-}
 
 
 exchangeRates={
@@ -4995,44 +3517,34 @@ localStorage.setItem(
 JSON.stringify(exchangeRates)
 );
 
-
 closeModal("ratesModal");
-
 
 alert(
 "Exchange Rates Save شول."
-)
+);
 
 }
 
 
-/* LOGOUT */
+/* ================= LOGOUT ================= */
 
 async function logout(){
 
-if(
-!confirm(
-"ایا Logout کول غواړئ؟"
-)
-)
-return;
-
-
 await db.auth.signOut();
 
-sessionStorage.clear();
-
 window.location.href=
-"index.html"
+"index.html";
 
 }
 
 
 /*
-IMPORTANT:
-د Success Popup د باندې کلیک،
-Escape، او Auto-close هېڅ اغېز نه لري.
-یوازې د "کافي" تڼۍ Popup بندوي.
+  مهم:
+  دلته Success Popup د باندې
+  د کلیک له لارې نه بندېږي.
+
+  یوازې عادي Modal د باندې کلیک
+  سره بندېږي.
 */
 
 window.onclick=function(e){
@@ -5041,10 +3553,13 @@ document
 .querySelectorAll(".modal")
 .forEach(m=>{
 
-if(e.target===m)
-m.style.display="none"
+if(e.target===m){
 
-})
+m.style.display="none";
+
+}
+
+});
 
 }
 
