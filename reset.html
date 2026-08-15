@@ -1,1 +1,429 @@
-hajran.karimi2015@gmail.com
+
+<!DOCTYPE html>
+<html lang="ps" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Change Password</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,Tahoma,sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+
+background:
+radial-gradient(
+circle at top left,
+rgba(32,164,100,.35),
+transparent 35%
+),
+radial-gradient(
+circle at bottom right,
+rgba(0,80,50,.55),
+transparent 40%
+),
+linear-gradient(
+135deg,
+#041a11,
+#0b3927,
+#126b43
+);
+}
+
+.box{
+width:400px;
+max-width:100%;
+background:#fff;
+padding:35px 30px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 20px 70px rgba(0,0,0,.5);
+}
+
+.logo{
+width:85px;
+height:85px;
+margin:0 auto 15px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:50%;
+
+background:
+linear-gradient(
+135deg,
+#126b43,
+#20a464
+);
+
+font-size:45px;
+color:white;
+}
+
+h1{
+color:#126b43;
+font-size:25px;
+margin-bottom:8px;
+}
+
+.subtitle{
+color:#777;
+font-size:14px;
+margin-bottom:25px;
+}
+
+label{
+display:block;
+text-align:right;
+font-weight:bold;
+margin-bottom:6px;
+color:#333;
+}
+
+input{
+width:100%;
+height:50px;
+padding:0 14px;
+margin-bottom:18px;
+
+border:1px solid #ccc;
+border-radius:10px;
+
+outline:none;
+font-size:16px;
+
+direction:ltr;
+text-align:left;
+}
+
+input:focus{
+border-color:#126b43;
+box-shadow:
+0 0 0 3px
+rgba(18,107,67,.12);
+}
+
+button{
+width:100%;
+height:50px;
+
+border:0;
+border-radius:10px;
+
+background:
+linear-gradient(
+135deg,
+#126b43,
+#20a464
+);
+
+color:white;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.back{
+margin-top:10px;
+
+background:white;
+color:#126b43;
+
+border:1px solid #126b43;
+box-shadow:none;
+
+font-size:14px;
+}
+
+.message{
+display:none;
+margin-top:15px;
+padding:10px;
+border-radius:8px;
+font-weight:bold;
+font-size:14px;
+}
+
+.error{
+background:#fdeaea;
+color:#c0392b;
+}
+
+.success{
+background:#eaf8f0;
+color:#126b43;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<div class="logo">
+🔐
+</div>
+
+<h1>
+Change Password
+</h1>
+
+<div class="subtitle">
+د خپل حساب نوی Password جوړ کړئ
+</div>
+
+
+<form onsubmit="changePassword(event)">
+
+<label>
+New Password
+</label>
+
+<input
+id="newPassword"
+type="password"
+placeholder="New Password"
+autocomplete="new-password"
+required
+minlength="6"
+>
+
+
+<label>
+Confirm New Password
+</label>
+
+<input
+id="confirmPassword"
+type="password"
+placeholder="Confirm New Password"
+autocomplete="new-password"
+required
+minlength="6"
+>
+
+
+<button
+id="changeBtn"
+type="submit">
+
+🔐 Change Password
+
+</button>
+
+
+<button
+type="button"
+class="back"
+onclick="goLogin()">
+
+⬅️ Back to Login
+
+</button>
+
+
+<div
+id="error"
+class="message error">
+</div>
+
+
+<div
+id="success"
+class="message success">
+</div>
+
+</form>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+"https://ggblghhfngmshmmkwnsl.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_7u9V---1ywtKp9EK9yZhIA_F8vIzCJK";
+
+
+const db =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+
+/* =========================
+   CHANGE PASSWORD
+========================= */
+
+async function changePassword(event){
+
+event.preventDefault();
+
+
+const newPassword =
+document.getElementById(
+"newPassword"
+).value;
+
+const confirmPassword =
+document.getElementById(
+"confirmPassword"
+).value;
+
+
+const errorBox =
+document.getElementById(
+"error"
+);
+
+const successBox =
+document.getElementById(
+"success"
+);
+
+const button =
+document.getElementById(
+"changeBtn"
+);
+
+
+errorBox.style.display="none";
+successBox.style.display="none";
+
+
+if(newPassword.length < 6){
+
+errorBox.textContent =
+"❌ Password باید لږ تر لږه 6 حروف ولري.";
+
+errorBox.style.display="block";
+
+return;
+
+}
+
+
+if(newPassword !== confirmPassword){
+
+errorBox.textContent =
+"❌ دواړه Passwordونه یو شان نه دي.";
+
+errorBox.style.display="block";
+
+return;
+
+}
+
+
+button.disabled=true;
+
+button.textContent=
+"⏳ Saving...";
+
+
+try{
+
+const {data,error} =
+await db.auth.updateUser({
+
+password:newPassword
+
+});
+
+
+if(error){
+
+errorBox.textContent =
+"❌ "+error.message;
+
+errorBox.style.display="block";
+
+button.disabled=false;
+
+button.textContent=
+"🔐 Change Password";
+
+return;
+
+}
+
+
+successBox.textContent =
+"✅ Password په بریالیتوب سره بدل شو.";
+
+successBox.style.display="block";
+
+
+document.getElementById(
+"newPassword"
+).value="";
+
+document.getElementById(
+"confirmPassword"
+).value="";
+
+
+setTimeout(async()=>{
+
+await db.auth.signOut();
+
+window.location.href=
+"index.html";
+
+},2000);
+
+
+}catch(error){
+
+errorBox.textContent =
+"❌ د Password بدلولو پر وخت ستونزه رامنځته شوه.";
+
+errorBox.style.display="block";
+
+button.disabled=false;
+
+button.textContent=
+"🔐 Change Password";
+
+}
+
+}
+
+
+/* =========================
+   BACK
+========================= */
+
+function goLogin(){
+
+window.location.href=
+"index.html";
+
+}
+
+</script>
+
+</body>
+</html>
